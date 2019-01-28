@@ -1,0 +1,46 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckCCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckCSourceRuns.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckIncludeFiles.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckStructHasMember.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckTypeSize.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/CheckVariableExists.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.13/Modules/Platform/WindowsPaths.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/CMakeLists.txt
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/AddCompilerFlags.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/CheckFileOffsetBits.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/CheckFunctionExistsEx.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/CheckFunctionKeywords.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/CheckPrototypeDefinition.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/CheckWaitpidSupportWNOWAIT.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/FindGit.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/LibeventConfig.cmake.in
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/LibeventConfigBuildTree.cmake.in
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/LibeventConfigVersion.cmake.in
+F:/My Source Program/NetworkSystem/Deps/libevent/cmake/VersionViaGit.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/evconfig-private.h.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/event-config.h.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/vsprojects/CMakeFiles/3.13.3/CMakeCCompiler.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/vsprojects/CMakeFiles/3.13.3/CMakeRCCompiler.cmake
+F:/My Source Program/NetworkSystem/Deps/libevent/vsprojects/CMakeFiles/3.13.3/CMakeSystem.cmake
