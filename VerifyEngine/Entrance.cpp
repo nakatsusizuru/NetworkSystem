@@ -14,5 +14,11 @@ w32 WinPort::Exec(w32 argc, lPString argv[])
 }
 int main(int argc, char* argv[])
 {
-	return WinPort::Exec(argc, argv);
+	Cry::Import::Glog InitGlog;
+	{
+		Cry::Import::Event InitEvent;
+		{
+			return WinPort::Exec(argc, argv);
+		}
+	}
 }

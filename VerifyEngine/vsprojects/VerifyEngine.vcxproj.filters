@@ -25,6 +25,12 @@
     <Filter Include="Gui\GeneratedFiles">
       <UniqueIdentifier>{4b1d3e0a-cac6-437f-89d8-782329bd531f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{7570ab48-2806-4aa1-8b98-e943b44b39b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Import">
+      <UniqueIdentifier>{c0f03e83-b9d3-41de-b671-ddd3242e4fc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -39,6 +45,15 @@
     <ClInclude Include="..\Entrance.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Service\Cry.Signal.Service.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Import\Cry.Event.hpp">
+      <Filter>Public\Import</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp">
+      <Filter>Public\Import</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Gui\ControlDialog.cpp">
@@ -49,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="..\Gui\GeneratedFiles\ControlDialogEx.cpp">
       <Filter>Gui\GeneratedFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Service\Cry.Signal.Service.cpp">
+      <Filter>Service</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
