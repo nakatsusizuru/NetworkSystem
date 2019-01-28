@@ -95,15 +95,23 @@
   <ItemGroup>
     <ProjectReference Include="..\..\glog\vsprojects\glog.vcxproj">
       <Project>{4a9ee14b-2d60-39e4-b042-6ef67e6821d4}</Project>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\..\libevent\vsprojects\event.vcxproj">
       <Project>{69a4cefc-8492-39bc-8636-efc85885c584}</Project>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\..\libevent\vsprojects\event_core.vcxproj">
       <Project>{867a626b-b07a-347f-abf4-9c356b8cc953}</Project>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <ProjectReference Include="..\..\libevent\vsprojects\event_extra.vcxproj">
       <Project>{dbf8c94e-dfaa-3d91-a14d-273e1141b8f7}</Project>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
