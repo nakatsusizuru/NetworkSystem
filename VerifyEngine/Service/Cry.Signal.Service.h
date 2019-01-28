@@ -25,13 +25,28 @@ namespace Cry
 		u32					Expires;
 	};
 
+	class OnMessageLeave
+	{
+	public:
+		OnMessageLeave() = default;
+		explicit OnMessageLeave(evpp::Buffer * pData);
+		~OnMessageLeave();
+	private:
+		evpp::Buffer*														m_pData;
+	private:
+		OnMessageLeave(const OnMessageLeave &) = default;
+		OnMessageLeave &operator=(const OnMessageLeave &) = default;
+	};
+
 	class Work
 	{
 	public:
-		explicit Work(const NetworkServiceEngine * Service, const evpp::TCPConnPtr & Conn);
+		explicit Work(NetworkServiceEngine * Service);
 		~Work() = default;
 	public:
-		void Receive(const evpp::Buffer * pData);
+		void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * pData);
+	private:
+		NetworkServiceEngine*										m_Service;
 	private:
 		/// »º³åÇø
 		std::string													m_lpszBody;
@@ -48,7 +63,7 @@ namespace Cry
 		bool CreateService();
 		bool CancelService();
 	private:
-		void OnMessage(const evpp::TCPConnPtr & Conn, const evpp::Buffer * Buffer);
+		void OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer);
 		void OnConnection(const evpp::TCPConnPtr & Conn);
 	private:
 		bool AddWork(u64 Index, std::shared_ptr<Work> Work);

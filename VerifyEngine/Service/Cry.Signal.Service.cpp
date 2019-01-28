@@ -3,13 +3,66 @@
 #include <evpp/tcp_conn.h>
 namespace Cry
 {
-	Work::Work(const NetworkServiceEngine * Service, const evpp::TCPConnPtr & Conn)
+	OnMessageLeave::OnMessageLeave(evpp::Buffer * pData) : m_pData(pData)
 	{
 
 	}
-	void Work::Receive(const evpp::Buffer * pData)
+	OnMessageLeave::~OnMessageLeave()
+	{
+		m_pData->Reset();
+	}
+
+	Work::Work(NetworkServiceEngine * Service) : m_Service(Service)
 	{
 
+	}
+	void Work::Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * pData)
+	{
+		OnMessageLeave Leave(pData);
+		{
+			u32 uMsg = 0, uSize = 0;
+			while (pData->length() > 0)
+			{
+				if (!uMsg)
+				{
+					if (!m_Service || pData->length() < HeadSize)
+					{
+						DLOG_TRACE << "Recv DataSize < HeardSize Error:" << Conn->remote_addr();
+						return;
+					}
+					uSize = pData->ReadInt32();
+					uSize -= HeadSize;
+					uMsg = pData->ReadInt32();
+				}
+				if (pData->size() < uSize)
+				{
+					DLOG_TRACE << "Recv DataSize < MessageSize:" << Conn->remote_addr();
+					return;
+				}
+				//if (std::shared_ptr<Action::UnknownInterfaceEx> lpListener = m_Service->GetObjectInterface()->Get(uMsg); lpListener)
+				//{
+				//	try
+				//	{
+				//		if (!lpListener->OnSocketData(shared_from_this(), uMsg, pData->data(), uSize))
+				//		{
+				//			DLOG_TRACE << "·¢ËÍÊý¾ÝÊ§°Ü";
+				//			return;
+				//		}
+				//	}
+				//	catch (std::exception & e)
+				//	{
+				//		return;
+				//	}
+				//}
+				//else
+				//{
+				//	DLOG_TRACE << "Exec lpListener = nullptr:" << m_Conn->remote_addr();
+				//	return;
+				//}
+				pData->Skip(uSize);
+				uMsg = 0;
+			}
+		}
 	}
 	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u32 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Server(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize))
 	{
@@ -42,10 +95,10 @@ namespace Cry
 		}
 		return false;
 	}
-	void NetworkServiceEngine::OnMessage(const evpp::TCPConnPtr & Conn, const evpp::Buffer * Buffer)
+	void NetworkServiceEngine::OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer)
 	{
 		if (std::shared_ptr<Work> Work = this->GetWork(Conn->id()); Work != nullptr)
-			Work->Receive(Buffer);
+			Work->Receive(Conn, Buffer);
 		else
 			Conn->Close();
 	}
@@ -53,7 +106,7 @@ namespace Cry
 	{
 		if (Conn->IsConnected())
 		{
-			if (!this->AddWork(Conn->id(), std::make_shared<Work>(this, Conn)))
+			if (!this->AddWork(Conn->id(), std::make_shared<Work>(this)))
 			{
 				Conn->Close();
 			}

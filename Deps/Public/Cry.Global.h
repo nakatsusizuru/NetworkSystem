@@ -33,7 +33,7 @@
 
 // 公共帮助头文件
 #include <Port>
-#define HeadSize (sizeof(uint32_t) + sizeof(uint32_t))
+#define HeadSize (sizeof(u32) + sizeof(u32))
 
 #if !defined(_USRDLL)
 #ifdef _M_IX86
