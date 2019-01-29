@@ -1,10 +1,11 @@
 #include <Global>
 #include <Gui/ClientDialog.h>
 #include <Gui/ClientDialog.hpp>
+#include <Service/Cry.Signal.Service.h>
 #include <QStandardItemModel>
 namespace Cry
 {
-	ClientDialog::ClientDialog(QWidget* Widget) : QMainWindow(Widget), Interface(new Ui::ClientDialog)
+	ClientDialog::ClientDialog(QWidget* Widget) : QMainWindow(Widget), Interface(new Ui::ClientDialog), m_Service(std::make_shared<NetworkServiceEngine>("127.0.0.1:9999", "Client"))
 	{
 		Interface->setupUi(this);
 		this->InitializeUi(this);
@@ -43,5 +44,12 @@ namespace Cry
 		Interface->tableView->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Custom);
 		Interface->tableView->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Custom);
 		Interface->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Custom);
+
+		connect(Interface->pushButton, &QPushButton::clicked, this, &ClientDialog::OnPushButton);
+
+	}
+	void ClientDialog::OnPushButton(bool Status)
+	{
+		m_Service->CreateService();
 	}
 }

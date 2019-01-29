@@ -33,7 +33,14 @@
 
 // 公共帮助头文件
 #include <Port>
+
 #define HeadSize (sizeof(u32) + sizeof(u32))
+
+#if !defined(_DEBUG)
+# define DebugMsg(...) do { TCHAR debugMsg[MAX_PATH]; _sntprintf_s(debugMsg, _countof(debugMsg), _TRUNCATE, ##__VA_ARGS__); OutputDebugString(debugMsg); } while(0)
+#else
+# define DebugMsg(...) do { TCHAR debugMsg[MAX_PATH]; _sntprintf_s(debugMsg, _countof(debugMsg), _TRUNCATE, ##__VA_ARGS__); OutputDebugString(debugMsg); } while(0)
+#endif
 
 #if !defined(_USRDLL)
 #ifdef _M_IX86

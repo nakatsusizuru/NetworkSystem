@@ -28,6 +28,9 @@
     <Filter Include="Gui\GeneratedFiles">
       <UniqueIdentifier>{ba35d567-9dc8-438c-8e98-f4d3b54de2ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{35dadb73-1445-4f81-acf5-a29f220d2702}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -54,6 +57,12 @@
     <ClInclude Include="..\Gui\ClientDialog.hpp">
       <Filter>Gui\Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Service\Cry.Signal.Service.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Service\Cry.AvailablePort.h">
+      <Filter>Service</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Entrance.cpp">
@@ -64,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="..\Gui\GeneratedFiles\ClientDialogEx.cpp">
       <Filter>Gui\GeneratedFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Service\Cry.Signal.Service.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Service\Cry.AvailablePort.cpp">
+      <Filter>Service</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

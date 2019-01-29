@@ -74,6 +74,9 @@ public:
     const std::string& remote_addr() const {
         return remote_addr_;
     }
+	const std::string& local_addr() const {
+		return local_addr_;
+	}
     const std::string& name() const {
         return name_;
     }

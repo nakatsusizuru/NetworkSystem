@@ -25,6 +25,8 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Event.hpp" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp" />
     <ClInclude Include="..\Entrance.h" />
+    <ClInclude Include="..\Service\Cry.AvailablePort.h" />
+    <ClInclude Include="..\Service\Cry.Signal.Service.h" />
     <CustomBuild Include="..\Gui\ClientDialog.h" />
     <ClInclude Include="..\Gui\ClientDialog.hpp" />
   </ItemGroup>
@@ -32,6 +34,8 @@
     <ClCompile Include="..\Entrance.cpp" />
     <ClCompile Include="..\Gui\ClientDialog.cpp" />
     <ClCompile Include="..\Gui\GeneratedFiles\ClientDialogEx.cpp" />
+    <ClCompile Include="..\Service\Cry.AvailablePort.cpp" />
+    <ClCompile Include="..\Service\Cry.Signal.Service.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Deps\evpp\vsprojects\libevpp.vcxproj">

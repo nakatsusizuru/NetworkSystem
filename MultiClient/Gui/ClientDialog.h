@@ -17,8 +17,11 @@ namespace Cry
 		~ClientDialog();
 	private:
 		void InitializeUi(QWidget* Widget);
+		void OnPushButton(bool Status);
 	private:
 		Ui::ClientDialog*							Interface;
 		QStandardItemModel*							m_QStandardItemModel;
+	private:
+		std::shared_ptr<NetworkServiceEngine>		m_Service;
 	};
 }
