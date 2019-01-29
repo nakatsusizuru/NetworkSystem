@@ -25,9 +25,13 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Event.hpp" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp" />
     <ClInclude Include="..\Entrance.h" />
+    <CustomBuild Include="..\Gui\ClientDialog.h" />
+    <ClInclude Include="..\Gui\ClientDialog.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Entrance.cpp" />
+    <ClCompile Include="..\Gui\ClientDialog.cpp" />
+    <ClCompile Include="..\Gui\GeneratedFiles\ClientDialogEx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Deps\evpp\vsprojects\libevpp.vcxproj">
@@ -122,6 +126,10 @@
       <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;..\..\Lib\$(Configuration)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>imm32.lib;winmm.lib;ws2_32.lib;dwmapi.lib;uxtheme.lib;version.lib;glu32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <Command>"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "..\Gui\GeneratedFiles\%(Filename)Ex.cpp"</Command>
+      <Outputs>..\Gui\GeneratedFiles\%(Filename)Ex.cpp</Outputs>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -164,6 +172,10 @@
       <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;..\..\Lib\$(Configuration)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>imm32.lib;winmm.lib;ws2_32.lib;dwmapi.lib;uxtheme.lib;version.lib;glu32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <Command>"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "..\Gui\GeneratedFiles\%(Filename)Ex.cpp"</Command>
+      <Outputs>..\Gui\GeneratedFiles\%(Filename)Ex.cpp</Outputs>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

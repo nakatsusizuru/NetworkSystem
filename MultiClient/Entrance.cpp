@@ -5,6 +5,15 @@
 #include <Import/Cry.Glog.hpp>
 #include <QtPlugin>
 #include <QApplication>
+#include <Gui/ClientDialog.h>
+w32 Exec(w32 argc, lPString argv[])
+{
+	constexpr Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
+	QApplication a(argc, argv);
+	Cry::ClientDialog w;
+	w.show();
+	return a.exec();
+}
 
 int main(int argc, char* argv[])
 {
@@ -12,7 +21,7 @@ int main(int argc, char* argv[])
 	{
 		Cry::Import::Event InitEvent;
 		{
-			return 0;
+			return Exec(argc, argv);
 		}
 	}
 }

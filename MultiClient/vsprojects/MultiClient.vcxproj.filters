@@ -19,6 +19,15 @@
     <Filter Include="Public\Import">
       <UniqueIdentifier>{1d7fcde8-fcf6-4f53-81b2-fd867a64348b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{b2ffd1dd-c7a5-4d91-9516-4c238b047d0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\Files">
+      <UniqueIdentifier>{cfd30e0b-0186-44fc-b7d3-9478f88a770f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui\GeneratedFiles">
+      <UniqueIdentifier>{ba35d567-9dc8-438c-8e98-f4d3b54de2ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -39,10 +48,22 @@
     <ClInclude Include="..\Entrance.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Gui\ClientDialog.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Gui\ClientDialog.hpp">
+      <Filter>Gui\Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Entrance.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Gui\ClientDialog.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Gui\GeneratedFiles\ClientDialogEx.cpp">
+      <Filter>Gui\GeneratedFiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
