@@ -22,6 +22,6 @@ namespace Cry
 		void stop(bool Status);
 	private:
 		Ui::ControlDialog*							Interface;
-		std::shared_ptr<NetworkServiceEngine>		m_Service;
+		std::unique_ptr<NetworkServiceEngine>		m_Service;
 	};
 }

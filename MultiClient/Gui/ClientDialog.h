@@ -1,6 +1,7 @@
 #pragma once
 #include <QMainWindow>
 #include <memory>
+#include <Port>
 namespace Ui
 {
 	class ClientDialog;
@@ -8,6 +9,7 @@ namespace Ui
 class QStandardItemModel;
 namespace Cry
 {
+	class AvailablePort;
 	class NetworkServiceEngine;
 	class ClientDialog: public QMainWindow
 	{
@@ -19,9 +21,15 @@ namespace Cry
 		void InitializeUi(QWidget* Widget);
 		void OnPushButton(bool Status);
 	private:
-		Ui::ClientDialog*							Interface;
-		QStandardItemModel*							m_QStandardItemModel;
+		void OnConnection(const u32 Index, bool Status);
+		void OnConnectionEx(const u32 Index, bool Status);
+	signals:
+		void PostConnection(const u32 Index, bool Status);
 	private:
-		std::shared_ptr<NetworkServiceEngine>		m_Service;
+		Ui::ClientDialog*													Interface;
+		QStandardItemModel*													m_QStandardItemModel;
+	private:
+		std::shared_ptr<NetworkServiceEngine>								m_Service;
+		std::unique_ptr<AvailablePort>										m_AvailablePort;
 	};
 }

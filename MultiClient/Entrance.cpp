@@ -5,12 +5,14 @@
 #include <Import/Cry.Glog.hpp>
 #include <QtPlugin>
 #include <QApplication>
+#include <QMetaType>
 #include <Gui/ClientDialog.h>
+Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 w32 Exec(w32 argc, lPString argv[])
 {
-	constexpr Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 	QApplication a(argc, argv);
 	Cry::ClientDialog w;
+	qRegisterMetaType<u32>("u32");
 	w.show();
 	return a.exec();
 }

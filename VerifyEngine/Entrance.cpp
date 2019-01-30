@@ -6,9 +6,9 @@
 #include <QtPlugin>
 #include <QApplication>
 #include <Gui/ControlDialog.h>
+Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 w32 WinPort::Exec(w32 argc, lPString argv[])
 {
-	constexpr Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 	QApplication a(argc, argv);
 	Cry::ControlDialog w;
 	w.show();

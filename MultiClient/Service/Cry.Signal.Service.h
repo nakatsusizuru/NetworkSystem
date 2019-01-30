@@ -4,6 +4,11 @@
 #include <vector>
 namespace Cry
 {
+	using EventLoopThread = evpp::EventLoopThread;
+	using EventLoopThreadPool = evpp::EventLoopThreadPool;
+	using TcpClient = evpp::TCPClient;
+	typedef std::function<void(const u32 Index, bool Status)> Connection;
+	class AvailablePort;
 	class NetworkServiceEngine;
 	class Work
 	{
@@ -25,15 +30,23 @@ namespace Cry
 		explicit NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags);
 		~NetworkServiceEngine();
 	public:
-		bool CreateService();
+		bool CreateService(const std::string & lpszString, const u32 uPort);
 		bool CancelService();
+		void CancelAllService();
+		void SetConnection(Connection cb);
 	private:
 		void OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer);
 		void OnConnection(const evpp::TCPConnPtr & Conn);
 	private:
-		std::unique_ptr<evpp::EventLoopThread>								m_Loop;
-		std::unique_ptr<evpp::EventLoopThreadPool>							m_Pool;
-		std::unique_ptr<evpp::TCPClient>									m_Service;
-		std::vector<std::unique_ptr<evpp::TCPClient>>						m_ClientData;
+		void SendStatus(const evpp::TCPConnPtr & Conn, bool Status);
+	private:
+		std::string															m_lpszAddress;
+		std::string															m_lpszFlags;
+		Cry::Connection														m_Connection;
+	private:
+		std::unique_ptr<EventLoopThread>									m_Loop;
+		std::unique_ptr<EventLoopThreadPool>								m_Pool;
+		std::unique_ptr<AvailablePort>										m_AvailablePort;
+		std::vector<std::unique_ptr<TcpClient>>								m_ClientData;
 	};
 }

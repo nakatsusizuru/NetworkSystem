@@ -1,5 +1,5 @@
 #include <Global>
-#include <Service/Cry.AvailablePort.h>
+#include <Service/Cry.Signal.Port.h>
 #include <algorithm>
 #include <WinSock2.h>
 #include <iphlpapi.h>
@@ -17,14 +17,14 @@ namespace Cry
 				{
 					for (u32 i = 0; i < TcpTable->dwNumEntries; ++i)
 					{
-						m_PortTable.push_back(ntohs(TcpTable->table[i].dwLocalPort));
+						m_Port.emplace(std::cend(m_Port), ntohs(TcpTable->table[i].dwLocalPort));
 					}
-					//std::sort(std::begin(m_PortTable), std::end(m_PortTable));
-					for (u32 uPort = 1000; uPort != 65535; ++uPort)
+					//std::sort(std::begin(m_Port), std::end(m_Port));
+					for (u32 uPort = 1025; uPort != 65535; ++uPort)
 					{
-						if (!std::binary_search(std::cbegin(m_PortTable), std::cend(m_PortTable), uPort))
+						if (!std::binary_search(std::cbegin(m_Port), std::cend(m_Port), uPort) && !std::binary_search(std::cbegin(m_Active), std::cend(m_Active), uPort))
 						{
-							return uPort;
+							return *m_Active.emplace(std::cend(m_Active), uPort);
 						}
 					}
 				}
@@ -32,8 +32,8 @@ namespace Cry
 		}
 		return 0U;
 	}
-	std::string AvailablePort::GetAvailableAddress(const std::string & Address)
+	std::string AvailablePort::GetAvailableAddress(const std::string & lpszString, const u32 uPort)
 	{
-		return Address + ":" + std::to_string(this->GetAvailableTcpPort());
+		return lpszString + ":" + std::to_string(uPort);
 	}
 }

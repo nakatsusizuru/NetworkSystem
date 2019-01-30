@@ -51,16 +51,13 @@
     <ClInclude Include="..\Entrance.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Gui\ClientDialog.h">
-      <Filter>Gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\Gui\ClientDialog.hpp">
       <Filter>Gui\Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Service\Cry.Signal.Service.h">
       <Filter>Service</Filter>
     </ClInclude>
-    <ClInclude Include="..\Service\Cry.AvailablePort.h">
+    <ClInclude Include="..\Service\Cry.Signal.Port.h">
       <Filter>Service</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,8 +74,13 @@
     <ClCompile Include="..\Service\Cry.Signal.Service.cpp">
       <Filter>Service</Filter>
     </ClCompile>
-    <ClCompile Include="..\Service\Cry.AvailablePort.cpp">
+    <ClCompile Include="..\Service\Cry.Signal.Port.cpp">
       <Filter>Service</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\Gui\ClientDialog.h">
+      <Filter>头文件</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

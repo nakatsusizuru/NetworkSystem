@@ -5,7 +5,7 @@
 #if !defined(WIN32_LEAN_AND_MEAN)
 	#define WIN32_LEAN_AND_MEAN
 #endif
-
+//
 #pragma warning( disable: 4005 ) // warning C4005 : 'va_copy' : macro redefinition
 #pragma warning( disable: 4251 )
 #pragma warning( disable: 4996 ) // warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.

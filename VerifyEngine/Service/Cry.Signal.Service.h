@@ -42,7 +42,7 @@ namespace Cry
 	{
 	public:
 		explicit Work(NetworkServiceEngine * Service);
-		~Work() = default;
+		~Work();
 	public:
 		void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * pData);
 	private:
@@ -66,7 +66,7 @@ namespace Cry
 		void OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer);
 		void OnConnection(const evpp::TCPConnPtr & Conn);
 	private:
-		bool AddWork(u64 Index, std::shared_ptr<Work> Work);
+		bool AddWork(u64 Index, const std::shared_ptr<Work> & Work);
 		bool DelWork(u64 Index);
 		std::shared_ptr<Work> GetWork(u64 Index);
 	private:

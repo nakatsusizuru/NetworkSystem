@@ -64,6 +64,10 @@ namespace Cry
 			}
 		}
 	}
+	Work::~Work()
+	{
+		
+	}
 	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u32 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Server(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize))
 	{
 		m_Server->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
@@ -90,6 +94,8 @@ namespace Cry
 		if (m_Server != nullptr)
 		{
 			m_Server->Stop();
+			//while (!m_Work.empty())
+			//	Sleep(0);
 			m_Loop->Stop(true);
 			return m_Loop->IsStopped();
 		}
@@ -106,12 +112,12 @@ namespace Cry
 	{
 		if (Conn->IsConnected())
 		{
-			if (!this->AddWork(Conn->id(), std::make_shared<Work>(this)))
+			if (!this->AddWork(Conn->id(), std::make_unique<Work>(this)))
 			{
 				Conn->Close();
 			}
 		}
-		if (Conn->IsDisconnected())
+		if (Conn->IsDisconnecting() || Conn->IsDisconnected())
 		{
 			if (!this->DelWork(Conn->id()))
 			{
@@ -119,13 +125,13 @@ namespace Cry
 			}
 		}
 	}
-	bool NetworkServiceEngine::AddWork(u64 Index, std::shared_ptr<Work> Work)
+	bool NetworkServiceEngine::AddWork(u64 Index, const std::shared_ptr<Work> & Work)
 	{
 		std::lock_guard<std::mutex> Guard(m_Mutex);
 		{
 			if (m_Work.find(Index) == m_Work.cend())
 			{
-				m_Work.emplace(Index, Work);
+				m_Work.insert({ Index, std::move(Work) });
 				return true;
 			}
 		}

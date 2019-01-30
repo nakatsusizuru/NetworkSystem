@@ -14,7 +14,8 @@ Connector::Connector(EventLoop* l, TCPClient* client)
     , loop_(l)
     , owner_tcp_client_(client)
     , remote_addr_(client->remote_addr())
-    , timeout_(client->connecting_timeout()) {
+    , timeout_(client->connecting_timeout())
+{
     DLOG_TRACE << "raddr=" << remote_addr_;
     if (sock::SplitHostPort(remote_addr_.data(), remote_host_, remote_port_)) {
         raddr_ = sock::ParseFromIPPort(remote_addr_.data());
@@ -93,18 +94,18 @@ void Connector::Connect() {
     fd_ = sock::CreateNonblockingSocket();
     own_fd_ = true;
     assert(fd_ >= 0);
-    const std::string& laddr = owner_tcp_client_->local_addr();
-    if (!laddr.empty()) {
-        struct sockaddr_storage ss = sock::ParseFromIPPort(laddr.data());
-        struct sockaddr* addr = sock::sockaddr_cast(&ss);
-        int rc = ::bind(fd_, addr, sizeof(*addr));
-        if (rc != 0) {
-            int serrno = errno;
-            LOG_ERROR << "bind failed, errno=" << serrno << " " << strerror(serrno);
-            HandleError();
-            return;
-        }
-    }
+	const std::string& laddr = owner_tcp_client_->local_addr();
+	if (!laddr.empty()) {
+		struct sockaddr_storage ss = sock::ParseFromIPPort(laddr.data());
+		struct sockaddr* addr = sock::sockaddr_cast(&ss);
+		int rc = ::bind(fd_, addr, sizeof(*addr));
+		if (rc != 0) {
+			int serrno = errno;
+			LOG_ERROR << "bind failed, errno=" << serrno << " " << strerror(serrno);
+			HandleError();
+			return;
+		}
+	}
     struct sockaddr* addr = sock::sockaddr_cast(&raddr_);
     int rc = ::connect(fd_, addr, sizeof(*addr));
     if (rc != 0) {

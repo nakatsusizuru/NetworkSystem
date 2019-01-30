@@ -2,10 +2,11 @@
 #include <Gui/ClientDialog.h>
 #include <Gui/ClientDialog.hpp>
 #include <Service/Cry.Signal.Service.h>
+#include <Service/Cry.Signal.Port.h>
 #include <QStandardItemModel>
 namespace Cry
 {
-	ClientDialog::ClientDialog(QWidget* Widget) : QMainWindow(Widget), Interface(new Ui::ClientDialog), m_Service(std::make_shared<NetworkServiceEngine>("127.0.0.1:9999", "Client"))
+	ClientDialog::ClientDialog(QWidget* Widget) : QMainWindow(Widget), Interface(new Ui::ClientDialog), m_Service(std::make_shared<NetworkServiceEngine>("127.0.0.1:9999", "Client")), m_AvailablePort(std::make_unique<AvailablePort>())
 	{
 		Interface->setupUi(this);
 		this->InitializeUi(this);
@@ -45,11 +46,41 @@ namespace Cry
 		Interface->tableView->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Custom);
 		Interface->tableView->horizontalHeader()->setSectionResizeMode(4, QHeaderView::Custom);
 
-		connect(Interface->pushButton, &QPushButton::clicked, this, &ClientDialog::OnPushButton);
+		Interface->tableView->verticalHeader()->setHidden(true);
 
+		Interface->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+		connect(Interface->pushButton, &QPushButton::clicked, this, &ClientDialog::OnPushButton);
+		connect(this, &ClientDialog::PostConnection, this, &ClientDialog::OnConnectionEx);
+		m_Service->SetConnection(std::bind(&ClientDialog::OnConnection, this, std::placeholders::_1, std::placeholders::_2));
+
+
+	}
+	void ClientDialog::OnConnection(const u32 Index, bool Status)
+	{
+		this->PostConnection(Index, Status);
+	}
+	void ClientDialog::OnConnectionEx(const u32 Index, bool Status)
+	{
+		m_QStandardItemModel->setData(m_QStandardItemModel->index(Index, 2), Status ? CryString("连接成功") : CryString("断开连接"));
 	}
 	void ClientDialog::OnPushButton(bool Status)
 	{
-		m_Service->CreateService();
+		for (u32 i = 0; i < 10000; ++i)
+		{
+			if (u32 uPort = m_AvailablePort->GetAvailableTcpPort(); uPort != 0)
+			{
+				if (std::string lpszAddress = m_AvailablePort->GetAvailableAddress("127.0.0.1", uPort); false != m_Service->CreateService(lpszAddress, uPort))
+				{
+					u32 Row = m_QStandardItemModel->rowCount();
+					m_QStandardItemModel->setItem(Row, 0, new QStandardItem(QString("%1").arg(Row)));
+					m_QStandardItemModel->setItem(Row, 1, new QStandardItem(QString(lpszAddress.c_str())));
+					m_QStandardItemModel->setItem(Row, 2, new QStandardItem(CryString("等待连接")));
+					m_QStandardItemModel->item(Row, 0)->setTextAlignment(Qt::AlignCenter);
+					m_QStandardItemModel->item(Row, 1)->setTextAlignment(Qt::AlignCenter);
+					m_QStandardItemModel->item(Row, 2)->setTextAlignment(Qt::AlignCenter);
+				}
+			}
+		}
 	}
 }
