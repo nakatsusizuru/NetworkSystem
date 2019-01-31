@@ -2,9 +2,9 @@
 #include <Gui/ControlDialog.h>
 #include <Gui/ControlDialog.hpp>
 #include <Service/Cry.Signal.Service.h>
+#include <QElapsedTimer>
 namespace Cry
 {
-	_CrtMemState  s1, s2, s3;
 	ControlDialog::ControlDialog(QWidget* Widget) : QMainWindow(Widget), Interface(new Ui::ControlDialog)
 	{
 		Interface->setupUi(this);
@@ -13,17 +13,14 @@ namespace Cry
 	}
 	ControlDialog::~ControlDialog()
 	{
-		if (this->CancelService())
-		{
-			
-		}
+		this->CancelService();
 		delete Interface;
 	}
-	void ControlDialog::star(bool Status)
+	void ControlDialog::star()
 	{
 		this->CreateService();
 	}
-	void ControlDialog::stop(bool Status)
+	void ControlDialog::stop()
 	{
 		this->CancelService();
 	}
@@ -31,7 +28,7 @@ namespace Cry
 	{
 		if (m_Service == nullptr)
 		{
-			if (m_Service = std::make_unique<NetworkServiceEngine>("0.0.0.0:9999", "123", 3); m_Service != nullptr)
+			if (m_Service = std::make_shared<NetworkServiceEngine>("0.0.0.0:9999", "123", 3); m_Service != nullptr)
 			{
 				return m_Service->CreateService();
 			}

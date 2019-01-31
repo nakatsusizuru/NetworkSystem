@@ -163,6 +163,7 @@
       <AdditionalIncludeDirectories>..\;..\..\Deps\Public;..\..\Deps\evpp;..\..\Deps\glog\src\windows;..\..\Deps\Libevent\include;..\..\Deps\Libevent\vsprojects\include;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ControlFlowGuard>Guard</ControlFlowGuard>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

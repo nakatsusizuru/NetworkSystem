@@ -71,7 +71,7 @@ namespace Cry
 		std::shared_ptr<Work> GetWork(u64 Index);
 	private:
 		std::unique_ptr<evpp::EventLoopThread>								m_Loop;
-		std::unique_ptr<evpp::TCPServer>									m_Server;
+		std::unique_ptr<evpp::TCPServer>									m_Service;
 	private:
 		std::mutex															m_Mutex;
 		std::unordered_map<u64, std::shared_ptr<Work>>						m_Work;

@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B804CE02-7B63-3E93-AA42-AFC78251DD7F}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>check</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects;F:\My Source Program\NetworkSystem\Deps\protobuf\src;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googlemock;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googletest;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googletest\include;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects;F:\My Source Program\NetworkSystem\Deps\protobuf\src;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googlemock;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googletest;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googletest\include;F:\My Source Program\NetworkSystem\Deps\protobuf\third_party\googletest\googlemock\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3be55c80e8b71c02501a48533a578548\check.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+cd "F:\My Source Program\NetworkSystem\Deps\protobuf"
+if %errorlevel% neq 0 goto :cmEnd
+F:
+if %errorlevel% neq 0 goto :cmEnd
+"F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\Debug\tests.exe"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/My Source Program/NetworkSystem/Deps/protobuf/vsprojects/CMakeFiles/3be55c80e8b71c02501a48533a578548/check.rule;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\Debug\tests.exe;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\Debug\test_plugin.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\check</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+cd "F:\My Source Program\NetworkSystem\Deps\protobuf"
+if %errorlevel% neq 0 goto :cmEnd
+F:
+if %errorlevel% neq 0 goto :cmEnd
+"F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\Release\tests.exe"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/My Source Program/NetworkSystem/Deps/protobuf/vsprojects/CMakeFiles/3be55c80e8b71c02501a48533a578548/check.rule;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\Release\tests.exe;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\Release\test_plugin.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\check</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/My Source Program/NetworkSystem/Deps/protobuf/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SF:/My Source Program/NetworkSystem/Deps/protobuf/cmake" "-BF:/My Source Program/NetworkSystem/Deps/protobuf/vsprojects" --check-stamp-file "F:/My Source Program/NetworkSystem/Deps/protobuf/vsprojects/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/My Source Program/NetworkSystem/Deps/protobuf/cmake/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\SelectLibraryConfigurations.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\CMakeLists.txt;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\extract_includes.bat.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\install.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\libprotobuf-lite.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\libprotobuf.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\libprotoc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-config-version.cmake.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-config.cmake.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-lite.pc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-module.cmake.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-options.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf.pc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protoc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\tests.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\version.rc.in;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeCCompiler.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeCXXCompiler.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeRCCompiler.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeSystem.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule F:/My Source Program/NetworkSystem/Deps/protobuf/cmake/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SF:/My Source Program/NetworkSystem/Deps/protobuf/cmake" "-BF:/My Source Program/NetworkSystem/Deps/protobuf/vsprojects" --check-stamp-file "F:/My Source Program/NetworkSystem/Deps/protobuf/vsprojects/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/My Source Program/NetworkSystem/Deps/protobuf/cmake/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.13\Modules\SelectLibraryConfigurations.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\CMakeLists.txt;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\extract_includes.bat.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\install.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\libprotobuf-lite.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\libprotobuf.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\libprotoc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-config-version.cmake.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-config.cmake.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-lite.pc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-module.cmake.in;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf-options.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protobuf.pc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\protoc.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\tests.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\version.rc.in;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeCCompiler.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeCXXCompiler.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeRCCompiler.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\3.13.3\CMakeSystem.cmake;F:\My Source Program\NetworkSystem\Deps\protobuf\cmake\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\CMakeFiles\check" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\test_plugin.vcxproj">
+      <Project>{BD153D99-5026-319A-A456-A2476A6DBF6E}</Project>
+      <Name>test_plugin</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="F:\My Source Program\NetworkSystem\Deps\protobuf\vsprojects\tests.vcxproj">
+      <Project>{54DCFDD8-82A3-3527-B13D-4BE2E82C0827}</Project>
+      <Name>tests</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

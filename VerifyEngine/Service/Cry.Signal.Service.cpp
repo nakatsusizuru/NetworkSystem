@@ -68,20 +68,20 @@ namespace Cry
 	{
 		
 	}
-	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u32 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Server(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize))
+	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u32 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Service(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize))
 	{
-		m_Server->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
-		m_Server->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
+		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
+		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
 	}
 	bool NetworkServiceEngine::CreateService()
 	{
-		if (m_Server != nullptr)
+		if (m_Service != nullptr)
 		{
-			if (!m_Server->Init())
+			if (!m_Service->Init())
 			{
 				return false;
 			}
-			if (!m_Server->Start())
+			if (!m_Service->Start())
 			{
 				return false;
 			}
@@ -91,13 +91,11 @@ namespace Cry
 	}
 	bool NetworkServiceEngine::CancelService()
 	{
-		if (m_Server != nullptr)
+		if (m_Service != nullptr)
 		{
-			m_Server->Stop();
-			//while (!m_Work.empty())
-			//	Sleep(0);
+			m_Service->Stop();
 			m_Loop->Stop(true);
-			return m_Loop->IsStopped();
+			return true;
 		}
 		return false;
 	}

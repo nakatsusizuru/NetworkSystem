@@ -18,10 +18,10 @@ namespace Cry
 		bool CreateService();
 		bool CancelService();
 	private:
-		void star(bool Status);
-		void stop(bool Status);
+		void star();
+		void stop();
 	private:
 		Ui::ControlDialog*							Interface;
-		std::unique_ptr<NetworkServiceEngine>		m_Service;
+		std::shared_ptr<NetworkServiceEngine>		m_Service;
 	};
 }
