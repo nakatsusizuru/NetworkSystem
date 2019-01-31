@@ -72,8 +72,8 @@ namespace Cry
 	{
 		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
-		m_Service->SetThreadStared(std::bind(&NetworkServiceEngine::OnThreadStared, this, std::placeholders::_1));
-		m_Service->SetThreadExited(std::bind(&NetworkServiceEngine::OnThreadExited, this, std::placeholders::_1));
+		m_Service->SetThreadStart(std::bind(&NetworkServiceEngine::OnThreadStart, this, std::placeholders::_1));
+		m_Service->SetThreadClose(std::bind(&NetworkServiceEngine::OnThreadClose, this, std::placeholders::_1));
 	}
 	bool NetworkServiceEngine::CreateService()
 	{
@@ -125,11 +125,11 @@ namespace Cry
 			}
 		}
 	}
-	void NetworkServiceEngine::OnThreadStared(std::thread::id tid)
+	void NetworkServiceEngine::OnThreadStart(std::thread::id tid)
 	{
 		DebugMsg("创建线程：%d\n", tid);
 	}
-	void NetworkServiceEngine::OnThreadExited(std::thread::id tid)
+	void NetworkServiceEngine::OnThreadClose(std::thread::id tid)
 	{
 		DebugMsg("销毁线程：%d\n", tid);
 	}

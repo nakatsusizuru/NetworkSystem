@@ -18,10 +18,10 @@ public:
 
     void Stop(bool wait_thread_exited = false);
     void Stop(DoneCallback fn);
-	void SetThreadStared(ThreadStartCallback cb) {
+	void SetThreadStart(ThreadStartCallback cb) {
 		thread_start = cb;
 	}
-	void SetThreadExited(ThreadCloseCallback cb) {
+	void SetThreadClose(ThreadCloseCallback cb) {
 		thread_close = cb;
 	}
     // @brief Join all the working thread. If you forget to call this method,
@@ -39,8 +39,8 @@ public:
 
 private:
     void Stop(bool wait_thread_exit, DoneCallback fn);
-    void OnThreadStarted(uint32_t count);
-    void OnThreadExited(uint32_t count);
+    void OnThreadStart(uint32_t count);
+    void OnThreadClose(uint32_t count);
 
 private:
     EventLoop* base_loop_;

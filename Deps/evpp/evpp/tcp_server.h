@@ -79,14 +79,14 @@ public:
     // @brief Reinitialize some data fields after a fork
     void AfterFork();
 
-	void SetThreadStared(ThreadStartCallback cb) {
+	void SetThreadStart(ThreadStartCallback cb) {
 		if (tpool_) {
-			tpool_->SetThreadStared(cb);
+			tpool_->SetThreadStart(cb);
 		}
 	}
-	void SetThreadExited(ThreadCloseCallback cb) {
+	void SetThreadClose(ThreadCloseCallback cb) {
 		if (tpool_) {
-			tpool_->SetThreadExited(cb);
+			tpool_->SetThreadClose(cb);
 		}
 	}
 public:

@@ -65,8 +65,8 @@ namespace Cry
 	private:
 		void OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer);
 		void OnConnection(const evpp::TCPConnPtr & Conn);
-		void OnThreadStared(std::thread::id tid);
-		void OnThreadExited(std::thread::id tid);
+		void OnThreadStart(std::thread::id tid);
+		void OnThreadClose(std::thread::id tid);
 	private:
 		bool AddWork(u64 Index, const std::shared_ptr<Work> & Work);
 		bool DelWork(u64 Index);
