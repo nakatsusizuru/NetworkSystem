@@ -22,9 +22,8 @@ namespace Cry
 		void OnPushButton(bool Status);
 	private:
 		void OnConnection(const u32 Index, bool Status);
-		void OnConnectionEx(const u32 Index, bool Status);
 	signals:
-		void PostConnection(const u32 Index, bool Status);
+		void MultiDelegateConnection(const u32 Index, bool Status);
 	private:
 		Ui::ClientDialog*													Interface;
 		QStandardItemModel*													m_QStandardItemModel;

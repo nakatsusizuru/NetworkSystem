@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Cry__ClientDialog_t {
     QByteArrayData data[6];
-    char stringdata0[51];
+    char stringdata0[60];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,15 +32,15 @@ struct qt_meta_stringdata_Cry__ClientDialog_t {
 static const qt_meta_stringdata_Cry__ClientDialog_t qt_meta_stringdata_Cry__ClientDialog = {
     {
 QT_MOC_LITERAL(0, 0, 17), // "Cry::ClientDialog"
-QT_MOC_LITERAL(1, 18, 14), // "PostConnection"
-QT_MOC_LITERAL(2, 33, 0), // ""
-QT_MOC_LITERAL(3, 34, 3), // "u32"
-QT_MOC_LITERAL(4, 38, 5), // "Index"
-QT_MOC_LITERAL(5, 44, 6) // "Status"
+QT_MOC_LITERAL(1, 18, 23), // "MultiDelegateConnection"
+QT_MOC_LITERAL(2, 42, 0), // ""
+QT_MOC_LITERAL(3, 43, 3), // "u32"
+QT_MOC_LITERAL(4, 47, 5), // "Index"
+QT_MOC_LITERAL(5, 53, 6) // "Status"
 
     },
-    "Cry::ClientDialog\0PostConnection\0\0u32\0"
-    "Index\0Status"
+    "Cry::ClientDialog\0MultiDelegateConnection\0"
+    "\0u32\0Index\0Status"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,14 +72,14 @@ void Cry::ClientDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         ClientDialog *_t = static_cast<ClientDialog *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->PostConnection((*reinterpret_cast< const u32(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 0: _t->MultiDelegateConnection((*reinterpret_cast< const u32(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             typedef void (ClientDialog::*_t)(const u32 , bool );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClientDialog::PostConnection)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ClientDialog::MultiDelegateConnection)) {
                 *result = 0;
                 return;
             }
@@ -124,7 +124,7 @@ int Cry::ClientDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Cry::ClientDialog::PostConnection(const u32 _t1, bool _t2)
+void Cry::ClientDialog::MultiDelegateConnection(const u32 _t1, bool _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

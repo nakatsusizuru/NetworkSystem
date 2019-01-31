@@ -51,22 +51,18 @@ namespace Cry
 		Interface->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 		connect(Interface->pushButton, &QPushButton::clicked, this, &ClientDialog::OnPushButton);
-		connect(this, &ClientDialog::PostConnection, this, &ClientDialog::OnConnectionEx);
-		m_Service->SetConnection(std::bind(&ClientDialog::OnConnection, this, std::placeholders::_1, std::placeholders::_2));
-
-
+		/// 连接跨线程信号
+		connect(this, &ClientDialog::MultiDelegateConnection, this, &ClientDialog::OnConnection);
+		/// 假委托执行函数
+		m_Service->SetConnection(std::bind(&ClientDialog::MultiDelegateConnection, this, std::placeholders::_1, std::placeholders::_2));
 	}
 	void ClientDialog::OnConnection(const u32 Index, bool Status)
-	{
-		this->PostConnection(Index, Status);
-	}
-	void ClientDialog::OnConnectionEx(const u32 Index, bool Status)
 	{
 		m_QStandardItemModel->setData(m_QStandardItemModel->index(Index, 2), Status ? CryString("连接成功") : CryString("断开连接"));
 	}
 	void ClientDialog::OnPushButton(bool Status)
 	{
-		for (u32 i = 0; i < 10000; ++i)
+		for (u32 i = 0; i < 100; ++i)
 		{
 			if (u32 uPort = m_AvailablePort->GetAvailableTcpPort(); uPort != 0)
 			{
