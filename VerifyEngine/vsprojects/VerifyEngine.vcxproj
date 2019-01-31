@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Action\Cry.Group.Control.cpp" />
     <ClCompile Include="..\Entrance.cpp" />
     <ClCompile Include="..\Gui\ControlDialog.cpp" />
     <ClCompile Include="..\Gui\GeneratedFiles\ControlDialogEx.cpp" />
@@ -29,6 +30,8 @@
     <ClInclude Include="..\..\Deps\Public\Cry.Port.h" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Event.hpp" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp" />
+    <ClInclude Include="..\Action\Cry.Group.Control.h" />
+    <ClInclude Include="..\Action\Cry.Signal.Interface.hpp" />
     <ClInclude Include="..\Entrance.h" />
     <ClInclude Include="..\Service\Cry.Signal.Service.h" />
     <CustomBuild Include="..\Gui\ControlDialog.h" />

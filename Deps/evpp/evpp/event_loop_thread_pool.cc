@@ -39,7 +39,7 @@ bool EventLoopThreadPool::Start(bool wait_thread_started) {
             this->OnThreadExited(exited_count->fetch_add(1) + 1);
             return EventLoopThread::kOK;
         };
-
+		
         EventLoopThreadPtr t(new EventLoopThread());
         if (!t->Start(wait_thread_started, prefn, postfn)) {
             //FIXME error process
@@ -170,6 +170,9 @@ void EventLoopThreadPool::OnThreadStarted(uint32_t count) {
         DLOG_TRACE << "thread pool totally started.";
         status_.store(kRunning);
     }
+	if (thread_start) {
+		thread_start(std::this_thread::get_id());
+	}
 }
 
 void EventLoopThreadPool::OnThreadExited(uint32_t count) {
@@ -182,6 +185,9 @@ void EventLoopThreadPool::OnThreadExited(uint32_t count) {
             stopped_cb_ = DoneCallback();
         }
     }
+	if (thread_close) {
+		thread_close(std::this_thread::get_id());
+	}
 }
 
 }

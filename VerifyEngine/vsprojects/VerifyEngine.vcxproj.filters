@@ -31,6 +31,12 @@
     <Filter Include="Public\Import">
       <UniqueIdentifier>{c0f03e83-b9d3-41de-b671-ddd3242e4fc3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Action">
+      <UniqueIdentifier>{6e10a1c3-a422-470d-b007-da54bcfcd6cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Interface">
+      <UniqueIdentifier>{d5f4cf0b-3fec-4e74-b222-a108ac41291b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -54,6 +60,12 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp">
       <Filter>Public\Import</Filter>
     </ClInclude>
+    <ClInclude Include="..\Action\Cry.Group.Control.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Action\Cry.Signal.Interface.hpp">
+      <Filter>Action\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Gui\ControlDialog.cpp">
@@ -67,6 +79,9 @@
     </ClCompile>
     <ClCompile Include="..\Service\Cry.Signal.Service.cpp">
       <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Action\Cry.Group.Control.cpp">
+      <Filter>Action</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

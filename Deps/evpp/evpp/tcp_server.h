@@ -79,6 +79,16 @@ public:
     // @brief Reinitialize some data fields after a fork
     void AfterFork();
 
+	void SetThreadStared(ThreadStartCallback cb) {
+		if (tpool_) {
+			tpool_->SetThreadStared(cb);
+		}
+	}
+	void SetThreadExited(ThreadCloseCallback cb) {
+		if (tpool_) {
+			tpool_->SetThreadExited(cb);
+		}
+	}
 public:
     // Set a connection event relative callback when the TCPServer
     // receives a new connection or an exist connection breaks down.

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "evpp/inner_pre.h"
-
+#include <thread>
 namespace evpp {
 class Buffer;
 class TCPConn;
@@ -19,6 +19,10 @@ typedef std::function<void(const TCPConnPtr&)> WriteCompleteCallback;
 typedef std::function<void(const TCPConnPtr&, size_t)> HighWaterMarkCallback;
 
 typedef std::function<void(const TCPConnPtr&, Buffer*)> MessageCallback;
+
+// 线程池回调
+typedef std::function<void(std::thread::id tid)> ThreadStartCallback;
+typedef std::function<void(std::thread::id tid)> ThreadCloseCallback;
 
 namespace internal {
 inline void DefaultConnectionCallback(const TCPConnPtr&) {}

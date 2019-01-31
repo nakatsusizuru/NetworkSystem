@@ -4,6 +4,7 @@
 #include <atomic>
 
 #include "evpp/event_loop_thread.h"
+#include "evpp/tcp_callbacks.h"
 
 namespace evpp {
 class EVPP_EXPORT EventLoopThreadPool : public ServerStatus {
@@ -17,7 +18,12 @@ public:
 
     void Stop(bool wait_thread_exited = false);
     void Stop(DoneCallback fn);
-
+	void SetThreadStared(ThreadStartCallback cb) {
+		thread_start = cb;
+	}
+	void SetThreadExited(ThreadCloseCallback cb) {
+		thread_close = cb;
+	}
     // @brief Join all the working thread. If you forget to call this method,
     // it will be invoked automatically in the destruct method ~EventLoopThreadPool().
     // @note DO NOT call this method from any of the working thread.
@@ -46,5 +52,8 @@ private:
 
     typedef std::shared_ptr<EventLoopThread> EventLoopThreadPtr;
     std::vector<EventLoopThreadPtr> threads_;
+
+	ThreadStartCallback thread_start;
+	ThreadCloseCallback thread_close;
 };
 }
