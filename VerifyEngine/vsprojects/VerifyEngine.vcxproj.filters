@@ -40,6 +40,9 @@
     <Filter Include="DataBase">
       <UniqueIdentifier>{a0de14ad-85d9-40fc-ae93-20adac5abd79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataBase\Import">
+      <UniqueIdentifier>{18a82187-b108-4018-a305-3d8db0d098db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="..\DataBase\Cry.Signal.DataBasePool.h">
       <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp">
+      <Filter>DataBase\Import</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

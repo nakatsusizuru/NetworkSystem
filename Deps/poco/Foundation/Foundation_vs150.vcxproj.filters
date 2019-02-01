@@ -1858,7 +1858,6 @@
     <ResourceCompile Include="src\pocomsg.rc">
       <Filter>Logging\Resource Files</Filter>
     </ResourceCompile>
-    <ResourceCompile Include="..\DLLVersion.rc" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="src\pocomsg.mc">

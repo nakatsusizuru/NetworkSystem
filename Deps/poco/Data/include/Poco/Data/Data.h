@@ -54,7 +54,7 @@
 //
 #if defined(_MSC_VER)
 	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Data_EXPORTS)
-		#pragma comment(lib, "PocoData" POCO_LIB_SUFFIX)
+		#pragma comment(lib, "Data" POCO_LIB_SUFFIX)
 	#endif
 #endif
 

@@ -80,14 +80,14 @@
 		#endif
 	#else
 		#if defined(_DEBUG)
-			#define POCO_LIB_SUFFIX "mtd.lib"
+			#define POCO_LIB_SUFFIX ".lib"
 		#else
-			#define POCO_LIB_SUFFIX "mt.lib"
+			#define POCO_LIB_SUFFIX ".lib"
 		#endif
 	#endif
 
 	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Foundation_EXPORTS)
-		#pragma comment(lib, "PocoFoundation" POCO_LIB_SUFFIX)
+		#pragma comment(lib, "Foundation" POCO_LIB_SUFFIX)
 	#endif
 #endif
 

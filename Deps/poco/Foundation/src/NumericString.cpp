@@ -29,7 +29,7 @@
 // --- double conversion ---
 
 #include "Poco/NumericString.h"
-poco_static_assert(POCO_MAX_FLT_STRING_LEN == double_conversion::kMaxSignificantDecimalDigits);
+poco_static_assert(POCO_MAX_FLT_STRING_LEN == Poco::double_conversion::kMaxSignificantDecimalDigits);
 #include "Poco/String.h"
 #include <memory>
 #include <cctype>
@@ -131,7 +131,7 @@ namespace Poco {
 
 void floatToStr(char* buffer, int bufferSize, float value, int lowDec, int highDec)
 {
-	using namespace double_conversion;
+	using namespace Poco::double_conversion;
 
 	StringBuilder builder(buffer, bufferSize);
 	int flags = DoubleToStringConverter::UNIQUE_ZERO |
@@ -144,7 +144,7 @@ void floatToStr(char* buffer, int bufferSize, float value, int lowDec, int highD
 
 void floatToFixedStr(char* buffer, int bufferSize, float value, int precision)
 {
-	using namespace double_conversion;
+	using namespace Poco::double_conversion;
 
 	StringBuilder builder(buffer, bufferSize);
 	int flags = DoubleToStringConverter::UNIQUE_ZERO |
@@ -193,7 +193,7 @@ std::string& floatToFixedStr(std::string& str, float value, int precision, int w
 
 void doubleToStr(char* buffer, int bufferSize, double value, int lowDec, int highDec)
 {
-	using namespace double_conversion;
+	using namespace Poco::double_conversion;
 
 	StringBuilder builder(buffer, bufferSize);
 	int flags = DoubleToStringConverter::UNIQUE_ZERO |
@@ -206,7 +206,7 @@ void doubleToStr(char* buffer, int bufferSize, double value, int lowDec, int hig
 
 void doubleToFixedStr(char* buffer, int bufferSize, double value, int precision)
 {
-	using namespace double_conversion;
+	using namespace Poco::double_conversion;
 
 	StringBuilder builder(buffer, bufferSize);
 	int flags = DoubleToStringConverter::UNIQUE_ZERO |
@@ -257,7 +257,7 @@ std::string& doubleToFixedStr(std::string& str, double value, int precision, int
 
 float strToFloat(const char* str)
 {
-	using namespace double_conversion;
+	using namespace Poco::double_conversion;
 
 	int processed;
 	int flags = StringToDoubleConverter::ALLOW_LEADING_SPACES |
@@ -270,7 +270,7 @@ float strToFloat(const char* str)
 
 double strToDouble(const char* str)
 {
-	using namespace double_conversion;
+	using namespace Poco::double_conversion;
 	int processed;
 	int flags = StringToDoubleConverter::ALLOW_LEADING_SPACES |
 		StringToDoubleConverter::ALLOW_TRAILING_SPACES;
@@ -282,7 +282,6 @@ double strToDouble(const char* str)
 
 bool strToFloat(const std::string& str, float& result, char decSep, char thSep)
 {
-	using namespace double_conversion;
 
 	std::string tmp(str);
 	trimInPlace(tmp);
@@ -298,8 +297,6 @@ bool strToFloat(const std::string& str, float& result, char decSep, char thSep)
 bool strToDouble(const std::string& str, double& result, char decSep, char thSep)
 {
 	if (str.empty()) return false;
-
-	using namespace double_conversion;
 
 	std::string tmp(str);
 	trimInPlace(tmp);

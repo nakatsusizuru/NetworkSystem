@@ -36,6 +36,7 @@
     <ClInclude Include="..\Action\Cry.Signal.Interface.hpp" />
     <ClInclude Include="..\DataBase\Cry.Signal.DataBase.h" />
     <ClInclude Include="..\DataBase\Cry.Signal.DataBasePool.h" />
+    <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp" />
     <ClInclude Include="..\Entrance.h" />
     <ClInclude Include="..\Service\Cry.Signal.Service.h" />
     <CustomBuild Include="..\Gui\ControlDialog.h" />
@@ -120,11 +121,12 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>
+      </SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\;..\..\Deps\Public;..\..\Deps\evpp;..\..\Deps\glog\src\windows;..\..\Deps\Libevent\include;..\..\Deps\Libevent\vsprojects\include;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\;..\..\Deps\Public;..\..\Deps\evpp;..\..\Deps\glog\src\windows;..\..\Deps\Libevent\include;..\..\Deps\Libevent\vsprojects\include;..\..\Deps\poco\Foundation\include;..\..\Deps\poco\Data\include;..\..\Deps\poco\Data\MySQL\include;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -132,8 +134,10 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>imm32.lib;winmm.lib;ws2_32.lib;dwmapi.lib;uxtheme.lib;version.lib;glu32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;..\..\Lib\$(Configuration)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>imm32.lib;winmm.lib;ws2_32.lib;dwmapi.lib;uxtheme.lib;version.lib;glu32.lib;opengl32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;..\..\Lib\$(Configuration)\$(PlatformShortName);..\..\Deps\database\lib\$(Configuration)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
     </Link>
     <CustomBuild>
       <Command>"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "..\Gui\GeneratedFiles\%(Filename)Ex.cpp"</Command>
@@ -181,7 +185,7 @@
       <GenerateDebugInformation>
       </GenerateDebugInformation>
       <AdditionalDependencies>imm32.lib;winmm.lib;ws2_32.lib;dwmapi.lib;uxtheme.lib;version.lib;glu32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;..\..\Lib\$(Configuration)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;..\..\Lib\$(Configuration)\$(PlatformShortName);..\..\Deps\database\lib\$(Configuration)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
     </Link>
     <CustomBuild>
