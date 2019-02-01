@@ -16,6 +16,7 @@ namespace Cry
 			LOG_ERROR << ex.displayText();
 			m_Session->close();
 		}
+		// F:\My Source Program\MySQL\vio\viosocket.c
 	}
 	bool DataBase::Initialize()
 	{
