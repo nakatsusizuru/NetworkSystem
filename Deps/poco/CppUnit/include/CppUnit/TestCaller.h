@@ -69,8 +69,6 @@ protected:
 
 	void setUp()
 	{
-		if (!setup().empty())
-			_fixture.get()->addSetup(setup());
 		_fixture.get()->setUp();
 	}
 
@@ -95,7 +93,5 @@ private:
 #define CppUnit_addTest(suite, cls, mth) \
 	suite->addTest(new CppUnit::TestCaller<cls>(#mth, &cls::mth))
 
-#define CppUnit_addQualifiedTest(suite, cls, mth) \
-	suite->addTest(new CppUnit::TestCaller<cls>(#cls"::"#mth, &cls::mth))
 
 #endif // CppUnit_TestCaller_INCLUDED

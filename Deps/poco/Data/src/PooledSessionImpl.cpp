@@ -42,7 +42,7 @@ PooledSessionImpl::~PooledSessionImpl()
 }
 
 
-StatementImpl::Ptr PooledSessionImpl::createStatementImpl()
+StatementImpl* PooledSessionImpl::createStatementImpl()
 {
 	return access()->createStatementImpl();
 }
@@ -60,7 +60,7 @@ void PooledSessionImpl::commit()
 }
 
 
-bool PooledSessionImpl::isConnected() const
+bool PooledSessionImpl::isConnected()
 {
 	return access()->isConnected();
 }
@@ -72,19 +72,19 @@ void PooledSessionImpl::setConnectionTimeout(std::size_t timeout)
 }
 
 
-std::size_t PooledSessionImpl::getConnectionTimeout() const
+std::size_t PooledSessionImpl::getConnectionTimeout()
 {
 	return access()->getConnectionTimeout();
 }
 
 
-bool PooledSessionImpl::canTransact() const
+bool PooledSessionImpl::canTransact()
 {
 	return access()->canTransact();
 }
 
 
-bool PooledSessionImpl::isTransaction() const
+bool PooledSessionImpl::isTransaction()
 {
 	return access()->isTransaction();
 }
@@ -96,19 +96,19 @@ void PooledSessionImpl::setTransactionIsolation(Poco::UInt32 ti)
 }
 
 
-Poco::UInt32 PooledSessionImpl::getTransactionIsolation() const
+Poco::UInt32 PooledSessionImpl::getTransactionIsolation()
 {
 	return access()->getTransactionIsolation();
 }
 
 
-bool PooledSessionImpl::hasTransactionIsolation(Poco::UInt32 ti) const
+bool PooledSessionImpl::hasTransactionIsolation(Poco::UInt32 ti)
 {
 	return access()->hasTransactionIsolation(ti);
 }
 
 
-bool PooledSessionImpl::isTransactionIsolation(Poco::UInt32 ti) const
+bool PooledSessionImpl::isTransactionIsolation(Poco::UInt32 ti)
 {
 	return access()->isTransactionIsolation(ti);
 }
@@ -145,12 +145,6 @@ void PooledSessionImpl::close()
 		_pHolder->owner().putBack(_pHolder);
 		_pHolder = 0;
 	}
-}
-
-
-void PooledSessionImpl::reset()
-{
-	access()->reset();
 }
 
 

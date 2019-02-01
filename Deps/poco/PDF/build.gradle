@@ -1,35 +1,37 @@
-model {
-	components {
-		PDF(NativeLibrarySpec) {
-			sources {
-				c {
-					source {
-						srcDir 'src'
-						include '**/*.c'
+project(":PDF") {
+	model {
+		components {
+			PDF(NativeLibrarySpec) {
+				sources {
+					c {
+						source {
+							srcDir 'src'
+							include '**/*.c'
+						}
+						exportedHeaders {
+							srcDirs 'include', 'include/Poco/PDF'
+						}
 					}
-					exportedHeaders {
-						srcDirs 'include', 'include/Poco/PDF'
+					cpp {
+						source {
+							srcDir 'src'
+							include '**/*.cpp'
+						}
+						exportedHeaders {
+							srcDirs 'include', 'include/Poco/PDF'
+						}
+						lib project: ':Util', library: 'Util'
+						lib project: ':XML', library: 'XML'
+						lib project: ':Foundation', library: 'Foundation'
 					}
-				}
-				cpp {
-					source {
-						srcDir 'src'
-						include '**/*.cpp'
-					}
-					exportedHeaders {
-						srcDirs 'include', 'include/Poco/PDF'
-					}
-					lib project: ':Util', library: 'Util'
-					lib project: ':XML', library: 'XML'
-					lib project: ':Foundation', library: 'Foundation'
 				}
 			}
 		}
-	}
-	binaries {
-		withType(SharedLibraryBinarySpec) {
-			if (toolChain in VisualCpp) {
-				 cppCompiler.define "PDF_EXPORTS"
+		binaries {
+			withType(SharedLibraryBinarySpec) {
+				if (toolChain in VisualCpp) {
+					 cppCompiler.define "PDF_EXPORTS"
+				}
 			}
 		}
 	}

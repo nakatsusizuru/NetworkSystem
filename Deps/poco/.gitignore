@@ -18,14 +18,8 @@
 
 # Gradle #
 ##########
-!gradle.properties
-!settings.gradle
-!build.gradle
-!build.gradle.win
-!travis/.gradle/gradle.properties
 .gradle/
-**/guild/
-coverage/
+**/gradle/
 
 # NuGet #
 #########
@@ -42,10 +36,6 @@ coverage/
 config.build
 config.make
 
-# CLion #
-########
-.idea/
-
 # CMake #
 ########
 cmake_install.cmake
@@ -55,7 +45,6 @@ CMakeCache.txt
 CPackConfig.cmake
 CPackSourceConfig.cmake
 cmake_*
-cmake-build-*
 
 # Packages #
 ############
@@ -130,7 +119,6 @@ bin64/
 lib/
 lib64/
 pocomsg.h
-**/UpgradeLog*.XML
 
 # Eclipse generated files #
 ###########################
@@ -144,9 +132,3 @@ cmake-build/
 *.bak
 stage/
 releases/
-
-# Development files #
-#####################
-postgresql/
-mysql/
-

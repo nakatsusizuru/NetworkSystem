@@ -106,26 +106,26 @@ private:
 		catch (Poco::JSON::JSONException& jsone)
 		{
 			std::cout << jsone.message() << std::endl;
-			assertTrue  (false);
+			assert(false);
 		}
 
-		assertTrue  (result.type() == typeid(Poco::JSON::Object::Ptr));
+		assert(result.type() == typeid(Poco::JSON::Object::Ptr));
 
 		Poco::JSON::Object::Ptr object = result.extract<Poco::JSON::Object::Ptr>();
 		Poco::Dynamic::Var test = object->get("test");
-		assertTrue  (test.isNumeric());
+		assert(test.isNumeric());
 		T value = test;
-		assertTrue  (value == number);
+		assert(value == number);
 
 		Poco::DynamicStruct ds = *object;
-		assertTrue  (!ds["test"].isEmpty());
-		assertTrue  (ds["test"].isNumeric());
-		assertTrue  (ds["test"] == number);
+		assert(!ds["test"].isEmpty());
+		assert(ds["test"].isNumeric());
+		assert(ds["test"] == number);
 
 		const Poco::DynamicStruct& rds = *object;
-		assertTrue  (!rds["test"].isEmpty());
-		assertTrue  (rds["test"].isNumeric());
-		assertTrue  (rds["test"] == number);
+		assert(!rds["test"].isEmpty());
+		assert(rds["test"].isNumeric());
+		assert(rds["test"] == number);
 	}
 };
 

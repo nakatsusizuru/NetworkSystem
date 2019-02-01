@@ -45,7 +45,7 @@ void HTTPSStreamFactoryTest::testNoRedirect()
 {
 	HTTPSTestServer server;
 	HTTPSStreamFactory factory;
-	URI uri("https://127.0.0.1/large");
+	URI uri("https://localhost/large");
 	uri.setPort(server.port());
 #ifndef POCO_ENABLE_CPP11
 	std::auto_ptr<std::istream> pStr(factory.open(uri));
@@ -54,7 +54,7 @@ void HTTPSStreamFactoryTest::testNoRedirect()
 #endif // POCO_ENABLE_CPP11
 	std::ostringstream ostr;
 	StreamCopier::copyStream(*pStr.get(), ostr);
-	assertTrue (ostr.str() == HTTPSTestServer::LARGE_BODY);
+	assert (ostr.str() == HTTPSTestServer::LARGE_BODY);
 }
 
 
@@ -62,7 +62,7 @@ void HTTPSStreamFactoryTest::testEmptyPath()
 {
 	HTTPSTestServer server;
 	HTTPSStreamFactory factory;
-	URI uri("https://127.0.0.1");
+	URI uri("https://localhost");
 	uri.setPort(server.port());
 #ifndef POCO_ENABLE_CPP11
 	std::auto_ptr<std::istream> pStr(factory.open(uri));
@@ -71,7 +71,7 @@ void HTTPSStreamFactoryTest::testEmptyPath()
 #endif // POCO_ENABLE_CPP11
 	std::ostringstream ostr;
 	StreamCopier::copyStream(*pStr.get(), ostr);
-	assertTrue (ostr.str() == HTTPSTestServer::SMALL_BODY);
+	assert (ostr.str() == HTTPSTestServer::SMALL_BODY);
 }
 
 
@@ -79,7 +79,7 @@ void HTTPSStreamFactoryTest::testRedirect()
 {
 	HTTPSTestServer server;
 	HTTPSStreamFactory factory;
-	URI uri("https://127.0.0.1/redirect");
+	URI uri("https://localhost/redirect");
 	uri.setPort(server.port());
 #ifndef POCO_ENABLE_CPP11
 	std::auto_ptr<std::istream> pStr(factory.open(uri));
@@ -88,7 +88,7 @@ void HTTPSStreamFactoryTest::testRedirect()
 #endif // POCO_ENABLE_CPP11
 	std::ostringstream ostr;
 	StreamCopier::copyStream(*pStr.get(), ostr);
-	assertTrue (ostr.str() == HTTPSTestServer::LARGE_BODY);
+	assert (ostr.str() == HTTPSTestServer::LARGE_BODY);
 }
 
 
@@ -107,7 +107,7 @@ void HTTPSStreamFactoryTest::testProxy()
 #endif // POCO_ENABLE_CPP11
 	std::ostringstream ostr;
 	StreamCopier::copyStream(*pStr.get(), ostr);
-	assertTrue (ostr.str().length() > 0);
+	assert (ostr.str().length() > 0);
 }
 
 
@@ -115,7 +115,7 @@ void HTTPSStreamFactoryTest::testError()
 {
 	HTTPSTestServer server;
 	HTTPSStreamFactory factory;
-	URI uri("https://127.0.0.1/notfound");
+	URI uri("https://localhost/notfound");
 	uri.setPort(server.port());
 	try
 	{

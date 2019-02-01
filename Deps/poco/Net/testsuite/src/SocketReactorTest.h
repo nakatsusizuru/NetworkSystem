@@ -29,7 +29,6 @@ public:
 	void testParallelSocketReactor();
 	void testSocketConnectorFail();
 	void testSocketConnectorTimeout();
-	void testDataCollection();
 
 	void setUp();
 	void tearDown();

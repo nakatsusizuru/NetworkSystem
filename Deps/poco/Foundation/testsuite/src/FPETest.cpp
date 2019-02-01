@@ -35,10 +35,10 @@ void FPETest::testClassify()
 		float nan = a/b;
 		float inf = 1.0f/b;
 		
-		assertTrue (FPE::isNaN(nan));
-		assertTrue (!FPE::isNaN(a));
-		assertTrue (FPE::isInfinite(inf));
-		assertTrue (!FPE::isInfinite(a));
+		assert (FPE::isNaN(nan));
+		assert (!FPE::isNaN(a));
+		assert (FPE::isInfinite(inf));
+		assert (!FPE::isInfinite(a));
 	}
 	{
 		double a = 0;
@@ -46,10 +46,10 @@ void FPETest::testClassify()
 		double nan = a/b;
 		double inf = 1.0/b;
 		
-		assertTrue (FPE::isNaN(nan));
-		assertTrue (!FPE::isNaN(a));
-		assertTrue (FPE::isInfinite(inf));
-		assertTrue (!FPE::isInfinite(a));
+		assert (FPE::isNaN(nan));
+		assert (!FPE::isNaN(a));
+		assert (FPE::isInfinite(inf));
+		assert (!FPE::isInfinite(a));
 	}
 }
 
@@ -87,16 +87,16 @@ void FPETest::testFlags()
 	volatile double c = div(a, b);
 
 #if !defined(POCO_NO_FPENVIRONMENT)
-    assertTrue (FPE::isFlag(FPE::FP_DIVIDE_BY_ZERO));
+    assert (FPE::isFlag(FPE::FP_DIVIDE_BY_ZERO));
 #endif
-	assertTrue (FPE::isInfinite(c)); 
+	assert (FPE::isInfinite(c)); 
 
 	FPE::clearFlags();
 	a = 1.23456789e210;
 	b = 9.87654321e210;
 	c = mult(a, b);
 #if !defined(POCO_NO_FPENVIRONMENT)
-	assertTrue (FPE::isFlag(FPE::FP_OVERFLOW));
+	assert (FPE::isFlag(FPE::FP_OVERFLOW));
 #endif
 	assertEqualDelta(c, c, 0);
 
@@ -105,7 +105,7 @@ void FPETest::testFlags()
 	b = 9.87654321e210;
 	c = div(a, b);	
 #if !defined(POCO_NO_FPENVIRONMENT)
-	assertTrue (FPE::isFlag(FPE::FP_UNDERFLOW));
+	assert (FPE::isFlag(FPE::FP_UNDERFLOW));
 #endif
 	assertEqualDelta(c, c, 0);
 }
@@ -124,12 +124,12 @@ void FPETest::testRound()
 {
 #if !defined(__osf__) && !defined(__VMS) && !defined(POCO_NO_FPENVIRONMENT)
 	FPE::setRoundingMode(FPE::FP_ROUND_TONEAREST);			
-	assertTrue (FPE::getRoundingMode() == FPE::FP_ROUND_TONEAREST);
+	assert (FPE::getRoundingMode() == FPE::FP_ROUND_TONEAREST);
 	{
 		FPE env(FPE::FP_ROUND_TOWARDZERO);
-		assertTrue (FPE::getRoundingMode() == FPE::FP_ROUND_TOWARDZERO);
+		assert (FPE::getRoundingMode() == FPE::FP_ROUND_TOWARDZERO);
 	}
-	assertTrue (FPE::getRoundingMode() == FPE::FP_ROUND_TONEAREST);	
+	assert (FPE::getRoundingMode() == FPE::FP_ROUND_TONEAREST);	
 #endif
 }
 

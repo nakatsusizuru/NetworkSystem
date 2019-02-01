@@ -30,7 +30,6 @@ namespace Poco {
 namespace Data {
 namespace ODBC {
 
-class SessionImpl;
 
 class ODBC_API ConnectionHandle
 /// ODBC connection handle class
@@ -61,8 +60,6 @@ private:
 	const EnvironmentHandle* _pEnvironment;
 	SQLHDBC                  _hdbc;
 	bool                     _ownsEnvironment;
-
-	friend class Poco::Data::ODBC::SessionImpl;
 };
 
 

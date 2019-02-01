@@ -44,13 +44,13 @@ void DocumentTest::testDocumentElement()
 	AutoPtr<Document> pDoc = new Document;
 	AutoPtr<Element> pRoot = pDoc->createElement("root");
 
-	assertTrue (pDoc->documentElement() == 0);
+	assert (pDoc->documentElement() == 0);
 	pDoc->appendChild(pRoot);
-	assertTrue (pDoc->documentElement() == pRoot);
+	assert (pDoc->documentElement() == pRoot);
 	
 	AutoPtr<Text> pText = pDoc->createTextNode("   ");
 	pDoc->insertBefore(pText, pRoot);
-	assertTrue (pDoc->documentElement() == pRoot);
+	assert (pDoc->documentElement() == pRoot);
 	
 }
 
@@ -72,8 +72,8 @@ void DocumentTest::testImport()
 	}
 	
 	AutoPtr<Element> pRoot2 = static_cast<Element*>(pDoc2->importNode(pRoot1, false));
-	assertTrue (pRoot2->ownerDocument() == pDoc2);
-	assertTrue (pRoot1->ownerDocument() == pDoc1);
+	assert (pRoot2->ownerDocument() == pDoc2);
+	assert (pRoot1->ownerDocument() == pDoc1);
 	
 	pDoc2->appendChild(pRoot2);
 }
@@ -104,12 +104,12 @@ void DocumentTest::testImportDeep()
 	}
 	
 	AutoPtr<Element> pRoot2 = static_cast<Element*>(pDoc2->importNode(pRoot1, true));
-	assertTrue (pRoot2->ownerDocument() == pDoc2);
-	assertTrue (pRoot2->firstChild()->ownerDocument() == pDoc2);
-	assertTrue (pRoot2->firstChild()->firstChild()->ownerDocument() == pDoc2);
-	assertTrue (pRoot1->ownerDocument() == pDoc1);
-	assertTrue (pRoot1->firstChild()->ownerDocument() == pDoc1);
-	assertTrue (pRoot1->firstChild()->firstChild()->ownerDocument() == pDoc1);
+	assert (pRoot2->ownerDocument() == pDoc2);
+	assert (pRoot2->firstChild()->ownerDocument() == pDoc2);
+	assert (pRoot2->firstChild()->firstChild()->ownerDocument() == pDoc2);
+	assert (pRoot1->ownerDocument() == pDoc1);
+	assert (pRoot1->firstChild()->ownerDocument() == pDoc1);
+	assert (pRoot1->firstChild()->firstChild()->ownerDocument() == pDoc1);
 	
 	pDoc2->appendChild(pRoot2);
 }
@@ -123,28 +123,28 @@ void DocumentTest::testElementsByTagName()
 	AutoPtr<NodeList> pNL1 = pDoc->getElementsByTagName("*");
 	AutoPtr<NodeList> pNL2 = pDoc->getElementsByTagName("elem");
 	
-	assertTrue (pNL1->length() == 1);
-	assertTrue (pNL1->item(0) == pRoot);
-	assertTrue (pNL2->length() == 0);
+	assert (pNL1->length() == 1);
+	assert (pNL1->item(0) == pRoot);
+	assert (pNL2->length() == 0);
 	
 	AutoPtr<Element> pElem1 = pDoc->createElement("elem");
 	pRoot->appendChild(pElem1);
 	
-	assertTrue (pNL1->length() == 2);
-	assertTrue (pNL2->length() == 1);
-	assertTrue (pNL1->item(0) == pRoot);
-	assertTrue (pNL1->item(1) == pElem1);
-	assertTrue (pNL2->item(0) == pElem1);
+	assert (pNL1->length() == 2);
+	assert (pNL2->length() == 1);
+	assert (pNL1->item(0) == pRoot);
+	assert (pNL1->item(1) == pElem1);
+	assert (pNL2->item(0) == pElem1);
 
 	AutoPtr<Element> pElem2 = pDoc->createElement("Elem");
 	pRoot->appendChild(pElem2);
 
-	assertTrue (pNL1->length() == 3);
-	assertTrue (pNL2->length() == 1);
-	assertTrue (pNL1->item(0) == pRoot);
-	assertTrue (pNL1->item(1) == pElem1);
-	assertTrue (pNL1->item(2) == pElem2);
-	assertTrue (pNL2->item(0) == pElem1);
+	assert (pNL1->length() == 3);
+	assert (pNL2->length() == 1);
+	assert (pNL1->item(0) == pRoot);
+	assert (pNL1->item(1) == pElem1);
+	assert (pNL1->item(2) == pElem2);
+	assert (pNL2->item(0) == pElem1);
 }
 
 
@@ -156,28 +156,28 @@ void DocumentTest::testElementsByTagNameNS()
 	AutoPtr<NodeList> pNL1 = pDoc->getElementsByTagNameNS("*", "*");
 	AutoPtr<NodeList> pNL2 = pDoc->getElementsByTagNameNS("*", "elem");
 	
-	assertTrue (pNL1->length() == 1);
-	assertTrue (pNL1->item(0) == pRoot);
-	assertTrue (pNL2->length() == 0);
+	assert (pNL1->length() == 1);
+	assert (pNL1->item(0) == pRoot);
+	assert (pNL2->length() == 0);
 	
 	AutoPtr<Element> pElem1 = pDoc->createElementNS("urn:ns1", "elem");
 	pRoot->appendChild(pElem1);
 	
-	assertTrue (pNL1->length() == 2);
-	assertTrue (pNL2->length() == 1);
-	assertTrue (pNL1->item(0) == pRoot);
-	assertTrue (pNL1->item(1) == pElem1);
-	assertTrue (pNL2->item(0) == pElem1);
+	assert (pNL1->length() == 2);
+	assert (pNL2->length() == 1);
+	assert (pNL1->item(0) == pRoot);
+	assert (pNL1->item(1) == pElem1);
+	assert (pNL2->item(0) == pElem1);
 
 	AutoPtr<Element> pElem2 = pDoc->createElementNS("urn:ns1", "Elem");
 	pRoot->appendChild(pElem2);
 
-	assertTrue (pNL1->length() == 3);
-	assertTrue (pNL2->length() == 1);
-	assertTrue (pNL1->item(0) == pRoot);
-	assertTrue (pNL1->item(1) == pElem1);
-	assertTrue (pNL1->item(2) == pElem2);
-	assertTrue (pNL2->item(0) == pElem1);
+	assert (pNL1->length() == 3);
+	assert (pNL2->length() == 1);
+	assert (pNL1->item(0) == pRoot);
+	assert (pNL1->item(1) == pElem1);
+	assert (pNL1->item(2) == pElem2);
+	assert (pNL2->item(0) == pElem1);
 }
 
 
@@ -201,22 +201,22 @@ void DocumentTest::testElementById()
 	pDoc->appendChild(pRoot);
 	
 	Element* pFound = pDoc->getElementById("0", "id");
-	assertTrue (pFound == pRoot);
+	assert (pFound == pRoot);
 	
 	pFound = pDoc->getElementById("1", "id");
-	assertTrue (pFound == pElem1);
+	assert (pFound == pElem1);
 	
 	pFound = pDoc->getElementById("2", "id");
-	assertTrue (pFound == pElem2);
+	assert (pFound == pElem2);
 
 	pFound = pDoc->getElementById("3", "id");
-	assertTrue (pFound == pElem3);
+	assert (pFound == pElem3);
 
 	pFound = pDoc->getElementById("4", "id");
-	assertTrue (pFound == 0);
+	assert (pFound == 0);
 	
 	pFound = pDoc->getElementById("0", "ID");
-	assertTrue (pFound == 0);
+	assert (pFound == 0);
 }
 
 
@@ -240,25 +240,25 @@ void DocumentTest::testElementByIdNS()
 	pDoc->appendChild(pRoot);
 
 	Element* pFound = pDoc->getElementByIdNS("0", "urn:ns1", "id");
-	assertTrue (pFound == pRoot);
+	assert (pFound == pRoot);
 	
 	pFound = pDoc->getElementByIdNS("1", "urn:ns1", "id");
-	assertTrue (pFound == pElem1);
+	assert (pFound == pElem1);
 	
 	pFound = pDoc->getElementByIdNS("2", "urn:ns1", "id");
-	assertTrue (pFound == pElem2);
+	assert (pFound == pElem2);
 
 	pFound = pDoc->getElementByIdNS("3", "urn:ns1", "id");
-	assertTrue (pFound == pElem3);
+	assert (pFound == pElem3);
 
 	pFound = pDoc->getElementByIdNS("4", "urn:ns1", "id");
-	assertTrue (pFound == 0);
+	assert (pFound == 0);
 	
 	pFound = pDoc->getElementByIdNS("0", "urn:ns1", "ID");
-	assertTrue (pFound == 0);
+	assert (pFound == 0);
 
 	pFound = pDoc->getElementByIdNS("0", "urn:ns2", "id");
-	assertTrue (pFound == 0);
+	assert (pFound == 0);
 }
 
 

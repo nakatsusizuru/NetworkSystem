@@ -67,38 +67,38 @@ void OptionSetTest::testOptionSet()
 			.repeatable(true)
 			.argument("path"));
 	
-	assertTrue (set.hasOption("include", false));
-	assertTrue (set.hasOption("I", true));
-	assertTrue (set.hasOption("Include", true));
-	assertTrue (set.hasOption("insert", false));
-	assertTrue (set.hasOption("it", true));
-	assertTrue (set.hasOption("Insert", false));
-	assertTrue (set.hasOption("item", false));
-	assertTrue (!set.hasOption("i", false));
-	assertTrue (!set.hasOption("in", false));
+	assert (set.hasOption("include", false));
+	assert (set.hasOption("I", true));
+	assert (set.hasOption("Include", true));
+	assert (set.hasOption("insert", false));
+	assert (set.hasOption("it", true));
+	assert (set.hasOption("Insert", false));
+	assert (set.hasOption("item", false));
+	assert (!set.hasOption("i", false));
+	assert (!set.hasOption("in", false));
 	
-	assertTrue (set.hasOption("help"));
-	assertTrue (set.hasOption("h", true));
-	assertTrue (set.hasOption("helper"));
-	assertTrue (set.hasOption("H", true));
+	assert (set.hasOption("help"));
+	assert (set.hasOption("h", true));
+	assert (set.hasOption("helper"));
+	assert (set.hasOption("H", true));
 	
 	const Option& opt1 = set.getOption("include");
-	assertTrue (opt1.fullName() == "include");
+	assert (opt1.fullName() == "include");
 
 	const Option& opt2 = set.getOption("item");
-	assertTrue (opt2.fullName() == "item");
+	assert (opt2.fullName() == "item");
 
 	const Option& opt3 = set.getOption("I", true);
-	assertTrue (opt3.fullName() == "include-dir");
+	assert (opt3.fullName() == "include-dir");
 
 	const Option& opt4 = set.getOption("include-d");
-	assertTrue (opt4.fullName() == "include-dir");
+	assert (opt4.fullName() == "include-dir");
 
 	const Option& opt5 = set.getOption("help");
-	assertTrue (opt5.fullName() == "help");
+	assert (opt5.fullName() == "help");
 
 	const Option& opt6 = set.getOption("helpe");
-	assertTrue (opt6.fullName() == "helper");
+	assert (opt6.fullName() == "helper");
 	
 	try
 	{

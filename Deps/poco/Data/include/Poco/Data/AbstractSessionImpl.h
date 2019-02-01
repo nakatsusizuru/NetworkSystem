@@ -41,13 +41,13 @@ public:
 	typedef void (C::*FeatureSetter)(const std::string&, bool);
 		/// The setter method for a feature.
 		
-	typedef bool (C::*FeatureGetter)(const std::string&) const;
+	typedef bool (C::*FeatureGetter)(const std::string&);
 		/// The getter method for a feature.
 		
 	typedef void (C::*PropertySetter)(const std::string&, const Poco::Any&);
 		/// The setter method for a property.
 		
-	typedef Poco::Any (C::*PropertyGetter)(const std::string&) const;
+	typedef Poco::Any (C::*PropertyGetter)(const std::string&);
 		/// The getter method for a property.
 
 	AbstractSessionImpl(const std::string& connectionString,
@@ -187,7 +187,7 @@ public:
 		_storage = Poco::RefAnyCast<std::string>(value);
 	}
 		
-	Poco::Any getStorage(const std::string& name="") const
+	Poco::Any getStorage(const std::string& name="")
 		/// Returns the storage type
 	{
 		return _storage;
@@ -199,7 +199,7 @@ public:
 		_handle = handle;
 	}
 		
-	Poco::Any getHandle(const std::string& name="") const
+	Poco::Any getHandle(const std::string& name="")
 		/// Returns the native session handle. 
 	{
 		return _handle;
@@ -211,7 +211,7 @@ public:
 		_bulk = bulk;
 	}
 		
-	bool getBulk(const std::string& name="") const
+	bool getBulk(const std::string& name="")
 		/// Returns the execution type
 	{
 		return _bulk;
@@ -229,7 +229,7 @@ public:
 		_emptyStringIsNull = emptyStringIsNull;
 	}
 		
-	bool getEmptyStringIsNull(const std::string& name="") const
+	bool getEmptyStringIsNull(const std::string& name="")
 		/// Returns the setting for the behavior regarding empty variable
 		/// length strings. See setEmptyStringIsNull(const std::string&, bool)
 		/// and this class documentation for feature rationale and details.
@@ -250,7 +250,7 @@ public:
 		_forceEmptyString = forceEmptyString;
 	}
 		
-	bool getForceEmptyString(const std::string& name="") const
+	bool getForceEmptyString(const std::string& name="")
 		/// Returns the setting for the behavior regarding empty variable
 		/// length strings. See setForceEmptyString(const std::string&, bool)
 		/// and this class documentation for feature rationale and details.

@@ -32,9 +32,6 @@ using Poco::Delegate;
 using Poco::AutoPtr;
 
 
-Poco::FastMutex ICMPClientTest::_mutex;
-
-
 ICMPClientTest::ICMPClientTest(const std::string& name): 
 	CppUnit::TestCase(name)
 {
@@ -48,55 +45,51 @@ ICMPClientTest::~ICMPClientTest()
 
 void ICMPClientTest::testPing()
 {
-	assertTrue (ICMPClient::pingIPv4("127.0.0.1") > 0);
+	assert(ICMPClient::pingIPv4("127.0.0.1") > 0);
 
 	Poco::Net::ICMPClient icmpClient(IPAddress::IPv4);
 
 	registerDelegates(icmpClient);
 
-	assertTrue (icmpClient.ping("127.0.0.1") > 0);
+	assert(icmpClient.ping("127.0.0.1") > 0);
 #if POCO_OS == POCO_OS_ANDROID
-	assertTrue (icmpClient.ping("10.0.2.15", 4) > 0);
-	assertTrue (icmpClient.ping("10.0.2.2", 4) > 0);
+	assert(icmpClient.ping("10.0.2.15", 4) > 0);
+	assert(icmpClient.ping("10.0.2.2", 4) > 0);
 #else
-	assertTrue (icmpClient.ping("www.appinf.com", 4) > 0);
+	assert(icmpClient.ping("www.appinf.com", 4) > 0);
 
 	// warning: may fail depending on the existence of the addresses at test site
 	// if so, adjust accordingly (i.e. specify non-existent or unreachable IP addresses)
-	assertTrue (0 == icmpClient.ping("192.168.243.1"));
-	assertTrue (0 == icmpClient.ping("10.11.12.13"));
+	assert(0 == icmpClient.ping("192.168.243.1"));
+	assert(0 == icmpClient.ping("10.11.12.13"));
 #endif
 
 	unregisterDelegates(icmpClient);
-	// wait for delegates to finish printing
-	Poco::FastMutex::ScopedLock l(_mutex);
 }
 
 
 void ICMPClientTest::testBigPing()
 {
-	assertTrue (ICMPClient::pingIPv4("127.0.0.1", 1, 96) > 0);
+	assert(ICMPClient::pingIPv4("127.0.0.1", 1, 96) > 0);
 
 	Poco::Net::ICMPClient icmpClient(IPAddress::IPv4, 96);
 
 	registerDelegates(icmpClient);
 
-	assertTrue (icmpClient.ping("127.0.0.1", 1) > 0);
+	assert(icmpClient.ping("127.0.0.1", 1) > 0);
 #if POCO_OS == POCO_OS_ANDROID
-	assertTrue (icmpClient.ping("10.0.2.15", 4) > 0);
-	assertTrue (icmpClient.ping("10.0.2.2", 4) > 0);
+	assert(icmpClient.ping("10.0.2.15", 4) > 0);
+	assert(icmpClient.ping("10.0.2.2", 4) > 0);
 #else
-	assertTrue (icmpClient.ping("www.appinf.com", 4) > 0);
+	assert(icmpClient.ping("www.appinf.com", 4) > 0);
 
 	// warning: may fail depending on the existence of the addresses at test site
 	// if so, adjust accordingly (i.e. specify non-existent or unreachable IP addresses)
-	assertTrue (0 == icmpClient.ping("192.168.243.1"));
-	assertTrue (0 == icmpClient.ping("10.11.12.13"));
+	assert(0 == icmpClient.ping("192.168.243.1"));
+	assert(0 == icmpClient.ping("10.11.12.13"));
 #endif
 
 	unregisterDelegates(icmpClient);
-	// wait for delegates to finish printing
-	Poco::FastMutex::ScopedLock l(_mutex);
 }
 
 
@@ -130,7 +123,6 @@ void ICMPClientTest::tearDown()
 
 void ICMPClientTest::onBegin(const void* pSender, ICMPEventArgs& args)
 {
-	Poco::FastMutex::ScopedLock l(_mutex);
 	std::ostringstream os;
 	os << std::endl << "Pinging " << args.hostName() << " [" << args.hostAddress() << "] with " 
 		<< args.dataSize() << " bytes of data:" 
@@ -141,7 +133,6 @@ void ICMPClientTest::onBegin(const void* pSender, ICMPEventArgs& args)
 
 void ICMPClientTest::onReply(const void* pSender, ICMPEventArgs& args)
 {
-	Poco::FastMutex::ScopedLock l(_mutex);
 	std::ostringstream os;
 	os << "Reply from " << args.hostAddress()
 		<< " bytes=" << args.dataSize() 
@@ -153,7 +144,6 @@ void ICMPClientTest::onReply(const void* pSender, ICMPEventArgs& args)
 
 void ICMPClientTest::onError(const void* pSender, ICMPEventArgs& args)
 {
-	Poco::FastMutex::ScopedLock l(_mutex);
 	std::ostringstream os;
 	os << args.error();
 	std::cerr << os.str() << std::endl;
@@ -162,7 +152,6 @@ void ICMPClientTest::onError(const void* pSender, ICMPEventArgs& args)
 
 void ICMPClientTest::onEnd(const void* pSender, ICMPEventArgs& args)
 {
-	Poco::FastMutex::ScopedLock l(_mutex);
 	std::ostringstream os;
 	int received = args.received();
 	os << std::endl << "--- Ping statistics for " << args.hostAddress() << " ---"

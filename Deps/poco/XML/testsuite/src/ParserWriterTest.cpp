@@ -51,7 +51,7 @@ void ParserWriterTest::testParseWriteXHTML()
 	writer.writeNode(ostr, pDoc);
 	
 	std::string xml = ostr.str();
-	assertTrue (xml == XHTML);
+	assert (xml == XHTML);
 }
 
 
@@ -66,7 +66,7 @@ void ParserWriterTest::testParseWriteXHTML2()
 	writer.writeNode(ostr, pDoc);
 	
 	std::string xml = ostr.str();
-	assertTrue (xml == XHTML2);
+	assert (xml == XHTML2);
 }
 
 
@@ -97,10 +97,10 @@ void ParserWriterTest::testParseWriteSimple()
 		numChildren++;
 		child = child->nextSibling();
 	}
-	assertTrue (numChildren == 2);
+	assert (numChildren == 2);
 
 	std::string xml = ostr.str();
-	assertTrue (xml == simple);
+	assert (xml == simple);
 }
 
 

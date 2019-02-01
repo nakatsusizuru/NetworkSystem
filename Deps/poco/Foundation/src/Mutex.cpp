@@ -51,18 +51,4 @@ FastMutex::~FastMutex()
 }
 
 
-#ifdef POCO_HAVE_STD_ATOMICS
-
-SpinlockMutex::SpinlockMutex()
-{
-}
-
-
-SpinlockMutex::~SpinlockMutex()
-{
-}
-
-#endif // POCO_HAVE_STD_ATOMICS
-
-
 } // namespace Poco

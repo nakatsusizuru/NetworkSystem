@@ -71,7 +71,7 @@ public:
 	Binder(const StatementHandle& rStmt,
 		std::size_t maxFieldSize,
 		ParameterBinding dataBinding = PB_IMMEDIATE,
-		const TypeInfo* pDataTypes = 0);
+		TypeInfo* pDataTypes = 0);
 		/// Creates the Binder.
 
 	~Binder();

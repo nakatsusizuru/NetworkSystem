@@ -43,7 +43,7 @@ void PartialStreamTest::testReading()
 	char buf[124];
 	in.read(buf, 124);
 	std::string res(buf, static_cast<std::string::size_type>(in.gcount()));
-	assertTrue (res == result);
+	assert (res == result);
 }
 
 
@@ -56,11 +56,11 @@ void PartialStreamTest::testWriting()
 	std::ostringstream ostr;
 	PartialOutputStream out(ostr, prefix.size(), postfix.size());
 	out.write(result.c_str(), static_cast<std::streamsize>(result.length()));
-	assertTrue (out.good());
+	assert (out.good());
 	out.close();
 	std::string res (ostr.str());
-	assertTrue (out.bytesWritten() == message.size());
-	assertTrue (message == res);
+	assert (out.bytesWritten() == message.size());
+	assert (message == res);
 }
 
 
@@ -73,11 +73,11 @@ void PartialStreamTest::testWritingZero()
 	std::ostringstream ostr;
 	PartialOutputStream out(ostr, prefix.size(), postfix.size());
 	out.write(result.c_str(), static_cast<std::streamsize>(result.length()));
-	assertTrue (out.good());
+	assert (out.good());
 	out.close();
 	std::string res (ostr.str());
-	assertTrue (out.bytesWritten() == message.size());
-	assertTrue (message == res);
+	assert (out.bytesWritten() == message.size());
+	assert (message == res);
 }
 
 
@@ -90,11 +90,11 @@ void PartialStreamTest::testWritingOne()
 	std::ostringstream ostr;
 	PartialOutputStream out(ostr, prefix.size(), postfix.size());
 	out.write(result.c_str(), static_cast<std::streamsize>(result.length()));
-	assertTrue (out.good());
+	assert (out.good());
 	out.close();
 	std::string res (ostr.str());
-	assertTrue (out.bytesWritten() == message.size());
-	assertTrue (message == res);
+	assert (out.bytesWritten() == message.size());
+	assert (message == res);
 }
 
 
@@ -119,7 +119,7 @@ void PartialStreamTest::testAutoDetect()
 	AutoDetectInputStream adi(istr, header, crc, false, 0);
 	std::string result;
 	Poco::StreamCopier::copyToString(adi, result);
-	assertTrue (result.size() == 23);
+	assert (result.size() == 23);
 }
 
 

@@ -39,16 +39,12 @@ void TextTestResult::setup()
 		std::string ignored = env;
 		std::string::const_iterator it = ignored.begin();
 		std::string::const_iterator end = ignored.end();
-		for (;;)
+		while (it != end)
 		{
-			while (it != end && (std::isspace(*it) || *it == '"' || *it == ',' || *it == '\'')) ++it;
-			if (it == end)
-				break;
-
+			while (it != end && std::isspace(*it)) ++it;
 			std::string test;
-			while (it != end && *it != ',' && *it != '"' && *it != '\'') test += *it++;
+			while (it != end && !std::isspace(*it)) test += *it++;
 			if (!test.empty()) _ignored.insert(test);
-			_ostr << "ignored: " << test << std::endl;
 		}
 	}
 #endif

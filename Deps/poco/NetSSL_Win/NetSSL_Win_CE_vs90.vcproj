@@ -198,7 +198,7 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoNetSSLWinMTd.pdb"
+				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoNetSSLWinmtd.pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -214,7 +214,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinMTd.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinmtd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -280,7 +280,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinMT.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinmt.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -329,7 +329,7 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoNetSSLWinMDd.pdb"
+				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoNetSSLWinmdd.pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -345,7 +345,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinMDd.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinmdd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -411,7 +411,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinMD.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoNetSSLWinmd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool

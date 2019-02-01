@@ -42,6 +42,7 @@ void ProcessTest::testLaunch()
 #endif
 
 #if defined(POCO_OS_FAMILY_UNIX)
+	cmd = "./";
 	cmd += name;
 #elif defined(_WIN32_WCE)
 	cmd = "\\";
@@ -57,7 +58,7 @@ void ProcessTest::testLaunch()
 	args.push_back("arg3");
 	ProcessHandle ph = Process::launch(cmd, args);
 	int rc = ph.wait();
-	assertTrue (rc == 3);
+	assert (rc == 3);
 }
 
 
@@ -71,6 +72,7 @@ void ProcessTest::testLaunchRedirectIn()
 #endif
 
 #if defined(POCO_OS_FAMILY_UNIX)
+	cmd = "./";
 	cmd += name;
 #else
 	cmd = name;
@@ -84,7 +86,7 @@ void ProcessTest::testLaunchRedirectIn()
 	ostr << std::string(100, 'x');
 	ostr.close();
 	int rc = ph.wait();
-	assertTrue (rc == 100);
+	assert (rc == 100);
 #endif // !defined(_WIN32_WCE)
 }
 
@@ -99,6 +101,7 @@ void ProcessTest::testLaunchRedirectOut()
 #endif
 
 #if defined(POCO_OS_FAMILY_UNIX)
+	cmd = "./";
 	cmd += name;
 #else
 	cmd = name;
@@ -112,9 +115,9 @@ void ProcessTest::testLaunchRedirectOut()
 	std::string s;
 	int c = istr.get();
 	while (c != -1) { s += (char) c; c = istr.get(); }
-	assertTrue (s == "Hello, world!");
+	assert (s == "Hello, world!");
 	int rc = ph.wait();
-	assertTrue (rc == 1);
+	assert (rc == 1);
 #endif // !defined(_WIN32_WCE)
 }
 
@@ -129,6 +132,7 @@ void ProcessTest::testLaunchEnv()
 #endif
 
 #if defined(POCO_OS_FAMILY_UNIX)
+	cmd = "./";
 	cmd += name;
 #else
 	cmd = name;
@@ -144,9 +148,9 @@ void ProcessTest::testLaunchEnv()
 	std::string s;
 	int c = istr.get();
 	while (c != -1) { s += (char) c; c = istr.get(); }
-	assertTrue (s == "test");
+	assert (s == "test");
 	int rc = ph.wait();
-	assertTrue (rc == 0);
+	assert (rc == 0);
 #endif // !defined(_WIN32_WCE)
 }
 
@@ -155,9 +159,6 @@ void ProcessTest::testLaunchArgs()
 {
 #if defined (_WIN32) && !defined(_WIN32_WCE)
 	std::string name("TestApp");
-#if defined(_DEBUG)
-	name += 'd';
-#endif
 	std::string cmd = name;
 
 	std::vector<std::string> args;
@@ -185,12 +186,12 @@ void ProcessTest::testLaunchArgs()
 	{
 		if ('\n' == c)
 		{
-			assertTrue (argNumber < args.size());
+			assert(argNumber < args.size());
 			std::string expectedArg = args[argNumber];
 			if (expectedArg.npos != expectedArg.find("already quoted")) {
 				expectedArg = "already quoted \" \\";
 			} 
-			assertTrue (receivedArg == expectedArg);
+			assert(receivedArg == expectedArg);
 			++argNumber;
 			receivedArg = "";
 		}
@@ -200,9 +201,9 @@ void ProcessTest::testLaunchArgs()
 		}
 		c = istr.get();
 	}
-	assertTrue (argNumber == args.size());
+	assert(argNumber == args.size());
 	int rc = ph.wait();
-	assertTrue (rc == args.size());
+	assert(rc == args.size());
 #endif // !defined(_WIN32_WCE)
 }
 
@@ -217,6 +218,7 @@ void ProcessTest::testIsRunning()
 #endif
 
 #if defined(POCO_OS_FAMILY_UNIX)
+	cmd = "./";
 	cmd += name;
 #else
 	cmd = name;
@@ -227,14 +229,14 @@ void ProcessTest::testIsRunning()
 	Pipe inPipe;
 	ProcessHandle ph = Process::launch(cmd, args, &inPipe, 0, 0);
 	Process::PID id = ph.id();
-	assertTrue (Process::isRunning(ph));
-	assertTrue (Process::isRunning(id));
+	assert (Process::isRunning(ph));
+	assert (Process::isRunning(id));
 	PipeOutputStream ostr(inPipe);
 	ostr << std::string(100, 'x');
 	ostr.close();
 	int POCO_UNUSED rc = ph.wait();
-	assertTrue (!Process::isRunning(ph));
-	assertTrue (!Process::isRunning(id));
+	assert (!Process::isRunning(ph));
+	assert (!Process::isRunning(id));
 #endif // !defined(_WIN32_WCE)
 }
 

@@ -19,9 +19,7 @@
 				Constants.h,
 				inffast.h,
 				PDF/include/*.h,
-				CppParser/include/*.h,
-				Data/include/*.h
-				Data/*/include/*.h
+				CppParser/include/*.h
 			</exclude>
 		</files>
 		<pages>
@@ -42,7 +40,7 @@
 				<options>
 					${Includes},
 					/I${PocoBase}/openssl/include
-					/I${VCH}/include,
+					/I${VC}/include,
 					/I${WDK}/shared
 					/I${WDK}/um
 					/I${WDK}/ucrt
@@ -50,16 +48,15 @@
 					/D_DEBUG,
 					/E,
 					/C,
-					/DPOCO_NO_GCC_API_ATTRIBUTE,
+					/DPOCO_NO_GCC_API_ATTRIBUTE
 					/DPOCO_NO_WINDOWS_H
 				</options>
-				<path>${CLP}</path>
+				<path>${VC}/bin</path>
 				<usePipe>true</usePipe>
 			</windows>
 			<unix>
-				<exec>${CXX}</exec>
+				<exec>${CXX} ${CXXFLAGS}</exec>
 				<options>
-                    ${CXXFLAGS}
 					${Includes},
 					-I/usr/local/mysql/include,
 					-I/usr/include/mysql,
@@ -67,7 +64,7 @@
 					-D_DEBUG,
 					-E,
 					-C,
-					-DPOCO_NO_GCC_API_ATTRIBUTE,
+					-DPOCO_NO_GCC_API_ATTRIBUTE
 					-DPOCO_NO_WINDOWS_H
 				</options>
 				<path></path>

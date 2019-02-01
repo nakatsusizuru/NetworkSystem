@@ -3,8 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="TestSuite"
-	ProjectGUID="{C812E0B9-69A9-4FA1-A1D4-161CF677BD10}"
-	RootNamespace="TestSuite"
+	ProjectGUID="{F1EE93DF-347F-4CB3-B191-C4E63F38E972}"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="0"
 	>
@@ -18,10 +17,10 @@
 	<Configurations>
 		<Configuration
 			Name="debug_shared|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
+			OutputDirectory="obj\TestSuite\$(ConfigurationName)"
+			IntermediateDirectory="obj\TestSuite\$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="0"
+			UseOfMFC="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -41,11 +40,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions=""
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\Foundation\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0501;"
-				StringPooling="true"
+				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\CppUnit\WinTestRunner\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0501"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -57,8 +54,6 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
-				CompileAs="0"
-				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -71,15 +66,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions=""
-				AdditionalDependencies="iphlpapi.lib"
+				AdditionalDependencies="CppUnitd.lib WinTestRunnerd.lib PocoFoundationd.lib"
 				OutputFile="bin\TestSuited.exe"
 				LinkIncremental="2"
-				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="bin\TestSuited.pdb"
-				SubSystem="1"
+				SubSystem="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -106,10 +99,10 @@
 		</Configuration>
 		<Configuration
 			Name="release_shared|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
+			OutputDirectory="obj\TestSuite\$(ConfigurationName)"
+			IntermediateDirectory="obj\TestSuite\$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="0"
+			UseOfMFC="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -129,14 +122,13 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions=""
 				Optimization="4"
 				InlineFunctionExpansion="1"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\Foundation\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;WINVER=0x0501;"
+				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\CppUnit\WinTestRunner\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;WINVER=0x0501"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
@@ -147,8 +139,6 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
-				CompileAs="0"
-				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -161,13 +151,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions=""
-				AdditionalDependencies="iphlpapi.lib"
+				AdditionalDependencies="CppUnit.lib WinTestRunner.lib PocoFoundation.lib"
 				OutputFile="bin\TestSuite.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\lib"
 				GenerateDebugInformation="false"
-				SubSystem="1"
+				ProgramDatabaseFile=""
+				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
@@ -195,11 +185,11 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="debug_static_mt|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
+			Name="release_static_md|Win32"
+			OutputDirectory="obj\TestSuite\$(ConfigurationName)"
+			IntermediateDirectory="obj\TestSuite\$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="0"
+			UseOfMFC="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -219,105 +209,16 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions=""
-				Optimization="4"
-				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\Foundation\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC;"
-				StringPooling="true"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				BufferSecurityCheck="true"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-				CompileAs="0"
-				DisableSpecificWarnings=""
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions=""
-				AdditionalDependencies="iphlpapi.lib"
-				OutputFile="bin\static_mt\TestSuited.exe"
-				LinkIncremental="2"
-				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\lib"
-				IgnoreDefaultLibraryNames="nafxcwd.lib"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="bin\static_mt\TestSuited.pdb"
-				SubSystem="1"
-				TargetMachine="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="release_static_mt|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
-			ConfigurationType="1"
-			UseOfMFC="0"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalOptions=""
 				Optimization="4"
 				InlineFunctionExpansion="1"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\Foundation\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC;"
+				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\CppUnit\WinTestRunner\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC"
 				StringPooling="true"
-				RuntimeLibrary="0"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
 				TreatWChar_tAsBuiltInType="true"
 				ForceConformanceInForLoopScope="true"
@@ -326,8 +227,6 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
-				CompileAs="0"
-				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -340,14 +239,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions=""
-				AdditionalDependencies="iphlpapi.lib"
-				OutputFile="bin\static_mt\TestSuite.exe"
+				AdditionalDependencies="CppUnitmd.lib WinTestRunnermd.lib PocoFoundationmd.lib WinTestRunner.res iphlpapi.lib winmm.lib"
+				OutputFile="bin\static_md\TestSuite.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\lib"
-				IgnoreDefaultLibraryNames="nafxcw.lib"
 				GenerateDebugInformation="false"
-				SubSystem="1"
+				ProgramDatabaseFile=""
+				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				TargetMachine="1"
@@ -376,10 +274,10 @@
 		</Configuration>
 		<Configuration
 			Name="debug_static_md|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
+			OutputDirectory="obj\TestSuite\$(ConfigurationName)"
+			IntermediateDirectory="obj\TestSuite\$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="0"
+			UseOfMFC="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -399,11 +297,9 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions=""
-				Optimization="4"
-				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\Foundation\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC;"
-				StringPooling="true"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\CppUnit\WinTestRunner\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -415,8 +311,6 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
-				CompileAs="0"
-				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -429,15 +323,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions=""
-				AdditionalDependencies="iphlpapi.lib"
+				AdditionalDependencies="CppUnitmdd.lib WinTestRunnermdd.lib PocoFoundationmdd.lib WinTestRunner.res iphlpapi.lib winmm.lib"
 				OutputFile="bin\static_md\TestSuited.exe"
 				LinkIncremental="2"
-				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="bin\static_md\TestSuited.pdb"
-				SubSystem="1"
+				SubSystem="2"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -463,11 +355,11 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="release_static_md|Win32"
-			OutputDirectory="obj\$(ConfigurationName)"
-			IntermediateDirectory="obj\$(ConfigurationName)"
+			Name="debug_static_mt|Win32"
+			OutputDirectory="obj\TestSuite\$(ConfigurationName)"
+			IntermediateDirectory="obj\TestSuite\$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="0"
+			UseOfMFC="1"
 			CharacterSet="2"
 			>
 			<Tool
@@ -487,26 +379,20 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions=""
-				Optimization="4"
-				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\Foundation\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC;"
-				StringPooling="true"
-				RuntimeLibrary="2"
-				BufferSecurityCheck="false"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\CppUnit\WinTestRunner\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				BufferSecurityCheck="true"
 				TreatWChar_tAsBuiltInType="true"
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="0"
-				CompileAs="0"
-				DisableSpecificWarnings=""
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -519,15 +405,104 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions=""
-				AdditionalDependencies="iphlpapi.lib"
-				OutputFile="bin\static_md\TestSuite.exe"
+				AdditionalDependencies="CppUnitmtd.lib WinTestRunnermtd.lib PocoFoundationmtd.lib WinTestRunner.res iphlpapi.lib winmm.lib nafxcwd.lib libcmtd.lib"
+				OutputFile="bin\static_mt\TestSuited.exe"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\lib"
+				IgnoreDefaultLibraryNames="nafxcwd.lib;libcmtd.lib"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="bin\static_mt\TestSuited.pdb"
+				SubSystem="2"
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="release_static_mt|Win32"
+			OutputDirectory="obj\TestSuite\$(ConfigurationName)"
+			IntermediateDirectory="obj\TestSuite\$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="1"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="4"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				AdditionalIncludeDirectories="..\include;..\..\CppUnit\include;..\..\CppUnit\WinTestRunner\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;WINVER=0x0501;POCO_STATIC"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="0"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="true"
+				ForceConformanceInForLoopScope="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="CppUnitmt.lib WinTestRunnermt.lib PocoFoundationmt.lib WinTestRunner.res iphlpapi.lib winmm.lib nafxcw.lib libcmt.lib"
+				OutputFile="bin\static_mt\TestSuite.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\lib"
+				IgnoreDefaultLibraryNames="nafxcw.lib;libcmt.lib"
 				GenerateDebugInformation="false"
-				SubSystem="1"
+				ProgramDatabaseFile=""
+				SubSystem="2"
 				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
+				EnableCOMDATFolding="1"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -635,10 +610,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\src\OrderedContainersTest.cpp"
-					>
-				</File>
-				<File
 					RelativePath=".\src\RegularExpressionTest.cpp"
 					>
 				</File>
@@ -740,10 +711,6 @@
 				</File>
 				<File
 					RelativePath=".\src\ObjectPoolTest.h"
-					>
-				</File>
-				<File
-					RelativePath=".\src\OrderedContainersTest.h"
 					>
 				</File>
 				<File
@@ -1603,7 +1570,7 @@
 				Name="Source Files"
 				>
 				<File
-					RelativePath=".\src\Driver.cpp"
+					RelativePath=".\src\WinDriver.cpp"
 					>
 				</File>
 			</Filter>

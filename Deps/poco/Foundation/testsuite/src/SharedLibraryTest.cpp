@@ -39,15 +39,15 @@ void SharedLibraryTest::testSharedLibrary1()
 	std::string path = "TestLibrary";
 	path.append(SharedLibrary::suffix());
 	SharedLibrary sl;
-	assertTrue (!sl.isLoaded());
+	assert (!sl.isLoaded());
 	sl.load(path);
-	assertTrue (sl.getPath() == path);
-	assertTrue (sl.isLoaded());
-	assertTrue (sl.hasSymbol("pocoBuildManifest"));
-	assertTrue (sl.hasSymbol("pocoInitializeLibrary"));
-	assertTrue (sl.hasSymbol("pocoUninitializeLibrary"));
-	assertTrue (sl.hasSymbol("gimmeFive"));
-	assertTrue (!sl.hasSymbol("fooBar123"));
+	assert (sl.getPath() == path);
+	assert (sl.isLoaded());
+	assert (sl.hasSymbol("pocoBuildManifest"));
+	assert (sl.hasSymbol("pocoInitializeLibrary"));
+	assert (sl.hasSymbol("pocoUninitializeLibrary"));
+	assert (sl.hasSymbol("gimmeFive"));
+	assert (!sl.hasSymbol("fooBar123"));
 	
 	void* p1 = sl.getSymbol("pocoBuildManifest");
 	assertNotNullPtr(p1);
@@ -64,7 +64,7 @@ void SharedLibraryTest::testSharedLibrary1()
 		failmsg("wrong exception");
 	}
 	sl.unload();
-	assertTrue (!sl.isLoaded());
+	assert (!sl.isLoaded());
 }
 
 
@@ -73,14 +73,14 @@ void SharedLibraryTest::testSharedLibrary2()
 	std::string path = "TestLibrary";
 	path.append(SharedLibrary::suffix());
 	SharedLibrary sl(path);
-	assertTrue (sl.getPath() == path);
-	assertTrue (sl.isLoaded());
+	assert (sl.getPath() == path);
+	assert (sl.isLoaded());
 
 	GimmeFiveFunc gimmeFive = (GimmeFiveFunc) sl.getSymbol("gimmeFive");
-	assertTrue (gimmeFive() == 5);
+	assert (gimmeFive() == 5);
 	
 	sl.unload();
-	assertTrue (!sl.isLoaded());
+	assert (!sl.isLoaded());
 }
 
 
@@ -101,12 +101,12 @@ void SharedLibraryTest::testSharedLibrary3()
 	{
 		failmsg("wrong exception");
 	}
-	assertTrue (!sl.isLoaded());
+	assert (!sl.isLoaded());
 
 	path = "TestLibrary";
 	path.append(SharedLibrary::suffix());
 	sl.load(path);
-	assertTrue (sl.isLoaded());
+	assert (sl.isLoaded());
 	
 	try
 	{
@@ -120,10 +120,10 @@ void SharedLibraryTest::testSharedLibrary3()
 	{
 		failmsg("wrong exception");
 	}
-	assertTrue (sl.isLoaded());
+	assert (sl.isLoaded());
 
 	sl.unload();
-	assertTrue (!sl.isLoaded());
+	assert (!sl.isLoaded());
 }
 
 

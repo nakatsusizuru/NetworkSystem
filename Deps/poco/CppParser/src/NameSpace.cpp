@@ -134,9 +134,9 @@ Symbol* NameSpace::lookup(const std::string& name, std::set<const NameSpace*>& a
 			pSymbol = lookup(itAlias->second, alreadyVisited);
 		else
 		{
-			for (NameSpaceVec::const_iterator itns = _importedNameSpaces.begin(); !pSymbol && itns != _importedNameSpaces.end(); ++itns)
+			for (NameSpaceVec::const_iterator it = _importedNameSpaces.begin(); !pSymbol && it != _importedNameSpaces.end(); ++it)
 			{
-				Symbol* pNS = lookup(*itns, alreadyVisited);
+				Symbol* pNS = lookup(*it, alreadyVisited);
 				if (pNS && pNS->kind() == Symbol::SYM_NAMESPACE)
 				{
 					pSymbol = static_cast<NameSpace*>(pNS)->lookup(name, alreadyVisited);

@@ -86,11 +86,11 @@ void ODBCStatementImpl::compileImpl()
 	Binder::ParameterBinding bind = session().getFeature("autoBind") ? 
 		Binder::PB_IMMEDIATE : Binder::PB_AT_EXEC;
 
-	const TypeInfo* pDT = 0;
+	TypeInfo* pDT = 0;
 	try
 	{
 		Poco::Any dti = session().getProperty("dataTypeInfo");
-		pDT = AnyCast<const TypeInfo*>(dti);
+		pDT = AnyCast<TypeInfo*>(dti);
 	}
 	catch (NotSupportedException&) 
 	{

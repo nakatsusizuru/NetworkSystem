@@ -53,44 +53,44 @@ void OptionTest::testOption()
 		.repeatable(false)
 		.argument("level", false);
 		
-	assertTrue (incOpt.shortName() == "I");
-	assertTrue (incOpt.fullName() == "include-dir");
-	assertTrue (incOpt.repeatable());
-	assertTrue (!incOpt.required());
-	assertTrue (incOpt.argumentName() == "path");
-	assertTrue (incOpt.argumentRequired());
-	assertTrue (incOpt.takesArgument());
+	assert (incOpt.shortName() == "I");
+	assert (incOpt.fullName() == "include-dir");
+	assert (incOpt.repeatable());
+	assert (!incOpt.required());
+	assert (incOpt.argumentName() == "path");
+	assert (incOpt.argumentRequired());
+	assert (incOpt.takesArgument());
 		
-	assertTrue (libOpt.shortName() == "L");
-	assertTrue (libOpt.fullName() == "library-dir");
-	assertTrue (libOpt.repeatable());
-	assertTrue (!libOpt.required());
-	assertTrue (libOpt.argumentName() == "path");
-	assertTrue (libOpt.argumentRequired());
-	assertTrue (incOpt.takesArgument());
+	assert (libOpt.shortName() == "L");
+	assert (libOpt.fullName() == "library-dir");
+	assert (libOpt.repeatable());
+	assert (!libOpt.required());
+	assert (libOpt.argumentName() == "path");
+	assert (libOpt.argumentRequired());
+	assert (incOpt.takesArgument());
 
-	assertTrue (outOpt.shortName() == "o");
-	assertTrue (outOpt.fullName() == "output");
-	assertTrue (!outOpt.repeatable());
-	assertTrue (outOpt.required());
-	assertTrue (outOpt.argumentName() == "file");
-	assertTrue (outOpt.argumentRequired());
-	assertTrue (incOpt.takesArgument());
+	assert (outOpt.shortName() == "o");
+	assert (outOpt.fullName() == "output");
+	assert (!outOpt.repeatable());
+	assert (outOpt.required());
+	assert (outOpt.argumentName() == "file");
+	assert (outOpt.argumentRequired());
+	assert (incOpt.takesArgument());
 
-	assertTrue (vrbOpt.shortName() == "v");
-	assertTrue (vrbOpt.fullName() == "verbose");
-	assertTrue (!vrbOpt.repeatable());
-	assertTrue (!vrbOpt.required());
-	assertTrue (!vrbOpt.argumentRequired());
-	assertTrue (!vrbOpt.takesArgument());
+	assert (vrbOpt.shortName() == "v");
+	assert (vrbOpt.fullName() == "verbose");
+	assert (!vrbOpt.repeatable());
+	assert (!vrbOpt.required());
+	assert (!vrbOpt.argumentRequired());
+	assert (!vrbOpt.takesArgument());
 
-	assertTrue (optOpt.shortName() == "O");
-	assertTrue (optOpt.fullName() == "optimize");
-	assertTrue (!optOpt.repeatable());
-	assertTrue (!optOpt.required());
-	assertTrue (optOpt.argumentName() == "level");
-	assertTrue (optOpt.takesArgument());
-	assertTrue (!optOpt.argumentRequired());
+	assert (optOpt.shortName() == "O");
+	assert (optOpt.fullName() == "optimize");
+	assert (!optOpt.repeatable());
+	assert (!optOpt.required());
+	assert (optOpt.argumentName() == "level");
+	assert (optOpt.takesArgument());
+	assert (!optOpt.argumentRequired());
 }
 
 
@@ -101,22 +101,22 @@ void OptionTest::testMatches1()
 		.repeatable(true)
 		.argument("path");
 		
-	assertTrue (incOpt.matchesShort("Iinclude"));
-	assertTrue (incOpt.matchesPartial("include:include"));
-	assertTrue (incOpt.matchesPartial("include-dir:include"));
-	assertTrue (incOpt.matchesPartial("inc=include"));
-	assertTrue (incOpt.matchesPartial("INCLUDE=include"));
-	assertTrue (incOpt.matchesPartial("include"));
-	assertTrue (incOpt.matchesShort("I"));
-	assertTrue (incOpt.matchesPartial("i"));
+	assert (incOpt.matchesShort("Iinclude"));
+	assert (incOpt.matchesPartial("include:include"));
+	assert (incOpt.matchesPartial("include-dir:include"));
+	assert (incOpt.matchesPartial("inc=include"));
+	assert (incOpt.matchesPartial("INCLUDE=include"));
+	assert (incOpt.matchesPartial("include"));
+	assert (incOpt.matchesShort("I"));
+	assert (incOpt.matchesPartial("i"));
 	
-	assertTrue (incOpt.matchesFull("include-dir:include"));
-	assertTrue (incOpt.matchesFull("INClude-dir:include"));
-	assertTrue (!incOpt.matchesFull("include:include"));
-	assertTrue (!incOpt.matchesFull("include-dir2:include"));
+	assert (incOpt.matchesFull("include-dir:include"));
+	assert (incOpt.matchesFull("INClude-dir:include"));
+	assert (!incOpt.matchesFull("include:include"));
+	assert (!incOpt.matchesFull("include-dir2:include"));
 	
-	assertTrue (!incOpt.matchesPartial("include-dir2=include"));
-	assertTrue (!incOpt.matchesShort("linclude"));
+	assert (!incOpt.matchesPartial("include-dir2=include"));
+	assert (!incOpt.matchesShort("linclude"));
 }
 
 
@@ -127,21 +127,21 @@ void OptionTest::testMatches2()
 		.repeatable(true)
 		.argument("path");
 		
-	assertTrue (!incOpt.matchesShort("Iinclude"));
-	assertTrue (incOpt.matchesPartial("include:include"));
-	assertTrue (incOpt.matchesPartial("include-dir:include"));
-	assertTrue (incOpt.matchesPartial("inc=include"));
-	assertTrue (incOpt.matchesPartial("INCLUDE=include"));
-	assertTrue (incOpt.matchesPartial("I"));
-	assertTrue (incOpt.matchesPartial("i"));
+	assert (!incOpt.matchesShort("Iinclude"));
+	assert (incOpt.matchesPartial("include:include"));
+	assert (incOpt.matchesPartial("include-dir:include"));
+	assert (incOpt.matchesPartial("inc=include"));
+	assert (incOpt.matchesPartial("INCLUDE=include"));
+	assert (incOpt.matchesPartial("I"));
+	assert (incOpt.matchesPartial("i"));
 	
-	assertTrue (incOpt.matchesFull("include-dir:include"));
-	assertTrue (incOpt.matchesFull("INClude-dir:include"));
-	assertTrue (!incOpt.matchesFull("include:include"));
-	assertTrue (!incOpt.matchesFull("include-dir2:include"));
+	assert (incOpt.matchesFull("include-dir:include"));
+	assert (incOpt.matchesFull("INClude-dir:include"));
+	assert (!incOpt.matchesFull("include:include"));
+	assert (!incOpt.matchesFull("include-dir2:include"));
 	
-	assertTrue (!incOpt.matchesFull("include-dir2=include"));
-	assertTrue (!incOpt.matchesShort("linclude"));
+	assert (!incOpt.matchesFull("include-dir2=include"));
+	assert (!incOpt.matchesShort("linclude"));
 }
 
 
@@ -154,17 +154,17 @@ void OptionTest::testProcess1()
 
 	std::string arg;
 	incOpt.process("Iinclude", arg);
-	assertTrue (arg == "include");
+	assert (arg == "include");
 	incOpt.process("I/usr/include", arg);
-	assertTrue (arg == "/usr/include");
+	assert (arg == "/usr/include");
 	incOpt.process("include:/usr/local/include", arg);
-	assertTrue (arg == "/usr/local/include");
+	assert (arg == "/usr/local/include");
 	incOpt.process("include=/proj/include", arg);
-	assertTrue (arg == "/proj/include");
+	assert (arg == "/proj/include");
 	incOpt.process("include-dir=/usr/include", arg);
-	assertTrue (arg == "/usr/include");
+	assert (arg == "/usr/include");
 	incOpt.process("Include-dir:/proj/include", arg);
-	assertTrue (arg == "/proj/include");
+	assert (arg == "/proj/include");
 	
 	try
 	{
@@ -199,9 +199,9 @@ void OptionTest::testProcess1()
 		.repeatable(false);
 	
 	vrbOpt.process("v", arg);
-	assertTrue (arg.empty());
+	assert (arg.empty());
 	vrbOpt.process("verbose", arg);
-	assertTrue (arg.empty());
+	assert (arg.empty());
 	
 	try
 	{
@@ -228,17 +228,17 @@ void OptionTest::testProcess1()
 		.argument("level", false);
 		
 	optOpt.process("O", arg);
-	assertTrue (arg.empty());
+	assert (arg.empty());
 	optOpt.process("O2", arg);
-	assertTrue (arg == "2");
+	assert (arg == "2");
 	optOpt.process("optimize:1", arg);
-	assertTrue (arg == "1");
+	assert (arg == "1");
 	optOpt.process("opt", arg);
-	assertTrue (arg.empty());
+	assert (arg.empty());
 	optOpt.process("opt=3", arg);
-	assertTrue (arg == "3");
+	assert (arg == "3");
 	optOpt.process("opt=", arg);
-	assertTrue (arg.empty());
+	assert (arg.empty());
 }
 
 
@@ -251,13 +251,13 @@ void OptionTest::testProcess2()
 
 	std::string arg;
 	incOpt.process("include:/usr/local/include", arg);
-	assertTrue (arg == "/usr/local/include");
+	assert (arg == "/usr/local/include");
 	incOpt.process("include=/proj/include", arg);
-	assertTrue (arg == "/proj/include");
+	assert (arg == "/proj/include");
 	incOpt.process("include-dir=/usr/include", arg);
-	assertTrue (arg == "/usr/include");
+	assert (arg == "/usr/include");
 	incOpt.process("Include-dir:/proj/include", arg);
-	assertTrue (arg == "/proj/include");
+	assert (arg == "/proj/include");
 	
 	try
 	{
@@ -301,9 +301,9 @@ void OptionTest::testProcess2()
 		.repeatable(false);
 	
 	vrbOpt.process("v", arg);
-	assertTrue (arg.empty());
+	assert (arg.empty());
 	vrbOpt.process("verbose", arg);
-	assertTrue (arg.empty());
+	assert (arg.empty());
 	
 	try
 	{

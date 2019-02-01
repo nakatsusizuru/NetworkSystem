@@ -97,7 +97,7 @@ void NamedMutexTest::testLock()
 		Thread::sleep(2000);
 		testMutex.unlock();
 		thr.join();
-		assertTrue (tl.timestamp() > now);
+		assert (tl.timestamp() > now);
 	}
 	catch(Poco::NotImplementedException e)
 	{
@@ -115,7 +115,7 @@ void NamedMutexTest::testTryLock()
 	thr1.start(ttl1);
 	thr1.join();
 #if POCO_OS != POCO_OS_ANDROID
-	assertTrue (ttl1.locked());
+	assert (ttl1.locked());
 #endif
 	try 
 	{
@@ -125,7 +125,7 @@ void NamedMutexTest::testTryLock()
 		thr2.start(ttl2);
 		thr2.join();
 		testMutex.unlock();
-		assertTrue (!ttl2.locked());
+		assert (!ttl2.locked());
 	}
 	catch(Poco::NotImplementedException e)
 	{

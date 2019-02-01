@@ -51,9 +51,6 @@ public:
 	int dataSize() const;
 		/// Returns the data size in bytes.
 
-	int packetSize() const;
-		/// Returns the packet size in bytes.
-
 	int ttl() const;
 		/// Returns the Time-To-Live value.
 
@@ -64,8 +61,6 @@ protected:
 	~ICMPSocketImpl();
 
 private:
-	void checkFragmentation(const std::string& err, int type, int code);
-
 	ICMPPacket _icmpPacket;
 	int _ttl;
 	int _timeout;
@@ -75,12 +70,6 @@ private:
 //
 // inlines
 //
-
-inline int ICMPSocketImpl::packetSize() const
-{
-	return _icmpPacket.packetSize();
-}
-
 inline int ICMPSocketImpl::dataSize() const
 {
 	return _icmpPacket.getDataSize();

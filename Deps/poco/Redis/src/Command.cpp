@@ -683,12 +683,4 @@ Command Command::rpush(const std::string& list, const StringVec& values, bool cr
 }
 
 
-Command Command::ping()
-{
-	Command cmd("PING");
-
-	return cmd;
-}
-
-
 } } // namespace Poco::Redis

@@ -37,7 +37,7 @@ bool SkipCallback::handleZipEntry(std::istream& zipStream, const ZipLocalFileHea
 	if (!hdr.searchCRCAndSizesAfterData())
 		zipStream.seekg(hdr.getCompressedSize(), std::ios_base::cur);
 	else
-		ZipUtil::syncDataDescriptor(zipStream, hdr.needsZip64());
+		ZipUtil::sync(zipStream);
 	if (!zipStream.good()) throw Poco::IOException("Failed to seek on input stream");
 	return true;
 }

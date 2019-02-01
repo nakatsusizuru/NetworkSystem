@@ -113,8 +113,6 @@ class SharedPtr
 	/// is required.
 {
 public:
-	typedef C Type;
-
 	SharedPtr(): _pCounter(new RC), _ptr(0)
 	{
 	}

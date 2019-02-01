@@ -235,7 +235,7 @@
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\PocoCryptoMTd.pdb"
+				ProgramDataBaseFileName="..\lib\PocoCryptomtd.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -253,7 +253,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoCryptoMTd.lib"
+				OutputFile="..\lib\PocoCryptomtd.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -328,7 +328,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoCryptoMT.lib"
+				OutputFile="..\lib\PocoCryptomt.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -384,7 +384,7 @@
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\PocoCryptoMDd.pdb"
+				ProgramDataBaseFileName="..\lib\PocoCryptomdd.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -402,7 +402,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoCryptoMDd.lib"
+				OutputFile="..\lib\PocoCryptomdd.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -477,7 +477,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoCryptoMD.lib"
+				OutputFile="..\lib\PocoCryptomd.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"

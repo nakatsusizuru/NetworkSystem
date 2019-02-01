@@ -86,7 +86,7 @@ void LoggingConfiguratorTest::testConfigurator()
 	configurator.configure(pConfig);
 	
 	Logger& root = Logger::get("");
-	assertTrue (root.getLevel() == Message::PRIO_WARNING);
+	assert (root.getLevel() == Message::PRIO_WARNING);
 	FormattingChannel* pFC = dynamic_cast<FormattingChannel*>(root.getChannel());
 	assertNotNull (pFC);
 #if defined(_WIN32) && !defined(_WIN32_WCE)
@@ -95,18 +95,18 @@ void LoggingConfiguratorTest::testConfigurator()
 	assertNotNull (dynamic_cast<ConsoleChannel*>(pFC->getChannel()));
 #endif
 	assertNotNull (dynamic_cast<PatternFormatter*>(pFC->getFormatter()));
-	assertTrue (static_cast<PatternFormatter*>(pFC->getFormatter())->getProperty("pattern") == "%s-[%p] %t");
+	assert (static_cast<PatternFormatter*>(pFC->getFormatter())->getProperty("pattern") == "%s-[%p] %t");
 	
 	Logger& logger1 = Logger::get("logger1");
-	assertTrue (logger1.getLevel() == Message::PRIO_INFORMATION);
+	assert (logger1.getLevel() == Message::PRIO_INFORMATION);
 	pFC = dynamic_cast<FormattingChannel*>(logger1.getChannel());
 	assertNotNull (pFC);
 	assertNotNull (dynamic_cast<FileChannel*>(pFC->getChannel()));
 	assertNotNull (dynamic_cast<PatternFormatter*>(pFC->getFormatter()));
-	assertTrue (static_cast<PatternFormatter*>(pFC->getFormatter())->getProperty("pattern") == "%s: [%p] %t");
+	assert (static_cast<PatternFormatter*>(pFC->getFormatter())->getProperty("pattern") == "%s: [%p] %t");
 
 	Logger& logger2 = Logger::get("logger2");
-	assertTrue (logger2.getLevel() == Message::PRIO_DEBUG);
+	assert (logger2.getLevel() == Message::PRIO_DEBUG);
 	assertNotNull (dynamic_cast<SplitterChannel*>(logger2.getChannel()));	
 }
 

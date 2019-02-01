@@ -63,7 +63,7 @@ void ChannelTest::testSplitter()
 	pSplitter->addChannel(pChannel.get());
 	Message msg;
 	pSplitter->log(msg);
-	assertTrue (pChannel->list().size() == 2);
+	assert (pChannel->list().size() == 2);
 }
 
 
@@ -76,7 +76,7 @@ void ChannelTest::testAsync()
 	pAsync->log(msg);
 	pAsync->log(msg);
 	pAsync->close();
-	assertTrue (pChannel->list().size() == 2);
+	assert (pChannel->list().size() == 2);
 }
 
 
@@ -87,8 +87,8 @@ void ChannelTest::testFormatting()
 	AutoPtr<FormattingChannel> pFormatterChannel = new FormattingChannel(pFormatter, pChannel.get());
 	Message msg("Source", "Text", Message::PRIO_INFORMATION);
 	pFormatterChannel->log(msg);
-	assertTrue (pChannel->list().size() == 1);
-	assertTrue (pChannel->list().begin()->getText() == "Source: Text");
+	assert (pChannel->list().size() == 1);
+	assert (pChannel->list().begin()->getText() == "Source: Text");
 }
 
 
@@ -110,7 +110,7 @@ void ChannelTest::testStream()
 	AutoPtr<FormattingChannel> pFormatterChannel = new FormattingChannel(pFormatter, pChannel.get());
 	Message msg("Source", "Text", Message::PRIO_INFORMATION);
 	pFormatterChannel->log(msg);
-	assertTrue (str.str().find("Source: Text") == 0);
+	assert (str.str().find("Source: Text") == 0);
 }
 
 

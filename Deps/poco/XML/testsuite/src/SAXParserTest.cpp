@@ -76,7 +76,7 @@ void SAXParserTest::testSimple1()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, SIMPLE1);
-	assertTrue (xml == "<foo/>");
+	assert (xml == "<foo/>");
 }
 
 
@@ -84,7 +84,7 @@ void SAXParserTest::testSimple2()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, SIMPLE2);
-	assertTrue (xml == "<foo/>");
+	assert (xml == "<foo/>");
 }
 
 
@@ -92,7 +92,7 @@ void SAXParserTest::testAttributes()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, ATTRIBUTES);
-	assertTrue (xml == ATTRIBUTES);
+	assert (xml == ATTRIBUTES);
 }
 
 
@@ -100,7 +100,7 @@ void SAXParserTest::testCDATA()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, CDATA);
-	assertTrue (xml == CDATA);
+	assert (xml == CDATA);
 }
 
 
@@ -108,7 +108,7 @@ void SAXParserTest::testComment()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, COMMENT);
-	assertTrue (xml == COMMENT);
+	assert (xml == COMMENT);
 }
 
 
@@ -116,7 +116,7 @@ void SAXParserTest::testPI()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, PROCESSING_INSTRUCTION);
-	assertTrue (xml == PROCESSING_INSTRUCTION);
+	assert (xml == PROCESSING_INSTRUCTION);
 }
 
 
@@ -124,7 +124,7 @@ void SAXParserTest::testDTD()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, DTD);
-	assertTrue (xml == "<!DOCTYPE test SYSTEM \"test.dtd\"><foo/>");
+	assert (xml == "<!DOCTYPE test SYSTEM \"test.dtd\"><foo/>");
 }
 
 
@@ -132,7 +132,7 @@ void SAXParserTest::testInternalEntity()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, INTERNAL_ENTITY);
-	assertTrue (xml ==	"<!DOCTYPE sample><root>\n\t<company>Applied Informatics</company>\n</root>");
+	assert (xml ==	"<!DOCTYPE sample><root>\n\t<company>Applied Informatics</company>\n</root>");
 }
 
 
@@ -140,7 +140,7 @@ void SAXParserTest::testNotation()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, NOTATION);
-	assertTrue (xml == "<!DOCTYPE test [<!NOTATION mov SYSTEM \"quicktime\">"
+	assert (xml == "<!DOCTYPE test [<!NOTATION mov SYSTEM \"quicktime\">"
 	               "<!NOTATION xml PUBLIC \"-//W3C//NOTATION XML 1.0//EN\">]>"
 	               "<foo/>");
 }
@@ -150,7 +150,7 @@ void SAXParserTest::testExternalUnparsed()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, EXTERNAL_UNPARSED);
-	assertTrue (xml == "<!DOCTYPE test [<!NOTATION mov SYSTEM \"quicktime\">"
+	assert (xml == "<!DOCTYPE test [<!NOTATION mov SYSTEM \"quicktime\">"
 	               "<!ENTITY movie SYSTEM \"movie.mov\" NDATA mov>]>"
 	               "<sample/>");
 }
@@ -163,7 +163,7 @@ void SAXParserTest::testExternalParsed()
 	parser.setEntityResolver(&resolver);
 	parser.setFeature(XMLReader::FEATURE_EXTERNAL_GENERAL_ENTITIES, true);
 	std::string xml = parse(parser, XMLWriter::CANONICAL, EXTERNAL_PARSED);
-	assertTrue (xml == "<!DOCTYPE test><sample>\n\t<elem>\n\tAn external entity.\n</elem>\n\n</sample>");
+	assert (xml == "<!DOCTYPE test><sample>\n\t<elem>\n\tAn external entity.\n</elem>\n\n</sample>");
 }
 
 
@@ -171,7 +171,7 @@ void SAXParserTest::testDefaultNamespace()
 {
 	SAXParser parser;
 	std::string xml = parse(parser, XMLWriter::CANONICAL, DEFAULT_NAMESPACE);
-	assertTrue (xml ==	DEFAULT_NAMESPACE);
+	assert (xml ==	DEFAULT_NAMESPACE);
 }
 
 
@@ -181,7 +181,7 @@ void SAXParserTest::testNamespaces()
 	parser.setFeature(XMLReader::FEATURE_NAMESPACES, true);
 	parser.setFeature(XMLReader::FEATURE_NAMESPACE_PREFIXES, true);
 	std::string xml = parse(parser, XMLWriter::CANONICAL, NAMESPACES);
-	assertTrue (xml == NAMESPACES);
+	assert (xml == NAMESPACES);
 }
 
 
@@ -191,7 +191,7 @@ void SAXParserTest::testNamespacesNoPrefixes()
 	parser.setFeature(XMLReader::FEATURE_NAMESPACES, true);
 	parser.setFeature(XMLReader::FEATURE_NAMESPACE_PREFIXES, false);
 	std::string xml = parse(parser, XMLWriter::CANONICAL, NAMESPACES);
-	assertTrue (xml == NAMESPACES);
+	assert (xml == NAMESPACES);
 }
 
 
@@ -200,7 +200,7 @@ void SAXParserTest::testNoNamespaces()
 	SAXParser parser;
 	parser.setFeature(XMLReader::FEATURE_NAMESPACES, false);
 	std::string xml = parse(parser, XMLWriter::CANONICAL, NAMESPACES);
-	assertTrue (xml == NAMESPACES);
+	assert (xml == NAMESPACES);
 }
 
 
@@ -241,7 +241,7 @@ void SAXParserTest::testUndeclaredNoNamespace()
 	SAXParser parser;
 	parser.setFeature(XMLReader::FEATURE_NAMESPACES, false);
 	std::string xml = parse(parser, XMLWriter::CANONICAL, UNDECLARED_NAMESPACE);
-	assertTrue (xml == UNDECLARED_NAMESPACE);
+	assert (xml == UNDECLARED_NAMESPACE);
 }
 
 
@@ -281,7 +281,7 @@ void SAXParserTest::testEncoding()
 	parser.parse(&source);
 	
 	std::string xml = ostr.str();
-	assertTrue (xml == ENCODING);
+	assert (xml == ENCODING);
 }
 
 
@@ -291,7 +291,7 @@ void SAXParserTest::testCharacters()
 	SAXParser parser;
 	parser.setFeature(XMLReader::FEATURE_NAMESPACES, false);
 	std::string result = parse(parser, XMLWriter::CANONICAL, xml);
-	assertTrue (result == xml);
+	assert (result == xml);
 }
 
 
@@ -299,7 +299,7 @@ void SAXParserTest::testParseMemory()
 {
 	SAXParser parser;
 	std::string xml = parseMemory(parser, XMLWriter::CANONICAL | XMLWriter::PRETTY_PRINT, WSDL);
-	assertTrue (xml == WSDL);
+	assert (xml == WSDL);
 }
 
 
@@ -309,7 +309,7 @@ void SAXParserTest::testParsePartialReads()
 	parser.setFeature("http://www.appinf.com/features/enable-partial-reads", true);
 
 	std::string xml = parse(parser, XMLWriter::CANONICAL | XMLWriter::PRETTY_PRINT, WSDL);
-	assertTrue (xml == WSDL);
+	assert (xml == WSDL);
 }
 
 

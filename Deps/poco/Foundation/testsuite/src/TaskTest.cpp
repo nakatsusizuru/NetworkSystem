@@ -69,51 +69,51 @@ TaskTest::~TaskTest()
 void TaskTest::testFinish()
 {
 	AutoPtr<TestTask> pTT = new TestTask;
-	assertTrue (pTT->state() == Task::TASK_IDLE);
+	assert (pTT->state() == Task::TASK_IDLE);
 	Thread thr;
 	thr.start(*pTT);
-	assertTrue (pTT->progress() == 0);
+	assert (pTT->progress() == 0);
 	pTT->cont();
 	while (pTT->progress() != 0.5) Thread::sleep(50);
-	assertTrue (pTT->state() == Task::TASK_RUNNING);
+	assert (pTT->state() == Task::TASK_RUNNING);
 	pTT->cont();
 	while (pTT->progress() != 1.0) Thread::sleep(50);
 	pTT->cont();
 	thr.join();
-	assertTrue (pTT->state() == Task::TASK_FINISHED);
+	assert (pTT->state() == Task::TASK_FINISHED);
 }
 
 
 void TaskTest::testCancel1()
 {
 	AutoPtr<TestTask> pTT = new TestTask;
-	assertTrue (pTT->state() == Task::TASK_IDLE);
+	assert (pTT->state() == Task::TASK_IDLE);
 	Thread thr;
 	thr.start(*pTT);
-	assertTrue (pTT->progress() == 0);
+	assert (pTT->progress() == 0);
 	pTT->cont();
 	while (pTT->progress() != 0.5) Thread::sleep(50);
-	assertTrue (pTT->state() == Task::TASK_RUNNING);
+	assert (pTT->state() == Task::TASK_RUNNING);
 	pTT->cancel();
-	assertTrue (pTT->state() == Task::TASK_CANCELLING);
+	assert (pTT->state() == Task::TASK_CANCELLING);
 	pTT->cont();
 	thr.join();
-	assertTrue (pTT->state() == Task::TASK_FINISHED);
+	assert (pTT->state() == Task::TASK_FINISHED);
 }
 
 
 void TaskTest::testCancel2()
 {
 	AutoPtr<TestTask> pTT = new TestTask;
-	assertTrue (pTT->state() == Task::TASK_IDLE);
+	assert (pTT->state() == Task::TASK_IDLE);
 	Thread thr;
 	thr.start(*pTT);
-	assertTrue (pTT->progress() == 0);
+	assert (pTT->progress() == 0);
 	pTT->cancel();
-	assertTrue (pTT->state() == Task::TASK_CANCELLING);
+	assert (pTT->state() == Task::TASK_CANCELLING);
 	pTT->cont();
 	thr.join();
-	assertTrue (pTT->state() == Task::TASK_FINISHED);
+	assert (pTT->state() == Task::TASK_FINISHED);
 }
 
 

@@ -132,7 +132,7 @@ void HTTPSServerTest::testIdentityRequest()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	std::string body(5000, 'x');
 	HTTPRequest request("POST", "/echoBody");
 	request.setContentLength((int) body.length());
@@ -141,9 +141,9 @@ void HTTPSServerTest::testIdentityRequest()
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getContentLength() == body.size());
-	assertTrue (response.getContentType() == "text/plain");
-	assertTrue (rbody == body);
+	assert (response.getContentLength() == body.size());
+	assert (response.getContentType() == "text/plain");
+	assert (rbody == body);
 }
 
 
@@ -155,7 +155,7 @@ void HTTPSServerTest::testChunkedRequest()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	std::string body(5000, 'x');
 	HTTPRequest request("POST", "/echoBody");
 	request.setContentType("text/plain");
@@ -164,10 +164,10 @@ void HTTPSServerTest::testChunkedRequest()
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getContentLength() == HTTPMessage::UNKNOWN_CONTENT_LENGTH);
-	assertTrue (response.getContentType() == "text/plain");
-	assertTrue (response.getChunkedTransferEncoding());
-	assertTrue (rbody == body);
+	assert (response.getContentLength() == HTTPMessage::UNKNOWN_CONTENT_LENGTH);
+	assert (response.getContentType() == "text/plain");
+	assert (response.getChunkedTransferEncoding());
+	assert (rbody == body);
 }
 
 
@@ -179,7 +179,7 @@ void HTTPSServerTest::testIdentityRequestKeepAlive()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	cs.setKeepAlive(true);
 	std::string body(5000, 'x');
 	HTTPRequest request("POST", "/echoBody", HTTPMessage::HTTP_1_1);
@@ -189,20 +189,20 @@ void HTTPSServerTest::testIdentityRequestKeepAlive()
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getContentLength() == body.size());
-	assertTrue (response.getContentType() == "text/plain");
-	assertTrue (response.getKeepAlive());
-	assertTrue (rbody == body);
+	assert (response.getContentLength() == body.size());
+	assert (response.getContentType() == "text/plain");
+	assert (response.getKeepAlive());
+	assert (rbody == body);
 	
 	body.assign(1000, 'y');
 	request.setContentLength((int) body.length());
 	request.setKeepAlive(false);
 	cs.sendRequest(request) << body;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getContentLength() == body.size());
-	assertTrue (response.getContentType() == "text/plain");
-	assertTrue (!response.getKeepAlive());
-	assertTrue (rbody == body);
+	assert (response.getContentLength() == body.size());
+	assert (response.getContentType() == "text/plain");
+	assert (!response.getKeepAlive());
+	assert (rbody == body);
 }
 
 
@@ -214,7 +214,7 @@ void HTTPSServerTest::testChunkedRequestKeepAlive()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	cs.setKeepAlive(true);
 	std::string body(5000, 'x');
 	HTTPRequest request("POST", "/echoBody", HTTPMessage::HTTP_1_1);
@@ -224,20 +224,20 @@ void HTTPSServerTest::testChunkedRequestKeepAlive()
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getContentLength() == HTTPMessage::UNKNOWN_CONTENT_LENGTH);
-	assertTrue (response.getContentType() == "text/plain");
-	assertTrue (response.getChunkedTransferEncoding());
-	assertTrue (rbody == body);
+	assert (response.getContentLength() == HTTPMessage::UNKNOWN_CONTENT_LENGTH);
+	assert (response.getContentType() == "text/plain");
+	assert (response.getChunkedTransferEncoding());
+	assert (rbody == body);
 
 	body.assign(1000, 'y');
 	request.setKeepAlive(false);
 	cs.sendRequest(request) << body;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getContentLength() == HTTPMessage::UNKNOWN_CONTENT_LENGTH);
-	assertTrue (response.getContentType() == "text/plain");
-	assertTrue (response.getChunkedTransferEncoding());
-	assertTrue (!response.getKeepAlive());
-	assertTrue (rbody == body);
+	assert (response.getContentLength() == HTTPMessage::UNKNOWN_CONTENT_LENGTH);
+	assert (response.getContentType() == "text/plain");
+	assert (response.getChunkedTransferEncoding());
+	assert (!response.getKeepAlive());
+	assert (rbody == body);
 }
 
 
@@ -249,7 +249,7 @@ void HTTPSServerTest::test100Continue()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	std::string body(5000, 'x');
 	HTTPRequest request("POST", "/echoBody");
 	request.setContentLength((int) body.length());
@@ -259,9 +259,9 @@ void HTTPSServerTest::test100Continue()
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getContentLength() == body.size());
-	assertTrue (response.getContentType() == "text/plain");
-	assertTrue (rbody == body);
+	assert (response.getContentLength() == body.size());
+	assert (response.getContentType() == "text/plain");
+	assert (rbody == body);
 }
 
 
@@ -273,15 +273,15 @@ void HTTPSServerTest::testRedirect()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	HTTPRequest request("GET", "/redirect");
 	cs.sendRequest(request);
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getStatus() == HTTPResponse::HTTP_FOUND);
-	assertTrue (response.get("Location") == "http://www.appinf.com/");
-	assertTrue (rbody.empty());
+	assert (response.getStatus() == HTTPResponse::HTTP_FOUND);
+	assert (response.get("Location") == "http://www.appinf.com/");
+	assert (rbody.empty());
 }
 
 
@@ -293,15 +293,15 @@ void HTTPSServerTest::testAuth()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	HTTPRequest request("GET", "/auth");
 	cs.sendRequest(request);
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getStatus() == HTTPResponse::HTTP_UNAUTHORIZED);
-	assertTrue (response.get("WWW-Authenticate") == "Basic realm=\"/auth\"");
-	assertTrue (rbody.empty());
+	assert (response.getStatus() == HTTPResponse::HTTP_UNAUTHORIZED);
+	assert (response.get("WWW-Authenticate") == "Basic realm=\"/auth\"");
+	assert (rbody.empty());
 }
 
 
@@ -313,14 +313,14 @@ void HTTPSServerTest::testNotImpl()
 	HTTPServer srv(new RequestHandlerFactory, svs, pParams);
 	srv.start();
 	
-	HTTPSClientSession cs("127.0.0.1", svs.address().port());
+	HTTPSClientSession cs("localhost", svs.address().port());
 	HTTPRequest request("GET", "/notImpl");
 	cs.sendRequest(request);
 	HTTPResponse response;
 	std::string rbody;
 	cs.receiveResponse(response) >> rbody;
-	assertTrue (response.getStatus() == HTTPResponse::HTTP_NOT_IMPLEMENTED);
-	assertTrue (rbody.empty());
+	assert (response.getStatus() == HTTPResponse::HTTP_NOT_IMPLEMENTED);
+	assert (rbody.empty());
 }
 
 

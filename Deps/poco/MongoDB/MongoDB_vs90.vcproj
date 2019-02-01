@@ -185,7 +185,7 @@
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\PocoMongoDBMTd.pdb"
+				ProgramDataBaseFileName="..\lib\PocoMongoDBmtd.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -200,7 +200,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoMongoDBMTd.lib"/>
+				OutputFile="..\lib\PocoMongoDBmtd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -258,7 +258,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoMongoDBMT.lib"/>
+				OutputFile="..\lib\PocoMongoDBmt.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -300,7 +300,7 @@
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\PocoMongoDBMDd.pdb"
+				ProgramDataBaseFileName="..\lib\PocoMongoDBmdd.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -315,7 +315,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoMongoDBMDd.lib"/>
+				OutputFile="..\lib\PocoMongoDBmdd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -373,7 +373,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\PocoMongoDBMD.lib"/>
+				OutputFile="..\lib\PocoMongoDBmd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool

@@ -52,11 +52,11 @@ void MulticastSocketTest::testMulticast()
 		MulticastEchoServer echoServer;
 		MulticastSocket ms(SocketAddress::IPv4);
 		int n = ms.sendTo("hello", 5, echoServer.group());
-		assertTrue (n == 5);
+		assert (n == 5);
 		char buffer[256];
 		n = ms.receiveBytes(buffer, sizeof(buffer));
-		assertTrue (n == 5);
-		assertTrue (std::string(buffer, n) == "hello");
+		assert (n == 5);
+		assert (std::string(buffer, n) == "hello");
 		ms.close();
 	}
 	catch (Poco::NotImplementedException e)

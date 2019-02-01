@@ -31,20 +31,20 @@ NullStreamTest::~NullStreamTest()
 void NullStreamTest::testInput()
 {
 	NullInputStream istr;
-	assertTrue (istr.good());
-	assertTrue (!istr.eof());
+	assert (istr.good());
+	assert (!istr.eof());
 	int c = istr.get();
-	assertTrue (c == -1);
-	assertTrue (istr.eof());
+	assert (c == -1);
+	assert (istr.eof());
 }
 
 
 void NullStreamTest::testOutput()
 {
 	NullOutputStream ostr;
-	assertTrue (ostr.good());
+	assert (ostr.good());
 	ostr << "Hello, world!";
-	assertTrue (ostr.good());
+	assert (ostr.good());
 }
 
 

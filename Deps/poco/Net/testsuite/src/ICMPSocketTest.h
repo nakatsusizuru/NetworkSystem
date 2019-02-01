@@ -26,7 +26,6 @@ public:
 
 	void testSendToReceiveFrom();
 	void testAssign();
-	void testMTU();
 
 	void setUp();
 	void tearDown();

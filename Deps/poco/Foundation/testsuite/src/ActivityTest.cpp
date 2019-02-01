@@ -71,14 +71,14 @@ ActivityTest::~ActivityTest()
 void ActivityTest::testActivity()
 {
 	ActiveObject activeObj;
-	assertTrue (activeObj.activity().isStopped());
+	assert (activeObj.activity().isStopped());
 	activeObj.activity().start();
-	assertTrue (!activeObj.activity().isStopped());
+	assert (!activeObj.activity().isStopped());
 	Thread::sleep(1000);
-	assertTrue (activeObj.activity().isRunning());
+	assert (activeObj.activity().isRunning());
 	activeObj.activity().stop();
 	activeObj.activity().wait();
-	assertTrue (activeObj.count() > 0);
+	assert (activeObj.count() > 0);
 }
 
 

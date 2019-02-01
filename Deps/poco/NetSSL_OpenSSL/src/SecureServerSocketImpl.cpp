@@ -62,9 +62,9 @@ void SecureServerSocketImpl::connectNB(const SocketAddress& address)
 }
 	
 
-void SecureServerSocketImpl::bind(const SocketAddress& address, bool reuseAddress, bool reusePort)
+void SecureServerSocketImpl::bind(const SocketAddress& address, bool reuseAddress)
 {
-	_impl.bind(address, reuseAddress, reusePort);
+	_impl.bind(address, reuseAddress);
 	reset(_impl.sockfd());
 }
 

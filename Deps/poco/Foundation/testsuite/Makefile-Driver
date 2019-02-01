@@ -34,7 +34,7 @@ objects = ActiveMethodTest ActivityTest ActiveDispatcherTest \
 	TestPlugin DummyDelegate BasicEventTest FIFOEventTest PriorityEventTest EventTestSuite \
 	LRUCacheTest ExpireCacheTest ExpireLRUCacheTest CacheTestSuite AnyTest FormatTest \
 	HashingTestSuite HashTableTest SimpleHashTableTest LinearHashTableTest \
-	HashSetTest HashMapTest SharedMemoryTest OrderedContainersTest \
+	HashSetTest HashMapTest SharedMemoryTest \
 	UniqueExpireCacheTest UniqueExpireLRUCacheTest UnicodeConverterTest \
 	TuplesTest NamedTuplesTest TypeListTest VarTest DynamicTestSuite FileStreamTest \
 	MemoryStreamTest ObjectPoolTest DirectoryWatcherTest DirectoryIteratorsTest

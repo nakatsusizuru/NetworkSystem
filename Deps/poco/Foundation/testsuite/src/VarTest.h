@@ -55,15 +55,11 @@ public:
 	void testArrayIdxOperator();
 	void testDynamicPair();
 	void testDynamicStructBasics();
-	void testOrderedDynamicStructBasics();
 	void testDynamicStructString();
-	void testOrderedDynamicStructString();
 	void testDynamicStructInt();
-	void testOrderedDynamicStructInt();
 	void testArrayToString();
 	void testArrayToStringEscape();
 	void testStructToString();
-	void testOrderedStructToString();
 	void testStructToStringEscape();
 	void testArrayOfStructsToString();
 	void testStructWithArraysToString();
@@ -89,12 +85,12 @@ private:
 	void testGetIdx(const Poco::Dynamic::Var& a1, std::vector<Poco::Dynamic::Var>::size_type n, const T& expectedResult)
 	{
 		Poco::Dynamic::Var val1 = a1[n];
-		assertTrue (val1 == expectedResult);
+		assert (val1 == expectedResult);
 
 		const Poco::Dynamic::Var c1 = a1;
-		assertTrue (a1 == c1); // silence the compiler
+		assert (a1 == c1); // silence the compiler
 		const Poco::Dynamic::Var cval1 = a1[n];
-		assertTrue (cval1 == expectedResult);
+		assert (cval1 == expectedResult);
 	}
 
 
@@ -134,8 +130,8 @@ private:
 	template<typename TS, typename TU>
 	void testLimitsSignedUnsigned()
 	{
-		assertTrue (std::numeric_limits<TS>::is_signed);
-		assertTrue (!std::numeric_limits<TU>::is_signed);
+		assert (std::numeric_limits<TS>::is_signed);
+		assert (!std::numeric_limits<TU>::is_signed);
 
 		TS iMin = std::numeric_limits<TS>::min();
 		Poco::Dynamic::Var dMin = iMin;
@@ -166,18 +162,18 @@ private:
 		Poco::Dynamic::Var da;
 		T val = 0;
 
-		assertTrue (da != val);
-		assertTrue (val != da);
-		assertTrue (!(val == da));
-		assertTrue (!(da == val));
-		assertTrue (!(da < val));
-		assertTrue (!(val < da));
-		assertTrue (!(da > val));
-		assertTrue (!(val > da));
-		assertTrue (!(da <= val));
-		assertTrue (!(val <= da));
-		assertTrue (!(da >= val));
-		assertTrue (!(val >= da));
+		assert (da != val);
+		assert (val != da);
+		assert (!(val == da));
+		assert (!(da == val));
+		assert (!(da < val));
+		assert (!(val < da));
+		assert (!(da > val));
+		assert (!(val > da));
+		assert (!(da <= val));
+		assert (!(val <= da));
+		assert (!(da >= val));
+		assert (!(val >= da));
 	}
 
 	template <typename C>
@@ -188,7 +184,7 @@ private:
 		cont.push_back("2");
 		cont.push_back(3.5);
 		Poco::Dynamic::Var arr(cont);
-		assertTrue (arr.size() == 3);
+		assert (arr.size() == 3);
 		Poco::Dynamic::Var::Iterator it = arr.begin();
 		Poco::Dynamic::Var::Iterator end = arr.end();
 		int counter = 0;
@@ -197,13 +193,13 @@ private:
 			switch (++counter)
 			{
 			case 1:
-				assertTrue (*it == 1);
+				assert (*it == 1);
 				break;
 			case 2:
-				assertTrue (*it == 2);
+				assert (*it == 2);
 				break;
 			case 3:
-				assertTrue (*it == 3.5);
+				assert (*it == 3.5);
 				break;
 			default:
 				fail ("must fail - wrong size");

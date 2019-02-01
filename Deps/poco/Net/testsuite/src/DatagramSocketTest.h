@@ -25,12 +25,9 @@ public:
 	~DatagramSocketTest();
 
 	void testEcho();
-	void testEchoBuffer();
 	void testSendToReceiveFrom();
 	void testUnbound();
 	void testBroadcast();
-	void testGatherScatterFixed();
-	void testGatherScatterVariable();
 
 	void setUp();
 	void tearDown();
@@ -38,16 +35,6 @@ public:
 	static CppUnit::Test* suite();
 
 private:
-	// "STRF" are sendto/recvfrom versions of the same functionality
-	void testGatherScatterFixedWin();
-	void testGatherScatterSTRFFixedWin();
-	void testGatherScatterVariableWin();
-	void testGatherScatterSTRFVariableWin();
-
-	void testGatherScatterFixedUNIX();
-	void testGatherScatterSTRFFixedUNIX();
-	void testGatherScatterVariableUNIX();
-	void testGatherScatterSTRFVariableUNIX();
 };
 
 

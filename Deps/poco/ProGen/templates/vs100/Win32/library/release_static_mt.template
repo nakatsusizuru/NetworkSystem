@@ -54,8 +54,7 @@
 	/>
 	<Tool
 		Name="VCLibrarianTool"
-		AdditionalDependencies="${configuration.linker.dependencies}"
-		OutputFile="${project.outdir}\lib\${project.target}MT.lib"
+		OutputFile="${project.outdir}\lib\${project.target}mt.lib"
 	/>
 	<Tool
 		Name="VCALinkTool"

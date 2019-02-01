@@ -39,6 +39,7 @@ namespace Cry
 					DLOG_TRACE << "Recv DataSize < MessageSize:" << Conn->remote_addr();
 					return;
 				}
+				
 				//if (std::shared_ptr<Action::UnknownInterfaceEx> lpListener = m_Service->GetObjectInterface()->Get(uMsg); lpListener)
 				//{
 				//	try
@@ -72,8 +73,6 @@ namespace Cry
 	{
 		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
-		m_Service->SetThreadStart(std::bind(&NetworkServiceEngine::OnThreadStart, this, std::placeholders::_1));
-		m_Service->SetThreadClose(std::bind(&NetworkServiceEngine::OnThreadClose, this, std::placeholders::_1));
 	}
 	bool NetworkServiceEngine::CreateService()
 	{
@@ -124,14 +123,6 @@ namespace Cry
 				Conn->Close();
 			}
 		}
-	}
-	void NetworkServiceEngine::OnThreadStart(std::thread::id tid)
-	{
-		DebugMsg("创建线程：%d\n", tid);
-	}
-	void NetworkServiceEngine::OnThreadClose(std::thread::id tid)
-	{
-		DebugMsg("销毁线程：%d\n", tid);
 	}
 	bool NetworkServiceEngine::AddWork(u64 Index, const std::shared_ptr<Work> & Work)
 	{

@@ -34,7 +34,7 @@
 		ForceConformanceInForLoopScope="true"
 		RuntimeTypeInfo="true"
 		UsePrecompiledHeader="0"
-		ProgramDataBaseFileName="${project.outdir}\lib\${project.target}MDd.pdb"
+		ProgramDataBaseFileName="${project.outdir}\lib\${project.target}mdd.pdb"
 		WarningLevel="3"
 		Detect64BitPortabilityProblems="false"
 		DebugInformationFormat="3"
@@ -53,8 +53,7 @@
 	/>
 	<Tool
 		Name="VCLibrarianTool"
-		AdditionalDependencies="${configuration.linker.dependencies}"
-		OutputFile="${project.outdir}\lib\${project.target}MDd.lib"
+		OutputFile="${project.outdir}\lib\${project.target}mdd.lib"
 	/>
 	<Tool
 		Name="VCALinkTool"

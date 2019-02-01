@@ -55,10 +55,10 @@ void SimpleFileChannelTest::testRotate()
 			pChannel->log(msg);
 		}
 		File f(name);
-		assertTrue (f.exists());
+		assert (f.exists());
 		f = name + ".0";
-		assertTrue (f.exists());
-		assertTrue (f.getSize() >= 2048);
+		assert (f.exists());
+		assert (f.getSize() >= 2048);
 	}
 	catch (...)
 	{

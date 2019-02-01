@@ -1,10 +1,8 @@
 [submodule "openssl"]
 	path = openssl
 	url = https://github.com/pocoproject/openssl
-	branch = develop
+	branch = master
 
 [submodule "gradle"]
 	path = gradle
 	url = https://github.com/pocoproject/gradle
-	branch = gradle-4.9
-	

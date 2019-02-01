@@ -1,13 +1,15 @@
+set(POCO_EXENAME "PocoDoc")
+
 # Sources
 file(GLOB SRCS_G "src/*.cpp")
 POCO_SOURCES_AUTO( SRCS ${SRCS_G})
 
-add_executable(PocoDoc ${SRCS} )
+add_executable( "${POCO_EXENAME}" ${SRCS} )
 
-target_link_libraries(PocoDoc PUBLIC Poco::Util Poco::XML Poco::CppParser)
+target_link_libraries( "${POCO_EXENAME}" Util XML Foundation CppParser)
 
 install(
-	TARGETS PocoDoc EXPORT PocoDocTargets
+    TARGETS "${POCO_EXENAME}" EXPORT "${POCO_EXENAME}Targets"
     LIBRARY DESTINATION lib${LIB_SUFFIX}
     ARCHIVE DESTINATION lib${LIB_SUFFIX}
     RUNTIME DESTINATION bin

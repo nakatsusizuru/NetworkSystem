@@ -82,7 +82,7 @@ void CompressTest::testManipulator()
 	zm.renameFile("test.zip", "renamedtest.zip");
 	zm.addFile("doc/othertest.zip", ZipTest::getTestFile("data", "test.zip"));
 	ZipArchive archive=zm.commit();
-	assertTrue (archive.findHeader("doc/othertest.zip") != archive.headerEnd());
+	assert (archive.findHeader("doc/othertest.zip") != archive.headerEnd());
 }
 
 
@@ -99,8 +99,8 @@ void CompressTest::testManipulatorDel()
 	zm.deleteFile("test.zip");
 	zm.addFile("doc/data.zip", ZipTest::getTestFile("data", "data.zip"));
 	ZipArchive archive=zm.commit();
-	assertTrue (archive.findHeader("test.zip") == archive.headerEnd());
-	assertTrue (archive.findHeader("doc/data.zip") != archive.headerEnd());
+	assert (archive.findHeader("test.zip") == archive.headerEnd());
+	assert (archive.findHeader("doc/data.zip") != archive.headerEnd());
 }
 
 
@@ -117,8 +117,8 @@ void CompressTest::testManipulatorReplace()
 	zm.replaceFile("test.zip", ZipTest::getTestFile("data", "doc.zip"));
 
 	ZipArchive archive=zm.commit();
-	assertTrue (archive.findHeader("test.zip") != archive.headerEnd());
-	assertTrue (archive.findHeader("doc.zip") == archive.headerEnd());
+	assert (archive.findHeader("test.zip") != archive.headerEnd());
+	assert (archive.findHeader("doc.zip") == archive.headerEnd());
 }
 
 
@@ -131,26 +131,26 @@ void CompressTest::testSetZipComment()
 	c.addFile(theFile, theFile.getFileName());
 	c.setZipComment(comment);
 	ZipArchive a(c.close());
-	assertTrue (a.getZipComment() == comment);
+	assert(a.getZipComment() == comment);
 }
 
 
 void CompressTest::createDataFile(const std::string& path, Poco::UInt64 size)
 {
 	Poco::FileOutputStream out(path.c_str(), std::ios::trunc);
-	assertTrue ( ! out.fail() );
+	assert( ! out.fail() );
 	Poco::Buffer<char> buffer(MB);
 	for(int i = 0; size != 0; i++) {
 		std::memset(buffer.begin(), i, buffer.size());
 		Poco::UInt64 bytesToWrite = std::min(size, static_cast<Poco::UInt64>(buffer.size()));
 		out.write(buffer.begin(), bytesToWrite);
-		assertTrue ( ! out.fail() );
+		assert( ! out.fail() );
 		size -= bytesToWrite;
 	}
 	out.flush();
-	assertTrue ( ! out.fail() );
+	assert( ! out.fail() );
 	out.close();
-	assertTrue ( ! out.fail() );
+	assert( ! out.fail() );
 }
 
 
@@ -182,10 +182,10 @@ void CompressTest::testZip64()
 		const std::string& path = it->first;
 		Poco::UInt64 size = it->second;
 		ZipArchive::FileHeaders::const_iterator it2 = a.findHeader(path);
-		assertTrue (it2 != a.headerEnd());
+		assert (it2 != a.headerEnd());
 		const Poco::Zip::ZipLocalFileHeader& file = it2->second;
-		assertTrue (file.getUncompressedSize() == size);
-		assertTrue (file.getCompressedSize() == size);
+		assert(file.getUncompressedSize() == size);
+		assert(file.getCompressedSize() == size);
 	}
 	for (FileMap::const_iterator it = files.begin(); it != files.end(); it++)
 	{

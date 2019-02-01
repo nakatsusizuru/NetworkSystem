@@ -48,7 +48,7 @@ public:
 	~SessionImpl();
 		/// Destroys the SessionImpl.
 
-	Poco::SharedPtr<Poco::Data::StatementImpl> createStatementImpl();
+	Poco::Data::StatementImpl* createStatementImpl();
 		/// Returns an SQLite StatementImpl.
 
 	void open(const std::string& connect = "");
@@ -68,17 +68,14 @@ public:
 	void close();
 		/// Closes the session.
 
-	void reset();
-		/// Do nothing
-
-	bool isConnected() const;
+	bool isConnected();
 		/// Returns true if connected, false otherwise.
 
 	void setConnectionTimeout(std::size_t timeout);
 		/// Sets the session connection timeout value.
 		/// Timeout value is in seconds.
 
-	std::size_t getConnectionTimeout() const;
+	std::size_t getConnectionTimeout();
 		/// Returns the session connection timeout value.
 		/// Timeout value is in seconds.
 
@@ -91,30 +88,30 @@ public:
 	void rollback();
 		/// Aborts a transaction.
 
-	bool canTransact() const;
+	bool canTransact();
 		/// Returns true if session has transaction capabilities.
 
-	bool isTransaction() const;
+	bool isTransaction();
 		/// Returns true iff a transaction is a transaction is in progress, false otherwise.
 
 	void setTransactionIsolation(Poco::UInt32 ti);
 		/// Sets the transaction isolation level.
 
-	Poco::UInt32 getTransactionIsolation() const;
+	Poco::UInt32 getTransactionIsolation();
 		/// Returns the transaction isolation level.
 
-	bool hasTransactionIsolation(Poco::UInt32 ti) const;
+	bool hasTransactionIsolation(Poco::UInt32 ti);
 		/// Returns true iff the transaction isolation level corresponding
 		/// to the supplied bitmask is supported.
 
-	bool isTransactionIsolation(Poco::UInt32 ti) const;
+	bool isTransactionIsolation(Poco::UInt32 ti);
 		/// Returns true iff the transaction isolation level corresponds
 		/// to the supplied bitmask.
 
 	void autoCommit(const std::string&, bool val);
 		/// Sets autocommit property for the session.
 
-	bool isAutoCommit(const std::string& name="") const;
+	bool isAutoCommit(const std::string& name="");
 		/// Returns autocommit property value.
 
 	const std::string& connectorName() const;
@@ -122,7 +119,7 @@ public:
 
 protected:
 	void setConnectionTimeout(const std::string& prop, const Poco::Any& value);
-	Poco::Any getConnectionTimeout(const std::string& prop) const;
+	Poco::Any getConnectionTimeout(const std::string& prop);
 
 private:
 	std::string _connector;
@@ -130,7 +127,6 @@ private:
 	bool        _connected;
 	bool        _isTransaction;
 	int         _timeout;
-	mutable
 	Poco::Mutex _mutex;
 
 	static const std::string DEFERRED_BEGIN_TRANSACTION;
@@ -142,13 +138,13 @@ private:
 //
 // inlines
 //
-inline bool SessionImpl::canTransact() const
+inline bool SessionImpl::canTransact()
 {
 	return true;
 }
 
 
-inline 	bool SessionImpl::isTransaction() const
+inline 	bool SessionImpl::isTransaction()
 {
 	return _isTransaction;
 }
@@ -160,7 +156,7 @@ inline const std::string& SessionImpl::connectorName() const
 }
 
 
-inline std::size_t SessionImpl::getConnectionTimeout() const
+inline std::size_t SessionImpl::getConnectionTimeout()
 {
 	return static_cast<std::size_t>(_timeout/1000);
 }

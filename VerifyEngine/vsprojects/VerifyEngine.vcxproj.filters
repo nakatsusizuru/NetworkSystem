@@ -37,6 +37,9 @@
     <Filter Include="Action\Interface">
       <UniqueIdentifier>{d5f4cf0b-3fec-4e74-b222-a108ac41291b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataBase">
+      <UniqueIdentifier>{a0de14ad-85d9-40fc-ae93-20adac5abd79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -66,6 +69,12 @@
     <ClInclude Include="..\Action\Cry.Signal.Interface.hpp">
       <Filter>Action\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="..\DataBase\Cry.Signal.DataBase.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DataBase\Cry.Signal.DataBasePool.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Gui\ControlDialog.cpp">
@@ -82,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="..\Action\Cry.Group.Control.cpp">
       <Filter>Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DataBase\Cry.Signal.DataBase.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DataBase\Cry.Signal.DataBasePool.cpp">
+      <Filter>DataBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

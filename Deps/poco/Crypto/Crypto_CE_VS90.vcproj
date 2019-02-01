@@ -201,7 +201,7 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoCryptoMTd.pdb"
+				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoCryptomtd.pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -217,7 +217,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoCryptoMTd.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoCryptomtd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -284,7 +284,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoCryptoMT.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoCryptomt.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -334,7 +334,7 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoCryptoMDd.pdb"
+				ProgramDataBaseFileName="..\lib\$(PlatformName)\PocoCryptomdd.pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -350,7 +350,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoCryptoMDd.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoCryptomdd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -417,7 +417,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib\$(PlatformName)\PocoCryptoMD.lib"/>
+				OutputFile="..\lib\$(PlatformName)\PocoCryptomd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool

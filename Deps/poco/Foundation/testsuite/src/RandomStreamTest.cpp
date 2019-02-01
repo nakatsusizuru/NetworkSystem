@@ -50,8 +50,8 @@ void RandomStreamTest::testStream()
 	var /= n;
 	int sd = int(std::sqrt((double) var));
 	
-	assertTrue (110 < avg && avg < 140);
-	assertTrue (sd < 20);
+	assert (110 < avg && avg < 140);
+	assert (sd < 20);
 }
 
 

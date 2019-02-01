@@ -46,23 +46,17 @@ class Net_API HTMLForm: public NameValueCollection
 	/// form fields programmatically. The default limit is 100.
 {
 public:
-	enum Options
-	{
-		OPT_USE_CONTENT_LENGTH = 0x01
-			/// Don't use Chunked Transfer-Encoding for multipart requests.
-	};
-
 	HTMLForm();
 		/// Creates an empty HTMLForm and sets the
 		/// encoding to "application/x-www-form-urlencoded".
-
+		
 	explicit HTMLForm(const std::string& encoding);
 		/// Creates an empty HTMLForm that uses
 		/// the given encoding.
 		///
 		/// Encoding must be either "application/x-www-form-urlencoded"
 		/// (which is the default) or "multipart/form-data".
-
+		
 	HTMLForm(const HTTPRequest& request, std::istream& requestBody, PartHandler& handler);
 		/// Creates a HTMLForm from the given HTTP request.
 		///
@@ -81,7 +75,7 @@ public:
 		///
 		/// For POST requests, you must use one of the constructors
 		/// taking an additional input stream for the request body.
-
+		
 	~HTMLForm();
 		/// Destroys the HTMLForm.
 
@@ -90,7 +84,7 @@ public:
 		///
 		/// Encoding must be either "application/x-www-form-urlencoded"
 		/// (which is the default) or "multipart/form-data".
-
+		
 	const std::string& getEncoding() const;
 		/// Returns the encoding used for posting the form.
 
@@ -136,14 +130,14 @@ public:
 		///
 		/// Note that read() does not clear the form before
 		/// reading the new values.
-
+		
 	void read(const std::string& queryString);
 		/// Reads the form data from the given HTTP query string.
 		///
 		/// Note that read() does not clear the form before
 		/// reading the new values.
-
-	void prepareSubmit(HTTPRequest& request, int options = 0);
+		
+	void prepareSubmit(HTTPRequest& request);
 		/// Fills out the request object for submitting the form.
 		///
 		/// If the request method is GET, the encoded form is appended to the
@@ -156,12 +150,7 @@ public:
 		///    - the content transfer encoding is set to identity encoding
 		/// Otherwise, if the request's HTTP version is HTTP/1.1:
 		///    - the request's persistent connection state is left unchanged
-		///    - the content transfer encoding is set to chunked, unless
-		///      the OPT_USE_CONTENT_LENGTH is given in options
-		///
-		/// Note: Not using chunked transfer encoding for multipart forms
-		/// degrades performance, as the request content must be generated
-		/// twice, first to determine its size, then to actually send it.
+		///    - the content transfer encoding is set to chunked
 
 	std::streamsize calculateContentLength();
 		/// Calculate the content length for the form.
@@ -185,7 +174,7 @@ public:
 		/// allowed.
 		///
 		/// See setFieldLimit() for more information.
-
+		
 	void setFieldLimit(int limit);
 		/// Sets the maximum number of header fields
 		/// allowed. This limit is used to defend certain
@@ -193,11 +182,11 @@ public:
 		/// Specify 0 for unlimited (not recommended).
 		///
 		/// The default limit is 100.
-
+		
 	void setValueLengthLimit(int limit);
 		/// Sets the maximum size for form field values
 		/// stored as strings.
-
+		
 	int getValueLengthLimit() const;
 		/// Returns the maximum size for form field values
 		/// stored as strings.
@@ -205,7 +194,7 @@ public:
 	static const std::string ENCODING_URL;       /// "application/x-www-form-urlencoded"
 	static const std::string ENCODING_MULTIPART; /// "multipart/form-data"
 	static const int         UNKNOWN_CONTENT_LENGTH;
-
+	
 protected:
 	void readUrl(std::istream& istr);
 	void readMultipart(std::istream& istr, PartHandler& handler);
@@ -228,9 +217,9 @@ private:
 		std::string name;
 		PartSource* pSource;
 	};
-
+	
 	typedef std::vector<Part> PartVec;
-
+	
 	int         _fieldLimit;
 	int         _valueLengthLimit;
 	std::string _encoding;

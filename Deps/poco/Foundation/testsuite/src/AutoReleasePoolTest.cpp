@@ -78,9 +78,9 @@ void AutoReleasePoolTest::testAutoReleasePool()
 	AutoReleasePool<TestObj> arp;
 	arp.add(new TestObj);
 	arp.add(new TestObj);
-	assertTrue (TestObj::count() == 2);
+	assert (TestObj::count() == 2);
 	arp.release();
-	assertTrue (TestObj::count() == 0);
+	assert (TestObj::count() == 0);
 }
 
 

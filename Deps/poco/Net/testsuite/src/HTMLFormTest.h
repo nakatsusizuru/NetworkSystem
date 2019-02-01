@@ -36,7 +36,6 @@ public:
 	void testSubmit2();
 	void testSubmit3();
 	void testSubmit4();
-	void testSubmit5();
 	void testFieldLimitUrl();
 	void testFieldLimitMultipart();
 

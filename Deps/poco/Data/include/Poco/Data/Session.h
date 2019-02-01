@@ -23,7 +23,6 @@
 #include "Poco/Data/Statement.h"
 #include "Poco/Data/StatementCreator.h"
 #include "Poco/Data/Binding.h"
-#include "Poco/SharedPtr.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/Any.h"
 #include <algorithm>
@@ -192,7 +191,7 @@ public:
 		return _statementCreator << t;
 	}
 
-	SharedPtr<StatementImpl> createStatementImpl();
+	StatementImpl* createStatementImpl();
 		/// Creates a StatementImpl.
 
 	void open(const std::string& connect = "");
@@ -314,7 +313,7 @@ private:
 //
 // inlines
 //
-inline SharedPtr<StatementImpl> Session::createStatementImpl()
+inline StatementImpl* Session::createStatementImpl()
 {
 	return _pImpl->createStatementImpl();
 }

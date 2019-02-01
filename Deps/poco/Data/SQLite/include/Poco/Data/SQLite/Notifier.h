@@ -129,12 +129,6 @@ public:
 		/// Equality operator. Compares value, row and database handles and
 		/// returns true iff all are equal.
 
-	const std::string& getTable() const;
-		/// Returns the table name.
-
-	void setTable(const std::string& table);
-		/// Sets the row number.
-
 	Poco::Int64 getRow() const;
 		/// Returns the row number.
 
@@ -157,9 +151,8 @@ private:
 	Notifier& operator=(const Notifier&);
 
 	const Session&     _session;
-	std::string        _table;
-	Poco::Int64        _row;
 	Poco::Dynamic::Var _value;
+	Poco::Int64        _row;
 	EnabledEventType   _enabledEvents;
 	Poco::Mutex        _mutex;
 };
@@ -177,19 +170,6 @@ inline bool Notifier::operator == (const Notifier& other) const
 }
 
 
-inline const std::string& Notifier::getTable() const
-{
-	return _table;
-}
-
-
-inline void Notifier::setTable(const std::string& table)
-/// Sets the row number.
-{
-	_table = table;
-}
-
-
 inline Poco::Int64 Notifier::getRow() const
 {
 	return _row;
@@ -197,6 +177,7 @@ inline Poco::Int64 Notifier::getRow() const
 
 
 inline void Notifier::setRow(Poco::Int64 row)
+	/// Sets the row number.
 {
 	_row = row;
 }

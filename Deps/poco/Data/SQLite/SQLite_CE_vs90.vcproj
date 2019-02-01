@@ -198,7 +198,7 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\..\lib\$(PlatformName)\PocoDataSQLiteMTd.pdb"
+				ProgramDataBaseFileName="..\..\lib\$(PlatformName)\PocoDataSQLitemtd.pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -214,7 +214,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLiteMTd.lib"/>
+				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLitemtd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -280,7 +280,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLiteMT.lib"/>
+				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLitemt.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -329,7 +329,7 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\..\lib\$(PlatformName)\PocoDataSQLiteMDd.pdb"
+				ProgramDataBaseFileName="..\..\lib\$(PlatformName)\PocoDataSQLitemdd.pdb"
 				WarningLevel="3"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -345,7 +345,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLiteMDd.lib"/>
+				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLitemdd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
@@ -411,7 +411,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLiteMD.lib"/>
+				OutputFile="..\..\lib\$(PlatformName)\PocoDataSQLitemd.lib"/>
 			<Tool
 				Name="VCALinkTool"/>
 			<Tool
