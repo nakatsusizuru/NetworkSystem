@@ -5,7 +5,7 @@
 namespace Cry
 {
 	class NetworkServiceEngine;
-
+	class DataBase;
 	struct CustomerData
 	{
 	public:
@@ -72,6 +72,8 @@ namespace Cry
 	private:
 		std::unique_ptr<evpp::EventLoopThread>								m_Loop;
 		std::unique_ptr<evpp::TCPServer>									m_Service;
+		std::shared_ptr<DataBase>											m_DataBase;
+		
 	private:
 		std::mutex															m_Mutex;
 		std::unordered_map<u64, std::shared_ptr<Work>>						m_Work;

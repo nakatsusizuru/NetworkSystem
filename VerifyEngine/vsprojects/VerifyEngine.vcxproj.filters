@@ -81,6 +81,9 @@
     <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp">
       <Filter>DataBase\Import</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Gui\ControlDialog.cpp">
@@ -109,5 +112,10 @@
     <CustomBuild Include="..\Gui\ControlDialog.h">
       <Filter>Gui</Filter>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Version.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

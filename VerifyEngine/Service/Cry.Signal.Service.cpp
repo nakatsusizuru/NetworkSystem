@@ -1,5 +1,6 @@
 #include <Global>
 #include <Service/Cry.Signal.Service.h>
+#include <DataBase/Cry.Signal.DataBase.h>
 #include <evpp/tcp_conn.h>
 namespace Cry
 {
@@ -73,6 +74,8 @@ namespace Cry
 	{
 		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
+		m_DataBase = std::make_shared<DataBase>("192.168.1.111", "root", "97bd87417987de80", "Verify");
+		m_DataBase->Initialize();
 	}
 	bool NetworkServiceEngine::CreateService()
 	{

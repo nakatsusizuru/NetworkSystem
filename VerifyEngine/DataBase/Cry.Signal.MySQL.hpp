@@ -9,11 +9,11 @@ namespace Cry
 	class MySQL
 	{
 	public:
-		inline explicit MySQL()
+		MySQL()
 		{
 			Poco::Data::MySQL::Connector::registerConnector();
 		}
-		inline ~MySQL()
+		~MySQL()
 		{
 			Poco::Data::MySQL::Connector::unregisterConnector();
 		}

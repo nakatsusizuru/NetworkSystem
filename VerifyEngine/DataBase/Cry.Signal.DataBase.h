@@ -8,18 +8,18 @@ namespace Cry
 {
 	using Session = Poco::Data::Session;
 	class MySQL;
-	class DataBase : public DataBaseInterface
+	class DataBase
 	{
 	public:
-		explicit DataBase();
-		explicit DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, u32 uPort, const std::string & DataBase, bool ReConnect);
-		~DataBase() = default;
+		DataBase() = default;
+		DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DataBase, u32 uPort = 3306, bool ReConnect = true);
+		~DataBase() {};
 	public:
-		virtual bool Initialize() override;
-		virtual void DeInitialize() override;
+		virtual bool Initialize();
+		virtual void DeInitialize();
 	private:
 		std::shared_ptr<Session>						m_Session;
 	protected:
-		std::unique_ptr<MySQL>							m_MySQL;
+		std::shared_ptr<MySQL>							m_MySQL;
 	};
 }

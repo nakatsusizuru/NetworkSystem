@@ -15,8 +15,8 @@
 
 
 VS_VERSION_INFO VERSIONINFO
-  FILEVERSION    3,7,0,0
-  PRODUCTVERSION 3,7,0,0
+  FILEVERSION    1,0,0,0
+  PRODUCTVERSION 1,0,0,0
   FILEFLAGSMASK  VS_FFI_FILEFLAGSMASK
   FILEFLAGS      VER_DEBUG
   FILEOS         VOS__WINDOWS32
@@ -32,14 +32,14 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "FileDescription", "Compiled with MSVC 19.16.27026.1\0"
-            VALUE "ProductVersion", "3.7.0\0"
-            VALUE "FileVersion", "3.7.0\0"
-            VALUE "InternalName", "protobuf\0"
-            VALUE "ProductName", "Protocol Buffers - Google's Data Interchange Format\0"
-            VALUE "CompanyName", "Google Inc.\0"
-            VALUE "LegalCopyright", "Copyright 2008 Google Inc.  All rights reserved.\0"
-            VALUE "Licence", "BSD\0"
-            VALUE "Info", "https://developers.google.com/protocol-buffers/\0"
+            VALUE "ProductVersion", "1.0.0.0\0"
+            VALUE "FileVersion", "1.0.0.0\0"
+            VALUE "InternalName", "\0"
+            VALUE "ProductName", "VerifyEngine\0"
+            VALUE "CompanyName", "X-Crack\0"
+            VALUE "LegalCopyright", "Copyright 2019 X-Crack.  All rights reserved.\0"
+            VALUE "Licence", "GNU General Public License v3.0\0"
+            VALUE "Info", "https://github.com/X-Crack/\0"
         END
     END
 END
