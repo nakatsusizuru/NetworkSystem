@@ -9,8 +9,8 @@ namespace Cry
 	class DataPool
 	{
 	public:
-		DataPool() = default;
-		DataPool(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u64 uSize = 0, u32 uPort = 3306, bool ReConnect = true);
+		explicit DataPool() = default;
+		explicit DataPool(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u64 uSize = 0, u32 uPort = 3306, bool ReConnect = true);
 		~DataPool() {};
 	public:
 		std::shared_ptr<DataBase> GetNextMySQL();

@@ -6,10 +6,10 @@
     #include <vcruntime.h>
 #endif
 
-using String    = char;
-using lPString  = String *;
+using String	= char;
+using lPString	= String * ;
 using lPCString = const String *;
-using w8        = String;
+using w8		= String;
 using w16       = signed short;
 using w32       = signed int;
 using w64       = signed long long;
@@ -21,7 +21,6 @@ using u16       = unsigned short;
 using u32       = unsigned int;
 using ulong		= unsigned long;
 using u64       = unsigned long long;
-using PVOID		= void *;
 
 /// A - U
 #if defined ( UNICODE ) && defined ( TEXT )

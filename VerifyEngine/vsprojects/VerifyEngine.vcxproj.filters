@@ -46,6 +46,9 @@
     <Filter Include="Action\Import">
       <UniqueIdentifier>{bceddfce-537b-4c5f-bc7c-91823535ff68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Action\DataBase">
+      <UniqueIdentifier>{9e2c1a9a-6d2b-423f-9c27-dfaa5866a81d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -90,6 +93,9 @@
     <ClInclude Include="..\Action\Cry.Signal.Proto.hpp">
       <Filter>Action\Import</Filter>
     </ClInclude>
+    <ClInclude Include="..\Action\Cry.Action.DataBase.h">
+      <Filter>Action\DataBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Gui\ControlDialog.cpp">
@@ -112,6 +118,9 @@
     </ClCompile>
     <ClCompile Include="..\DataBase\Cry.Signal.DataBasePool.cpp">
       <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Action\Cry.Action.DataBase.cpp">
+      <Filter>Action\DataBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

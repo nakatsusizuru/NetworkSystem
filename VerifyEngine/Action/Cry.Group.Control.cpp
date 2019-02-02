@@ -9,7 +9,7 @@ namespace Cry
 	{
 		Center::Center() {};
 
-		void Center::OnSocketData(const std::shared_ptr<Cry::Work> & Work, const u32 uMsg, const PVOID Data, const u32 uSize)
+		bool Center::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
 		{
 			Signal::Register ProtoData;
 			{
@@ -19,6 +19,7 @@ namespace Cry
 				}
 				DebugMsg("用户账号：%s 用户密码：%s\n", ProtoData.username().c_str(), ProtoData.password().c_str());
 			}
+			return true;
 		}
 	}
 }

@@ -7,7 +7,11 @@ namespace Ui
 }
 namespace Cry
 {
-	class NetworkServiceEngine;
+	namespace Signal
+	{
+		class NetworkServiceEngine;
+	}
+
 	class ControlDialog : public QMainWindow
 	{
 		Q_OBJECT;
@@ -21,7 +25,7 @@ namespace Cry
 		void star();
 		void stop();
 	private:
-		Ui::ControlDialog*							Interface;
-		std::unique_ptr<NetworkServiceEngine>		m_Service;
+		Ui::ControlDialog*										Interface;
+		std::unique_ptr<Cry::Signal::NetworkServiceEngine>		m_Service;
 	};
 }

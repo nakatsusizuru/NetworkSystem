@@ -10,7 +10,7 @@ namespace Cry
 			explicit Center();
 			~Center() = default;
 		private:
-			virtual void OnSocketData(const std::shared_ptr<Cry::Work> & Work, const u32 uMsg, const PVOID Data, const u32 uSize) override;
+			virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize) override;
 		private:
 			
 		};

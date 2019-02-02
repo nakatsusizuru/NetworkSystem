@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Action\Cry.Action.DataBase.cpp" />
     <ClCompile Include="..\Action\Cry.Group.Control.cpp" />
     <ClCompile Include="..\DataBase\Cry.Signal.DataBase.cpp" />
     <ClCompile Include="..\DataBase\Cry.Signal.DataBasePool.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="..\..\Deps\Public\Cry.Port.h" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Event.hpp" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp" />
+    <ClInclude Include="..\Action\Cry.Action.DataBase.h" />
     <ClInclude Include="..\Action\Cry.Group.Control.h" />
     <ClInclude Include="..\Action\Cry.Signal.Interface.hpp" />
     <ClInclude Include="..\Action\Cry.Signal.Proto.hpp" />
@@ -180,10 +182,11 @@
       <AdditionalIncludeDirectories>..\;..\..\Deps\Public;..\..\Deps\evpp;..\..\Deps\glog\src\windows;..\..\Deps\Libevent\include;..\..\Deps\Libevent\vsprojects\include;..\..\Deps\protobuf\src;..\..\Deps\data\src;..\..\Deps\poco\Foundation\include;..\..\Deps\poco\Data\include;..\..\Deps\poco\Data\MySQL\include;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ControlFlowGuard>
       </ControlFlowGuard>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <OmitFramePointers>true</OmitFramePointers>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -194,6 +197,7 @@
       <AdditionalDependencies>imm32.lib;winmm.lib;ws2_32.lib;dwmapi.lib;uxtheme.lib;version.lib;glu32.lib;opengl32.lib;Iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;..\..\Lib\$(Configuration)\$(PlatformShortName);..\..\Deps\database\lib\$(Configuration)\$(PlatformShortName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <CustomBuild>
       <Outputs>..\Gui\GeneratedFiles\%(Filename)Ex.cpp</Outputs>

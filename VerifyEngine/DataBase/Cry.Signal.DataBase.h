@@ -12,8 +12,8 @@ namespace Cry
 	public:
 		using Session = Poco::Data::Session;
 	public:
-		DataBase() = default;
-		DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u32 uPort = 3306, bool ReConnect = true);
+		explicit DataBase() = default;
+		explicit DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u32 uPort = 3306, bool ReConnect = true);
 		virtual ~DataBase();
 	public:
 		virtual bool Initialize();

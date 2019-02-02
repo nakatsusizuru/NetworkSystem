@@ -6,7 +6,7 @@ namespace Cry
 	{
 		try
 		{
-			std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + DB + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : " false") + ";protocol=tcp6;";
+			std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + DB + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : "false") + ";protocol=tcp6;";
 			m_Session = std::make_shared<Session>(Poco::Data::MySQL::Connector::KEY, lpszParameter);
 		}
 		catch (const Poco::Exception & ex)

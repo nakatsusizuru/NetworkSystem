@@ -28,7 +28,7 @@ namespace Cry
 	{
 		if (m_Service == nullptr)
 		{
-			if (m_Service = std::make_unique<NetworkServiceEngine>("0.0.0.0:9999", "123", 3); m_Service != nullptr)
+			if (m_Service = std::make_unique<Cry::Signal::NetworkServiceEngine>("0.0.0.0:9999", "123", 3); m_Service != nullptr)
 			{
 				return m_Service->CreateService();
 			}
