@@ -16,12 +16,12 @@ namespace Cry
 	{
 	public:
 		CustomerData() = default;
-		CustomerData(const std::string & lpszUsername, const std::string & lpszPassword) : Username(lpszUsername), Password(lpszPassword) {};
-		bool operator == (const CustomerData & Other) const
+		CustomerData(const std::string & lpszUsername, const std::string & lpszPassword) : Username(lpszUsername), Password(lpszPassword), Expires(0) {};
+		bool operator == (const CustomerData & Other) const noexcept
 		{
 			return Other.Username == Username && Other.Password == Password;
 		}
-		bool operator != (const CustomerData & Other) const
+		bool operator != (const CustomerData & Other) const noexcept
 		{
 			return !(*this == Other);
 		}
@@ -47,13 +47,16 @@ namespace Cry
 	class Work : public std::enable_shared_from_this<Work>
 	{
 	public:
-		explicit Work(NetworkServiceEngine * Service, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB);
+		explicit Work(NetworkServiceEngine * Services, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB);
 		~Work();
 	public:
 		void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * pData);
 		void Close();
+		void SetCustomer(const std::shared_ptr<CustomerData> & Customer);
+		bool CheckOnline(const CustomerData & Other) const;
 	public:
-		const std::shared_ptr<DataBase> & GetDataBase() { return m_DataBase; }
+		std::shared_ptr<CustomerData> & GetCustomerData() { return m_Customer; }
+		std::shared_ptr<DataBase> & GetDataBase() { return m_DataBase; }
 	private:
 		NetworkServiceEngine*												m_Services;
 		evpp::TCPConnPtr													m_CurrConn;
@@ -62,7 +65,7 @@ namespace Cry
 		/// 缓冲区
 		std::string															m_lpszBody;
 		/// 客户信息
-		Cry::CustomerData													m_Customer;
+		std::shared_ptr<CustomerData>										m_Customer;
 	};
 
 	class NetworkServiceEngine
@@ -80,13 +83,16 @@ namespace Cry
 		bool AddWork(u64 Index, const std::shared_ptr<Work> & Work);
 		bool DelWork(u64 Index);
 		std::shared_ptr<Work> GetWork(u64 Index);
+	public:
+		bool CheckOnline(const CustomerData & Other);
 	private:
 		std::unique_ptr<evpp::EventLoopThread>								m_Loop;
 		std::unique_ptr<evpp::TCPServer>									m_Services;
 		std::shared_ptr<Import::MySQL>										m_MySQL;
 		std::shared_ptr<DataPool>											m_DataPool;
 	private:
-		std::mutex															m_Mutex;
-		std::unordered_map<u64, std::shared_ptr<Work>>						m_Work;
+		std::unordered_map<u64, std::shared_ptr<Work>>						m_WorkData;
+	private:
+		std::mutex															m_WorkLock;
 	};
 }

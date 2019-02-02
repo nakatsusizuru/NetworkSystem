@@ -14,7 +14,7 @@ namespace Cry
 		m_pData->Reset();
 	}
 
-	Work::Work(NetworkServiceEngine * Service, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB) : m_Services(Service), m_CurrConn(Conn), m_DataBase(DB)
+	Work::Work(NetworkServiceEngine * Services, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB) : m_Services(Services), m_CurrConn(Conn), m_DataBase(DB), m_Customer()
 	{
 		DebugMsg("Êý¾ÝµØÖ·£º%p\n", DB);
 	}
@@ -74,9 +74,21 @@ namespace Cry
 			m_CurrConn->Close();
 		}
 	}
+	void Work::SetCustomer(const std::shared_ptr<CustomerData> & Customer)
+	{
+		m_Customer = Customer;
+	}
+	bool Work::CheckOnline(const CustomerData & Other) const
+	{
+		if (m_Services != nullptr)
+		{
+			return m_Services->CheckOnline(Other);
+		}
+		return true;
+	}
 	Work::~Work()
 	{
-		
+		this->Close();
 	}
 	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Services(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
 	{
@@ -136,11 +148,11 @@ namespace Cry
 	}
 	bool NetworkServiceEngine::AddWork(u64 Index, const std::shared_ptr<Work> & Work)
 	{
-		std::lock_guard<std::mutex> Guard(m_Mutex);
+		std::lock_guard<std::mutex> Guard(m_WorkLock);
 		{
-			if (m_Work.find(Index) == m_Work.cend())
+			if (m_WorkData.find(Index) == m_WorkData.cend())
 			{
-				m_Work.insert({ Index, std::move(Work) });
+				m_WorkData.insert({ Index, std::move(Work) });
 				return true;
 			}
 		}
@@ -148,11 +160,11 @@ namespace Cry
 	}
 	bool NetworkServiceEngine::DelWork(u64 Index)
 	{
-		std::lock_guard<std::mutex> Guard(m_Mutex);
+		std::lock_guard<std::mutex> Guard(m_WorkLock);
 		{
-			if (auto iter = m_Work.find(Index); iter != m_Work.cend())
+			if (auto iter = m_WorkData.find(Index); iter != m_WorkData.cend())
 			{
-				m_Work.erase(iter);
+				m_WorkData.erase(iter);
 				return true;
 			}
 		}
@@ -160,13 +172,34 @@ namespace Cry
 	}
 	std::shared_ptr<Work> NetworkServiceEngine::GetWork(u64 Index)
 	{
-		std::lock_guard<std::mutex> Guard(m_Mutex);
+		std::lock_guard<std::mutex> Guard(m_WorkLock);
 		{
-			if (auto iter = m_Work.find(Index); iter != m_Work.cend())
+			if (auto iter = m_WorkData.find(Index); iter != m_WorkData.cend())
 			{
 				return iter->second;
 			}
 		}
 		return nullptr;
+	}
+
+	bool NetworkServiceEngine::CheckOnline(const CustomerData & Other)
+	{
+		std::lock_guard<std::mutex> Guard(m_WorkLock);
+		{
+			for (const auto & [Index, Work] : m_WorkData)
+			{
+				if (Work != nullptr)
+				{
+					if (const std::shared_ptr<CustomerData> & Customer = Work->GetCustomerData(); Customer != nullptr)
+					{
+						if (Other == std::move(*Customer))
+						{
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 }
