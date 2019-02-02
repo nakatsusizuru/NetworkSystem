@@ -14,7 +14,7 @@ namespace Cry
 		m_pData->Reset();
 	}
 
-	Work::Work(NetworkServiceEngine * Service, const std::shared_ptr<DataBase> & DB) : m_Service(Service), m_DataBase(DB)
+	Work::Work(NetworkServiceEngine * Service, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB) : m_Services(Service), m_CurrConn(Conn), m_DataBase(DB)
 	{
 		DebugMsg("Êý¾ÝµØÖ·£º%p\n", DB);
 	}
@@ -27,7 +27,7 @@ namespace Cry
 			{
 				if (!uMsg)
 				{
-					if (!m_Service || pData->length() < HeadSize)
+					if (!m_Services || pData->length() < HeadSize)
 					{
 						DLOG_TRACE << "Recv DataSize < HeardSize Error:" << Conn->remote_addr();
 						return;
@@ -67,25 +67,32 @@ namespace Cry
 			}
 		}
 	}
+	void Work::Close()
+	{
+		if (m_CurrConn->IsConnected())
+		{
+			m_CurrConn->Close();
+		}
+	}
 	Work::~Work()
 	{
 		
 	}
-	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Service(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
+	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Services(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
 	{
-		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
-		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
+		m_Services->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
+		m_Services->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
 		m_DataPool = std::make_shared<DataPool>("192.168.1.111", "root", "ccnihao123", "Verify", uSize);
 	}
 	bool NetworkServiceEngine::CreateService()
 	{
-		if (m_Service != nullptr)
+		if (m_Services != nullptr)
 		{
-			if (!m_Service->Init())
+			if (!m_Services->Init())
 			{
 				return false;
 			}
-			if (!m_Service->Start())
+			if (!m_Services->Start())
 			{
 				return false;
 			}
@@ -95,9 +102,9 @@ namespace Cry
 	}
 	bool NetworkServiceEngine::CancelService()
 	{
-		if (m_Service != nullptr)
+		if (m_Services != nullptr)
 		{
-			m_Service->Stop();
+			m_Services->Stop();
 			m_Loop->Stop(true);
 			return true;
 		}
@@ -114,7 +121,7 @@ namespace Cry
 	{
 		if (Conn->IsConnected())
 		{
-			if (!this->AddWork(Conn->id(), std::make_unique<Work>(this, m_DataPool->GetNextMySQL(Conn->id()))))
+			if (!this->AddWork(Conn->id(), std::make_unique<Work>(this, Conn, m_DataPool->GetNextMySQL(Conn->id()))))
 			{
 				Conn->Close();
 			}

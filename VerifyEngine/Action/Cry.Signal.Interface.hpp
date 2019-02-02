@@ -1,12 +1,10 @@
 #pragma once
 #include <Global>
+#include <memory>
 #include <functional>
 namespace Cry
 {
-	namespace Signal
-	{
-		class Work;
-	}
+	class Work;
 
 	//typedef std::function<void(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const PVOID Data, const u32 uSize)> SocketDataInterface;
 
@@ -16,7 +14,7 @@ namespace Cry
 		explicit SocketDataInterface() = default;
 		virtual ~SocketDataInterface() = default;
 	public:
-		virtual void OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const PVOID Data, const u32 uSize) = 0;
+		virtual void OnSocketData(const std::shared_ptr<Cry::Work> & Work, const u32 uMsg, const PVOID Data, const u32 uSize) = 0;
 	protected:
 		SocketDataInterface(const SocketDataInterface &) = default;
 		SocketDataInterface &operator=(const SocketDataInterface &) = default;

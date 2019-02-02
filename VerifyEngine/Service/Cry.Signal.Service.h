@@ -47,13 +47,16 @@ namespace Cry
 	class Work : public std::enable_shared_from_this<Work>
 	{
 	public:
-		explicit Work(NetworkServiceEngine * Service, const std::shared_ptr<DataBase> & DB);
+		explicit Work(NetworkServiceEngine * Service, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB);
 		~Work();
 	public:
 		void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * pData);
+		void Close();
+	public:
 		const std::shared_ptr<DataBase> & GetDataBase() { return m_DataBase; }
 	private:
-		NetworkServiceEngine*												m_Service;
+		NetworkServiceEngine*												m_Services;
+		evpp::TCPConnPtr													m_CurrConn;
 		std::shared_ptr<DataBase>											m_DataBase;
 	private:
 		/// »º³åÇø
@@ -79,7 +82,7 @@ namespace Cry
 		std::shared_ptr<Work> GetWork(u64 Index);
 	private:
 		std::unique_ptr<evpp::EventLoopThread>								m_Loop;
-		std::unique_ptr<evpp::TCPServer>									m_Service;
+		std::unique_ptr<evpp::TCPServer>									m_Services;
 		std::shared_ptr<Import::MySQL>										m_MySQL;
 		std::shared_ptr<DataPool>											m_DataPool;
 	private:

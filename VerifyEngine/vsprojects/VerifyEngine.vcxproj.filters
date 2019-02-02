@@ -43,6 +43,9 @@
     <Filter Include="DataBase\Import">
       <UniqueIdentifier>{18a82187-b108-4018-a305-3d8db0d098db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Action\Import">
+      <UniqueIdentifier>{bceddfce-537b-4c5f-bc7c-91823535ff68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -83,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Action\Cry.Signal.Proto.hpp">
+      <Filter>Action\Import</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
