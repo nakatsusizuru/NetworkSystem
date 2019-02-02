@@ -6,6 +6,13 @@ namespace Cry
 {
 	class NetworkServiceEngine;
 	class DataBase;
+	class DataBasePool;
+
+	namespace Import
+	{
+		class MySQL;
+	}
+
 	struct CustomerData
 	{
 	public:
@@ -57,7 +64,7 @@ namespace Cry
 	class NetworkServiceEngine
 	{
 	public:
-		explicit NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u32 & uSize);
+		explicit NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 & uSize);
 		~NetworkServiceEngine() = default;
 	public:
 		bool CreateService();
@@ -72,8 +79,9 @@ namespace Cry
 	private:
 		std::unique_ptr<evpp::EventLoopThread>								m_Loop;
 		std::unique_ptr<evpp::TCPServer>									m_Service;
+		std::shared_ptr<Import::MySQL>										m_MySQL;
 		std::shared_ptr<DataBase>											m_DataBase;
-		
+		std::shared_ptr<DataBasePool>										m_DataBasePool;
 	private:
 		std::mutex															m_Mutex;
 		std::unordered_map<u64, std::shared_ptr<Work>>						m_Work;

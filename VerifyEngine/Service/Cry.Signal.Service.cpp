@@ -1,6 +1,7 @@
 #include <Global>
 #include <Service/Cry.Signal.Service.h>
 #include <DataBase/Cry.Signal.DataBase.h>
+#include <DataBase/Cry.Signal.DataBasePool.h>
 #include <evpp/tcp_conn.h>
 namespace Cry
 {
@@ -70,12 +71,12 @@ namespace Cry
 	{
 		
 	}
-	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u32 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Service(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize))
+	NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Service(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
 	{
 		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
-		m_DataBase = std::make_shared<DataBase>("192.168.1.111", "root", "97bd87417987de80", "Verify");
-		m_DataBase->Initialize();
+		//m_DataBase = std::make_shared<DataBase>("192.168.1.111", "root", "97bd87417987de80", "Verify");
+		m_DataBasePool = std::make_shared<DataBasePool>("192.168.1.111", "root", "97bd87417987de80", "Verify", uSize);
 	}
 	bool NetworkServiceEngine::CreateService()
 	{
@@ -125,6 +126,10 @@ namespace Cry
 			{
 				Conn->Close();
 			}
+		}
+		for (u64 i = 0; i < 6; ++i)
+		{
+			auto DataBasePrt = m_DataBasePool->GetNextMySQL();
 		}
 	}
 	bool NetworkServiceEngine::AddWork(u64 Index, const std::shared_ptr<Work> & Work)
