@@ -14,9 +14,9 @@ namespace Cry
 		m_pData->Reset();
 	}
 
-	Work::Work(NetworkServiceEngine * Service) : m_Service(Service)
+	Work::Work(NetworkServiceEngine * Service, const std::shared_ptr<DataBase> & DB) : m_Service(Service), m_DataBase(DB)
 	{
-
+		DebugMsg("Êý¾ÝµØÖ·£º%p\n", DB);
 	}
 	void Work::Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * pData)
 	{
@@ -75,8 +75,7 @@ namespace Cry
 	{
 		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
-		//m_DataBase = std::make_shared<DataBase>("192.168.1.111", "root", "97bd87417987de80", "Verify");
-		m_DataBasePool = std::make_shared<DataBasePool>("192.168.1.111", "root", "97bd87417987de80", "Verify", uSize);
+		m_DataPool = std::make_shared<DataPool>("192.168.1.111", "root", "97bd87417987de80", "Verify", uSize);
 	}
 	bool NetworkServiceEngine::CreateService()
 	{
@@ -115,7 +114,7 @@ namespace Cry
 	{
 		if (Conn->IsConnected())
 		{
-			if (!this->AddWork(Conn->id(), std::make_unique<Work>(this)))
+			if (!this->AddWork(Conn->id(), std::make_unique<Work>(this, m_DataPool->GetNextMySQL(Conn->id()))))
 			{
 				Conn->Close();
 			}
@@ -126,10 +125,6 @@ namespace Cry
 			{
 				Conn->Close();
 			}
-		}
-		for (u64 i = 0; i < 6; ++i)
-		{
-			auto DataBasePrt = m_DataBasePool->GetNextMySQL();
 		}
 	}
 	bool NetworkServiceEngine::AddWork(u64 Index, const std::shared_ptr<Work> & Work)

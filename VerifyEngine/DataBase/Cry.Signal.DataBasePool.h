@@ -6,15 +6,15 @@
 namespace Cry
 {
 	class DataBase;
-	class DataBasePool
+	class DataPool
 	{
 	public:
-		DataBasePool() = default;
-		DataBasePool(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u64 uSize = 0, u32 uPort = 3306, bool ReConnect = true);
-		~DataBasePool() {};
+		DataPool() = default;
+		DataPool(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u64 uSize = 0, u32 uPort = 3306, bool ReConnect = true);
+		~DataPool() {};
 	public:
 		std::shared_ptr<DataBase> GetNextMySQL();
-		u64 Count() const;
+		std::shared_ptr<DataBase> GetNextMySQL(u64 Index);
 	private:
 		std::shared_ptr<DataBase>										m_DataBase;	/// 默认连接
 		std::unordered_map<u64, std::shared_ptr<DataBase>>				m_DataPool; /// 共享连接

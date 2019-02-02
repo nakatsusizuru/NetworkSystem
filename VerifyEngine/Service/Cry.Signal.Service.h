@@ -6,8 +6,7 @@ namespace Cry
 {
 	class NetworkServiceEngine;
 	class DataBase;
-	class DataBasePool;
-
+	class DataPool;
 	namespace Import
 	{
 		class MySQL;
@@ -48,17 +47,19 @@ namespace Cry
 	class Work : public std::enable_shared_from_this<Work>
 	{
 	public:
-		explicit Work(NetworkServiceEngine * Service);
+		explicit Work(NetworkServiceEngine * Service, const std::shared_ptr<DataBase> & DB);
 		~Work();
 	public:
 		void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * pData);
+		const std::shared_ptr<DataBase> & GetDataBase() { return m_DataBase; }
 	private:
-		NetworkServiceEngine*										m_Service;
+		NetworkServiceEngine*												m_Service;
+		std::shared_ptr<DataBase>											m_DataBase;
 	private:
 		/// 缓冲区
-		std::string													m_lpszBody;
+		std::string															m_lpszBody;
 		/// 客户信息
-		Cry::CustomerData											m_Customer;
+		Cry::CustomerData													m_Customer;
 	};
 
 	class NetworkServiceEngine
@@ -80,8 +81,7 @@ namespace Cry
 		std::unique_ptr<evpp::EventLoopThread>								m_Loop;
 		std::unique_ptr<evpp::TCPServer>									m_Service;
 		std::shared_ptr<Import::MySQL>										m_MySQL;
-		std::shared_ptr<DataBase>											m_DataBase;
-		std::shared_ptr<DataBasePool>										m_DataBasePool;
+		std::shared_ptr<DataPool>											m_DataPool;
 	private:
 		std::mutex															m_Mutex;
 		std::unordered_map<u64, std::shared_ptr<Work>>						m_Work;
