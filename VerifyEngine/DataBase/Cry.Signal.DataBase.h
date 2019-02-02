@@ -19,6 +19,8 @@ namespace Cry
 		virtual bool Initialize();
 		virtual void DeInitialize();
 	private:
+		void Close();
+	private:
 		std::shared_ptr<Session>						m_Session;
 	};
 }

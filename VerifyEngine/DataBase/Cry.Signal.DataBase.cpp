@@ -12,12 +12,11 @@ namespace Cry
 		catch (const Poco::Exception & ex)
 		{
 			LOG_ERROR << ex.displayText();
-			m_Session->close();
 		}
 	}
 	DataBase::~DataBase()
 	{
-		m_Session->close();
+		this->Close();
 	}
 	bool DataBase::Initialize()
 	{
@@ -26,5 +25,19 @@ namespace Cry
 	void DataBase::DeInitialize()
 	{
 
+	}
+	void DataBase::Close()
+	{
+		try
+		{
+			if (m_Session)
+			{
+				m_Session->close();
+			}
+		}
+		catch (const Poco::Exception & ex)
+		{
+			LOG_ERROR << ex.displayText();
+		}
 	}
 }

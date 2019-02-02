@@ -75,7 +75,7 @@ namespace Cry
 	{
 		m_Service->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 		m_Service->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
-		m_DataPool = std::make_shared<DataPool>("192.168.1.111", "root", "97bd87417987de80", "Verify", uSize);
+		m_DataPool = std::make_shared<DataPool>("192.168.1.111", "root", "ccnihao123", "Verify", uSize);
 	}
 	bool NetworkServiceEngine::CreateService()
 	{

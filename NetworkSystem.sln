@@ -39,6 +39,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Foundation", "Deps\poco\Fou
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Data", "Deps\poco\Data\Data_vs150.vcxproj", "{240E83C3-368D-11DB-9FBC-00123FC423B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLHelper", "SQLHelper", "{EB488C7E-6EEE-4AC5-B89A-012638D4371F}"
+	ProjectSection(SolutionItems) = preProject
+		SQLHelper\实时查看连接数.txt = SQLHelper\实时查看连接数.txt
+		SQLHelper\开启远程数据库.txt = SQLHelper\开启远程数据库.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
