@@ -22,11 +22,19 @@ namespace Cry
 				{
 					if (std::shared_ptr<Poco::Data::Session> & Session = Work->GetDataBase()->GetSession(); Session != nullptr)
 					{
-						if (bool Result = Session->isConnected(); true == Result)
+						if (w32 Result = Session->isConnected(); TRUE == Result)
 						{
 							if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) AS Result", Poco::Data::Keywords::use(const_cast<std::string&>(ProtoData.username())), Poco::Data::Keywords::use(const_cast<std::string&>(ProtoData.password())), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 							{
-								DebugMsg("查找结果：%d\n", Result);
+								switch (Result)
+								{
+								case 00: DebugMsg("验证通过\n"); break;
+								case -1: DebugMsg("账号为空\n"); break;
+								case -2: DebugMsg("密码为空\n"); break;
+								case -3: DebugMsg("账号错误\n"); break;
+								case -4: DebugMsg("密码错误\n"); break;
+								default: DebugMsg("什么错误\n"); break;
+								}
 								return Result;
 							}
 						}
