@@ -15,11 +15,19 @@ namespace Cry
 				{
 					if (w32 Result = Session->isConnected(); TRUE == Result)
 					{
-						std::string name("123");
+						std::string name("1231");
 						std::string pass("123");
 						if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) AS Result", Poco::Data::Keywords::use(name), Poco::Data::Keywords::use(pass), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 						{
-							DebugMsg("²éÕÒ½á¹û£º%d\n", Result);
+							switch (Result)
+							{
+							case 0U: DebugMsg("ÑéÖ¤Í¨¹ý\n"); break;
+							case -1: DebugMsg("ÕËºÅÎª¿Õ\n"); break;
+							case -2: DebugMsg("ÃÜÂëÎª¿Õ\n"); break;
+							case -3: DebugMsg("ÕËºÅ´íÎó\n"); break;
+							case -4: DebugMsg("ÃÜÂë´íÎó\n"); break;
+							default: DebugMsg("Ê²Ã´´íÎó\n"); break;
+							}
 						}
 					}
 				}

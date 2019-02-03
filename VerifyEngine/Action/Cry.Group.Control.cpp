@@ -28,14 +28,14 @@ namespace Cry
 							{
 								switch (Result)
 								{
-								case 00: DebugMsg("验证通过\n"); break;
+								case 0U: DebugMsg("验证通过\n"); break;
 								case -1: DebugMsg("账号为空\n"); break;
 								case -2: DebugMsg("密码为空\n"); break;
 								case -3: DebugMsg("账号错误\n"); break;
 								case -4: DebugMsg("密码错误\n"); break;
 								default: DebugMsg("什么错误\n"); break;
 								}
-								return Result;
+								return true;
 							}
 						}
 					}
