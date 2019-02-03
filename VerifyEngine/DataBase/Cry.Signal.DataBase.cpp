@@ -13,11 +13,11 @@ namespace Cry
 			{
 				if (std::shared_ptr<Poco::Data::Session> & Session = m_Session; Session != nullptr)
 				{
-					if (bool Result = Session->isConnected(); true == Result)
+					if (w32 Result = Session->isConnected(); TRUE == Result)
 					{
 						std::string name("123");
 						std::string pass("123");
-						if (Poco::Data::Statement Statement = (*Session << "SELECT Common_Signin(?, ?) AS Result", Poco::Data::Keywords::use(name), Poco::Data::Keywords::use(pass), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+						if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) AS Result", Poco::Data::Keywords::use(name), Poco::Data::Keywords::use(pass), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 						{
 							DebugMsg("²éÕÒ½á¹û£º%d\n", Result);
 						}

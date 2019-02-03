@@ -24,7 +24,6 @@ namespace Cry
 					{
 						if (bool Result = Session->isConnected(); true == Result)
 						{
-							/// EXECUTE CALL
 							if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) AS Result", Poco::Data::Keywords::use(const_cast<std::string&>(ProtoData.username())), Poco::Data::Keywords::use(const_cast<std::string&>(ProtoData.password())), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 							{
 								DebugMsg("²éÕÒ½á¹û£º%d\n", Result);
