@@ -18,9 +18,12 @@ namespace Cry
 
 	std::shared_ptr<DataBase> DataPool::GetNextMySQL(u64 Index)
 	{
-		if (false == m_DataPool.empty())
+		std::lock_guard<std::mutex> Guard(m_Mutex);
 		{
-			return m_DataPool[Index % m_DataPool.size()];
+			if (false == m_DataPool.empty())
+			{
+				return m_DataPool[Index % m_DataPool.size()];
+			}
 		}
 		return m_DataBase;
 	}

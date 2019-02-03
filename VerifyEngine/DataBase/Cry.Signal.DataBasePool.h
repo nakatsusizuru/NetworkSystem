@@ -3,6 +3,7 @@
 #include <memory>
 #include <unordered_map>
 #include <atomic>
+#include <mutex>
 namespace Cry
 {
 	class DataBase;
@@ -16,8 +17,10 @@ namespace Cry
 		std::shared_ptr<DataBase> GetNextMySQL();
 		std::shared_ptr<DataBase> GetNextMySQL(u64 Index);
 	private:
-		std::shared_ptr<DataBase>										m_DataBase;	/// 默认连接
-		std::unordered_map<u64, std::shared_ptr<DataBase>>				m_DataPool; /// 共享连接
-		std::atomic<u64>												uNext;		/// 引用次数
+		std::shared_ptr<DataBase>											m_DataBase;	/// 默认连接
+		std::unordered_map<u64, std::shared_ptr<DataBase>>					m_DataPool; /// 共享连接
+		std::atomic<u64>													uNext;		/// 引用次数
+	private:
+		std::mutex															m_Mutex;
 	};
 }

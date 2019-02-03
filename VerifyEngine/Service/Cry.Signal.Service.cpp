@@ -17,12 +17,16 @@ namespace Cry
 			m_pData->Reset();
 		}
 
-		Work::Work(NetworkServiceEngine * Services, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB) : m_Services(Services), m_CurrConn(Conn), m_DataBase(DB), m_ActionDB(std::make_unique<Action::DataBase>()), m_Customer()
+		Work::Work(NetworkServiceEngine * Services, const evpp::TCPConnPtr & Conn, const std::shared_ptr<DataBase> & DB) : m_Services(Services), m_CurrConn(Conn), m_DataBase(DB), m_Listener(std::make_unique<Action::DataBase>()), m_Customer()
 		{
 
 		}
 		void Work::Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data)
 		{
+			if (false == m_Listener->Empty())
+			{
+				return;
+			}
 			u32 uMsg = 0, uSize = 0;
 			OnMessageLeave Leave(Data);
 			{
@@ -44,7 +48,7 @@ namespace Cry
 						return;
 					}
 
-					if (const std::shared_ptr<Cry::SocketDataInterface> & Listener = m_ActionDB->Get(uMsg); Listener != nullptr)
+					if (const std::shared_ptr<Cry::SocketDataInterface> & Listener = m_Listener->Get(uMsg); Listener != nullptr)
 					{
 						if (!Listener->OnSocketData(shared_from_this(), uMsg, Data->data(), uSize))
 						{
@@ -81,7 +85,7 @@ namespace Cry
 		{
 			this->Close();
 		}
-		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 & uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Services(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
+		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Services(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
 		{
 			m_Services->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 			m_Services->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
@@ -129,6 +133,7 @@ namespace Cry
 					Conn->Close();
 				}
 			}
+
 			if (Conn->IsDisconnecting() || Conn->IsDisconnected())
 			{
 				if (!this->DelWork(Conn->id()))
@@ -143,7 +148,7 @@ namespace Cry
 			{
 				if (m_WorkData.find(Index) == m_WorkData.cend())
 				{
-					m_WorkData.insert({ Index, std::move(Work) });
+					m_WorkData.emplace(Index, Work);
 					return true;
 				}
 			}
@@ -170,14 +175,14 @@ namespace Cry
 					return iter->second;
 				}
 			}
-			return nullptr;
+			return std::shared_ptr<Work>();
 		}
 
 		bool NetworkServiceEngine::CheckOnline(const CustomerData & Other)
 		{
 			std::lock_guard<std::mutex> Guard(m_WorkLock);
 			{
-				for (const auto &[Index, Work] : m_WorkData)
+				for (const auto & [Index, Work] : m_WorkData)
 				{
 					if (Work != nullptr)
 					{

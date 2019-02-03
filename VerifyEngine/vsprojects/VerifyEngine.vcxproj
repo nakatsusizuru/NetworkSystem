@@ -42,7 +42,6 @@
     <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp" />
     <ClInclude Include="..\Entrance.h" />
     <ClInclude Include="..\Service\Cry.Signal.Service.h" />
-    <ClInclude Include="resource.h" />
     <CustomBuild Include="..\Gui\ControlDialog.h" />
     <ClInclude Include="..\Gui\ControlDialog.hpp" />
   </ItemGroup>
@@ -128,10 +127,9 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>
-      </SDLCheck>
+      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>false</ConformanceMode>
+      <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\;..\..\Deps\Public;..\..\Deps\evpp;..\..\Deps\glog\src\windows;..\..\Deps\Libevent\include;..\..\Deps\Libevent\vsprojects\include;..\..\Deps\protobuf\src;..\..\Deps\data\src;..\..\Deps\poco\Foundation\include;..\..\Deps\poco\Data\include;..\..\Deps\poco\Data\MySQL\include;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtWinExtras;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

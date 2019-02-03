@@ -28,5 +28,9 @@ namespace Cry
 			}
 			return std::shared_ptr<Cry::SocketDataInterface>();
 		}
+		bool DataBase::Empty() const
+		{
+			return m_Data.empty() != true && m_Data.size() != 0;
+		}
 	}
 }

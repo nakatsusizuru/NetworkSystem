@@ -16,8 +16,7 @@ namespace Cry
 		explicit DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u32 uPort = 3306, bool ReConnect = true);
 		virtual ~DataBase();
 	public:
-		virtual bool Initialize();
-		virtual void DeInitialize();
+		std::shared_ptr<Session> & GetSession() { return m_Session; }
 	private:
 		void Close();
 	private:

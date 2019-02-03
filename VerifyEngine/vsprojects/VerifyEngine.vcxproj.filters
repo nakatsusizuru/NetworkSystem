@@ -87,9 +87,6 @@
     <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp">
       <Filter>DataBase\Import</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\Action\Cry.Signal.Proto.hpp">
       <Filter>Action\Import</Filter>
     </ClInclude>

@@ -67,7 +67,7 @@ namespace Cry
 			NetworkServiceEngine*												m_Services;
 			evpp::TCPConnPtr													m_CurrConn;
 			std::shared_ptr<DataBase>											m_DataBase;
-			std::unique_ptr<Action::DataBase>									m_ActionDB;
+			std::unique_ptr<Action::DataBase>									m_Listener;
 		private:
 			/// »º³åÇø
 			std::string															m_lpszBody;
@@ -78,7 +78,7 @@ namespace Cry
 		class NetworkServiceEngine
 		{
 		public:
-			explicit NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 & uSize);
+			explicit NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 uSize);
 			~NetworkServiceEngine() = default;
 		public:
 			bool CreateService();

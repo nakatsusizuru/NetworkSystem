@@ -2,6 +2,7 @@
 #include <Action/Cry.Group.Control.h>
 #include <Service/Cry.Signal.Service.h>
 #include <Action/Cry.Signal.Proto.hpp>
+#include <DataBase/Cry.Signal.DataBase.h>
 #include <member.pb.h>
 namespace Cry
 {
@@ -17,9 +18,27 @@ namespace Cry
 				{
 					Work->Close();
 				}
-				DebugMsg("用户账号：%s 用户密码：%s\n", ProtoData.username().c_str(), ProtoData.password().c_str());
+				try
+				{
+					if (std::shared_ptr<Poco::Data::Session> & Session = Work->GetDataBase()->GetSession(); Session != nullptr)
+					{
+						if (bool Result = Session->isConnected(); true == Result)
+						{
+							/// EXECUTE CALL
+							if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) AS Result", Poco::Data::Keywords::use(const_cast<std::string&>(ProtoData.username())), Poco::Data::Keywords::use(const_cast<std::string&>(ProtoData.password())), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+							{
+								DebugMsg("查找结果：%d\n", Result);
+								return Result;
+							}
+						}
+					}
+				}
+				catch (const Poco::Exception & ex)
+				{
+					LOG_ERROR << ex.displayText();
+				}
 			}
-			return true;
+			return false;
 		}
 	}
 }
