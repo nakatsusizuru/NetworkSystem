@@ -9,7 +9,7 @@ namespace Cry
 	namespace Control
 	{
 		SignIn::SignIn() {};
-		bool SignIn::OnSignin(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & username, std::string & password)
+		bool SignIn::OnSignin(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & UserName, std::string & PassWord)
 		{
 			if (std::shared_ptr<Poco::Data::Session> Session = Work->GetDataBase()->GetSession(); Session != nullptr)
 			{
@@ -17,7 +17,7 @@ namespace Cry
 				{
 					if (w64 Result = Session->isConnected(); TRUE == Result)
 					{
-						if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) As Result", Poco::Data::Keywords::use(username), Poco::Data::Keywords::use(password), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+						if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) As Result", Poco::Data::Keywords::use(UserName), Poco::Data::Keywords::use(PassWord), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 						{
 							Cry::Control::Member::MsgSignInResponse ProtoResponse;
 							{
@@ -31,8 +31,10 @@ namespace Cry
 								{
 									if (Result > 0)
 									{
-										Work->SetCustomer(Result, username, password);
+										Work->SetCustomer(Result, UserName, PassWord);
 										ProtoResponse.set_msg(Define::SignIn::CID_SIGNIN_NOT_ERROR);
+										ProtoResponse.set_uid(static_cast<u64>(Result));
+										ProtoResponse.set_expires(0);
 									}
 									else
 									{
@@ -43,7 +45,6 @@ namespace Cry
 								}
 								
 							}
-							
 							return true;
 						}
 					}

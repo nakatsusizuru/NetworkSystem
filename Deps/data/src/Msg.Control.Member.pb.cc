@@ -136,7 +136,7 @@ const char descriptor_table_protodef_Msg_2eControl_2eMember_2eproto[] =
   "word\030\003 \001(\014\"G\n\020MsgSignInRequest\022\020\n\010userna"
   "me\030\002 \001(\014\022\020\n\010password\030\003 \001(\014\022\017\n\007version\030\004 "
   "\001(\r\"Z\n\021MsgSignInResponse\022\'\n\003msg\030\001 \001(\0162\032."
-  "Cry.Control.Define.SignIn\022\013\n\003uid\030\002 \001(\005\022\017"
+  "Cry.Control.Define.SignIn\022\013\n\003uid\030\002 \001(\004\022\017"
   "\n\007expires\030\003 \001(\rb\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eMember_2eproto = {
@@ -915,16 +915,16 @@ MsgSignInResponse::MsgSignInResponse(const MsgSignInResponse& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&msg_, &from.msg_,
+  ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&expires_) -
-    reinterpret_cast<char*>(&msg_)) + sizeof(expires_));
+    reinterpret_cast<char*>(&uid_)) + sizeof(expires_));
   // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgSignInResponse)
 }
 
 void MsgSignInResponse::SharedCtor() {
-  ::memset(&msg_, 0, static_cast<size_t>(
+  ::memset(&uid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&expires_) -
-      reinterpret_cast<char*>(&msg_)) + sizeof(expires_));
+      reinterpret_cast<char*>(&uid_)) + sizeof(expires_));
 }
 
 MsgSignInResponse::~MsgSignInResponse() {
@@ -950,9 +950,9 @@ void MsgSignInResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&msg_, 0, static_cast<size_t>(
+  ::memset(&uid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&expires_) -
-      reinterpret_cast<char*>(&msg_)) + sizeof(expires_));
+      reinterpret_cast<char*>(&uid_)) + sizeof(expires_));
   _internal_metadata_.Clear();
 }
 
@@ -977,7 +977,7 @@ const char* MsgSignInResponse::_InternalParse(const char* begin, const char* end
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // int32 uid = 2;
+      // uint64 uid = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         msg->set_uid(::google::protobuf::internal::ReadVarint(&ptr));
@@ -1032,12 +1032,12 @@ bool MsgSignInResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 uid = 2;
+      // uint64 uid = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &uid_)));
         } else {
           goto handle_unusual;
@@ -1091,9 +1091,9 @@ void MsgSignInResponse::SerializeWithCachedSizes(
       1, this->msg(), output);
   }
 
-  // int32 uid = 2;
+  // uint64 uid = 2;
   if (this->uid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->uid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->uid(), output);
   }
 
   // uint32 expires = 3;
@@ -1120,9 +1120,9 @@ void MsgSignInResponse::SerializeWithCachedSizes(
       1, this->msg(), target);
   }
 
-  // int32 uid = 2;
+  // uint64 uid = 2;
   if (this->uid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->uid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->uid(), target);
   }
 
   // uint32 expires = 3;
@@ -1151,17 +1151,17 @@ size_t MsgSignInResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // uint64 uid = 2;
+  if (this->uid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->uid());
+  }
+
   // .Cry.Control.Define.SignIn msg = 1;
   if (this->msg() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->msg());
-  }
-
-  // int32 uid = 2;
-  if (this->uid() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->uid());
   }
 
   // uint32 expires = 3;
@@ -1198,11 +1198,11 @@ void MsgSignInResponse::MergeFrom(const MsgSignInResponse& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.msg() != 0) {
-    set_msg(from.msg());
-  }
   if (from.uid() != 0) {
     set_uid(from.uid());
+  }
+  if (from.msg() != 0) {
+    set_msg(from.msg());
   }
   if (from.expires() != 0) {
     set_expires(from.expires());
@@ -1234,8 +1234,8 @@ void MsgSignInResponse::Swap(MsgSignInResponse* other) {
 void MsgSignInResponse::InternalSwap(MsgSignInResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(msg_, other->msg_);
   swap(uid_, other->uid_);
+  swap(msg_, other->msg_);
   swap(expires_, other->expires_);
 }
 

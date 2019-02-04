@@ -449,17 +449,17 @@ class MsgSignInResponse final :
 
   // accessors -------------------------------------------------------
 
+  // uint64 uid = 2;
+  void clear_uid();
+  static const int kUidFieldNumber = 2;
+  ::google::protobuf::uint64 uid() const;
+  void set_uid(::google::protobuf::uint64 value);
+
   // .Cry.Control.Define.SignIn msg = 1;
   void clear_msg();
   static const int kMsgFieldNumber = 1;
   ::Cry::Control::Define::SignIn msg() const;
   void set_msg(::Cry::Control::Define::SignIn value);
-
-  // int32 uid = 2;
-  void clear_uid();
-  static const int kUidFieldNumber = 2;
-  ::google::protobuf::int32 uid() const;
-  void set_uid(::google::protobuf::int32 value);
 
   // uint32 expires = 3;
   void clear_expires();
@@ -472,8 +472,8 @@ class MsgSignInResponse final :
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint64 uid_;
   int msg_;
-  ::google::protobuf::int32 uid_;
   ::google::protobuf::uint32 expires_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Msg_2eControl_2eMember_2eproto;
@@ -737,15 +737,15 @@ inline void MsgSignInResponse::set_msg(::Cry::Control::Define::SignIn value) {
   // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgSignInResponse.msg)
 }
 
-// int32 uid = 2;
+// uint64 uid = 2;
 inline void MsgSignInResponse::clear_uid() {
-  uid_ = 0;
+  uid_ = PROTOBUF_ULONGLONG(0);
 }
-inline ::google::protobuf::int32 MsgSignInResponse::uid() const {
+inline ::google::protobuf::uint64 MsgSignInResponse::uid() const {
   // @@protoc_insertion_point(field_get:Cry.Control.Member.MsgSignInResponse.uid)
   return uid_;
 }
-inline void MsgSignInResponse::set_uid(::google::protobuf::int32 value) {
+inline void MsgSignInResponse::set_uid(::google::protobuf::uint64 value) {
   
   uid_ = value;
   // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgSignInResponse.uid)
