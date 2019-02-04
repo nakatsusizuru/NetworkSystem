@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2019-02-04 00:18:14
+-- Generation Time: 2019-02-05 00:12:49
 -- 服务器版本： 5.7.25-log
 -- PHP Version: 7.2.14
 
@@ -26,14 +26,28 @@ DELIMITER $$
 --
 -- 函数
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `Common_Signin` (`name` CHAR(15), `pass` CHAR(30)) RETURNS INT(10) begin
-	declare id int default null;
+CREATE DEFINER=`root`@`localhost` FUNCTION `Common_RandString` (`uSize` INT(30) UNSIGNED) RETURNS VARCHAR(30) CHARSET utf8 SQL SECURITY INVOKER
+begin
+	declare lpszBuffer varchar(255) default 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	declare lpszString varchar(255) default '';
+	declare i int default 0;
+	while (i < uSize)
+	do
+		set lpszString := concat(lpszString, substring(lpszBuffer, floor(1 + rand() *62), 1));
+		set i := i + 1;
+	end while;
+return lpszString;
+end$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `Common_Signin` (`name` CHAR(15), `pass` CHAR(30)) RETURNS BIGINT(20) begin
+
+	declare id bigint default null;
 	
-	if IFNULL(name, '') = false then
+	if (isnull(name) || (length(name) = 0)) then
 		return -1; -- 账号为空
 	end if;
 	
-	if IFNULL(pass, '') = false then
+	if (isnull(pass) || (length(pass) = 0)) then
 		return -2; -- 密码为空
 	end if;
 
@@ -41,16 +55,32 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `Common_Signin` (`name` CHAR(15), `pa
 		return -3; -- 账号错误
 	end if;
 
-	if (select uid in(@id) from common_member where password in(pass)) is null then
+	if strcmp(pass, (select password from common_member where uid in(@id))) <> 0 then
 		return -4; -- 密码错误
 	end if;
 
-	return 0; -- 验证通过
+	return @id; -- 验证通过
 end$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `Common_Verify` (`name` CHAR(15)) RETURNS INT(10) UNSIGNED BEGIN
-	RETURN (SELECT uid FROM common_member WHERE username IN(name));
-END$$
+CREATE DEFINER=`root`@`localhost` FUNCTION `Common_Test` (`n` INT(10) UNSIGNED) RETURNS INT(10) UNSIGNED SQL SECURITY INVOKER
+begin
+	declare i int default 0;
+	while (i < n)
+	do
+		insert common_member(username, password, date) values (Common_RandString(15), Common_RandString(30), unix_timestamp(now()));
+		set i := i + 1;
+	end while;
+	return i;
+end$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `Common_Verify` (`name` CHAR(15)) RETURNS BIGINT(20) UNSIGNED begin
+
+	if (isnull(name) || (length(name) = 0)) then
+		return null; -- 账号为空
+	end if;
+
+	return (select uid from common_member where username in(name));
+end$$
 
 DELIMITER ;
 
@@ -61,18 +91,11 @@ DELIMITER ;
 --
 
 CREATE TABLE `common_member` (
-  `uid` int(10) UNSIGNED NOT NULL,
+  `uid` bigint(20) UNSIGNED NOT NULL,
   `username` char(15) NOT NULL,
   `password` char(32) NOT NULL,
   `date` int(10) UNSIGNED DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `common_member`
---
-
-INSERT INTO `common_member` (`uid`, `username`, `password`, `date`) VALUES
-(1, '123', '123', 0);
 
 --
 -- Indexes for dumped tables
@@ -93,7 +116,7 @@ ALTER TABLE `common_member`
 -- 使用表AUTO_INCREMENT `common_member`
 --
 ALTER TABLE `common_member`
-  MODIFY `uid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
