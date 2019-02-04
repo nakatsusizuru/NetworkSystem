@@ -39,6 +39,7 @@ namespace Cry
 									else
 									{
 										Work->Close();
+
 									}
 									break;
 								}
