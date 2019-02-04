@@ -1,6 +1,6 @@
 #include <Global>
 #include <Action/Cry.Action.DataBase.h>
-#include <Action/Cry.Group.Control.h>
+#include <Action/Cry.Control.Member.h>
 namespace Cry
 {
 	class SocketDataInterface;
@@ -9,8 +9,8 @@ namespace Cry
 	{
 		DataBase::DataBase()
 		{
-			this->SetupInterface(1, std::make_shared<Group::Center>());
-			this->SetupInterface(2, std::make_shared<Group::Center>());
+			this->SetupInterface(1, std::make_shared<Cry::Control::SignIn>());
+			this->SetupInterface(2, std::make_shared<Cry::Control::SignIn>());
 		}
 		DataBase::~DataBase()
 		{

@@ -2,13 +2,15 @@
 #include <Action/Cry.Signal.Interface.hpp>
 namespace Cry
 {
-	namespace Group
+	namespace Control
 	{
-		class Center : public SocketDataInterface
+		class SignIn : public SocketDataInterface
 		{
 		public:
-			explicit Center();
-			~Center() = default;
+			explicit SignIn();
+			~SignIn() = default;
+		public:
+			bool OnSignin(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & username, std::string & password);
 		private:
 			virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize) override;
 		private:

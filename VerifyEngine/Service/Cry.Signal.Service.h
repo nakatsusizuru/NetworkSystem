@@ -22,19 +22,24 @@ namespace Cry
 		{
 		public:
 			CustomerData() = default;
-			CustomerData(const std::string & lpszUsername, const std::string & lpszPassword) : Username(lpszUsername), Password(lpszPassword), Expires(0) {};
+			CustomerData(w64 Index, const std::string & Username, const std::string & Password) : m_Index(Index), m_Username(Username), m_Password(Password), m_Expires(0) {};
 			bool operator == (const CustomerData & Other) const noexcept
 			{
-				return Other.Username == Username && Other.Password == Password;
+				if (Other.m_Index == m_Index)
+				{
+					return true;
+				}
+				return Other.m_Username == m_Username && Other.m_Password == m_Password;
 			}
 			bool operator != (const CustomerData & Other) const noexcept
 			{
 				return !(*this == Other);
 			}
 		private:
-			std::string			Username;
-			std::string			Password;
-			u32					Expires;
+			w64					m_Index;
+			std::string			m_Username;
+			std::string			m_Password;
+			u32					m_Expires;
 		};
 
 		class OnMessageLeave
@@ -58,7 +63,7 @@ namespace Cry
 		public:
 			void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data);
 			void Close();
-			void SetCustomer(const std::shared_ptr<CustomerData> & Customer);
+			void SetCustomer(w64 wIndex, std::string & UserName, std::string & PassWord);
 			bool CheckOnline(const CustomerData & Other) const;
 		public:
 			std::shared_ptr<CustomerData> & GetCustomerData() { return m_Customer; }

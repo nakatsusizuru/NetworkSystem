@@ -72,9 +72,6 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp">
       <Filter>Public\Import</Filter>
     </ClInclude>
-    <ClInclude Include="..\Action\Cry.Group.Control.h">
-      <Filter>Action</Filter>
-    </ClInclude>
     <ClInclude Include="..\Action\Cry.Signal.Interface.hpp">
       <Filter>Action\Interface</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
     <ClInclude Include="..\Action\Cry.Action.DataBase.h">
       <Filter>Action\DataBase</Filter>
     </ClInclude>
+    <ClInclude Include="..\Action\Cry.Control.Member.h">
+      <Filter>Action</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Gui\ControlDialog.cpp">
@@ -107,9 +107,6 @@
     <ClCompile Include="..\Service\Cry.Signal.Service.cpp">
       <Filter>Service</Filter>
     </ClCompile>
-    <ClCompile Include="..\Action\Cry.Group.Control.cpp">
-      <Filter>Action</Filter>
-    </ClCompile>
     <ClCompile Include="..\DataBase\Cry.Signal.DataBase.cpp">
       <Filter>DataBase</Filter>
     </ClCompile>
@@ -118,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="..\Action\Cry.Action.DataBase.cpp">
       <Filter>Action\DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Action\Cry.Control.Member.cpp">
+      <Filter>Action</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

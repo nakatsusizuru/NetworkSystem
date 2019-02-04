@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Action\Cry.Action.DataBase.cpp" />
-    <ClCompile Include="..\Action\Cry.Group.Control.cpp" />
+    <ClCompile Include="..\Action\Cry.Control.Member.cpp" />
     <ClCompile Include="..\DataBase\Cry.Signal.DataBase.cpp" />
     <ClCompile Include="..\DataBase\Cry.Signal.DataBasePool.cpp" />
     <ClCompile Include="..\Entrance.cpp" />
@@ -34,7 +34,7 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Event.hpp" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp" />
     <ClInclude Include="..\Action\Cry.Action.DataBase.h" />
-    <ClInclude Include="..\Action\Cry.Group.Control.h" />
+    <ClInclude Include="..\Action\Cry.Control.Member.h" />
     <ClInclude Include="..\Action\Cry.Signal.Interface.hpp" />
     <ClInclude Include="..\Action\Cry.Signal.Proto.hpp" />
     <ClInclude Include="..\DataBase\Cry.Signal.DataBase.h" />

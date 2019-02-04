@@ -1,3 +1,3 @@
-for %%i in (*.proto) do (
-    protoc -I=./ --cpp_out=../ %%i
+for %%i in (*.Proto) do (
+    protoc -I=. --proto_path=. --cpp_out=../ %%i
 )

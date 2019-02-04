@@ -1,0 +1,24 @@
+syntax = "proto3";
+import "Msg.Control.Define.proto";
+package Cry.Control.Member;
+
+
+message MsgRegisterRequest
+{
+	bytes							username = 2;
+	bytes							password = 3;
+}
+
+message MsgSignInRequest
+{
+	bytes							username = 2;
+	bytes							password = 3;
+	uint32							version  = 4;
+}
+
+message MsgSignInResponse
+{
+	Cry.Control.Define.SignIn		msg      = 1;
+	int32							uid		 = 2;
+	uint32							expires	 = 3;
+}

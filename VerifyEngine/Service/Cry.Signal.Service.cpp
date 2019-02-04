@@ -69,9 +69,9 @@ namespace Cry
 				m_CurrConn->Close();
 			}
 		}
-		void Work::SetCustomer(const std::shared_ptr<CustomerData> & Customer)
+		void Work::SetCustomer(w64 wIndex, std::string & UserName, std::string & PassWord)
 		{
-			m_Customer = Customer;
+			m_Customer = std::make_shared<Cry::Signal::CustomerData>(wIndex, UserName, PassWord);
 		}
 		bool Work::CheckOnline(const CustomerData & Other) const
 		{
