@@ -20,7 +20,7 @@ namespace Cry
 		public:
 			void SetupInterface(const u32 uFlags, const std::shared_ptr<Cry::SocketDataInterface> & Interface);
 			std::shared_ptr<Cry::SocketDataInterface> Get(const u32 uFlags);
-			bool Empty() const;
+			bool empty() const;
 		private:
 			std::unordered_map<u32, std::shared_ptr<Cry::SocketDataInterface>>			m_Data;
 		};

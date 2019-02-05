@@ -1,5 +1,6 @@
 #pragma once
 #include <evpp/tcp_server.h>
+#include <google/protobuf/message.h>
 #include <string>
 #include <memory>
 namespace Cry
@@ -63,6 +64,7 @@ namespace Cry
 			~Work();
 		public:
 			void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data);
+			bool Send(u32 uMsg, const google::protobuf::Message & Data);
 			void Close();
 			void SetCustomer(w64 wIndex, std::string & UserName, std::string & PassWord);
 			bool CheckOnline(const CustomerData & Other) const;

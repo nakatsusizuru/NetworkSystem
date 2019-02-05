@@ -33,9 +33,9 @@
     <ClInclude Include="..\..\Deps\Public\Cry.Port.h" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Event.hpp" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp" />
+    <ClInclude Include="..\..\Deps\Public\Interface\Cry.Signal.Interface.hpp" />
     <ClInclude Include="..\Action\Cry.Action.DataBase.h" />
     <ClInclude Include="..\Action\Cry.Control.Member.h" />
-    <ClInclude Include="..\Action\Cry.Signal.Interface.hpp" />
     <ClInclude Include="..\Action\Cry.Signal.Proto.hpp" />
     <ClInclude Include="..\DataBase\Cry.Signal.DataBase.h" />
     <ClInclude Include="..\DataBase\Cry.Signal.DataBasePool.h" />

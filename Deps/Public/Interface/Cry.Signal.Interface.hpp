@@ -23,16 +23,15 @@ namespace Cry
 		SocketDataInterface &operator=(const SocketDataInterface &) = default;
 	};
 
-	class DataBaseInterface
+	class SocketDataInterfaceEx
 	{
 	public:
-		explicit DataBaseInterface() = default;
-		virtual ~DataBaseInterface() = default;
+		explicit SocketDataInterfaceEx() = default;
+		virtual ~SocketDataInterfaceEx() = default;
 	public:
-		virtual bool Initialize() = 0;
-		virtual void DeInitialize() = 0;
+		virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize) = 0;
 	protected:
-		DataBaseInterface(const DataBaseInterface &) = default;
-		DataBaseInterface &operator=(const DataBaseInterface &) = default;
+		SocketDataInterfaceEx(const SocketDataInterfaceEx &) = default;
+		SocketDataInterfaceEx &operator=(const SocketDataInterfaceEx &) = default;
 	};
 }

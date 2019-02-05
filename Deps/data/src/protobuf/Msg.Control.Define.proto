@@ -8,12 +8,14 @@ enum MemberMessage
     CID_MESSAGE_REGISTER            = 0x0100;
     CID_MESSAGE_SIGNIN              = 0x0101;
 }
+
+// command id for signin
 enum SignIn
 {
-    CID_SIGNIN_DEFAULT             = 0;
-    CID_SIGNIN_USERNAME_EMPTY      = 1;
-    CID_SIGNIN_PASSWORD_EMPTY      = 2;
-    CID_SIGNIN_USERNAME_ERROR      = 3;
-    CID_SIGNIN_PASSWORD_ERROR      = 4;
-    CID_SIGNIN_NOT_ERROR           = 5;
+    CID_SIGNIN_DEFAULT              = 0;
+    CID_SIGNIN_USERNAME_EMPTY       = 1;
+    CID_SIGNIN_PASSWORD_EMPTY       = 2;
+    CID_SIGNIN_USERNAME_ERROR       = 3;
+    CID_SIGNIN_PASSWORD_ERROR       = 4;
+    CID_SIGNIN_NOT_ERROR            = 5;
 }

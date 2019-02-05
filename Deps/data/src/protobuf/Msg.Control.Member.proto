@@ -5,15 +5,15 @@ package Cry.Control.Member;
 
 message MsgRegisterRequest
 {
-	bytes							username = 2;
-	bytes							password = 3;
+	bytes							username = 1;
+	bytes							password = 2;
 }
 
 message MsgSignInRequest
 {
-	bytes							username = 2;
-	bytes							password = 3;
-	uint32							version  = 4;
+	bytes							username = 1;
+	bytes							password = 2;
+	uint32							version  = 3;
 }
 
 message MsgSignInResponse

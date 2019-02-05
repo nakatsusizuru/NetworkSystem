@@ -10,7 +10,10 @@ class QStandardItemModel;
 namespace Cry
 {
 	class AvailablePort;
-	class NetworkServiceEngine;
+	namespace Signal
+	{
+		class NetworkServiceEngine;
+	}
 	class ClientDialog: public QMainWindow
 	{
 		Q_OBJECT;
@@ -28,7 +31,7 @@ namespace Cry
 		Ui::ClientDialog*													Interface;
 		QStandardItemModel*													m_QStandardItemModel;
 	private:
-		std::shared_ptr<NetworkServiceEngine>								m_Service;
+		std::shared_ptr<Signal::NetworkServiceEngine>						m_Service;
 		std::unique_ptr<AvailablePort>										m_AvailablePort;
 	};
 }

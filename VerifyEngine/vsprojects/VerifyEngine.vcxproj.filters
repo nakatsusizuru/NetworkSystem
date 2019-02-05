@@ -72,9 +72,6 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp">
       <Filter>Public\Import</Filter>
     </ClInclude>
-    <ClInclude Include="..\Action\Cry.Signal.Interface.hpp">
-      <Filter>Action\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="..\DataBase\Cry.Signal.DataBase.h">
       <Filter>DataBase</Filter>
     </ClInclude>
@@ -92,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="..\Action\Cry.Control.Member.h">
       <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Interface\Cry.Signal.Interface.hpp">
+      <Filter>Action\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

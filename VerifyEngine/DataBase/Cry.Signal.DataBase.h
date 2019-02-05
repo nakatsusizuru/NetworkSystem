@@ -1,5 +1,5 @@
 #pragma once
-#include <Action/Cry.Signal.Interface.hpp>
+#include <Interface/Cry.Signal.Interface.hpp>
 #include <DataBase/Cry.Signal.MySQL.hpp>
 namespace Poco::Data
 {

@@ -23,7 +23,7 @@ namespace Cry
 		}
 		void Work::Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data)
 		{
-			if (false == m_Listener->Empty())
+			if (false == m_Listener->empty())
 			{
 				return;
 			}
@@ -61,6 +61,29 @@ namespace Cry
 					uMsg = 0;
 				}
 			}
+		}
+		bool Work::Send(u32 uMsg, const google::protobuf::Message & Data)
+		{
+			if (uMsg != 0)
+			{
+				if (u32 uSize = Data.ByteSize() + HeadSize; uSize != HeadSize)
+				{
+					if (m_lpszBody.capacity() < uSize)
+					{
+						m_lpszBody.resize(uSize);
+					}
+
+					*reinterpret_cast<u32 *>(const_cast<char *>(m_lpszBody.data())) = htonl(uSize);
+					*reinterpret_cast<u32 *>(const_cast<char *>(m_lpszBody.data()) + sizeof(uint32_t)) = htonl(uMsg);
+
+					if (Data.SerializePartialToArray(const_cast<char *>(m_lpszBody.data()) + HeadSize, Data.ByteSize()))
+					{
+						m_CurrConn->Send(m_lpszBody.data(), uSize);
+						return true;
+					}
+				}
+			}
+			return false;
 		}
 		void Work::Close()
 		{

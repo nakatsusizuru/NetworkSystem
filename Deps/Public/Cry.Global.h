@@ -34,6 +34,11 @@
 // 公共帮助头文件
 #include <Port>
 
+#if !defined(NOMINMAX)
+#undef min
+#undef max
+#endif
+
 #define HeadSize (sizeof(u32) + sizeof(u32))
 
 #if !defined(_DEBUG)

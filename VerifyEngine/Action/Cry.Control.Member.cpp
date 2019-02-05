@@ -23,28 +23,16 @@ namespace Cry
 							{
 								switch (Result)
 								{
-								case -1: ProtoResponse.set_msg(Define::SignIn::CID_SIGNIN_USERNAME_EMPTY); break;
-								case -2: ProtoResponse.set_msg(Define::SignIn::CID_SIGNIN_PASSWORD_EMPTY); break;
-								case -3: ProtoResponse.set_msg(Define::SignIn::CID_SIGNIN_USERNAME_ERROR); break;
-								case -4: ProtoResponse.set_msg(Define::SignIn::CID_SIGNIN_PASSWORD_ERROR); break;
-								default:
-								{
-									if (Result > 0)
-									{
-										Work->SetCustomer(Result, UserName, PassWord);
-										ProtoResponse.set_msg(Define::SignIn::CID_SIGNIN_NOT_ERROR);
-										ProtoResponse.set_uid(static_cast<u64>(Result));
-										ProtoResponse.set_expires(0);
-									}
-									else
-									{
-										Work->Close();
-
-									}
-									break;
+								case -1: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_EMPTY); break;
+								case -2: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_EMPTY); break;
+								case -3: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_ERROR); break;
+								case -4: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_ERROR); break;
 								}
-								}
-								
+								Work->SetCustomer(Result, UserName, PassWord);
+								ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);
+								ProtoResponse.set_uid(static_cast<u64>(Result));
+								ProtoResponse.set_expires(0);
+								Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
 							}
 							return true;
 						}

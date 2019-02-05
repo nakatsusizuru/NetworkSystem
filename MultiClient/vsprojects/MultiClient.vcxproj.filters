@@ -31,6 +31,15 @@
     <Filter Include="Service">
       <UniqueIdentifier>{35dadb73-1445-4f81-acf5-a29f220d2702}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Action">
+      <UniqueIdentifier>{165b7572-282c-4628-abae-b667f3deaa6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\DataBase">
+      <UniqueIdentifier>{4af3649f-b96b-485d-9431-9cc3e247c03d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Action\Interface">
+      <UniqueIdentifier>{91d41d42-94f0-48b1-848c-3a541ed63262}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -59,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="..\Service\Cry.Signal.Port.h">
       <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Interface\Cry.Signal.Interface.hpp">
+      <Filter>Action\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
