@@ -49,6 +49,9 @@
     <Filter Include="Action\DataBase">
       <UniqueIdentifier>{9e2c1a9a-6d2b-423f-9c27-dfaa5866a81d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public\Encrypt">
+      <UniqueIdentifier>{7d4454d6-a0d8-4e0b-9968-dfbff43761dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -92,6 +95,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Deps\Public\Interface\Cry.Signal.Interface.hpp">
       <Filter>Action\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Encrypt\Cry.Openssl.Aes.hpp">
+      <Filter>Public\Encrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Encrypt\Cry.Openssl.h">
+      <Filter>Public\Encrypt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

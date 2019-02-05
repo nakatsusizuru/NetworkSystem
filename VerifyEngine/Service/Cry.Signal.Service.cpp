@@ -73,10 +73,10 @@ namespace Cry
 						m_lpszBody.resize(uSize);
 					}
 
-					*reinterpret_cast<u32 *>(const_cast<char *>(m_lpszBody.data())) = htonl(uSize);
-					*reinterpret_cast<u32 *>(const_cast<char *>(m_lpszBody.data()) + sizeof(uint32_t)) = htonl(uMsg);
+					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data())) = htonl(uSize);
+					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data()) + sizeof(uint32_t)) = htonl(uMsg);
 
-					if (Data.SerializePartialToArray(const_cast<char *>(m_lpszBody.data()) + HeadSize, Data.ByteSize()))
+					if (Data.SerializePartialToArray(const_cast<lPString>(m_lpszBody.data()) + HeadSize, Data.ByteSize()))
 					{
 						m_CurrConn->Send(m_lpszBody.data(), uSize);
 						return true;
