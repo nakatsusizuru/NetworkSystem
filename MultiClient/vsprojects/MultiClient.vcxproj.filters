@@ -72,6 +72,9 @@
     <ClInclude Include="..\..\Deps\Public\Interface\Cry.Signal.Interface.hpp">
       <Filter>Action\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Import\Cry.Proto.hpp">
+      <Filter>Public\Import</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Entrance.cpp">

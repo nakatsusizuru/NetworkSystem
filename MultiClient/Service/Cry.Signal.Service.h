@@ -1,6 +1,7 @@
 #pragma once
 #include <evpp/tcp_client.h>
 #include <evpp/event_loop_thread_pool.h>
+#include <google/protobuf/message.h>
 #include <vector>
 namespace Cry
 {
@@ -22,6 +23,7 @@ namespace Cry
 			bool CancelService();
 			void CancelAllService();
 			void SetConnection(Connection cb);
+			bool Send(u32 uMsg, const google::protobuf::Message & Data);
 		private:
 			void OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer);
 			void OnConnection(const evpp::TCPConnPtr & Conn);
@@ -36,6 +38,8 @@ namespace Cry
 			std::unique_ptr<EventLoopThreadPool>								m_Pool;
 			std::unique_ptr<AvailablePort>										m_AvailablePort;
 			std::vector<std::unique_ptr<TcpClient>>								m_ClientData;
+		private:
+			std::string															m_lpszBody;
 		};
 	}
 }

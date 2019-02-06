@@ -49,6 +49,29 @@ namespace Cry
 		{
 			m_Connection = cb;
 		}
+		bool NetworkServiceEngine::Send(u32 uMsg, const google::protobuf::Message & Data)
+		{
+			if (uMsg != 0)
+			{
+				if (u32 uSize = Data.ByteSize() + HeadSize; uSize != HeadSize)
+				{
+					if (m_lpszBody.capacity() < uSize)
+					{
+						m_lpszBody.resize(uSize);
+					}
+
+					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data())) = htonl(uSize);
+					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data()) + sizeof(uint32_t)) = htonl(uMsg);
+
+					if (Data.SerializePartialToArray(const_cast<lPString>(m_lpszBody.data()) + HeadSize, Data.ByteSize()))
+					{
+						//m_CurrConn->Send(m_lpszBody.data(), uSize);
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 		void NetworkServiceEngine::OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer)
 		{
 

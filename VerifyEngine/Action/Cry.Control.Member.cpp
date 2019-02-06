@@ -1,7 +1,6 @@
 #include <Global>
 #include <Action/Cry.Control.Member.h>
 #include <Service/Cry.Signal.Service.h>
-#include <Action/Cry.Signal.Proto.hpp>
 #include <DataBase/Cry.Signal.DataBase.h>
 #include <Msg.Control.Member.pb.h>
 namespace Cry

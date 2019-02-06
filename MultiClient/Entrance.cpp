@@ -1,8 +1,9 @@
 #include <Global>
 #include <Entrance.h>
 #include <Cry.Import.h>
-#include <Import/Cry.Event.hpp>
 #include <Import/Cry.Glog.hpp>
+#include <Import/Cry.Event.hpp>
+#include <Import/Cry.Proto.hpp>
 #include <QtPlugin>
 #include <QApplication>
 #include <QMetaType>
@@ -23,7 +24,10 @@ int main(int argc, char* argv[])
 	{
 		Cry::Import::Event InitEvent;
 		{
-			return Exec(argc, argv);
+			Cry::Import::Proto InitProto;
+			{
+				return Exec(argc, argv);
+			}
 		}
 	}
 }

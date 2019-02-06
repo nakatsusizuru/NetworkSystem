@@ -84,9 +84,6 @@
     <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp">
       <Filter>DataBase\Import</Filter>
     </ClInclude>
-    <ClInclude Include="..\Action\Cry.Signal.Proto.hpp">
-      <Filter>Action\Import</Filter>
-    </ClInclude>
     <ClInclude Include="..\Action\Cry.Action.DataBase.h">
       <Filter>Action\DataBase</Filter>
     </ClInclude>
@@ -101,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Deps\Public\Encrypt\Cry.Openssl.h">
       <Filter>Public\Encrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Deps\Public\Import\Cry.Proto.hpp">
+      <Filter>Public\Import</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
