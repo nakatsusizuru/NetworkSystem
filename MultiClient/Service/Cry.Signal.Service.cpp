@@ -6,8 +6,20 @@ namespace Cry
 {
 	namespace Signal
 	{
-		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags) : m_lpszAddress(lpszAddress), m_lpszFlags(lpszFlags), m_Loop(std::make_unique<EventLoopThread>()), m_Pool(std::make_unique<EventLoopThreadPool>(m_Loop->loop(), 10)), m_AvailablePort(std::make_unique<AvailablePort>())
+		OnMessageLeave::OnMessageLeave(evpp::Buffer * pData) : m_pData(pData)
 		{
+
+		}
+		OnMessageLeave::~OnMessageLeave()
+		{
+			m_pData->Reset();
+		}
+
+
+		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags) : m_lpszAddress(lpszAddress), m_lpszFlags(lpszFlags), m_Loop(std::make_unique<EventLoopThread>()), m_Pool(std::make_unique<EventLoopThreadPool>(m_Loop->loop(), 10)), m_Client(std::make_unique<TcpClient>(m_Pool->GetNextLoop(), lpszAddress, lpszFlags)), m_AvailablePort(std::make_unique<AvailablePort>())
+		{
+			m_Client->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
+			m_Client->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
 			m_Loop->Start(true);
 			m_Pool->Start(true);
 		}
@@ -16,6 +28,14 @@ namespace Cry
 			this->CancelAllService();
 			m_Pool->Stop(true);
 			m_Loop->Stop(true);
+		}
+		bool NetworkServiceEngine::CreateService()
+		{
+			if (m_lpszAddress.empty())
+			{
+				return false;
+			}
+			m_Client->Connect();
 		}
 		bool NetworkServiceEngine::CreateService(const std::string & lpszString, const u32 uPort)
 		{
@@ -29,6 +49,7 @@ namespace Cry
 				Client->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
 				Client->Bind(lpszString);
 				Client->Connect();
+
 				m_ClientData.emplace(std::cend(m_ClientData), std::move(Client));
 				return true;
 			}
@@ -51,7 +72,11 @@ namespace Cry
 		}
 		bool NetworkServiceEngine::Send(u32 uMsg, const google::protobuf::Message & Data)
 		{
-			if (uMsg != 0)
+			return this->Send(m_Client->conn(), uMsg, Data);
+		}
+		bool NetworkServiceEngine::Send(const evpp::TCPConnPtr & Conn, u32 uMsg, const google::protobuf::Message & Data)
+		{
+			if (Conn != nullptr && Conn->IsConnected() && uMsg != 0)
 			{
 				if (u32 uSize = Data.ByteSize() + HeadSize; uSize != HeadSize)
 				{
@@ -65,7 +90,7 @@ namespace Cry
 
 					if (Data.SerializePartialToArray(const_cast<lPString>(m_lpszBody.data()) + HeadSize, Data.ByteSize()))
 					{
-						//m_CurrConn->Send(m_lpszBody.data(), uSize);
+						Conn->Send(m_lpszBody.data(), uSize);
 						return true;
 					}
 				}

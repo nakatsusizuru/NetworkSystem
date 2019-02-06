@@ -64,7 +64,7 @@ namespace Cry
 		}
 		bool Work::Send(u32 uMsg, const google::protobuf::Message & Data)
 		{
-			if (uMsg != 0)
+			if (m_CurrConn != nullptr && m_CurrConn->IsConnected() && uMsg != 0)
 			{
 				if (u32 uSize = Data.ByteSize() + HeadSize; uSize != HeadSize)
 				{
@@ -143,9 +143,13 @@ namespace Cry
 		void NetworkServiceEngine::OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer)
 		{
 			if (std::shared_ptr<Work> Work = this->GetWork(Conn->id()); Work != nullptr)
+			{
 				Work->Receive(Conn, Buffer);
+			}
 			else
+			{
 				Conn->Close();
+			}
 		}
 		void NetworkServiceEngine::OnConnection(const evpp::TCPConnPtr & Conn)
 		{

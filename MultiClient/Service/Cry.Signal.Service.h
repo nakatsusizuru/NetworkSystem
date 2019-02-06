@@ -13,17 +13,32 @@ namespace Cry
 
 	namespace Signal
 	{
+		class OnMessageLeave
+		{
+		public:
+			OnMessageLeave() = default;
+			explicit OnMessageLeave(evpp::Buffer * pData);
+			~OnMessageLeave();
+		private:
+			evpp::Buffer*														m_pData;
+		private:
+			OnMessageLeave(const OnMessageLeave &) = default;
+			OnMessageLeave &operator=(const OnMessageLeave &) = default;
+		};
+
 		class NetworkServiceEngine
 		{
 		public:
 			explicit NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags);
 			~NetworkServiceEngine();
 		public:
+			bool CreateService();
 			bool CreateService(const std::string & lpszString, const u32 uPort);
 			bool CancelService();
 			void CancelAllService();
 			void SetConnection(Connection cb);
 			bool Send(u32 uMsg, const google::protobuf::Message & Data);
+			bool Send(const evpp::TCPConnPtr & Conn, u32 uMsg, const google::protobuf::Message & Data);
 		private:
 			void OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer);
 			void OnConnection(const evpp::TCPConnPtr & Conn);
@@ -36,6 +51,7 @@ namespace Cry
 		private:
 			std::unique_ptr<EventLoopThread>									m_Loop;
 			std::unique_ptr<EventLoopThreadPool>								m_Pool;
+			std::unique_ptr<TcpClient>											m_Client;
 			std::unique_ptr<AvailablePort>										m_AvailablePort;
 			std::vector<std::unique_ptr<TcpClient>>								m_ClientData;
 		private:

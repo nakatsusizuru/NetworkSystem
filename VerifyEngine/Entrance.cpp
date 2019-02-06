@@ -2,8 +2,8 @@
 #include <Entrance.h>
 #include <Cry.Import.h>
 #include <Import/Cry.Glog.hpp>
-#include <Import/Cry.Event.hpp>
 #include <Import/Cry.Proto.hpp>
+#include <Import/Cry.Event.hpp>
 #include <QtPlugin>
 #include <QApplication>
 #include <Gui/ControlDialog.h>
@@ -19,9 +19,9 @@ int main(int argc, char* argv[])
 {
 	Cry::Import::Glog InitGlog;
 	{
-		Cry::Import::Event InitEvent;
+		Cry::Import::Proto InitProto; 
 		{
-			Cry::Import::Proto InitProto;
+			Cry::Import::Event InitEvent;
 			{
 				return WinPort::Exec(argc, argv);
 			}

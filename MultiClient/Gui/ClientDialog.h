@@ -23,6 +23,8 @@ namespace Cry
 	private:
 		void InitializeUi(QWidget* Widget);
 		void OnPushButton(bool Status);
+		void PushSignIn(bool Status);
+		
 	private:
 		void OnConnection(const u32 Index, bool Status);
 	signals:

@@ -48,18 +48,11 @@ namespace Cry
 		bool SignIn::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
 		{
 			Cry::Control::Member::MsgSignInRequest ProtoRequest;
+			if (!ProtoRequest.ParsePartialFromArray(Data, uSize))
 			{
-				if (!ProtoRequest.ParsePartialFromArray(Data, uSize))
-				{
-					Work->Close();
-				}
-
-				if (!this->OnSignin(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password())))
-				{
-					Work->Close();
-				}
+				Work->Close();
 			}
-			return false;
+			return this->OnSignin(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()));
 		}
 	}
 }

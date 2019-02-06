@@ -4,6 +4,7 @@
 #include <Service/Cry.Signal.Service.h>
 #include <Service/Cry.Signal.Port.h>
 #include <QStandardItemModel>
+#include <Msg.Control.Member.pb.h>
 namespace Cry
 {
 	ClientDialog::ClientDialog(QWidget* Widget) : QMainWindow(Widget), Interface(new Ui::ClientDialog), m_Service(std::make_shared<Signal::NetworkServiceEngine>("127.0.0.1:9999", "Client")), m_AvailablePort(std::make_unique<AvailablePort>())
@@ -51,10 +52,13 @@ namespace Cry
 		Interface->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 		connect(Interface->pushButton, &QPushButton::clicked, this, &ClientDialog::OnPushButton);
+
+		connect(Interface->PushSignIn, &QPushButton::clicked, this, &ClientDialog::PushSignIn);
 		/// 连接跨线程信号
 		connect(this, &ClientDialog::MultiDelegateConnection, this, &ClientDialog::OnConnection);
 		/// 假委托执行函数
 		m_Service->SetConnection(std::bind(&ClientDialog::MultiDelegateConnection, this, std::placeholders::_1, std::placeholders::_2));
+		m_Service->CreateService();
 	}
 	void ClientDialog::OnConnection(const u32 Index, bool Status)
 	{
@@ -78,5 +82,13 @@ namespace Cry
 				}
 			}
 		}
+	}
+	void ClientDialog::PushSignIn(bool Status)
+	{
+		Cry::Control::Member::MsgSignInRequest ProtoRequest;
+		ProtoRequest.set_username("123");
+		ProtoRequest.set_password("123");
+		ProtoRequest.set_version(1);
+		m_Service->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, ProtoRequest);
 	}
 }
