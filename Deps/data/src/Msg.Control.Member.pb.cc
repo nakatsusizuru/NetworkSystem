@@ -108,6 +108,7 @@ const ::google::protobuf::uint32 TableStruct_Msg_2eControl_2eMember_2eproto::off
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgSignInResponse, msg_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgSignInResponse, text_),
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgSignInResponse, uid_),
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgSignInResponse, expires_),
 };
@@ -132,17 +133,17 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 const char descriptor_table_protodef_Msg_2eControl_2eMember_2eproto[] =
   "\n\030Msg.Control.Member.proto\022\022Cry.Control."
   "Member\032\030Msg.Control.Define.proto\"8\n\022MsgR"
-  "egisterRequest\022\020\n\010username\030\002 \001(\014\022\020\n\010pass"
-  "word\030\003 \001(\014\"G\n\020MsgSignInRequest\022\020\n\010userna"
-  "me\030\002 \001(\014\022\020\n\010password\030\003 \001(\014\022\017\n\007version\030\004 "
-  "\001(\r\"Z\n\021MsgSignInResponse\022\'\n\003msg\030\001 \001(\0162\032."
-  "Cry.Control.Define.SignIn\022\013\n\003uid\030\002 \001(\004\022\017"
-  "\n\007expires\030\003 \001(\rb\006proto3"
+  "egisterRequest\022\020\n\010username\030\001 \001(\014\022\020\n\010pass"
+  "word\030\002 \001(\014\"G\n\020MsgSignInRequest\022\020\n\010userna"
+  "me\030\001 \001(\014\022\020\n\010password\030\002 \001(\014\022\017\n\007version\030\003 "
+  "\001(\r\"h\n\021MsgSignInResponse\022\'\n\003msg\030\001 \001(\0162\032."
+  "Cry.Control.Define.SignIn\022\014\n\004text\030\002 \001(\014\022"
+  "\013\n\003uid\030\003 \001(\r\022\017\n\007expires\030\004 \001(\rb\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eMember_2eproto = {
   false, InitDefaults_Msg_2eControl_2eMember_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eMember_2eproto,
-  "Msg.Control.Member.proto", &assign_descriptors_table_Msg_2eControl_2eMember_2eproto, 303,
+  "Msg.Control.Member.proto", &assign_descriptors_table_Msg_2eControl_2eMember_2eproto, 317,
 };
 
 void AddDescriptors_Msg_2eControl_2eMember_2eproto() {
@@ -242,9 +243,9 @@ const char* MsgRegisterRequest::_InternalParse(const char* begin, const char* en
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // bytes username = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+      // bytes username = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         object = msg->mutable_username();
@@ -257,9 +258,9 @@ const char* MsgRegisterRequest::_InternalParse(const char* begin, const char* en
         ptr += size;
         break;
       }
-      // bytes password = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+      // bytes password = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         object = msg->mutable_password();
@@ -306,9 +307,9 @@ bool MsgRegisterRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes username = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+      // bytes username = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_username()));
         } else {
@@ -317,9 +318,9 @@ bool MsgRegisterRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // bytes password = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+      // bytes password = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_password()));
         } else {
@@ -355,16 +356,16 @@ void MsgRegisterRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes username = 2;
+  // bytes username = 1;
   if (this->username().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      2, this->username(), output);
+      1, this->username(), output);
   }
 
-  // bytes password = 3;
+  // bytes password = 2;
   if (this->password().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      3, this->password(), output);
+      2, this->password(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -380,18 +381,18 @@ void MsgRegisterRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes username = 2;
+  // bytes username = 1;
   if (this->username().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->username(), target);
+        1, this->username(), target);
   }
 
-  // bytes password = 3;
+  // bytes password = 2;
   if (this->password().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        3, this->password(), target);
+        2, this->password(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -415,14 +416,14 @@ size_t MsgRegisterRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes username = 2;
+  // bytes username = 1;
   if (this->username().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->username());
   }
 
-  // bytes password = 3;
+  // bytes password = 2;
   if (this->password().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -590,9 +591,9 @@ const char* MsgSignInRequest::_InternalParse(const char* begin, const char* end,
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // bytes username = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+      // bytes username = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         object = msg->mutable_username();
@@ -605,9 +606,9 @@ const char* MsgSignInRequest::_InternalParse(const char* begin, const char* end,
         ptr += size;
         break;
       }
-      // bytes password = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+      // bytes password = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         ptr = ::google::protobuf::io::ReadSize(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         object = msg->mutable_password();
@@ -620,9 +621,9 @@ const char* MsgSignInRequest::_InternalParse(const char* begin, const char* end,
         ptr += size;
         break;
       }
-      // uint32 version = 4;
-      case 4: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+      // uint32 version = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
         msg->set_version(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
@@ -661,9 +662,9 @@ bool MsgSignInRequest::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // bytes username = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+      // bytes username = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_username()));
         } else {
@@ -672,9 +673,9 @@ bool MsgSignInRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // bytes password = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+      // bytes password = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_password()));
         } else {
@@ -683,9 +684,9 @@ bool MsgSignInRequest::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 version = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
+      // uint32 version = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -723,21 +724,21 @@ void MsgSignInRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes username = 2;
+  // bytes username = 1;
   if (this->username().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      2, this->username(), output);
+      1, this->username(), output);
   }
 
-  // bytes password = 3;
+  // bytes password = 2;
   if (this->password().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      3, this->password(), output);
+      2, this->password(), output);
   }
 
-  // uint32 version = 4;
+  // uint32 version = 3;
   if (this->version() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->version(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->version(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -753,23 +754,23 @@ void MsgSignInRequest::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes username = 2;
+  // bytes username = 1;
   if (this->username().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->username(), target);
+        1, this->username(), target);
   }
 
-  // bytes password = 3;
+  // bytes password = 2;
   if (this->password().size() > 0) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        3, this->password(), target);
+        2, this->password(), target);
   }
 
-  // uint32 version = 4;
+  // uint32 version = 3;
   if (this->version() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->version(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->version(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -793,21 +794,21 @@ size_t MsgSignInRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes username = 2;
+  // bytes username = 1;
   if (this->username().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->username());
   }
 
-  // bytes password = 3;
+  // bytes password = 2;
   if (this->password().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::BytesSize(
         this->password());
   }
 
-  // uint32 version = 4;
+  // uint32 version = 3;
   if (this->version() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -902,6 +903,7 @@ class MsgSignInResponse::HasBitSetters {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgSignInResponse::kMsgFieldNumber;
+const int MsgSignInResponse::kTextFieldNumber;
 const int MsgSignInResponse::kUidFieldNumber;
 const int MsgSignInResponse::kExpiresFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -915,16 +917,23 @@ MsgSignInResponse::MsgSignInResponse(const MsgSignInResponse& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&uid_, &from.uid_,
+  text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.text().size() > 0) {
+    text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.text_);
+  }
+  ::memcpy(&msg_, &from.msg_,
     static_cast<size_t>(reinterpret_cast<char*>(&expires_) -
-    reinterpret_cast<char*>(&uid_)) + sizeof(expires_));
+    reinterpret_cast<char*>(&msg_)) + sizeof(expires_));
   // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgSignInResponse)
 }
 
 void MsgSignInResponse::SharedCtor() {
-  ::memset(&uid_, 0, static_cast<size_t>(
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_MsgSignInResponse_Msg_2eControl_2eMember_2eproto.base);
+  text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&msg_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&expires_) -
-      reinterpret_cast<char*>(&uid_)) + sizeof(expires_));
+      reinterpret_cast<char*>(&msg_)) + sizeof(expires_));
 }
 
 MsgSignInResponse::~MsgSignInResponse() {
@@ -933,6 +942,7 @@ MsgSignInResponse::~MsgSignInResponse() {
 }
 
 void MsgSignInResponse::SharedDtor() {
+  text_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void MsgSignInResponse::SetCachedSize(int size) const {
@@ -950,9 +960,10 @@ void MsgSignInResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&uid_, 0, static_cast<size_t>(
+  text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&msg_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&expires_) -
-      reinterpret_cast<char*>(&uid_)) + sizeof(expires_));
+      reinterpret_cast<char*>(&msg_)) + sizeof(expires_));
   _internal_metadata_.Clear();
 }
 
@@ -977,16 +988,31 @@ const char* MsgSignInResponse::_InternalParse(const char* begin, const char* end
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // uint64 uid = 2;
+      // bytes text = 2;
       case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        object = msg->mutable_text();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParser;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheck(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
+        break;
+      }
+      // uint32 uid = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
         msg->set_uid(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // uint32 expires = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+      // uint32 expires = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
         msg->set_expires(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
@@ -1006,6 +1032,13 @@ const char* MsgSignInResponse::_InternalParse(const char* begin, const char* end
     }  // switch
   }  // while
   return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool MsgSignInResponse::MergePartialFromCodedStream(
@@ -1032,12 +1065,23 @@ bool MsgSignInResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint64 uid = 2;
+      // bytes text = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_text()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 uid = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &uid_)));
         } else {
           goto handle_unusual;
@@ -1045,9 +1089,9 @@ bool MsgSignInResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 expires = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+      // uint32 expires = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -1091,14 +1135,20 @@ void MsgSignInResponse::SerializeWithCachedSizes(
       1, this->msg(), output);
   }
 
-  // uint64 uid = 2;
-  if (this->uid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->uid(), output);
+  // bytes text = 2;
+  if (this->text().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      2, this->text(), output);
   }
 
-  // uint32 expires = 3;
+  // uint32 uid = 3;
+  if (this->uid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->uid(), output);
+  }
+
+  // uint32 expires = 4;
   if (this->expires() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->expires(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->expires(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1120,14 +1170,21 @@ void MsgSignInResponse::SerializeWithCachedSizes(
       1, this->msg(), target);
   }
 
-  // uint64 uid = 2;
-  if (this->uid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->uid(), target);
+  // bytes text = 2;
+  if (this->text().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->text(), target);
   }
 
-  // uint32 expires = 3;
+  // uint32 uid = 3;
+  if (this->uid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->uid(), target);
+  }
+
+  // uint32 expires = 4;
   if (this->expires() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->expires(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->expires(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1151,11 +1208,11 @@ size_t MsgSignInResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint64 uid = 2;
-  if (this->uid() != 0) {
+  // bytes text = 2;
+  if (this->text().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->uid());
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->text());
   }
 
   // .Cry.Control.Define.SignIn msg = 1;
@@ -1164,7 +1221,14 @@ size_t MsgSignInResponse::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->msg());
   }
 
-  // uint32 expires = 3;
+  // uint32 uid = 3;
+  if (this->uid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->uid());
+  }
+
+  // uint32 expires = 4;
   if (this->expires() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -1198,11 +1262,15 @@ void MsgSignInResponse::MergeFrom(const MsgSignInResponse& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.uid() != 0) {
-    set_uid(from.uid());
+  if (from.text().size() > 0) {
+
+    text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.text_);
   }
   if (from.msg() != 0) {
     set_msg(from.msg());
+  }
+  if (from.uid() != 0) {
+    set_uid(from.uid());
   }
   if (from.expires() != 0) {
     set_expires(from.expires());
@@ -1234,8 +1302,10 @@ void MsgSignInResponse::Swap(MsgSignInResponse* other) {
 void MsgSignInResponse::InternalSwap(MsgSignInResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(uid_, other->uid_);
+  text_.Swap(&other->text_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(msg_, other->msg_);
+  swap(uid_, other->uid_);
   swap(expires_, other->expires_);
 }
 

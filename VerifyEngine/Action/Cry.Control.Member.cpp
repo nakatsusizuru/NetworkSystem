@@ -14,26 +14,11 @@ namespace Cry
 			{
 				try
 				{
-					if (w64 Result = Session->isConnected(); TRUE == Result)
+					if (u32 Result = Session->isConnected(); TRUE == Result)
 					{
 						if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) As Result", Poco::Data::Keywords::use(UserName), Poco::Data::Keywords::use(PassWord), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 						{
-							Cry::Control::Member::MsgSignInResponse ProtoResponse;
-							{
-								switch (Result)
-								{
-								case -1: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_EMPTY); break;
-								case -2: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_EMPTY); break;
-								case -3: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_ERROR); break;
-								case -4: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_ERROR); break;
-								}
-								Work->SetCustomer(Result, UserName, PassWord);
-								ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);
-								ProtoResponse.set_uid(static_cast<u64>(Result));
-								ProtoResponse.set_expires(0);
-								Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
-							}
-							return true;
+							return this->SendResponse(Work, Result, UserName, PassWord);
 						}
 					}
 				}
@@ -53,6 +38,37 @@ namespace Cry
 				Work->Close();
 			}
 			return this->OnSignin(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()));
+		}
+
+		bool SignIn::CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 Result, std::string & UserName, std::string & PassWord)
+		{
+			Cry::Control::Member::MsgSignInResponse ProtoResponse;
+			if (Work->CheckOnline(Result, UserName, PassWord))
+			{
+				ProtoResponse.set_uid(static_cast<u64>(Result));
+				ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ONLINE);
+				ProtoResponse.set_text("您的账号已经在线");
+				return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
+			}
+			return false;
+		}
+
+		bool SignIn::SendResponse(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 Result, std::string & UserName, std::string & PassWord)
+		{
+			if (false == this->CheckOnline(Work, Result, UserName, PassWord))
+			{
+				Cry::Control::Member::MsgSignInResponse ProtoResponse;
+				switch (Result)
+				{
+				case -1: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_EMPTY); ProtoResponse.set_text("请您输入手机/邮箱/用户名"); break;
+				case -2: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_EMPTY); ProtoResponse.set_text("请您输入密码"); break;
+				case -3: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_ERROR); ProtoResponse.set_text("您输入的账号不存在"); break;
+				case -4: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_ERROR); ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
+				default: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);	ProtoResponse.set_expires(0); break;
+				}
+				return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
+			}
+			return false;
 		}
 	}
 }

@@ -18,8 +18,8 @@ namespace Cry
 			explicit DataBase();
 			virtual ~DataBase();
 		public:
-			void SetupInterface(const u32 uFlags, const std::shared_ptr<Cry::SocketDataInterface> & Interface);
-			std::shared_ptr<Cry::SocketDataInterface> Get(const u32 uFlags);
+			void SetupInterface(const u32 uMsg, const std::shared_ptr<Cry::SocketDataInterface> & f);
+			std::shared_ptr<Cry::SocketDataInterface> Get(const u32 uMsg);
 			bool empty() const;
 		private:
 			std::unordered_map<u32, std::shared_ptr<Cry::SocketDataInterface>>			m_Data;

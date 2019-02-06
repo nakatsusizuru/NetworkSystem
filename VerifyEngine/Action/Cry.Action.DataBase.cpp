@@ -14,16 +14,16 @@ namespace Cry
 		{
 
 		}
-		void DataBase::SetupInterface(const u32 uFlags, const std::shared_ptr<Cry::SocketDataInterface> & Interface)
+		void DataBase::SetupInterface(const u32 uMsg, const std::shared_ptr<Cry::SocketDataInterface> & f)
 		{
-			if (m_Data.find(uFlags) == std::end(m_Data))
+			if (m_Data.find(uMsg) == std::end(m_Data))
 			{
-				m_Data.emplace(uFlags, Interface);
+				m_Data.emplace(uMsg, f);
 			}
 		}
-		std::shared_ptr<Cry::SocketDataInterface> DataBase::Get(const u32 uFlags)
+		std::shared_ptr<Cry::SocketDataInterface> DataBase::Get(const u32 uMsg)
 		{
-			if (auto iter = m_Data.find(uFlags); iter != std::end(m_Data))
+			if (auto iter = m_Data.find(uMsg); iter != std::end(m_Data))
 			{
 				return iter->second;
 			}

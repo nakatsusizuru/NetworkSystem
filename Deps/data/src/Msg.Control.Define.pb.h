@@ -83,7 +83,8 @@ enum SignIn {
   CID_SIGNIN_PASSWORD_EMPTY = 2,
   CID_SIGNIN_USERNAME_ERROR = 3,
   CID_SIGNIN_PASSWORD_ERROR = 4,
-  CID_SIGNIN_NOT_ERROR = 5,
+  CID_SIGNIN_NOT_ONLINE = 5,
+  CID_SIGNIN_NOT_ERROR = 6,
   SignIn_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
   SignIn_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
 };

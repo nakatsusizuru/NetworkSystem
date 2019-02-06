@@ -23,7 +23,7 @@ namespace Cry
 		{
 		public:
 			CustomerData() = default;
-			CustomerData(u64 Index, const std::string & _Ty1, const std::string & _Ty2) : uIndex(Index), uExpires(0), UserName(_Ty1), PassWord(_Ty2) {};
+			CustomerData(u32 Index, const std::string & _Ty1, const std::string & _Ty2) : uIndex(Index), uExpires(0), UserName(_Ty1), PassWord(_Ty2) {};
 			bool operator == (const CustomerData & Other) const noexcept
 			{
 				if (Other.uIndex == this->uIndex)
@@ -37,7 +37,7 @@ namespace Cry
 				return !(*this == Other);
 			}
 		private:
-			u64							uIndex;
+			u32							uIndex;
 			u32							uExpires;
 		private:
 			std::string					UserName;
@@ -66,7 +66,7 @@ namespace Cry
 			void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data);
 			bool Send(u32 uMsg, const google::protobuf::Message & Data);
 			void Close();
-			void SetCustomer(w64 wIndex, std::string & UserName, std::string & PassWord);
+			bool CheckOnline(u32 wIndex, std::string & UserName, std::string & PassWord);
 			bool CheckOnline(const CustomerData & Other) const;
 		public:
 			std::shared_ptr<CustomerData> & GetCustomerData() { return m_Customer; }

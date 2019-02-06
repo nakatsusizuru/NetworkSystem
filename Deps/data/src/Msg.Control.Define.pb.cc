@@ -42,17 +42,17 @@ const char descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto[] =
   "\n\030Msg.Control.Define.proto\022\022Cry.Control."
   "Define*\\\n\rMemberMessage\022\027\n\023CID_MESSAGE_D"
   "EFAULT\020\000\022\031\n\024CID_MESSAGE_REGISTER\020\200\002\022\027\n\022C"
-  "ID_MESSAGE_SIGNIN\020\201\002*\266\001\n\006SignIn\022\026\n\022CID_S"
+  "ID_MESSAGE_SIGNIN\020\201\002*\321\001\n\006SignIn\022\026\n\022CID_S"
   "IGNIN_DEFAULT\020\000\022\035\n\031CID_SIGNIN_USERNAME_E"
   "MPTY\020\001\022\035\n\031CID_SIGNIN_PASSWORD_EMPTY\020\002\022\035\n"
   "\031CID_SIGNIN_USERNAME_ERROR\020\003\022\035\n\031CID_SIGN"
-  "IN_PASSWORD_ERROR\020\004\022\030\n\024CID_SIGNIN_NOT_ER"
-  "ROR\020\005b\006proto3"
+  "IN_PASSWORD_ERROR\020\004\022\031\n\025CID_SIGNIN_NOT_ON"
+  "LINE\020\005\022\030\n\024CID_SIGNIN_NOT_ERROR\020\006b\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eDefine_2eproto = {
   false, InitDefaults_Msg_2eControl_2eDefine_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto,
-  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 333,
+  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 360,
 };
 
 void AddDescriptors_Msg_2eControl_2eDefine_2eproto() {
@@ -94,6 +94,7 @@ bool SignIn_IsValid(int value) {
     case 3:
     case 4:
     case 5:
+    case 6:
       return true;
     default:
       return false;

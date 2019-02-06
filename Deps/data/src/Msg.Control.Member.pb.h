@@ -172,9 +172,9 @@ class MsgRegisterRequest final :
 
   // accessors -------------------------------------------------------
 
-  // bytes username = 2;
+  // bytes username = 1;
   void clear_username();
-  static const int kUsernameFieldNumber = 2;
+  static const int kUsernameFieldNumber = 1;
   const ::std::string& username() const;
   void set_username(const ::std::string& value);
   #if LANG_CXX11
@@ -186,9 +186,9 @@ class MsgRegisterRequest final :
   ::std::string* release_username();
   void set_allocated_username(::std::string* username);
 
-  // bytes password = 3;
+  // bytes password = 2;
   void clear_password();
-  static const int kPasswordFieldNumber = 3;
+  static const int kPasswordFieldNumber = 2;
   const ::std::string& password() const;
   void set_password(const ::std::string& value);
   #if LANG_CXX11
@@ -307,9 +307,9 @@ class MsgSignInRequest final :
 
   // accessors -------------------------------------------------------
 
-  // bytes username = 2;
+  // bytes username = 1;
   void clear_username();
-  static const int kUsernameFieldNumber = 2;
+  static const int kUsernameFieldNumber = 1;
   const ::std::string& username() const;
   void set_username(const ::std::string& value);
   #if LANG_CXX11
@@ -321,9 +321,9 @@ class MsgSignInRequest final :
   ::std::string* release_username();
   void set_allocated_username(::std::string* username);
 
-  // bytes password = 3;
+  // bytes password = 2;
   void clear_password();
-  static const int kPasswordFieldNumber = 3;
+  static const int kPasswordFieldNumber = 2;
   const ::std::string& password() const;
   void set_password(const ::std::string& value);
   #if LANG_CXX11
@@ -335,9 +335,9 @@ class MsgSignInRequest final :
   ::std::string* release_password();
   void set_allocated_password(::std::string* password);
 
-  // uint32 version = 4;
+  // uint32 version = 3;
   void clear_version();
-  static const int kVersionFieldNumber = 4;
+  static const int kVersionFieldNumber = 3;
   ::google::protobuf::uint32 version() const;
   void set_version(::google::protobuf::uint32 value);
 
@@ -449,11 +449,19 @@ class MsgSignInResponse final :
 
   // accessors -------------------------------------------------------
 
-  // uint64 uid = 2;
-  void clear_uid();
-  static const int kUidFieldNumber = 2;
-  ::google::protobuf::uint64 uid() const;
-  void set_uid(::google::protobuf::uint64 value);
+  // bytes text = 2;
+  void clear_text();
+  static const int kTextFieldNumber = 2;
+  const ::std::string& text() const;
+  void set_text(const ::std::string& value);
+  #if LANG_CXX11
+  void set_text(::std::string&& value);
+  #endif
+  void set_text(const char* value);
+  void set_text(const void* value, size_t size);
+  ::std::string* mutable_text();
+  ::std::string* release_text();
+  void set_allocated_text(::std::string* text);
 
   // .Cry.Control.Define.SignIn msg = 1;
   void clear_msg();
@@ -461,9 +469,15 @@ class MsgSignInResponse final :
   ::Cry::Control::Define::SignIn msg() const;
   void set_msg(::Cry::Control::Define::SignIn value);
 
-  // uint32 expires = 3;
+  // uint32 uid = 3;
+  void clear_uid();
+  static const int kUidFieldNumber = 3;
+  ::google::protobuf::uint32 uid() const;
+  void set_uid(::google::protobuf::uint32 value);
+
+  // uint32 expires = 4;
   void clear_expires();
-  static const int kExpiresFieldNumber = 3;
+  static const int kExpiresFieldNumber = 4;
   ::google::protobuf::uint32 expires() const;
   void set_expires(::google::protobuf::uint32 value);
 
@@ -472,8 +486,9 @@ class MsgSignInResponse final :
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint64 uid_;
+  ::google::protobuf::internal::ArenaStringPtr text_;
   int msg_;
+  ::google::protobuf::uint32 uid_;
   ::google::protobuf::uint32 expires_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Msg_2eControl_2eMember_2eproto;
@@ -489,7 +504,7 @@ class MsgSignInResponse final :
 #endif  // __GNUC__
 // MsgRegisterRequest
 
-// bytes username = 2;
+// bytes username = 1;
 inline void MsgRegisterRequest::clear_username() {
   username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -542,7 +557,7 @@ inline void MsgRegisterRequest::set_allocated_username(::std::string* username) 
   // @@protoc_insertion_point(field_set_allocated:Cry.Control.Member.MsgRegisterRequest.username)
 }
 
-// bytes password = 3;
+// bytes password = 2;
 inline void MsgRegisterRequest::clear_password() {
   password_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -599,7 +614,7 @@ inline void MsgRegisterRequest::set_allocated_password(::std::string* password) 
 
 // MsgSignInRequest
 
-// bytes username = 2;
+// bytes username = 1;
 inline void MsgSignInRequest::clear_username() {
   username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -652,7 +667,7 @@ inline void MsgSignInRequest::set_allocated_username(::std::string* username) {
   // @@protoc_insertion_point(field_set_allocated:Cry.Control.Member.MsgSignInRequest.username)
 }
 
-// bytes password = 3;
+// bytes password = 2;
 inline void MsgSignInRequest::clear_password() {
   password_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -705,7 +720,7 @@ inline void MsgSignInRequest::set_allocated_password(::std::string* password) {
   // @@protoc_insertion_point(field_set_allocated:Cry.Control.Member.MsgSignInRequest.password)
 }
 
-// uint32 version = 4;
+// uint32 version = 3;
 inline void MsgSignInRequest::clear_version() {
   version_ = 0u;
 }
@@ -737,21 +752,74 @@ inline void MsgSignInResponse::set_msg(::Cry::Control::Define::SignIn value) {
   // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgSignInResponse.msg)
 }
 
-// uint64 uid = 2;
-inline void MsgSignInResponse::clear_uid() {
-  uid_ = PROTOBUF_ULONGLONG(0);
+// bytes text = 2;
+inline void MsgSignInResponse::clear_text() {
+  text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint64 MsgSignInResponse::uid() const {
+inline const ::std::string& MsgSignInResponse::text() const {
+  // @@protoc_insertion_point(field_get:Cry.Control.Member.MsgSignInResponse.text)
+  return text_.GetNoArena();
+}
+inline void MsgSignInResponse::set_text(const ::std::string& value) {
+  
+  text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgSignInResponse.text)
+}
+#if LANG_CXX11
+inline void MsgSignInResponse::set_text(::std::string&& value) {
+  
+  text_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Cry.Control.Member.MsgSignInResponse.text)
+}
+#endif
+inline void MsgSignInResponse::set_text(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cry.Control.Member.MsgSignInResponse.text)
+}
+inline void MsgSignInResponse::set_text(const void* value, size_t size) {
+  
+  text_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cry.Control.Member.MsgSignInResponse.text)
+}
+inline ::std::string* MsgSignInResponse::mutable_text() {
+  
+  // @@protoc_insertion_point(field_mutable:Cry.Control.Member.MsgSignInResponse.text)
+  return text_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgSignInResponse::release_text() {
+  // @@protoc_insertion_point(field_release:Cry.Control.Member.MsgSignInResponse.text)
+  
+  return text_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgSignInResponse::set_allocated_text(::std::string* text) {
+  if (text != nullptr) {
+    
+  } else {
+    
+  }
+  text_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), text);
+  // @@protoc_insertion_point(field_set_allocated:Cry.Control.Member.MsgSignInResponse.text)
+}
+
+// uint32 uid = 3;
+inline void MsgSignInResponse::clear_uid() {
+  uid_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgSignInResponse::uid() const {
   // @@protoc_insertion_point(field_get:Cry.Control.Member.MsgSignInResponse.uid)
   return uid_;
 }
-inline void MsgSignInResponse::set_uid(::google::protobuf::uint64 value) {
+inline void MsgSignInResponse::set_uid(::google::protobuf::uint32 value) {
   
   uid_ = value;
   // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgSignInResponse.uid)
 }
 
-// uint32 expires = 3;
+// uint32 expires = 4;
 inline void MsgSignInResponse::clear_expires() {
   expires_ = 0u;
 }
