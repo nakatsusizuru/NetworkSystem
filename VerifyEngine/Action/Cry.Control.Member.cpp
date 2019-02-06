@@ -14,7 +14,7 @@ namespace Cry
 			{
 				try
 				{
-					if (u32 Result = Session->isConnected(); TRUE == Result)
+					if (w32 Result = Session->isConnected(); TRUE == Result)
 					{
 						if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?) As Result", Poco::Data::Keywords::use(UserName), Poco::Data::Keywords::use(PassWord), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 						{
@@ -40,7 +40,7 @@ namespace Cry
 			return this->OnSignin(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()));
 		}
 
-		bool SignIn::CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 Result, std::string & UserName, std::string & PassWord)
+		bool SignIn::CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const w32 Result, std::string & UserName, std::string & PassWord)
 		{
 			Cry::Control::Member::MsgSignInResponse ProtoResponse;
 			if (Work->CheckOnline(Result, UserName, PassWord))
@@ -53,7 +53,7 @@ namespace Cry
 			return false;
 		}
 
-		bool SignIn::SendResponse(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 Result, std::string & UserName, std::string & PassWord)
+		bool SignIn::SendResponse(const std::shared_ptr<Cry::Signal::Work> & Work, const w32 Result, std::string & UserName, std::string & PassWord)
 		{
 			if (false == this->CheckOnline(Work, Result, UserName, PassWord))
 			{

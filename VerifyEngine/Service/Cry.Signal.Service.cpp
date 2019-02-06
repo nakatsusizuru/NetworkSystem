@@ -92,7 +92,7 @@ namespace Cry
 				m_CurrConn->Close();
 			}
 		}
-		bool Work::CheckOnline(u32 wIndex, std::string & UserName, std::string & PassWord)
+		bool Work::CheckOnline(w32 wIndex, std::string & UserName, std::string & PassWord)
 		{
 			if(wIndex > 0 && false == this->CheckOnline({ wIndex, UserName, PassWord }))
 			{

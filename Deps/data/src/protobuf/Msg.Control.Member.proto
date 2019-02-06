@@ -20,6 +20,6 @@ message MsgSignInResponse
 {
 	Cry.Control.Define.SignIn		msg			= 1;		/// 返回消息
 	bytes							text		= 2;		/// 返回文本
-	uint32							uid			= 3;		/// 返回序列
+	int32							uid			= 3;		/// 返回序列
 	uint32							expires		= 4;		/// 到期时间
 }
