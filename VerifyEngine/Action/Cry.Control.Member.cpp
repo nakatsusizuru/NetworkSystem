@@ -42,9 +42,9 @@ namespace Cry
 
 		bool SignIn::CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const w32 Result, std::string & UserName, std::string & PassWord)
 		{
-			Cry::Control::Member::MsgSignInResponse ProtoResponse;
 			if (Work->CheckOnline(Result, UserName, PassWord))
 			{
+				Cry::Control::Member::MsgSignInResponse ProtoResponse;
 				ProtoResponse.set_uid(static_cast<u64>(Result));
 				ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ONLINE);
 				ProtoResponse.set_text("您的账号已经在线");
