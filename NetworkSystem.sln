@@ -45,8 +45,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLHelper", "SQLHelper", "{
 		SQLHelper\开启远程数据库.txt = SQLHelper\开启远程数据库.txt
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenSSL", "OpenSSL\OpenSSL.vcxproj", "{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -135,14 +133,6 @@ Global
 		{240E83C3-368D-11DB-9FBC-00123FC423B5}.Release|x64.ActiveCfg = Release|Win32
 		{240E83C3-368D-11DB-9FBC-00123FC423B5}.Release|x86.ActiveCfg = Release|Win32
 		{240E83C3-368D-11DB-9FBC-00123FC423B5}.Release|x86.Build.0 = Release|Win32
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Debug|x64.ActiveCfg = Debug|x64
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Debug|x64.Build.0 = Debug|x64
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Debug|x86.ActiveCfg = Debug|Win32
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Debug|x86.Build.0 = Debug|Win32
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Release|x64.ActiveCfg = Release|x64
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Release|x64.Build.0 = Release|x64
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Release|x86.ActiveCfg = Release|Win32
-		{F54D3F3C-E1BA-4437-A97F-10F84AA1475E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
