@@ -8,6 +8,17 @@ namespace Cry
 	namespace Control
 	{
 		SignIn::SignIn() {};
+
+		bool SignIn::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
+		{
+			Cry::Control::Member::MsgSignInRequest ProtoRequest;
+			if (!ProtoRequest.ParsePartialFromArray(Data, uSize))
+			{
+				Work->Close();
+			}
+			return this->OnSignin(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()));
+		}
+
 		bool SignIn::OnSignin(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & UserName, std::string & PassWord)
 		{
 			if (std::shared_ptr<Poco::Data::Session> Session = Work->GetDataBase()->GetSession(); Session != nullptr)
@@ -26,18 +37,8 @@ namespace Cry
 				{
 					LOG_ERROR << ex.displayText();
 				}
-				return true;
 			}
 			return false;
-		}
-		bool SignIn::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
-		{
-			Cry::Control::Member::MsgSignInRequest ProtoRequest;
-			if (!ProtoRequest.ParsePartialFromArray(Data, uSize))
-			{
-				Work->Close();
-			}
-			return this->OnSignin(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()));
 		}
 
 		bool SignIn::CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const w32 Result, std::string & UserName, std::string & PassWord)
@@ -64,6 +65,9 @@ namespace Cry
 				case -2: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_EMPTY); ProtoResponse.set_text("ÇëÄúÊäÈëÃÜÂë"); break;
 				case -3: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_ERROR); ProtoResponse.set_text("ÄúÊäÈëµÄÕËºÅ²»´æÔÚ"); break;
 				case -4: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_ERROR); ProtoResponse.set_text("ÄúÊäÈëµÄÃÜÂëÓÐÎó£¬ÇëÖØÐÂÊäÈë»òÕÒ»ØÃÜÂë"); break;
+				case -5: break;
+				case -6: break;
+				case -7: break;
 				default: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);	ProtoResponse.set_expires(0); break;
 				}
 				return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
