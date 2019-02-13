@@ -17,6 +17,8 @@ enum SignIn
     CID_SIGNIN_PASSWORD_EMPTY       = 2;
     CID_SIGNIN_USERNAME_ERROR       = 3;
     CID_SIGNIN_PASSWORD_ERROR       = 4;
-    CID_SIGNIN_NOT_ONLINE           = 5;
-    CID_SIGNIN_NOT_ERROR            = 6;
+    CID_SIGNIN_BANME                = 5;
+    CID_SIGNIN_CODE                 = 6;
+    CID_SIGNIN_ONLINE               = 7;
+    CID_SIGNIN_NOT_ERROR            = 8;
 }

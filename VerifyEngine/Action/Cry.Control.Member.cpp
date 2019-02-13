@@ -47,7 +47,7 @@ namespace Cry
 			{
 				Cry::Control::Member::MsgSignInResponse ProtoResponse;
 				ProtoResponse.set_uid(static_cast<u64>(Result));
-				ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ONLINE);
+				ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_ONLINE);
 				ProtoResponse.set_text("您的账号已经在线");
 				return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
 			}
@@ -65,9 +65,8 @@ namespace Cry
 				case -2: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_EMPTY); ProtoResponse.set_text("请您输入密码"); break;
 				case -3: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_USERNAME_ERROR); ProtoResponse.set_text("您输入的账号不存在"); break;
 				case -4: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_ERROR); ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
-				case -5: break;
-				case -6: break;
-				case -7: break;
+				case -5: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_BANME); ProtoResponse.set_text("您的账号已被封禁"); break;
+				case -6: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_CODE); ProtoResponse.set_text("机器码发生变动，请重新绑定"); break;
 				default: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);	ProtoResponse.set_expires(0); break;
 				}
 				return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
