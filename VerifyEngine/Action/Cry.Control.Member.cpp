@@ -46,7 +46,7 @@ namespace Cry
 			if (Work->CheckOnline(Result, UserName, PassWord))
 			{
 				Cry::Control::Member::MsgSignInResponse ProtoResponse;
-				ProtoResponse.set_uid(static_cast<u64>(Result));
+				ProtoResponse.set_uid(static_cast<u32>(Result));
 				ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_ONLINE);
 				ProtoResponse.set_text("您的账号已经在线");
 				return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
