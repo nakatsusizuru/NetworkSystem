@@ -52,7 +52,6 @@ namespace Cry
 								}
 								return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
 							}
-							DebugMsg("您的账号已经在线\n");
 							return true;
 						}
 					}

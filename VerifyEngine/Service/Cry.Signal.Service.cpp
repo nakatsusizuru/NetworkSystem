@@ -164,7 +164,7 @@ namespace Cry
 		{
 			if (Conn->IsConnected())
 			{
-				if (!this->AddWork(Conn->id(), std::make_unique<Work>(this, Conn, m_DataPool->GetNextMySQL(Conn->id()))))
+				if (!this->AddWork(Conn->id(), std::make_shared<Work>(this, Conn, m_DataPool->GetNextMySQL(Conn->id()))))
 				{
 					Conn->Close();
 				}
