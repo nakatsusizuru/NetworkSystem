@@ -88,7 +88,7 @@ namespace Cry
 		Cry::Control::Member::MsgSignInRequest ProtoRequest;
 		ProtoRequest.set_username("123");
 		ProtoRequest.set_password("123");
-		ProtoRequest.set_version(1);
+		ProtoRequest.set_version(VERSION_CHECK(1, 0, 0));
 		m_Service->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, ProtoRequest);
 	}
 }

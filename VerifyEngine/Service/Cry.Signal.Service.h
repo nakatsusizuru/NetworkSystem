@@ -99,6 +99,7 @@ namespace Cry
 			bool DelWork(u64 Index);
 			std::shared_ptr<Work> GetWork(u64 Index);
 		public:
+			bool CheckOnline(const std::shared_ptr<CustomerData> & Other);
 			bool CheckOnline(const CustomerData & Other);
 		private:
 			std::unique_ptr<evpp::EventLoopThread>								m_Loop;

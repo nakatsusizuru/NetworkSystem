@@ -47,6 +47,13 @@
 # define DebugMsg(...) do { TCHAR debugMsg[MAX_PATH]; _sntprintf_s(debugMsg, _countof(debugMsg), _TRUNCATE, ##__VA_ARGS__); OutputDebugStringA(debugMsg); } while(0)
 #endif
 
+#define VERSION_STRING "1.0.0"
+#define VERSION_MAJOR 1
+#define VERSION_MINOR 0
+#define VERSION_PATCH 0
+
+#define VERSION_CHECK(Major, Minor, Patch) ( (Major << 16)|(Minor << 8) | (Patch) )
+
 #if !defined(_USRDLL)
 #ifdef _M_IX86
 # pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")

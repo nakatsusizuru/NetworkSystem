@@ -107,7 +107,7 @@ namespace Cry
 			{
 				if (m_Customer != nullptr)
 				{
-					return m_Services->CheckOnline(*m_Customer);
+					return m_Services->CheckOnline(m_Customer);
 				}
 				return m_Services->CheckOnline(Other);
 			}
@@ -214,6 +214,24 @@ namespace Cry
 			return std::shared_ptr<Work>();
 		}
 
+		bool NetworkServiceEngine::CheckOnline(const std::shared_ptr<CustomerData> & Other)
+		{
+			std::lock_guard<std::mutex> Guard(m_WorkLock);
+			{
+				for (const auto &[Index, Work] : m_WorkData)
+				{
+					if (Work != nullptr)
+					{
+						if (const std::shared_ptr<CustomerData> & Customer = Work->GetCustomerData(); Other != nullptr && Customer != nullptr)
+						{
+							return Other == Customer;
+						}
+					}
+				}
+			}
+			return false;
+		}
+
 		bool NetworkServiceEngine::CheckOnline(const CustomerData & Other)
 		{
 			std::lock_guard<std::mutex> Guard(m_WorkLock);
@@ -224,10 +242,7 @@ namespace Cry
 					{
 						if (const std::shared_ptr<CustomerData> & Customer = Work->GetCustomerData(); Customer != nullptr)
 						{
-							if (Other == std::move(*Customer))
-							{
-								return true;
-							}
+							return Other == *Customer;
 						}
 					}
 				}
