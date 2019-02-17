@@ -99,8 +99,9 @@ namespace Cry
 				{
 					Work->Close();
 				}
+				return this->OnMessage(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()));
 			}
-			return this->OnMessage(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()));
+			return false;
 		}
 
 		bool Register::OnMessage(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & User, std::string & Pass)
