@@ -68,8 +68,8 @@ namespace Cry
 			bool CheckOnline(w32 wIndex, std::string & UserName, std::string & PassWord);
 			bool CheckOnline(const CustomerData & Other) const;
 		public:
-			std::shared_ptr<CustomerData> & GetCustomerData() { return m_Customer; }
-			std::shared_ptr<DataBase> & GetDataBase() { return m_DataBase; }
+			const std::shared_ptr<CustomerData> & GetCustomerData() const { return m_Customer; }
+			const std::shared_ptr<DataBase> & GetDataBase() const { return m_DataBase; }
 		private:
 			NetworkServiceEngine*												m_Services;
 			evpp::TCPConnPtr													m_CurrConn;

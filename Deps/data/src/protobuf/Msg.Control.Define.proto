@@ -24,3 +24,14 @@ enum SignIn
     CID_SIGNIN_ONLINE               = 9;
     CID_SIGNIN_NOT_ERROR            = 10;
 }
+
+enum Write
+{
+    CID_WRITE_DEFAULT               = 0;
+    CID_WRITE_USERNAME_EMPTY        = 1;
+    CID_WRITE_PASSWORD_EMPTY        = 2;
+    CID_WRITE_USERNAME_ERROR        = 3;
+    CID_WRITE_PASSWORD_ERROR        = 4;
+    CID_WRITE_EXIST                 = 5;
+    CID_WRITE_NOT_ERROR             = 6;
+}

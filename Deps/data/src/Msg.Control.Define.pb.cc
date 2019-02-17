@@ -26,7 +26,7 @@ void InitDefaults_Msg_2eControl_2eDefine_2eproto() {
 }
 
 constexpr ::google::protobuf::Metadata* file_level_metadata_Msg_2eControl_2eDefine_2eproto = nullptr;
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_Msg_2eControl_2eDefine_2eproto[2];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_Msg_2eControl_2eDefine_2eproto[3];
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_Msg_2eControl_2eDefine_2eproto = nullptr;
 const ::google::protobuf::uint32 TableStruct_Msg_2eControl_2eDefine_2eproto::offsets[1] = {};
 static constexpr ::google::protobuf::internal::MigrationSchema* schemas = nullptr;
@@ -49,13 +49,18 @@ const char descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto[] =
   "IN_PASSWORD_ERROR\020\004\022\024\n\020CID_SIGNIN_BANME\020"
   "\005\022\023\n\017CID_SIGNIN_CODE\020\006\022\026\n\022CID_SIGNIN_EXP"
   "IRES\020\007\022\026\n\022CID_SIGNIN_VERSION\020\010\022\025\n\021CID_SI"
-  "GNIN_ONLINE\020\t\022\030\n\024CID_SIGNIN_NOT_ERROR\020\nb"
-  "\006proto3"
+  "GNIN_ONLINE\020\t\022\030\n\024CID_SIGNIN_NOT_ERROR\020\n*"
+  "\304\001\n\005Write\022\025\n\021CID_WRITE_DEFAULT\020\000\022\034\n\030CID_"
+  "WRITE_USERNAME_EMPTY\020\001\022\034\n\030CID_WRITE_PASS"
+  "WORD_EMPTY\020\002\022\034\n\030CID_WRITE_USERNAME_ERROR"
+  "\020\003\022\034\n\030CID_WRITE_PASSWORD_ERROR\020\004\022\023\n\017CID_"
+  "WRITE_EXIST\020\005\022\027\n\023CID_WRITE_NOT_ERROR\020\006b\006"
+  "proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eDefine_2eproto = {
   false, InitDefaults_Msg_2eControl_2eDefine_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto,
-  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 447,
+  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 646,
 };
 
 void AddDescriptors_Msg_2eControl_2eDefine_2eproto() {
@@ -102,6 +107,25 @@ bool SignIn_IsValid(int value) {
     case 8:
     case 9:
     case 10:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* Write_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_Msg_2eControl_2eDefine_2eproto);
+  return file_level_enum_descriptors_Msg_2eControl_2eDefine_2eproto[2];
+}
+bool Write_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;

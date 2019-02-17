@@ -8,6 +8,7 @@ namespace Cry
 		{
 			class MsgSignInResponse;
 		}
+
 		class SignIn : public SocketDataInterface
 		{
 		public:
@@ -16,8 +17,8 @@ namespace Cry
 		private:
 			virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize) override;
 		private:
-			bool OnSignin(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & UserName, std::string & PassWord, u32 Code, u32 Version);
-			bool CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const w32 Result, std::string & UserName, std::string & PassWord);
+			bool OnMessage(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & User, std::string & Pass, u32 Code, u32 Version);
+			bool CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const w32 Result, std::string & User, std::string & Pass);
 		};
 
 		class Register : public SocketDataInterface
@@ -27,6 +28,8 @@ namespace Cry
 			~Register() = default;
 		private:
 			virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize) override;
+		private:
+			bool OnMessage(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & User, std::string & Pass);
 		};
 	}
 }

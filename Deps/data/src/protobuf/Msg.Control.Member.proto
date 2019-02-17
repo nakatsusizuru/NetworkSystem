@@ -5,21 +5,28 @@ package Cry.Control.Member;
 
 message MsgRegisterRequest
 {
-	bytes							username = 1;
-	bytes							password = 2;
+	bytes							username		= 1;		/// 用户账号
+	bytes							password		= 2;		/// 用户密码
+}
+
+message MsgRegisterResponse
+{
+	Cry.Control.Define.Write		msg				= 1;		/// 返回消息
+	bytes							text			= 2;		/// 返回文本
+	uint32							uid				= 3;		/// 返回序列
 }
 
 message MsgSignInRequest
 {
-	bytes							username = 1;
-	bytes							password = 2;
-	uint32							version  = 3;
+	bytes							username		= 1;		/// 用户账号
+	bytes							password		= 2;		/// 用户密码
+	uint32							version			= 3;		/// 版本信息
 }
 
 message MsgSignInResponse
 {
-	Cry.Control.Define.SignIn		msg			= 1;		/// 返回消息
-	bytes							text		= 2;		/// 返回文本
-	int32							uid			= 3;		/// 返回序列
-	uint32							expires		= 4;		/// 到期时间
+	Cry.Control.Define.SignIn		msg				= 1;		/// 返回消息
+	bytes							text			= 2;		/// 返回文本
+	uint32							uid				= 3;		/// 返回序列
+	uint32							expires			= 4;		/// 到期时间
 }

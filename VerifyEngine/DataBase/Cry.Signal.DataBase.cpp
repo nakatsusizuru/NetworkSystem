@@ -8,6 +8,15 @@ namespace Cry
 		{
 			std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + DB + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : "false") + ";protocol=tcp;";
 			m_Session = std::make_shared<Session>(Poco::Data::MySQL::Connector::KEY, lpszParameter, 3U);
+			if (w32 Result = m_Session->isConnected(); TRUE == Result)
+			{
+				std::string name = "123111";
+				std::string pass = "456";
+				if (Poco::Data::Statement Statement = (*m_Session << "Select Common_Write(?, ?) As Result", Poco::Data::Keywords::use(name), Poco::Data::Keywords::use(pass), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+				{
+					DebugMsg("·µ»Ø:%d\n", Result);
+				}
+			}
 		}
 		catch (const Poco::Exception & ex)
 		{
@@ -22,7 +31,7 @@ namespace Cry
 	{
 		try
 		{
-			if (m_Session)
+			if (m_Session != nullptr)
 			{
 				m_Session->close();
 			}

@@ -107,6 +107,32 @@ inline bool SignIn_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<SignIn>(
     SignIn_descriptor(), name, value);
 }
+enum Write {
+  CID_WRITE_DEFAULT = 0,
+  CID_WRITE_USERNAME_EMPTY = 1,
+  CID_WRITE_PASSWORD_EMPTY = 2,
+  CID_WRITE_USERNAME_ERROR = 3,
+  CID_WRITE_PASSWORD_ERROR = 4,
+  CID_WRITE_EXIST = 5,
+  CID_WRITE_NOT_ERROR = 6,
+  Write_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
+  Write_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
+};
+bool Write_IsValid(int value);
+const Write Write_MIN = CID_WRITE_DEFAULT;
+const Write Write_MAX = CID_WRITE_NOT_ERROR;
+const int Write_ARRAYSIZE = Write_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Write_descriptor();
+inline const ::std::string& Write_Name(Write value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Write_descriptor(), value);
+}
+inline bool Write_Parse(
+    const ::std::string& name, Write* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Write>(
+    Write_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -141,6 +167,11 @@ template <> struct is_proto_enum< ::Cry::Control::Define::SignIn> : ::std::true_
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::SignIn>() {
   return ::Cry::Control::Define::SignIn_descriptor();
+}
+template <> struct is_proto_enum< ::Cry::Control::Define::Write> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::Write>() {
+  return ::Cry::Control::Define::Write_descriptor();
 }
 
 }  // namespace protobuf
