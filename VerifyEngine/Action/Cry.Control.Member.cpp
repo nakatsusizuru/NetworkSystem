@@ -40,7 +40,6 @@ namespace Cry
 								case -4: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_ERROR); ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
 								case -5: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_BANME); ProtoResponse.set_text("您的账号已被封禁"); break;
 								case -6: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_CODE); ProtoResponse.set_text("机器码发生变动，请重新绑定"); break;
-								case -7: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_EXPIRES); ProtoResponse.set_text("您的账号已到期，请及时充值"); break;
 								default:
 								{
 									if (Poco::Data::Statement Statement = (*Session << "Select Common_Expires(?) As Result", Poco::Data::Keywords::use(Result), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
@@ -84,6 +83,13 @@ namespace Cry
 				return Work->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, static_cast<const google::protobuf::Message &>(ProtoResponse));
 			}
 			return false;
+		}
+
+		Register::Register() {};
+
+		bool Register::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
+		{
+			return true;
 		}
 	}
 }
