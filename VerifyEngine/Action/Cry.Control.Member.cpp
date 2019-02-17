@@ -40,12 +40,21 @@ namespace Cry
 								case -4: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_PASSWORD_ERROR); ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
 								case -5: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_BANME); ProtoResponse.set_text("您的账号已被封禁"); break;
 								case -6: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_CODE); ProtoResponse.set_text("机器码发生变动，请重新绑定"); break;
-								///default: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);	ProtoResponse.set_expires(0); break;
+								case -7: ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_EXPIRES); ProtoResponse.set_text("您的账号已到期，请及时充值"); break;
 								default:
 								{
 									if (Poco::Data::Statement Statement = (*Session << "Select Common_Expires(?) As Result", Poco::Data::Keywords::use(Result), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 									{
-										ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);	ProtoResponse.set_expires(Result);
+										if (Result <= std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()))
+										{
+											ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_EXPIRES);
+											ProtoResponse.set_text("您的账号已到期，请及时充值。");
+										}
+										else
+										{
+											ProtoResponse.set_msg(Cry::Control::Define::CID_SIGNIN_NOT_ERROR);
+											ProtoResponse.set_expires(Result);
+										}
 									}
 									break;
 								}

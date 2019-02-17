@@ -42,19 +42,20 @@ const char descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto[] =
   "\n\030Msg.Control.Define.proto\022\022Cry.Control."
   "Define*\\\n\rMemberMessage\022\027\n\023CID_MESSAGE_D"
   "EFAULT\020\000\022\031\n\024CID_MESSAGE_REGISTER\020\200\002\022\027\n\022C"
-  "ID_MESSAGE_SIGNIN\020\201\002*\220\002\n\006SignIn\022\026\n\022CID_S"
+  "ID_MESSAGE_SIGNIN\020\201\002*\250\002\n\006SignIn\022\026\n\022CID_S"
   "IGNIN_DEFAULT\020\000\022\035\n\031CID_SIGNIN_USERNAME_E"
   "MPTY\020\001\022\035\n\031CID_SIGNIN_PASSWORD_EMPTY\020\002\022\035\n"
   "\031CID_SIGNIN_USERNAME_ERROR\020\003\022\035\n\031CID_SIGN"
   "IN_PASSWORD_ERROR\020\004\022\024\n\020CID_SIGNIN_BANME\020"
-  "\005\022\023\n\017CID_SIGNIN_CODE\020\006\022\026\n\022CID_SIGNIN_VER"
-  "SION\020\007\022\025\n\021CID_SIGNIN_ONLINE\020\010\022\030\n\024CID_SIG"
-  "NIN_NOT_ERROR\020\tb\006proto3"
+  "\005\022\023\n\017CID_SIGNIN_CODE\020\006\022\026\n\022CID_SIGNIN_EXP"
+  "IRES\020\007\022\026\n\022CID_SIGNIN_VERSION\020\010\022\025\n\021CID_SI"
+  "GNIN_ONLINE\020\t\022\030\n\024CID_SIGNIN_NOT_ERROR\020\nb"
+  "\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eDefine_2eproto = {
   false, InitDefaults_Msg_2eControl_2eDefine_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto,
-  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 423,
+  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 447,
 };
 
 void AddDescriptors_Msg_2eControl_2eDefine_2eproto() {
@@ -100,6 +101,7 @@ bool SignIn_IsValid(int value) {
     case 7:
     case 8:
     case 9:
+    case 10:
       return true;
     default:
       return false;

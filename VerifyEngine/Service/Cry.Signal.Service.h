@@ -23,7 +23,7 @@ namespace Cry
 		{
 		public:
 			CustomerData() = default;
-			CustomerData(w32 Index, const std::string & _Ty1, const std::string & _Ty2) : uIndex(Index), uExpires(0), UserName(_Ty1), PassWord(_Ty2) {};
+			CustomerData(w32 Index, const std::string & _Ty1, const std::string & _Ty2) : uIndex(Index), UserName(_Ty1), PassWord(_Ty2) {};
 			bool operator == (const CustomerData & Other) const noexcept
 			{
 				if (Other.uIndex == this->uIndex)
@@ -38,7 +38,6 @@ namespace Cry
 			}
 		private:
 			w32							uIndex;
-			u32							uExpires;
 		private:
 			std::string					UserName;
 			std::string					PassWord;
