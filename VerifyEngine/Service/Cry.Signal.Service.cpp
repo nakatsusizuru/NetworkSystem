@@ -23,13 +23,15 @@ namespace Cry
 		}
 		void Work::Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data)
 		{
-			if (false == m_Listener->empty())
-			{
-				return;
-			}
-			u32 uMsg = 0, uSize = 0;
 			OnMessageLeave Leave(Data);
 			{
+				if (false == m_Listener->empty())
+				{
+					return;
+				}
+
+				u32 uMsg = 0, uSize = 0;
+
 				while (Data->length() > 0)
 				{
 					if (!uMsg)
@@ -74,7 +76,7 @@ namespace Cry
 					}
 
 					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data())) = htonl(uSize);
-					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data()) + sizeof(uint32_t)) = htonl(uMsg);
+					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data()) + sizeof(u32)) = htonl(uMsg);
 
 					if (Data.SerializePartialToArray(const_cast<lPString>(m_lpszBody.data()) + HeadSize, Data.ByteSize()))
 					{
@@ -218,7 +220,7 @@ namespace Cry
 		{
 			std::lock_guard<std::mutex> Guard(m_WorkLock);
 			{
-				for (const auto &[Index, Work] : m_WorkData)
+				for (const auto & [Index, Work] : m_WorkData)
 				{
 					if (Work != nullptr)
 					{

@@ -23,14 +23,14 @@ namespace Cry
 		{
 		public:
 			CustomerData() = default;
-			CustomerData(w32 Index, const std::string & _Ty1, const std::string & _Ty2) : uIndex(Index), UserName(_Ty1), PassWord(_Ty2) {};
+			CustomerData(w32 Index, const std::string & _Ty1, const std::string & _Ty2) : uIndex(Index), User(_Ty1), Pass(_Ty2) {};
 			bool operator == (const CustomerData & Other) const noexcept
 			{
 				if (Other.uIndex == this->uIndex)
 				{
 					return true;
 				}
-				return Other.UserName == UserName && Other.PassWord == PassWord;
+				return Other.User == this->User && Other.Pass == this->Pass;
 			}
 			bool operator != (const CustomerData & Other) const noexcept
 			{
@@ -39,8 +39,8 @@ namespace Cry
 		private:
 			w32							uIndex;
 		private:
-			std::string					UserName;
-			std::string					PassWord;
+			std::string					User;
+			std::string					Pass;
 		};
 
 		class OnMessageLeave
