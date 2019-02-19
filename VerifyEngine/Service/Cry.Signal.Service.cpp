@@ -94,18 +94,13 @@ namespace Cry
 				m_CurrConn->Close();
 			}
 		}
-		bool Work::CheckOnline(w32 wIndex, std::string & UserName, std::string & PassWord)
+		bool Work::CheckOnline(w32 wIndex, const std::string & UserName, const std::string & PassWord)
 		{
 			if (wIndex < 0)
 			{
 				return false;
 			}
-			if(false == this->CheckOnline({ wIndex, UserName, PassWord }))
-			{
-				m_Customer = std::make_shared<Cry::Signal::CustomerData>(wIndex, UserName, PassWord);
-				return false;
-			}
-			return true;
+			return this->CheckOnline({ wIndex, UserName, PassWord });
 		}
 		bool Work::CheckOnline(const CustomerData & Other) const
 		{
@@ -119,6 +114,17 @@ namespace Cry
 			}
 			return true;
 		}
+
+		bool Work::MakeOnline(w32 wIndex, const std::string & UserName, const std::string & PassWord)
+		{
+			if (wIndex < 0)
+			{
+				return false;
+			}
+			m_Customer = std::make_shared<Cry::Signal::CustomerData>(wIndex, UserName, PassWord);
+			return true;
+		}
+
 		Work::~Work()
 		{
 			this->Close();

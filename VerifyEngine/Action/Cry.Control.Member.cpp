@@ -37,14 +37,16 @@ namespace Cry
 							{
 								return true;
 							}
+
 							Cry::Control::Member::MsgSignInResponse ProtoResponse;
+
 							switch (Result)
 							{
-							case -1: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_EMPTY); ProtoResponse.set_text("请您输入手机/邮箱/用户名"); break;
+							case -1: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_EMPTY); ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
 							case -2: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_EMPTY); ProtoResponse.set_text("请您输入密码"); break;
-							case -3: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_SIZE); ProtoResponse.set_text("您输入的用户名过长"); break;
-							case -4: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_SIZE); ProtoResponse.set_text("您输入的密码过长"); break;
-							case -5: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_ERROR); ProtoResponse.set_text("您输入的用户名不存在"); break;
+							case -3: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_SIZE); ProtoResponse.set_text("账号不符合要求"); break;
+							case -4: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_SIZE); ProtoResponse.set_text("密码不符合要求"); break;
+							case -5: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_ERROR); ProtoResponse.set_text("您输入的账号不存在"); break;
 							case -6: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_ERROR); ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
 							case -7: ProtoResponse.set_msg(Define::CID_SIGNIN_BANME); ProtoResponse.set_text("您的账号已被封禁"); break;
 							case -8: ProtoResponse.set_msg(Define::CID_SIGNIN_CODE); ProtoResponse.set_text("机器码发生变动，请重新绑定"); break;
@@ -59,8 +61,15 @@ namespace Cry
 									}
 									else
 									{
-										ProtoResponse.set_msg(Define::CID_SIGNIN_NOT_ERROR);
-										ProtoResponse.set_expires(Result);
+										if (Work->MakeOnline(Result, User, Pass))
+										{
+											ProtoResponse.set_msg(Define::CID_SIGNIN_NOT_ERROR);
+											ProtoResponse.set_expires(Result);
+										}
+										else
+										{
+											/// 未知错误
+										}
 									}
 								}
 								break;
@@ -120,11 +129,11 @@ namespace Cry
 
 							switch (Result)
 							{
-							case -1: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_EMPTY); ProtoResponse.set_text("请您输入手机/邮箱/用户名"); break;
+							case -1: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_EMPTY); ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
 							case -2: ProtoResponse.set_msg(Define::CID_WRITE_PASSWORD_EMPTY); ProtoResponse.set_text("请您输入密码"); break;
-							case -3: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_SIZE); ProtoResponse.set_text("您输入的用户名过长"); break;
-							case -4: ProtoResponse.set_msg(Define::CID_WRITE_PASSWORD_SIZE); ProtoResponse.set_text("您输入的密码过长"); break;
-							case -5: ProtoResponse.set_msg(Define::CID_WRITE_EXIST); ProtoResponse.set_text("您输入的用户名已存在"); break;
+							case -3: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_SIZE); ProtoResponse.set_text("账号不符合要求"); break;
+							case -4: ProtoResponse.set_msg(Define::CID_WRITE_PASSWORD_SIZE); ProtoResponse.set_text("密码不符合要求"); break;
+							case -5: ProtoResponse.set_msg(Define::CID_WRITE_EXIST); ProtoResponse.set_text("您输入的账号已存在"); break;
 							default:
 							{
 								ProtoResponse.set_msg(Define::CID_WRITE_NOT_ERROR);
