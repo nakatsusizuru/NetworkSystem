@@ -204,6 +204,40 @@ class MsgRegisterRequest final :
   ::std::string* release_password();
   void set_allocated_password(::std::string* password);
 
+  // bytes email = 3;
+  void clear_email();
+  static const int kEmailFieldNumber = 3;
+  const ::std::string& email() const;
+  void set_email(const ::std::string& value);
+  #if LANG_CXX11
+  void set_email(::std::string&& value);
+  #endif
+  void set_email(const char* value);
+  void set_email(const void* value, size_t size);
+  ::std::string* mutable_email();
+  ::std::string* release_email();
+  void set_allocated_email(::std::string* email);
+
+  // bytes phone = 4;
+  void clear_phone();
+  static const int kPhoneFieldNumber = 4;
+  const ::std::string& phone() const;
+  void set_phone(const ::std::string& value);
+  #if LANG_CXX11
+  void set_phone(::std::string&& value);
+  #endif
+  void set_phone(const char* value);
+  void set_phone(const void* value, size_t size);
+  ::std::string* mutable_phone();
+  ::std::string* release_phone();
+  void set_allocated_phone(::std::string* phone);
+
+  // uint32 pin = 5;
+  void clear_pin();
+  static const int kPinFieldNumber = 5;
+  ::google::protobuf::uint32 pin() const;
+  void set_pin(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:Cry.Control.Member.MsgRegisterRequest)
  private:
   class HasBitSetters;
@@ -211,6 +245,9 @@ class MsgRegisterRequest final :
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr username_;
   ::google::protobuf::internal::ArenaStringPtr password_;
+  ::google::protobuf::internal::ArenaStringPtr email_;
+  ::google::protobuf::internal::ArenaStringPtr phone_;
+  ::google::protobuf::uint32 pin_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Msg_2eControl_2eMember_2eproto;
 };
@@ -746,6 +783,126 @@ inline void MsgRegisterRequest::set_allocated_password(::std::string* password) 
   }
   password_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), password);
   // @@protoc_insertion_point(field_set_allocated:Cry.Control.Member.MsgRegisterRequest.password)
+}
+
+// bytes email = 3;
+inline void MsgRegisterRequest::clear_email() {
+  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MsgRegisterRequest::email() const {
+  // @@protoc_insertion_point(field_get:Cry.Control.Member.MsgRegisterRequest.email)
+  return email_.GetNoArena();
+}
+inline void MsgRegisterRequest::set_email(const ::std::string& value) {
+  
+  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgRegisterRequest.email)
+}
+#if LANG_CXX11
+inline void MsgRegisterRequest::set_email(::std::string&& value) {
+  
+  email_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Cry.Control.Member.MsgRegisterRequest.email)
+}
+#endif
+inline void MsgRegisterRequest::set_email(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cry.Control.Member.MsgRegisterRequest.email)
+}
+inline void MsgRegisterRequest::set_email(const void* value, size_t size) {
+  
+  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cry.Control.Member.MsgRegisterRequest.email)
+}
+inline ::std::string* MsgRegisterRequest::mutable_email() {
+  
+  // @@protoc_insertion_point(field_mutable:Cry.Control.Member.MsgRegisterRequest.email)
+  return email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgRegisterRequest::release_email() {
+  // @@protoc_insertion_point(field_release:Cry.Control.Member.MsgRegisterRequest.email)
+  
+  return email_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgRegisterRequest::set_allocated_email(::std::string* email) {
+  if (email != nullptr) {
+    
+  } else {
+    
+  }
+  email_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), email);
+  // @@protoc_insertion_point(field_set_allocated:Cry.Control.Member.MsgRegisterRequest.email)
+}
+
+// bytes phone = 4;
+inline void MsgRegisterRequest::clear_phone() {
+  phone_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MsgRegisterRequest::phone() const {
+  // @@protoc_insertion_point(field_get:Cry.Control.Member.MsgRegisterRequest.phone)
+  return phone_.GetNoArena();
+}
+inline void MsgRegisterRequest::set_phone(const ::std::string& value) {
+  
+  phone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgRegisterRequest.phone)
+}
+#if LANG_CXX11
+inline void MsgRegisterRequest::set_phone(::std::string&& value) {
+  
+  phone_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Cry.Control.Member.MsgRegisterRequest.phone)
+}
+#endif
+inline void MsgRegisterRequest::set_phone(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  phone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cry.Control.Member.MsgRegisterRequest.phone)
+}
+inline void MsgRegisterRequest::set_phone(const void* value, size_t size) {
+  
+  phone_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cry.Control.Member.MsgRegisterRequest.phone)
+}
+inline ::std::string* MsgRegisterRequest::mutable_phone() {
+  
+  // @@protoc_insertion_point(field_mutable:Cry.Control.Member.MsgRegisterRequest.phone)
+  return phone_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MsgRegisterRequest::release_phone() {
+  // @@protoc_insertion_point(field_release:Cry.Control.Member.MsgRegisterRequest.phone)
+  
+  return phone_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MsgRegisterRequest::set_allocated_phone(::std::string* phone) {
+  if (phone != nullptr) {
+    
+  } else {
+    
+  }
+  phone_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), phone);
+  // @@protoc_insertion_point(field_set_allocated:Cry.Control.Member.MsgRegisterRequest.phone)
+}
+
+// uint32 pin = 5;
+inline void MsgRegisterRequest::clear_pin() {
+  pin_ = 0u;
+}
+inline ::google::protobuf::uint32 MsgRegisterRequest::pin() const {
+  // @@protoc_insertion_point(field_get:Cry.Control.Member.MsgRegisterRequest.pin)
+  return pin_;
+}
+inline void MsgRegisterRequest::set_pin(::google::protobuf::uint32 value) {
+  
+  pin_ = value;
+  // @@protoc_insertion_point(field_set:Cry.Control.Member.MsgRegisterRequest.pin)
 }
 
 // -------------------------------------------------------------------

@@ -113,6 +113,9 @@ const ::google::protobuf::uint32 TableStruct_Msg_2eControl_2eMember_2eproto::off
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgRegisterRequest, username_),
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgRegisterRequest, password_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgRegisterRequest, email_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgRegisterRequest, phone_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgRegisterRequest, pin_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgRegisterResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -141,9 +144,9 @@ const ::google::protobuf::uint32 TableStruct_Msg_2eControl_2eMember_2eproto::off
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Cry::Control::Member::MsgRegisterRequest)},
-  { 7, -1, sizeof(::Cry::Control::Member::MsgRegisterResponse)},
-  { 15, -1, sizeof(::Cry::Control::Member::MsgSignInRequest)},
-  { 23, -1, sizeof(::Cry::Control::Member::MsgSignInResponse)},
+  { 10, -1, sizeof(::Cry::Control::Member::MsgRegisterResponse)},
+  { 18, -1, sizeof(::Cry::Control::Member::MsgSignInRequest)},
+  { 26, -1, sizeof(::Cry::Control::Member::MsgSignInResponse)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -161,21 +164,22 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 
 const char descriptor_table_protodef_Msg_2eControl_2eMember_2eproto[] =
   "\n\030Msg.Control.Member.proto\022\022Cry.Control."
-  "Member\032\030Msg.Control.Define.proto\"8\n\022MsgR"
+  "Member\032\030Msg.Control.Define.proto\"c\n\022MsgR"
   "egisterRequest\022\020\n\010username\030\001 \001(\014\022\020\n\010pass"
-  "word\030\002 \001(\014\"X\n\023MsgRegisterResponse\022&\n\003msg"
-  "\030\001 \001(\0162\031.Cry.Control.Define.Write\022\014\n\004tex"
-  "t\030\002 \001(\014\022\013\n\003uid\030\003 \001(\r\"G\n\020MsgSignInRequest"
-  "\022\020\n\010username\030\001 \001(\014\022\020\n\010password\030\002 \001(\014\022\017\n\007"
-  "version\030\003 \001(\r\"h\n\021MsgSignInResponse\022\'\n\003ms"
-  "g\030\001 \001(\0162\032.Cry.Control.Define.SignIn\022\014\n\004t"
-  "ext\030\002 \001(\014\022\013\n\003uid\030\003 \001(\r\022\017\n\007expires\030\004 \001(\rb"
-  "\006proto3"
+  "word\030\002 \001(\014\022\r\n\005email\030\003 \001(\014\022\r\n\005phone\030\004 \001(\014"
+  "\022\013\n\003pin\030\005 \001(\r\"X\n\023MsgRegisterResponse\022&\n\003"
+  "msg\030\001 \001(\0162\031.Cry.Control.Define.Write\022\014\n\004"
+  "text\030\002 \001(\014\022\013\n\003uid\030\003 \001(\r\"G\n\020MsgSignInRequ"
+  "est\022\020\n\010username\030\001 \001(\014\022\020\n\010password\030\002 \001(\014\022"
+  "\017\n\007version\030\003 \001(\r\"h\n\021MsgSignInResponse\022\'\n"
+  "\003msg\030\001 \001(\0162\032.Cry.Control.Define.SignIn\022\014"
+  "\n\004text\030\002 \001(\014\022\013\n\003uid\030\003 \001(\r\022\017\n\007expires\030\004 \001"
+  "(\rb\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eMember_2eproto = {
   false, InitDefaults_Msg_2eControl_2eMember_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eMember_2eproto,
-  "Msg.Control.Member.proto", &assign_descriptors_table_Msg_2eControl_2eMember_2eproto, 407,
+  "Msg.Control.Member.proto", &assign_descriptors_table_Msg_2eControl_2eMember_2eproto, 450,
 };
 
 void AddDescriptors_Msg_2eControl_2eMember_2eproto() {
@@ -203,6 +207,9 @@ class MsgRegisterRequest::HasBitSetters {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int MsgRegisterRequest::kUsernameFieldNumber;
 const int MsgRegisterRequest::kPasswordFieldNumber;
+const int MsgRegisterRequest::kEmailFieldNumber;
+const int MsgRegisterRequest::kPhoneFieldNumber;
+const int MsgRegisterRequest::kPinFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MsgRegisterRequest::MsgRegisterRequest()
@@ -222,6 +229,15 @@ MsgRegisterRequest::MsgRegisterRequest(const MsgRegisterRequest& from)
   if (from.password().size() > 0) {
     password_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.password_);
   }
+  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.email().size() > 0) {
+    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
+  }
+  phone_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.phone().size() > 0) {
+    phone_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.phone_);
+  }
+  pin_ = from.pin_;
   // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgRegisterRequest)
 }
 
@@ -230,6 +246,9 @@ void MsgRegisterRequest::SharedCtor() {
       &scc_info_MsgRegisterRequest_Msg_2eControl_2eMember_2eproto.base);
   username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   password_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  phone_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  pin_ = 0u;
 }
 
 MsgRegisterRequest::~MsgRegisterRequest() {
@@ -240,6 +259,8 @@ MsgRegisterRequest::~MsgRegisterRequest() {
 void MsgRegisterRequest::SharedDtor() {
   username_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   password_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  email_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  phone_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void MsgRegisterRequest::SetCachedSize(int size) const {
@@ -259,6 +280,9 @@ void MsgRegisterRequest::Clear() {
 
   username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   password_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  phone_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  pin_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -303,6 +327,43 @@ const char* MsgRegisterRequest::_InternalParse(const char* begin, const char* en
         GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheck(ptr, size, ctx));
         ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
         ptr += size;
+        break;
+      }
+      // bytes email = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        object = msg->mutable_email();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParser;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheck(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
+        break;
+      }
+      // bytes phone = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        object = msg->mutable_phone();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParser;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheck(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
+        break;
+      }
+      // uint32 pin = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
+        msg->set_pin(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
       default: {
@@ -361,6 +422,41 @@ bool MsgRegisterRequest::MergePartialFromCodedStream(
         break;
       }
 
+      // bytes email = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_email()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bytes phone = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_phone()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 pin = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &pin_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -400,6 +496,23 @@ void MsgRegisterRequest::SerializeWithCachedSizes(
       2, this->password(), output);
   }
 
+  // bytes email = 3;
+  if (this->email().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      3, this->email(), output);
+  }
+
+  // bytes phone = 4;
+  if (this->phone().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      4, this->phone(), output);
+  }
+
+  // uint32 pin = 5;
+  if (this->pin() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->pin(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -425,6 +538,25 @@ void MsgRegisterRequest::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         2, this->password(), target);
+  }
+
+  // bytes email = 3;
+  if (this->email().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        3, this->email(), target);
+  }
+
+  // bytes phone = 4;
+  if (this->phone().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        4, this->phone(), target);
+  }
+
+  // uint32 pin = 5;
+  if (this->pin() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->pin(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -462,6 +594,27 @@ size_t MsgRegisterRequest::ByteSizeLong() const {
         this->password());
   }
 
+  // bytes email = 3;
+  if (this->email().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->email());
+  }
+
+  // bytes phone = 4;
+  if (this->phone().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->phone());
+  }
+
+  // uint32 pin = 5;
+  if (this->pin() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->pin());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -497,6 +650,17 @@ void MsgRegisterRequest::MergeFrom(const MsgRegisterRequest& from) {
 
     password_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.password_);
   }
+  if (from.email().size() > 0) {
+
+    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
+  }
+  if (from.phone().size() > 0) {
+
+    phone_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.phone_);
+  }
+  if (from.pin() != 0) {
+    set_pin(from.pin());
+  }
 }
 
 void MsgRegisterRequest::CopyFrom(const ::google::protobuf::Message& from) {
@@ -528,6 +692,11 @@ void MsgRegisterRequest::InternalSwap(MsgRegisterRequest* other) {
     GetArenaNoVirtual());
   password_.Swap(&other->password_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
+  email_.Swap(&other->email_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  phone_.Swap(&other->phone_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(pin_, other->pin_);
 }
 
 ::google::protobuf::Metadata MsgRegisterRequest::GetMetadata() const {

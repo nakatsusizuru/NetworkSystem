@@ -51,19 +51,22 @@ const char descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto[] =
   "\024\n\020CID_SIGNIN_BANME\020\007\022\023\n\017CID_SIGNIN_CODE"
   "\020\010\022\026\n\022CID_SIGNIN_EXPIRES\020\t\022\026\n\022CID_SIGNIN"
   "_VERSION\020\n\022\025\n\021CID_SIGNIN_ONLINE\020\013\022\030\n\024CID"
-  "_SIGNIN_NOT_ERROR\020\014*\376\001\n\005Write\022\025\n\021CID_WRI"
+  "_SIGNIN_NOT_ERROR\020\014*\231\003\n\005Write\022\025\n\021CID_WRI"
   "TE_DEFAULT\020\000\022\034\n\030CID_WRITE_USERNAME_EMPTY"
-  "\020\001\022\034\n\030CID_WRITE_PASSWORD_EMPTY\020\002\022\034\n\030CID_"
-  "WRITE_USERNAME_ERROR\020\003\022\034\n\030CID_WRITE_PASS"
-  "WORD_ERROR\020\004\022\033\n\027CID_WRITE_USERNAME_SIZE\020"
-  "\005\022\033\n\027CID_WRITE_PASSWORD_SIZE\020\006\022\023\n\017CID_WR"
-  "ITE_EXIST\020\007\022\027\n\023CID_WRITE_NOT_ERROR\020\010b\006pr"
-  "oto3"
+  "\020\001\022\034\n\030CID_WRITE_PASSWORD_EMPTY\020\002\022\031\n\025CID_"
+  "WRITE_EMAIL_EMPTY\020\003\022\031\n\025CID_WRITE_PHONE_E"
+  "MPTY\020\004\022\027\n\023CID_WRITE_PIN_EMPTY\020\005\022\033\n\027CID_W"
+  "RITE_USERNAME_SIZE\020\006\022\033\n\027CID_WRITE_PASSWO"
+  "RD_SIZE\020\007\022\030\n\024CID_WRITE_EMAIL_SIZE\020\010\022\030\n\024C"
+  "ID_WRITE_PHONE_SIZE\020\t\022\026\n\022CID_WRITE_PIN_S"
+  "IZE\020\n\022\034\n\030CID_WRITE_USERNAME_ERROR\020\013\022\034\n\030C"
+  "ID_WRITE_PASSWORD_ERROR\020\014\022\023\n\017CID_WRITE_E"
+  "XIST\020\r\022\027\n\023CID_WRITE_NOT_ERROR\020\016b\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eDefine_2eproto = {
   false, InitDefaults_Msg_2eControl_2eDefine_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto,
-  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 764,
+  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 919,
 };
 
 void AddDescriptors_Msg_2eControl_2eDefine_2eproto() {
@@ -133,6 +136,12 @@ bool Write_IsValid(int value) {
     case 6:
     case 7:
     case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
       return true;
     default:
       return false;

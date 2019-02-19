@@ -126,6 +126,9 @@ namespace Cry
 		Cry::Control::Member::MsgRegisterRequest ProtoRequest;
 		ProtoRequest.set_username(Interface->User->text().toLocal8Bit());
 		ProtoRequest.set_password(Interface->Pass->text().toLocal8Bit());
+		ProtoRequest.set_email("540163@qq.com");
+		ProtoRequest.set_phone("18304489877");
+		ProtoRequest.set_pin(521815);
 		m_Service->Send(Cry::Control::Define::CID_MESSAGE_REGISTER, ProtoRequest);
 	}
 }

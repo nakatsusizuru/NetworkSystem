@@ -7,6 +7,9 @@ message MsgRegisterRequest
 {
 	bytes							username		= 1;		/// 用户账号
 	bytes							password		= 2;		/// 用户密码
+	bytes							email			= 3;		/// 电子邮件
+	bytes							phone			= 4;		/// 电话号码
+	uint32							pin				= 5;		/// PIN
 }
 
 message MsgRegisterResponse
