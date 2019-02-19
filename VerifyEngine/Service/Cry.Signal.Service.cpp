@@ -68,7 +68,7 @@ namespace Cry
 		{
 			if (m_CurrConn != nullptr && m_CurrConn->IsConnected() && uMsg != 0)
 			{
-				if (u32 uSize = Data.ByteSize() + HeadSize; uSize != HeadSize)
+				if (u32 uSize = Data.ByteSize() + HeadSize; uSize >= HeadSize)
 				{
 					if (m_lpszBody.capacity() < uSize)
 					{
@@ -115,14 +115,9 @@ namespace Cry
 			return true;
 		}
 
-		bool Work::MakeOnline(w32 wIndex, const std::string & UserName, const std::string & PassWord)
+		void Work::MakeOnline(w32 wIndex, const std::string & UserName, const std::string & PassWord)
 		{
-			if (wIndex < 0)
-			{
-				return false;
-			}
 			m_Customer = std::make_shared<Cry::Signal::CustomerData>(wIndex, UserName, PassWord);
-			return true;
 		}
 
 		Work::~Work()

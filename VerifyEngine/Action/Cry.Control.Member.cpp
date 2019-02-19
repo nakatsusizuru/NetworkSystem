@@ -2,6 +2,7 @@
 #include <Action/Cry.Control.Member.h>
 #include <Service/Cry.Signal.Service.h>
 #include <DataBase/Cry.Signal.DataBase.h>
+#include <Poco/Data/MySQL/MySQLException.h>
 #include <Msg.Control.Member.pb.h>
 namespace Cry
 {
@@ -33,7 +34,8 @@ namespace Cry
 					{
 						if (Poco::Data::Statement Statement = (*Session << "Select Common_Signin(?, ?, ?) As Result", Poco::Data::Keywords::use(User), Poco::Data::Keywords::use(Pass), Poco::Data::Keywords::use(Code), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 						{
-							if (this->CheckOnline(Work, Result, User, Pass))
+
+							if (this->CheckOnline(Work, Session, Result, User, Pass))
 							{
 								return true;
 							}
@@ -52,24 +54,22 @@ namespace Cry
 							case -8: ProtoResponse.set_msg(Define::CID_SIGNIN_CODE); ProtoResponse.set_text("机器码发生变动，请重新绑定"); break;
 							default:
 							{
-								if (Poco::Data::Statement Statement = (*Session << "Select Common_Expires(?) As Result", Poco::Data::Keywords::use(Result), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+								if (u32 uExpires = this->GetExpires(Session, Result); uExpires >= 0)
 								{
-									if (Result <= std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()))
+									if (uExpires <= std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()))
 									{
 										ProtoResponse.set_msg(Define::CID_SIGNIN_EXPIRES);
 										ProtoResponse.set_text("您的账号已到期，请及时充值。");
+										ProtoResponse.set_uid(Result);
+										ProtoResponse.set_expires(0);
 									}
 									else
 									{
-										if (Work->MakeOnline(Result, User, Pass))
-										{
-											ProtoResponse.set_msg(Define::CID_SIGNIN_NOT_ERROR);
-											ProtoResponse.set_expires(Result);
-										}
-										else
-										{
-											/// 未知错误
-										}
+										Work->MakeOnline(Result, User, Pass);
+										ProtoResponse.set_msg(Define::CID_SIGNIN_NOT_ERROR);
+										ProtoResponse.set_text("登录成功");
+										ProtoResponse.set_uid(Result);
+										ProtoResponse.set_expires(uExpires);
 									}
 								}
 								break;
@@ -79,6 +79,14 @@ namespace Cry
 						}
 					}
 				}
+				catch (const Poco::Data::MySQL::ConnectionException & ce)
+				{
+					LOG_ERROR << ce.displayText();
+				}
+				catch (const Poco::Data::MySQL::StatementException & se)
+				{
+					LOG_ERROR << se.displayText();
+				}
 				catch (const Poco::Exception & ex)
 				{
 					LOG_ERROR << ex.displayText();
@@ -87,17 +95,42 @@ namespace Cry
 			return false;
 		}
 
-		bool SignIn::CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const w32 Result, std::string & User, std::string & Pass)
+		bool SignIn::CheckOnline(const std::shared_ptr<Cry::Signal::Work> & Work, const std::shared_ptr<Poco::Data::Session> & Session, const w32 Result, std::string & User, std::string & Pass)
 		{
 			if (Work->CheckOnline(Result, User, Pass))
 			{
 				Cry::Control::Member::MsgSignInResponse ProtoResponse;
 				ProtoResponse.set_uid(static_cast<u32>(Result));
 				ProtoResponse.set_msg(Define::CID_SIGNIN_ONLINE);
+				ProtoResponse.set_expires(this->GetExpires(Session, Result));
 				ProtoResponse.set_text("您的账号已经在线");
 				return Work->Send(Define::CID_MESSAGE_SIGNIN, ProtoResponse);
 			}
 			return false;
+		}
+
+		u32 SignIn::GetExpires(const std::shared_ptr<Poco::Data::Session> & Session, u32 uid, u32 Expires)
+		{
+			try
+			{
+				if (Poco::Data::Statement Statement = (*Session << "Select Common_Expires(?) As Result", Poco::Data::Keywords::use(uid), Poco::Data::Keywords::into(Expires), Poco::Data::Keywords::now); Statement.done() == true)
+				{
+					return Expires;
+				}
+			}
+			catch (const Poco::Data::MySQL::ConnectionException & ce)
+			{
+				LOG_ERROR << ce.displayText();
+			}
+			catch (const Poco::Data::MySQL::StatementException & se)
+			{
+				LOG_ERROR << se.displayText();
+			}
+			catch (const Poco::Exception & ex)
+			{
+				LOG_ERROR << ex.displayText();
+			}
+			return 0;
 		}
 
 		Register::Register() {};
@@ -137,6 +170,7 @@ namespace Cry
 							default:
 							{
 								ProtoResponse.set_msg(Define::CID_WRITE_NOT_ERROR);
+								ProtoResponse.set_text("注册成功");
 								ProtoResponse.set_uid(Result);
 								break;
 							}
@@ -144,6 +178,14 @@ namespace Cry
 							return Work->Send(Define::CID_MESSAGE_REGISTER, ProtoResponse);
 						}
 					}
+				}
+				catch (const Poco::Data::MySQL::ConnectionException & ce)
+				{
+					LOG_ERROR << ce.displayText();
+				}
+				catch (const Poco::Data::MySQL::StatementException & se)
+				{
+					LOG_ERROR << se.displayText();
 				}
 				catch (const Poco::Exception & ex)
 				{

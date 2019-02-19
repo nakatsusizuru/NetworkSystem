@@ -54,8 +54,11 @@ namespace Cry
 		Interface->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 		connect(Interface->pushButton, &QPushButton::clicked, this, &ClientDialog::OnPushButton);
-
+		/// 登录
 		connect(Interface->PushSignIn, &QPushButton::clicked, this, &ClientDialog::PushSignIn);
+		/// 注册
+		connect(Interface->PushWrite, &QPushButton::clicked, this, &ClientDialog::PushWrite);
+		
 		/// 连接跨线程信号
 		connect(this, &ClientDialog::MultiDelegateConnection, this, &ClientDialog::OnConnection);
 		/// bool DelegateSignInMsg(const u32 uMsg, const std::string & Text);
@@ -66,7 +69,11 @@ namespace Cry
 
 		connect(this, &ClientDialog::DelegateSignInMsg, this, &ClientDialog::OnSignInMsg, Qt::BlockingQueuedConnection);
 
-		m_Service->SetupInterface(Cry::Control::Define::CID_MESSAGE_SIGNIN, std::make_shared<Cry::Control::SignIn>(std::bind(&ClientDialog::DelegateSignInMsg, this, std::placeholders::_1, std::placeholders::_2)));
+		connect(this, &ClientDialog::DelegateRegisterMsg, this, &ClientDialog::OnRegisterMsg, Qt::BlockingQueuedConnection);
+
+		m_Service->SetupInterface(Cry::Control::Define::CID_MESSAGE_SIGNIN, std::make_shared<Cry::Control::SignIn>(std::bind(&ClientDialog::DelegateSignInMsg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4)));
+		
+		m_Service->SetupInterface(Cry::Control::Define::CID_MESSAGE_REGISTER, std::make_shared<Cry::Control::Register>(std::bind(&ClientDialog::DelegateRegisterMsg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)));
 	}
 
 	void ClientDialog::OnConnection(const u32 Index, bool Status)
@@ -74,9 +81,15 @@ namespace Cry
 		m_QStandardItemModel->setData(m_QStandardItemModel->index(Index, 2), Status ? CryString("连接成功") : CryString("断开连接"));
 	}
 
-	bool ClientDialog::OnSignInMsg(const u32 uMsg, const std::string & Text)
+	bool ClientDialog::OnSignInMsg(const u32 uMsg, const std::string & Text, const u32 uid, const u32 expires)
 	{
-		DebugMsg("消息：%d 提示：%s\n", uMsg, Text.c_str());
+		DebugMsg("消息：%d 提示：%s uid:%d 到期时间：%d\n", uMsg, Text.c_str(), uid, expires);
+		return true;
+	}
+
+	bool ClientDialog::OnRegisterMsg(const u32 uMsg, const std::string & Text, const u32 uid)
+	{
+		DebugMsg("消息：%d 提示：%s uid:%d\n", uMsg, Text.c_str(), uid);
 		return true;
 	}
 
@@ -107,5 +120,12 @@ namespace Cry
 		ProtoRequest.set_password(Interface->Pass->text().toLocal8Bit());
 		ProtoRequest.set_version(VERSION_CHECK(1, 0, 0));
 		m_Service->Send(Cry::Control::Define::CID_MESSAGE_SIGNIN, ProtoRequest);
+	}
+	void ClientDialog::PushWrite(bool Status)
+	{
+		Cry::Control::Member::MsgRegisterRequest ProtoRequest;
+		ProtoRequest.set_username(Interface->User->text().toLocal8Bit());
+		ProtoRequest.set_password(Interface->Pass->text().toLocal8Bit());
+		m_Service->Send(Cry::Control::Define::CID_MESSAGE_REGISTER, ProtoRequest);
 	}
 }

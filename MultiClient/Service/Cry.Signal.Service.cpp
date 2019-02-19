@@ -56,7 +56,7 @@ namespace Cry
 		{
 			if (Conn != nullptr && Conn->IsConnected() && uMsg != 0)
 			{
-				if (u32 uSize = Data.ByteSize() + HeadSize; uSize != HeadSize)
+				if (u32 uSize = Data.ByteSize() + HeadSize; uSize >= HeadSize)
 				{
 					if (m_lpszBody.capacity() < uSize)
 					{
