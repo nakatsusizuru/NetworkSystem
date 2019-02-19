@@ -27,8 +27,10 @@ namespace Cry
 		
 	private:
 		void OnConnection(const u32 Index, bool Status);
+		bool OnSignInMsg(const u32 uMsg, const std::string & Text);
 	signals:
 		void MultiDelegateConnection(const u32 Index, bool Status);
+		bool DelegateSignInMsg(const u32 uMsg, const std::string & Text);
 	private:
 		Ui::ClientDialog*													Interface;
 		QStandardItemModel*													m_QStandardItemModel;

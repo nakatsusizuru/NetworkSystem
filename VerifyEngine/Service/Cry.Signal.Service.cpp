@@ -96,7 +96,11 @@ namespace Cry
 		}
 		bool Work::CheckOnline(w32 wIndex, std::string & UserName, std::string & PassWord)
 		{
-			if(wIndex > 0 && false == this->CheckOnline({ wIndex, UserName, PassWord }))
+			if (wIndex < 0)
+			{
+				return false;
+			}
+			if(false == this->CheckOnline({ wIndex, UserName, PassWord }))
 			{
 				m_Customer = std::make_shared<Cry::Signal::CustomerData>(wIndex, UserName, PassWord);
 				return false;
@@ -226,7 +230,10 @@ namespace Cry
 					{
 						if (const std::shared_ptr<CustomerData> & Customer = Work->GetCustomerData(); Other != nullptr && Customer != nullptr)
 						{
-							return Other == Customer;
+							if (Other == Customer)
+							{
+								return true;
+							}
 						}
 					}
 				}
@@ -244,7 +251,10 @@ namespace Cry
 					{
 						if (const std::shared_ptr<CustomerData> & Customer = Work->GetCustomerData(); Customer != nullptr)
 						{
-							return Other == *Customer;
+							if (Other == *Customer)
+							{
+								return true;
+							}
 						}
 					}
 				}

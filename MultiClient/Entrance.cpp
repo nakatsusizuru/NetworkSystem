@@ -14,6 +14,7 @@ w32 Exec(w32 argc, lPString argv[])
 	QApplication a(argc, argv);
 	Cry::ClientDialog w;
 	qRegisterMetaType<u32>("u32");
+	qRegisterMetaType<std::string>("std::string");
 	w.show();
 	return a.exec();
 }

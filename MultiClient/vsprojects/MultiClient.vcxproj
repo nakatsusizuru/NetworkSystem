@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Glog.hpp" />
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Proto.hpp" />
     <ClInclude Include="..\..\Deps\Public\Interface\Cry.Signal.Interface.hpp" />
+    <ClInclude Include="..\Action\Cry.Control.Member.h" />
     <ClInclude Include="..\Entrance.h" />
     <ClInclude Include="..\Service\Cry.Signal.Port.h" />
     <ClInclude Include="..\Service\Cry.Signal.Service.h" />
@@ -33,6 +34,7 @@
     <ClInclude Include="..\Gui\ClientDialog.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Action\Cry.Control.Member.cpp" />
     <ClCompile Include="..\Entrance.cpp" />
     <ClCompile Include="..\Gui\ClientDialog.cpp" />
     <ClCompile Include="..\Gui\GeneratedFiles\ClientDialogEx.cpp" />

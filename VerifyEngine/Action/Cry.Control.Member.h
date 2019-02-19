@@ -4,11 +4,6 @@ namespace Cry
 {
 	namespace Control
 	{
-		namespace Member
-		{
-			class MsgSignInResponse;
-		}
-
 		class SignIn : public SocketDataInterface
 		{
 		public:

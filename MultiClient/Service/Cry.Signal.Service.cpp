@@ -1,6 +1,7 @@
 #include <Global>
 #include <Service/Cry.Signal.Service.h>
 #include <Service/Cry.Signal.Port.h>
+#include <Interface/Cry.Signal.Interface.hpp>
 #include <evpp/tcp_conn.h>
 namespace Cry
 {
@@ -15,18 +16,15 @@ namespace Cry
 			m_pData->Reset();
 		}
 
-
-		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags) : m_lpszAddress(lpszAddress), m_lpszFlags(lpszFlags), m_Loop(std::make_unique<EventLoopThread>()), m_Pool(std::make_unique<EventLoopThreadPool>(m_Loop->loop(), 10)), m_Client(std::make_unique<TcpClient>(m_Pool->GetNextLoop(), lpszAddress, lpszFlags)), m_AvailablePort(std::make_unique<AvailablePort>())
+		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags) : m_lpszAddress(lpszAddress), m_lpszFlags(lpszFlags), m_Loop(std::make_unique<EventLoopThread>()), m_Client(std::make_unique<TcpClient>(m_Loop->loop(), lpszAddress, lpszFlags))
 		{
 			m_Client->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 			m_Client->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
 			m_Loop->Start(true);
-			m_Pool->Start(true);
 		}
 		NetworkServiceEngine::~NetworkServiceEngine()
 		{
-			this->CancelAllService();
-			m_Pool->Stop(true);
+			this->CancelService();
 			m_Loop->Stop(true);
 		}
 		bool NetworkServiceEngine::CreateService()
@@ -37,43 +35,23 @@ namespace Cry
 			}
 			m_Client->Connect();
 		}
-		bool NetworkServiceEngine::CreateService(const std::string & lpszString, const u32 uPort)
-		{
-			if (m_lpszAddress.empty())
-			{
-				return false;
-			}
-			if (std::unique_ptr<TcpClient> Client = std::make_unique<TcpClient>(m_Pool->GetNextLoop(), m_lpszAddress, std::to_string(uPort)); Client != nullptr)
-			{
-				Client->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
-				Client->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
-				Client->Bind(lpszString);
-				Client->Connect();
 
-				m_ClientData.emplace(std::cend(m_ClientData), std::move(Client));
-				return true;
-			}
-			return false;
-		}
 		bool NetworkServiceEngine::CancelService()
 		{
+			m_Client->Disconnect();
 			return true;
 		}
-		void NetworkServiceEngine::CancelAllService()
-		{
-			for (auto & Args : m_ClientData)
-			{
-				Args->Disconnect();
-			}
-		}
+
 		void NetworkServiceEngine::SetConnection(Connection cb)
 		{
 			m_Connection = cb;
 		}
+
 		bool NetworkServiceEngine::Send(u32 uMsg, const google::protobuf::Message & Data)
 		{
 			return this->Send(m_Client->conn(), uMsg, Data);
 		}
+
 		bool NetworkServiceEngine::Send(const evpp::TCPConnPtr & Conn, u32 uMsg, const google::protobuf::Message & Data)
 		{
 			if (Conn != nullptr && Conn->IsConnected() && uMsg != 0)
@@ -86,7 +64,7 @@ namespace Cry
 					}
 
 					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data())) = htonl(uSize);
-					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data()) + sizeof(uint32_t)) = htonl(uMsg);
+					*reinterpret_cast<u32 *>(const_cast<lPString>(m_lpszBody.data()) + sizeof(u32)) = htonl(uMsg);
 
 					if (Data.SerializePartialToArray(const_cast<lPString>(m_lpszBody.data()) + HeadSize, Data.ByteSize()))
 					{
@@ -97,10 +75,62 @@ namespace Cry
 			}
 			return false;
 		}
-		void NetworkServiceEngine::OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer)
-		{
 
+		void NetworkServiceEngine::SetupInterface(const u32 uMsg, const std::shared_ptr<Cry::SocketDataInterfaceEx> & f)
+		{
+			if (m_Data.find(uMsg) == std::end(m_Data))
+			{
+				m_Data.emplace(uMsg, f);
+			}
 		}
+
+		std::shared_ptr<Cry::SocketDataInterfaceEx> NetworkServiceEngine::Get(const u32 uMsg)
+		{
+			if (auto iter = m_Data.find(uMsg); iter != std::end(m_Data))
+			{
+				return iter->second;
+			}
+			return std::shared_ptr<Cry::SocketDataInterfaceEx>();
+		}
+
+		void NetworkServiceEngine::OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data)
+		{
+			OnMessageLeave Leave(Data);
+			{
+				u32 uMsg = 0, uSize = 0;
+				while (Data->length() > 0)
+				{
+					if (!uMsg)
+					{
+						if (Data->length() < HeadSize)
+						{
+							return;
+						}
+						uSize = Data->ReadInt32();
+						uSize -= HeadSize;
+						uMsg = Data->ReadInt32();
+					}
+
+					if (Data->size() < uSize)
+					{
+						return;
+					}
+
+					if (const std::shared_ptr<Cry::SocketDataInterfaceEx> & Listener = this->Get(uMsg); Listener != nullptr)
+					{
+						if (!Listener->OnSocketData(shared_from_this(), uMsg, Data->data(), uSize))
+						{
+							DebugMsg("Listener\n");
+							//this->Close();
+						}
+					}
+
+					Data->Skip(uSize);
+					uMsg = 0;
+				}
+			}
+		}
+
 		void NetworkServiceEngine::OnConnection(const evpp::TCPConnPtr & Conn)
 		{
 			switch (Conn->status())
@@ -117,19 +147,10 @@ namespace Cry
 			}
 			}
 		}
+
 		void NetworkServiceEngine::SendStatus(const evpp::TCPConnPtr & Conn, bool Status)
 		{
-			if (m_Connection)
-			{
-				for (u32 i = 0; i < m_ClientData.size(); ++i)
-				{
-					if (m_ClientData[i]->conn() == Conn)
-					{
-						m_Connection(i, Status);
-						break;
-					}
-				}
-			}
+
 		}
 	}
 }

@@ -7,6 +7,7 @@ namespace Cry
 	namespace Signal
 	{
 		class Work;
+		class NetworkServiceEngine;
 	}
 
 	//typedef std::function<void(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const PVOID Data, const u32 uSize)> SocketDataInterface;
@@ -29,7 +30,7 @@ namespace Cry
 		explicit SocketDataInterfaceEx() = default;
 		virtual ~SocketDataInterfaceEx() = default;
 	public:
-		virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize) = 0;
+		virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::NetworkServiceEngine> & Service, const u32 uMsg, const void * Data, const u32 uSize) = 0;
 	protected:
 		SocketDataInterfaceEx(const SocketDataInterfaceEx &) = default;
 		SocketDataInterfaceEx &operator=(const SocketDataInterfaceEx &) = default;
