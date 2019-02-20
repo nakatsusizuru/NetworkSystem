@@ -65,9 +65,9 @@ namespace Cry
 			void Receive(const evpp::TCPConnPtr & Conn, evpp::Buffer * Data);
 			bool Send(u32 uMsg, const google::protobuf::Message & Data);
 			void Close();
-			bool CheckOnline(w32 wIndex, const std::string & UserName, const std::string & PassWord);
+			bool CheckOnline(w32 wIndex, const std::string & User, const std::string & Pass);
 			bool CheckOnline(const CustomerData & Other) const;
-			void MakeOnline(w32 wIndex, const std::string & UserName, const std::string & PassWord);
+			void MakeOnline(w32 wIndex, const std::string & User, const std::string & Pass);
 		public:
 			const std::shared_ptr<CustomerData> & GetCustomerData() const { return m_Customer; }
 			const std::shared_ptr<DataBase> & GetDataBase() const { return m_DataBase; }

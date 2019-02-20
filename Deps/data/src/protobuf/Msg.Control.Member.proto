@@ -33,3 +33,18 @@ message MsgSignInResponse
 	uint32							uid				= 3;		/// 返回序列
 	uint32							expires			= 4;		/// 到期时间
 }
+
+message MsgChangeRequest
+{
+	bytes							username		= 1;		/// 用户账号
+	bytes							password		= 2;		/// 用户密码
+	bytes							newspass		= 3;		/// 新的密码
+	uint32							pin				= 4;		/// PIN
+}
+
+message MsgChangeResponse
+{
+	Cry.Control.Define.Change		msg				= 1;		/// 返回消息
+	bytes							text			= 2;		/// 返回文本
+	uint32							uid				= 3;		/// 返回序列
+}

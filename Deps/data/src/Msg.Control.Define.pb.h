@@ -59,12 +59,13 @@ enum MemberMessage {
   CID_MESSAGE_DEFAULT = 0,
   CID_MESSAGE_REGISTER = 256,
   CID_MESSAGE_SIGNIN = 257,
+  CID_MESSAGE_CHANGE = 258,
   MemberMessage_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
   MemberMessage_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
 };
 bool MemberMessage_IsValid(int value);
 const MemberMessage MemberMessage_MIN = CID_MESSAGE_DEFAULT;
-const MemberMessage MemberMessage_MAX = CID_MESSAGE_SIGNIN;
+const MemberMessage MemberMessage_MAX = CID_MESSAGE_CHANGE;
 const int MemberMessage_ARRAYSIZE = MemberMessage_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* MemberMessage_descriptor();
@@ -143,6 +144,37 @@ inline bool Write_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<Write>(
     Write_descriptor(), name, value);
 }
+enum Change {
+  CID_CHANGE_DEFAULT = 0,
+  CID_CHANGE_USERNAME_EMPTY = 1,
+  CID_CHANGE_PASSWORD_EMPTY = 2,
+  CID_CHANGE_NEWSPASS_EMPTY = 3,
+  CID_CHANGE_PIN_EMPTY = 4,
+  CID_CHANGE_USERNAME_ERROR = 5,
+  CID_CHANGE_PASSWORD_ERROR = 6,
+  CID_CHANGE_USERNAME_SIZE = 7,
+  CID_CHANGE_PASSWORD_SIZE = 8,
+  CID_CHANGE_NEWSPASS_SIZE = 9,
+  CID_CHANGE_PIN_SIZE = 10,
+  CID_CHANGE_NOT_ERROR = 11,
+  Change_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
+  Change_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
+};
+bool Change_IsValid(int value);
+const Change Change_MIN = CID_CHANGE_DEFAULT;
+const Change Change_MAX = CID_CHANGE_NOT_ERROR;
+const int Change_ARRAYSIZE = Change_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Change_descriptor();
+inline const ::std::string& Change_Name(Change value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Change_descriptor(), value);
+}
+inline bool Change_Parse(
+    const ::std::string& name, Change* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Change>(
+    Change_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -182,6 +214,11 @@ template <> struct is_proto_enum< ::Cry::Control::Define::Write> : ::std::true_t
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::Write>() {
   return ::Cry::Control::Define::Write_descriptor();
+}
+template <> struct is_proto_enum< ::Cry::Control::Define::Change> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::Change>() {
+  return ::Cry::Control::Define::Change_descriptor();
 }
 
 }  // namespace protobuf
