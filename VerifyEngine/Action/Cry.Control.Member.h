@@ -39,7 +39,6 @@ namespace Cry
 		};
 
 		/// ĞŞ¸ÄÃÜÂë
-
 		class Change : public SocketDataInterface
 		{
 		public:

@@ -243,8 +243,9 @@ namespace Cry
 							case -0x09: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
 							case -0x0A: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的原始密码有误"); break;
 							case -0x0B: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_ERROR);			ProtoResponse.set_text("您输入的PIN密码有误"); break;
-							default: break;
+							default:	ProtoResponse.set_msg(Define::CID_CHANGE_NOT_ERROR);			ProtoResponse.set_text("密码修改成功"); break;
 							}
+							return Work->Send(Define::CID_MESSAGE_CHANGE, ProtoResponse);
 						}
 					}
 				}
