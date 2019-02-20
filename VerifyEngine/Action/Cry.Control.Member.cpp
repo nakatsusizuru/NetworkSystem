@@ -235,15 +235,16 @@ namespace Cry
 							case -0x01: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_EMPTY);		ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
 							case -0x02: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_EMPTY);		ProtoResponse.set_text("请您输入密码"); break;
 							case -0x03: ProtoResponse.set_msg(Define::CID_CHANGE_NEWSPASS_EMPTY);		ProtoResponse.set_text("请您输入新的密码"); break;
-							case -0x04: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_EMPTY);			ProtoResponse.set_text("请您输入机器码"); break;
+							case -0x04: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_EMPTY);			ProtoResponse.set_text("请您输入PIN密码"); break;
 							case -0x05: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_SIZE);		ProtoResponse.set_text("您输入的账号不符合要求"); break;
 							case -0x06: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_SIZE);		ProtoResponse.set_text("您输入的密码不符合要求"); break;
 							case -0x07: ProtoResponse.set_msg(Define::CID_CHANGE_NEWSPASS_SIZE);		ProtoResponse.set_text("您输入的新密码不符合要求"); break;
 							case -0x08: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_SIZE);				ProtoResponse.set_text("您输入的PIN密码不符合要求"); break;
-							case -0x09: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
-							case -0x0A: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的原始密码有误"); break;
-							case -0x0B: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_ERROR);			ProtoResponse.set_text("您输入的PIN密码有误"); break;
-							default:	ProtoResponse.set_msg(Define::CID_CHANGE_NOT_ERROR);			ProtoResponse.set_text("密码修改成功"); break;
+							case -0x09: ProtoResponse.set_msg(Define::CID_CHANGE_SAME_ERROR);			ProtoResponse.set_text("新密码与旧密码不能相同"); break;
+							case -0x0A: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
+							case -0x0B: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的原始密码有误"); break;
+							case -0x0C: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_ERROR);			ProtoResponse.set_text("您输入的PIN密码有误"); break;
+							default:	ProtoResponse.set_msg(Define::CID_CHANGE_NOT_ERROR);			ProtoResponse.set_text("密码修改成功");		ProtoResponse.set_uid(Result); break;
 							}
 							return Work->Send(Define::CID_MESSAGE_CHANGE, ProtoResponse);
 						}

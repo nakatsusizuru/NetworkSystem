@@ -58,22 +58,25 @@ namespace Cry
 		connect(Interface->PushSignIn, &QPushButton::clicked, this, &ClientDialog::PushSignIn);
 		/// 注册
 		connect(Interface->PushWrite, &QPushButton::clicked, this, &ClientDialog::PushWrite);
-		
+		/// 修改
+		connect(Interface->PushChange, &QPushButton::clicked, this, &ClientDialog::PushChange);
 		/// 连接跨线程信号
 		connect(this, &ClientDialog::MultiDelegateConnection, this, &ClientDialog::OnConnection);
-		/// bool DelegateSignInMsg(const u32 uMsg, const std::string & Text);
 		/// 假委托执行函数
 		m_Service->SetConnection(std::bind(&ClientDialog::MultiDelegateConnection, this, std::placeholders::_1, std::placeholders::_2));
 
 		m_Service->CreateService();
 
-		connect(this, &ClientDialog::DelegateSignInMsg, this, &ClientDialog::OnSignInMsg, Qt::BlockingQueuedConnection);
-
 		connect(this, &ClientDialog::DelegateRegisterMsg, this, &ClientDialog::OnRegisterMsg, Qt::BlockingQueuedConnection);
-
-		m_Service->SetupInterface(Cry::Control::Define::CID_MESSAGE_SIGNIN, std::make_shared<Cry::Control::SignIn>(std::bind(&ClientDialog::DelegateSignInMsg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4)));
+		connect(this, &ClientDialog::DelegateSignInMsg, this, &ClientDialog::OnSignInMsg, Qt::BlockingQueuedConnection);
+		connect(this, &ClientDialog::DelegateChangeMsg, this, &ClientDialog::OnChangeMsg, Qt::BlockingQueuedConnection);
 		
+
+
 		m_Service->SetupInterface(Cry::Control::Define::CID_MESSAGE_REGISTER, std::make_shared<Cry::Control::Register>(std::bind(&ClientDialog::DelegateRegisterMsg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)));
+		m_Service->SetupInterface(Cry::Control::Define::CID_MESSAGE_SIGNIN, std::make_shared<Cry::Control::SignIn>(std::bind(&ClientDialog::DelegateSignInMsg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4)));
+		m_Service->SetupInterface(Cry::Control::Define::CID_MESSAGE_CHANGE, std::make_shared<Cry::Control::Change>(std::bind(&ClientDialog::DelegateChangeMsg, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3)));
+		
 	}
 
 	void ClientDialog::OnConnection(const u32 Index, bool Status)
@@ -88,6 +91,12 @@ namespace Cry
 	}
 
 	bool ClientDialog::OnRegisterMsg(const u32 uMsg, const std::string & Text, const u32 uid)
+	{
+		DebugMsg("消息：%d 提示：%s uid:%d\n", uMsg, Text.c_str(), uid);
+		return true;
+	}
+
+	bool ClientDialog::OnChangeMsg(const u32 uMsg, const std::string & Text, const u32 uid)
 	{
 		DebugMsg("消息：%d 提示：%s uid:%d\n", uMsg, Text.c_str(), uid);
 		return true;
@@ -130,5 +139,14 @@ namespace Cry
 		ProtoRequest.set_phone("18304489877");
 		ProtoRequest.set_pin(521815);
 		m_Service->Send(Cry::Control::Define::CID_MESSAGE_REGISTER, ProtoRequest);
+	}
+	void ClientDialog::PushChange(bool Status)
+	{
+		Cry::Control::Member::MsgChangeRequest ProtoRequest;
+		ProtoRequest.set_username(Interface->Change_User->text().toLocal8Bit());
+		ProtoRequest.set_password(Interface->Change_oPass->text().toLocal8Bit());
+		ProtoRequest.set_pin(Interface->Change_pPass->text().toUInt());
+		ProtoRequest.set_newspass(Interface->Change_nPass->text().toLocal8Bit());
+		m_Service->Send(Cry::Control::Define::CID_MESSAGE_CHANGE, ProtoRequest);
 	}
 }
