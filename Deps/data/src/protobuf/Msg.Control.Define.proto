@@ -16,16 +16,18 @@ enum SignIn
     CID_SIGNIN_DEFAULT              = 0;
     CID_SIGNIN_USERNAME_EMPTY       = 1;
     CID_SIGNIN_PASSWORD_EMPTY       = 2;
-    CID_SIGNIN_USERNAME_ERROR       = 3;
-    CID_SIGNIN_PASSWORD_ERROR       = 4;
-    CID_SIGNIN_USERNAME_SIZE        = 5;
-    CID_SIGNIN_PASSWORD_SIZE        = 6;
-    CID_SIGNIN_BANME                = 7;
-    CID_SIGNIN_CODE                 = 8;
-    CID_SIGNIN_EXPIRES              = 9;
-    CID_SIGNIN_VERSION              = 10;
-    CID_SIGNIN_ONLINE               = 11;
-    CID_SIGNIN_NOT_ERROR            = 12;
+    CID_SIGNIN_CODE_EMPTY           = 3;
+    CID_SIGNIN_USERNAME_ERROR       = 4;
+    CID_SIGNIN_PASSWORD_ERROR       = 5;
+    CID_SIGNIN_USERNAME_SIZE        = 6;
+    CID_SIGNIN_PASSWORD_SIZE        = 7;
+    CID_SIGNIN_CODE_SIZE            = 8;
+    CID_SIGNIN_BANME                = 9;
+    CID_SIGNIN_CODE                 = 10;
+    CID_SIGNIN_EXPIRES              = 11;
+    CID_SIGNIN_VERSION              = 12;
+    CID_SIGNIN_ONLINE               = 13;
+    CID_SIGNIN_NOT_ERROR            = 14;
 }
 
 // command id for Write
@@ -56,11 +58,12 @@ enum Change
     CID_CHANGE_PASSWORD_EMPTY       = 2;
     CID_CHANGE_NEWSPASS_EMPTY       = 3;
     CID_CHANGE_PIN_EMPTY            = 4;
-    CID_CHANGE_USERNAME_ERROR       = 5;
-    CID_CHANGE_PASSWORD_ERROR       = 6;
-    CID_CHANGE_USERNAME_SIZE        = 7;
-    CID_CHANGE_PASSWORD_SIZE        = 8;
-    CID_CHANGE_NEWSPASS_SIZE        = 9;
-    CID_CHANGE_PIN_SIZE             = 10;
-    CID_CHANGE_NOT_ERROR            = 11;
+    CID_CHANGE_USERNAME_SIZE        = 5;
+    CID_CHANGE_PASSWORD_SIZE        = 6;
+    CID_CHANGE_NEWSPASS_SIZE        = 7;
+    CID_CHANGE_PIN_SIZE             = 8;
+    CID_CHANGE_USERNAME_ERROR       = 9;
+    CID_CHANGE_PASSWORD_ERROR       = 10;
+    CID_CHANGE_PIN_ERROR            = 11;
+    CID_CHANGE_NOT_ERROR            = 12;
 }

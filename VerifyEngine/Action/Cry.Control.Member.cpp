@@ -38,18 +38,18 @@ namespace Cry
 
 							switch (Result)
 							{
-							case -0x0: ProtoResponse.set_msg(Define::CID_WRITE_DEFAULT);		ProtoResponse.set_text("未知的错误"); break;
-							case -0x1: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_EMPTY); ProtoResponse.set_text("请您输入账号"); break;
-							case -0x2: ProtoResponse.set_msg(Define::CID_WRITE_PASSWORD_EMPTY); ProtoResponse.set_text("请您输入密码"); break;
-							case -0x3: ProtoResponse.set_msg(Define::CID_WRITE_EMAIL_EMPTY);	ProtoResponse.set_text("请您输入邮箱"); break;
-							case -0x4: ProtoResponse.set_msg(Define::CID_WRITE_PHONE_EMPTY);	ProtoResponse.set_text("请您输入电话"); break;
-							case -0x5: ProtoResponse.set_msg(Define::CID_WRITE_PIN_EMPTY);		ProtoResponse.set_text("请您输入PIN码"); break;
-							case -0x6: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_SIZE);	ProtoResponse.set_text("账号不符合要求"); break;
-							case -0x7: ProtoResponse.set_msg(Define::CID_WRITE_PASSWORD_SIZE);	ProtoResponse.set_text("密码不符合要求"); break;
-							case -0x8: ProtoResponse.set_msg(Define::CID_WRITE_EMAIL_SIZE);		ProtoResponse.set_text("邮箱不符合要求"); break;
-							case -0x9: ProtoResponse.set_msg(Define::CID_WRITE_PHONE_SIZE);		ProtoResponse.set_text("电话不符合要求"); break;
-							case -0xA: ProtoResponse.set_msg(Define::CID_WRITE_PIN_SIZE);		ProtoResponse.set_text("PIN码不符合要求"); break;
-							case -0xB: ProtoResponse.set_msg(Define::CID_WRITE_EXIST);			ProtoResponse.set_text("您输入的账号已存在"); break;
+							case -0x00: ProtoResponse.set_msg(Define::CID_WRITE_DEFAULT);			ProtoResponse.set_text("未知的错误"); break;
+							case -0x01: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_EMPTY);	ProtoResponse.set_text("请您输入账号"); break;
+							case -0x02: ProtoResponse.set_msg(Define::CID_WRITE_PASSWORD_EMPTY);	ProtoResponse.set_text("请您输入密码"); break;
+							case -0x03: ProtoResponse.set_msg(Define::CID_WRITE_EMAIL_EMPTY);		ProtoResponse.set_text("请您输入邮箱"); break;
+							case -0x04: ProtoResponse.set_msg(Define::CID_WRITE_PHONE_EMPTY);		ProtoResponse.set_text("请您输入电话"); break;
+							case -0x05: ProtoResponse.set_msg(Define::CID_WRITE_PIN_EMPTY);			ProtoResponse.set_text("请您输入PIN码"); break;
+							case -0x06: ProtoResponse.set_msg(Define::CID_WRITE_USERNAME_SIZE);		ProtoResponse.set_text("账号不符合要求"); break;
+							case -0x07: ProtoResponse.set_msg(Define::CID_WRITE_PASSWORD_SIZE);		ProtoResponse.set_text("密码不符合要求"); break;
+							case -0x08: ProtoResponse.set_msg(Define::CID_WRITE_EMAIL_SIZE);		ProtoResponse.set_text("邮箱不符合要求"); break;
+							case -0x09: ProtoResponse.set_msg(Define::CID_WRITE_PHONE_SIZE);		ProtoResponse.set_text("电话不符合要求"); break;
+							case -0x0A: ProtoResponse.set_msg(Define::CID_WRITE_PIN_SIZE);			ProtoResponse.set_text("PIN码不符合要求"); break;
+							case -0x0B: ProtoResponse.set_msg(Define::CID_WRITE_EXIST);				ProtoResponse.set_text("您输入的账号已存在"); break;
 							default:
 							{
 								ProtoResponse.set_msg(Define::CID_WRITE_NOT_ERROR);
@@ -112,15 +112,17 @@ namespace Cry
 
 							switch (Result)
 							{
-							case -0x0: ProtoResponse.set_msg(Define::CID_SIGNIN_DEFAULT);			ProtoResponse.set_text("未知的错误"); break;
-							case -0x1: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_EMPTY);	ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
-							case -0x2: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_EMPTY);	ProtoResponse.set_text("请您输入密码"); break;
-							case -0x3: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_SIZE);		ProtoResponse.set_text("账号不符合要求"); break;
-							case -0x4: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_SIZE);		ProtoResponse.set_text("密码不符合要求"); break;
-							case -0x5: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_ERROR);	ProtoResponse.set_text("您输入的账号不存在"); break;
-							case -0x6: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_ERROR);	ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
-							case -0x7: ProtoResponse.set_msg(Define::CID_SIGNIN_BANME);				ProtoResponse.set_text("您的账号已被封禁"); break;
-							case -0x8: ProtoResponse.set_msg(Define::CID_SIGNIN_CODE);				ProtoResponse.set_text("机器码发生变动，请重新绑定"); break;
+							case -0x00: ProtoResponse.set_msg(Define::CID_SIGNIN_DEFAULT);				ProtoResponse.set_text("未知的错误"); break;
+							case -0x01: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_EMPTY);		ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
+							case -0x02: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_EMPTY);		ProtoResponse.set_text("请您输入密码"); break;
+							case -0x03: ProtoResponse.set_msg(Define::CID_SIGNIN_CODE_EMPTY);			ProtoResponse.set_text("请您输入机器码"); break;
+							case -0x04: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_SIZE);		ProtoResponse.set_text("您输入的账号不符合要求"); break;
+							case -0x05: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_SIZE);		ProtoResponse.set_text("您输入的密码不符合要求"); break;
+							case -0x06: ProtoResponse.set_msg(Define::CID_SIGNIN_CODE_SIZE);			ProtoResponse.set_text("您输入的机器码不符合要求"); break;
+							case -0x07: ProtoResponse.set_msg(Define::CID_SIGNIN_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
+							case -0x08: ProtoResponse.set_msg(Define::CID_SIGNIN_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
+							case -0x09: ProtoResponse.set_msg(Define::CID_SIGNIN_BANME);				ProtoResponse.set_text("您输入的账号已被封禁"); break;
+							case -0x0A: ProtoResponse.set_msg(Define::CID_SIGNIN_CODE);					ProtoResponse.set_text("您输入的账号机器码发生变动"); break;
 							default:
 							{
 								if (u32 Expires = this->GetExpires(Session, Result); Expires >= 0)
@@ -224,7 +226,26 @@ namespace Cry
 				{
 					if (w32 Result = Session->isConnected(); TRUE == Result)
 					{
-						
+						if (Poco::Data::Statement Statement = (*Session << "Select Common_Change(?, ?, ?, ?) As Result", Poco::Data::Keywords::use(User), Poco::Data::Keywords::use(Pass), Poco::Data::Keywords::use(NewsPass), Poco::Data::Keywords::use(Pin), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+						{
+							Cry::Control::Member::MsgChangeResponse ProtoResponse;
+							switch (Result)
+							{
+							case -0x00: ProtoResponse.set_msg(Define::CID_CHANGE_DEFAULT);				ProtoResponse.set_text("未知的错误"); break;
+							case -0x01: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_EMPTY);		ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
+							case -0x02: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_EMPTY);		ProtoResponse.set_text("请您输入密码"); break;
+							case -0x03: ProtoResponse.set_msg(Define::CID_CHANGE_NEWSPASS_EMPTY);		ProtoResponse.set_text("请您输入新的密码"); break;
+							case -0x04: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_EMPTY);			ProtoResponse.set_text("请您输入机器码"); break;
+							case -0x05: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_SIZE);		ProtoResponse.set_text("您输入的账号不符合要求"); break;
+							case -0x06: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_SIZE);		ProtoResponse.set_text("您输入的密码不符合要求"); break;
+							case -0x07: ProtoResponse.set_msg(Define::CID_CHANGE_NEWSPASS_SIZE);		ProtoResponse.set_text("您输入的新密码不符合要求"); break;
+							case -0x08: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_SIZE);				ProtoResponse.set_text("您输入的PIN密码不符合要求"); break;
+							case -0x09: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
+							case -0x0A: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的原始密码有误"); break;
+							case -0x0B: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_ERROR);			ProtoResponse.set_text("您输入的PIN密码有误"); break;
+							default: break;
+							}
+						}
 					}
 				}
 				catch (const Poco::Data::MySQL::ConnectionException & ce)
