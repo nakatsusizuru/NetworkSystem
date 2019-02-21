@@ -146,38 +146,69 @@ inline bool Write_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<Write>(
     Write_descriptor(), name, value);
 }
-enum Change {
-  CID_CHANGE_DEFAULT = 0,
-  CID_CHANGE_USERNAME_EMPTY = 1,
-  CID_CHANGE_PASSWORD_EMPTY = 2,
-  CID_CHANGE_NEWSPASS_EMPTY = 3,
-  CID_CHANGE_PIN_EMPTY = 4,
-  CID_CHANGE_USERNAME_SIZE = 5,
-  CID_CHANGE_PASSWORD_SIZE = 6,
-  CID_CHANGE_NEWSPASS_SIZE = 7,
-  CID_CHANGE_PIN_SIZE = 8,
-  CID_CHANGE_SAME_ERROR = 9,
-  CID_CHANGE_USERNAME_ERROR = 10,
-  CID_CHANGE_PASSWORD_ERROR = 11,
-  CID_CHANGE_PIN_ERROR = 12,
-  CID_CHANGE_NOT_ERROR = 13,
-  Change_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
-  Change_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
+enum ChangePass {
+  CID_CHANGEPASS_DEFAULT = 0,
+  CID_CHANGEPASS_USERNAME_EMPTY = 1,
+  CID_CHANGEPASS_PASSWORD_EMPTY = 2,
+  CID_CHANGEPASS_NEWSPASS_EMPTY = 3,
+  CID_CHANGEPASS_PIN_EMPTY = 4,
+  CID_CHANGEPASS_USERNAME_SIZE = 5,
+  CID_CHANGEPASS_PASSWORD_SIZE = 6,
+  CID_CHANGEPASS_NEWSPASS_SIZE = 7,
+  CID_CHANGEPASS_PIN_SIZE = 8,
+  CID_CHANGEPASS_SAME_ERROR = 9,
+  CID_CHANGEPASS_USERNAME_ERROR = 10,
+  CID_CHANGEPASS_PASSWORD_ERROR = 11,
+  CID_CHANGEPASS_PIN_ERROR = 12,
+  CID_CHANGEPASS_NOT_ERROR = 13,
+  ChangePass_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
+  ChangePass_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
 };
-bool Change_IsValid(int value);
-const Change Change_MIN = CID_CHANGE_DEFAULT;
-const Change Change_MAX = CID_CHANGE_NOT_ERROR;
-const int Change_ARRAYSIZE = Change_MAX + 1;
+bool ChangePass_IsValid(int value);
+const ChangePass ChangePass_MIN = CID_CHANGEPASS_DEFAULT;
+const ChangePass ChangePass_MAX = CID_CHANGEPASS_NOT_ERROR;
+const int ChangePass_ARRAYSIZE = ChangePass_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Change_descriptor();
-inline const ::std::string& Change_Name(Change value) {
+const ::google::protobuf::EnumDescriptor* ChangePass_descriptor();
+inline const ::std::string& ChangePass_Name(ChangePass value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Change_descriptor(), value);
+    ChangePass_descriptor(), value);
 }
-inline bool Change_Parse(
-    const ::std::string& name, Change* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Change>(
-    Change_descriptor(), name, value);
+inline bool ChangePass_Parse(
+    const ::std::string& name, ChangePass* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ChangePass>(
+    ChangePass_descriptor(), name, value);
+}
+enum ChangeBind {
+  CID_CHANGEBIND_DEFAULT = 0,
+  CID_CHANGEBIND_USERNAME_EMPTY = 1,
+  CID_CHANGEBIND_PASSWORD_EMPTY = 2,
+  CID_CHANGEBIND_SECRET_EMPTY = 3,
+  CID_CHANGEBIND_USERNAME_SIZE = 4,
+  CID_CHANGEBIND_PASSWORD_SIZE = 5,
+  CID_CHANGEBIND_SECRET_SIZE = 6,
+  CID_CHANGEBIND_USERNAME_ERROR = 7,
+  CID_CHANGEBIND_PASSWORD_ERROR = 8,
+  CID_CHANGEBIND_SECRET_ERROR = 9,
+  CID_CHANGEBIND_SECRET_EXPIRE = 10,
+  CID_CHANGEBIND_NOT_ERROR = 11,
+  ChangeBind_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::min(),
+  ChangeBind_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::google::protobuf::int32>::max()
+};
+bool ChangeBind_IsValid(int value);
+const ChangeBind ChangeBind_MIN = CID_CHANGEBIND_DEFAULT;
+const ChangeBind ChangeBind_MAX = CID_CHANGEBIND_NOT_ERROR;
+const int ChangeBind_ARRAYSIZE = ChangeBind_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ChangeBind_descriptor();
+inline const ::std::string& ChangeBind_Name(ChangeBind value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ChangeBind_descriptor(), value);
+}
+inline bool ChangeBind_Parse(
+    const ::std::string& name, ChangeBind* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ChangeBind>(
+    ChangeBind_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -219,10 +250,15 @@ template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::Write>() {
   return ::Cry::Control::Define::Write_descriptor();
 }
-template <> struct is_proto_enum< ::Cry::Control::Define::Change> : ::std::true_type {};
+template <> struct is_proto_enum< ::Cry::Control::Define::ChangePass> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::Change>() {
-  return ::Cry::Control::Define::Change_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::ChangePass>() {
+  return ::Cry::Control::Define::ChangePass_descriptor();
+}
+template <> struct is_proto_enum< ::Cry::Control::Define::ChangeBind> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Cry::Control::Define::ChangeBind>() {
+  return ::Cry::Control::Define::ChangeBind_descriptor();
 }
 
 }  // namespace protobuf

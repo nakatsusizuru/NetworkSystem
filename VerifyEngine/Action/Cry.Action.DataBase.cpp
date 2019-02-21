@@ -10,7 +10,7 @@ namespace Cry
 		{
 			this->SetupInterface(Cry::Control::Define::CID_MESSAGE_REGISTER,	std::make_shared<Cry::Control::Register>());
 			this->SetupInterface(Cry::Control::Define::CID_MESSAGE_SIGNIN,		std::make_shared<Cry::Control::SignIn>());
-			this->SetupInterface(Cry::Control::Define::CID_MESSAGE_CHANGE,		std::make_shared<Cry::Control::Change>());
+			this->SetupInterface(Cry::Control::Define::CID_MESSAGE_CHANGE,		std::make_shared<Cry::Control::ChangePass>());
 		}
 		DataBase::~DataBase()
 		{

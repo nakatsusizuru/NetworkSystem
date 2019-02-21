@@ -34,7 +34,7 @@ message MsgSignInResponse
 	uint32							expires			= 4;		/// 到期时间
 }
 
-message MsgChangeRequest
+message MsgChangePassRequest
 {
 	bytes							username		= 1;		/// 用户账号
 	bytes							password		= 2;		/// 用户密码
@@ -42,9 +42,23 @@ message MsgChangeRequest
 	uint32							pin				= 4;		/// PIN
 }
 
-message MsgChangeResponse
+message MsgChangePassResponse
 {
-	Cry.Control.Define.Change		msg				= 1;		/// 返回消息
+	Cry.Control.Define.ChangePass	msg				= 1;		/// 返回消息
+	bytes							text			= 2;		/// 返回文本
+	uint32							uid				= 3;		/// 返回序列
+}
+
+message MsgChangeBindRequest
+{
+	bytes							username		= 1;		/// 用户账号
+	bytes							password		= 2;		/// 用户密码
+	uint32							secret			= 3;		/// 解锁密码
+}
+
+message MsgChangeBindResponse
+{
+	Cry.Control.Define.ChangeBind	msg				= 1;		/// 返回消息
 	bytes							text			= 2;		/// 返回文本
 	uint32							uid				= 3;		/// 返回序列
 }

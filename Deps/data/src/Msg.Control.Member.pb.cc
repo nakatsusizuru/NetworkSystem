@@ -35,14 +35,22 @@ class MsgSignInResponseDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<MsgSignInResponse> _instance;
 } _MsgSignInResponse_default_instance_;
-class MsgChangeRequestDefaultTypeInternal {
+class MsgChangePassRequestDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<MsgChangeRequest> _instance;
-} _MsgChangeRequest_default_instance_;
-class MsgChangeResponseDefaultTypeInternal {
+  ::google::protobuf::internal::ExplicitlyConstructed<MsgChangePassRequest> _instance;
+} _MsgChangePassRequest_default_instance_;
+class MsgChangePassResponseDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<MsgChangeResponse> _instance;
-} _MsgChangeResponse_default_instance_;
+  ::google::protobuf::internal::ExplicitlyConstructed<MsgChangePassResponse> _instance;
+} _MsgChangePassResponse_default_instance_;
+class MsgChangeBindRequestDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<MsgChangeBindRequest> _instance;
+} _MsgChangeBindRequest_default_instance_;
+class MsgChangeBindResponseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<MsgChangeBindResponse> _instance;
+} _MsgChangeBindResponse_default_instance_;
 }  // namespace Member
 }  // namespace Control
 }  // namespace Cry
@@ -102,44 +110,74 @@ static void InitDefaultsMsgSignInResponse_Msg_2eControl_2eMember_2eproto() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_MsgSignInResponse_Msg_2eControl_2eMember_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgSignInResponse_Msg_2eControl_2eMember_2eproto}, {}};
 
-static void InitDefaultsMsgChangeRequest_Msg_2eControl_2eMember_2eproto() {
+static void InitDefaultsMsgChangePassRequest_Msg_2eControl_2eMember_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Cry::Control::Member::_MsgChangeRequest_default_instance_;
-    new (ptr) ::Cry::Control::Member::MsgChangeRequest();
+    void* ptr = &::Cry::Control::Member::_MsgChangePassRequest_default_instance_;
+    new (ptr) ::Cry::Control::Member::MsgChangePassRequest();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Cry::Control::Member::MsgChangeRequest::InitAsDefaultInstance();
+  ::Cry::Control::Member::MsgChangePassRequest::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_MsgChangeRequest_Msg_2eControl_2eMember_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgChangeRequest_Msg_2eControl_2eMember_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_MsgChangePassRequest_Msg_2eControl_2eMember_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgChangePassRequest_Msg_2eControl_2eMember_2eproto}, {}};
 
-static void InitDefaultsMsgChangeResponse_Msg_2eControl_2eMember_2eproto() {
+static void InitDefaultsMsgChangePassResponse_Msg_2eControl_2eMember_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Cry::Control::Member::_MsgChangeResponse_default_instance_;
-    new (ptr) ::Cry::Control::Member::MsgChangeResponse();
+    void* ptr = &::Cry::Control::Member::_MsgChangePassResponse_default_instance_;
+    new (ptr) ::Cry::Control::Member::MsgChangePassResponse();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Cry::Control::Member::MsgChangeResponse::InitAsDefaultInstance();
+  ::Cry::Control::Member::MsgChangePassResponse::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_MsgChangeResponse_Msg_2eControl_2eMember_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgChangeResponse_Msg_2eControl_2eMember_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_MsgChangePassResponse_Msg_2eControl_2eMember_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgChangePassResponse_Msg_2eControl_2eMember_2eproto}, {}};
+
+static void InitDefaultsMsgChangeBindRequest_Msg_2eControl_2eMember_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Cry::Control::Member::_MsgChangeBindRequest_default_instance_;
+    new (ptr) ::Cry::Control::Member::MsgChangeBindRequest();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Cry::Control::Member::MsgChangeBindRequest::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_MsgChangeBindRequest_Msg_2eControl_2eMember_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgChangeBindRequest_Msg_2eControl_2eMember_2eproto}, {}};
+
+static void InitDefaultsMsgChangeBindResponse_Msg_2eControl_2eMember_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Cry::Control::Member::_MsgChangeBindResponse_default_instance_;
+    new (ptr) ::Cry::Control::Member::MsgChangeBindResponse();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Cry::Control::Member::MsgChangeBindResponse::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_MsgChangeBindResponse_Msg_2eControl_2eMember_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMsgChangeBindResponse_Msg_2eControl_2eMember_2eproto}, {}};
 
 void InitDefaults_Msg_2eControl_2eMember_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_MsgRegisterRequest_Msg_2eControl_2eMember_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgRegisterResponse_Msg_2eControl_2eMember_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgSignInRequest_Msg_2eControl_2eMember_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_MsgSignInResponse_Msg_2eControl_2eMember_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_MsgChangeRequest_Msg_2eControl_2eMember_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_MsgChangeResponse_Msg_2eControl_2eMember_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MsgChangePassRequest_Msg_2eControl_2eMember_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MsgChangePassResponse_Msg_2eControl_2eMember_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MsgChangeBindRequest_Msg_2eControl_2eMember_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_MsgChangeBindResponse_Msg_2eControl_2eMember_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata_Msg_2eControl_2eMember_2eproto[6];
+::google::protobuf::Metadata file_level_metadata_Msg_2eControl_2eMember_2eproto[8];
 constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_Msg_2eControl_2eMember_2eproto = nullptr;
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_Msg_2eControl_2eMember_2eproto = nullptr;
 
@@ -180,30 +218,48 @@ const ::google::protobuf::uint32 TableStruct_Msg_2eControl_2eMember_2eproto::off
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgSignInResponse, uid_),
   PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgSignInResponse, expires_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeRequest, username_),
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeRequest, password_),
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeRequest, newspass_),
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeRequest, pin_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassRequest, username_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassRequest, password_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassRequest, newspass_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassRequest, pin_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeResponse, msg_),
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeResponse, text_),
-  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeResponse, uid_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassResponse, msg_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassResponse, text_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangePassResponse, uid_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindRequest, username_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindRequest, password_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindRequest, secret_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindResponse, msg_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindResponse, text_),
+  PROTOBUF_FIELD_OFFSET(::Cry::Control::Member::MsgChangeBindResponse, uid_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Cry::Control::Member::MsgRegisterRequest)},
   { 10, -1, sizeof(::Cry::Control::Member::MsgRegisterResponse)},
   { 18, -1, sizeof(::Cry::Control::Member::MsgSignInRequest)},
   { 26, -1, sizeof(::Cry::Control::Member::MsgSignInResponse)},
-  { 35, -1, sizeof(::Cry::Control::Member::MsgChangeRequest)},
-  { 44, -1, sizeof(::Cry::Control::Member::MsgChangeResponse)},
+  { 35, -1, sizeof(::Cry::Control::Member::MsgChangePassRequest)},
+  { 44, -1, sizeof(::Cry::Control::Member::MsgChangePassResponse)},
+  { 52, -1, sizeof(::Cry::Control::Member::MsgChangeBindRequest)},
+  { 60, -1, sizeof(::Cry::Control::Member::MsgChangeBindResponse)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -211,14 +267,16 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgRegisterResponse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgSignInRequest_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgSignInResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgChangeRequest_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgChangeResponse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgChangePassRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgChangePassResponse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgChangeBindRequest_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Cry::Control::Member::_MsgChangeBindResponse_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_Msg_2eControl_2eMember_2eproto = {
   {}, AddDescriptors_Msg_2eControl_2eMember_2eproto, "Msg.Control.Member.proto", schemas,
   file_default_instances, TableStruct_Msg_2eControl_2eMember_2eproto::offsets,
-  file_level_metadata_Msg_2eControl_2eMember_2eproto, 6, file_level_enum_descriptors_Msg_2eControl_2eMember_2eproto, file_level_service_descriptors_Msg_2eControl_2eMember_2eproto,
+  file_level_metadata_Msg_2eControl_2eMember_2eproto, 8, file_level_enum_descriptors_Msg_2eControl_2eMember_2eproto, file_level_service_descriptors_Msg_2eControl_2eMember_2eproto,
 };
 
 const char descriptor_table_protodef_Msg_2eControl_2eMember_2eproto[] =
@@ -233,16 +291,21 @@ const char descriptor_table_protodef_Msg_2eControl_2eMember_2eproto[] =
   "\017\n\007version\030\003 \001(\r\"h\n\021MsgSignInResponse\022\'\n"
   "\003msg\030\001 \001(\0162\032.Cry.Control.Define.SignIn\022\014"
   "\n\004text\030\002 \001(\014\022\013\n\003uid\030\003 \001(\r\022\017\n\007expires\030\004 \001"
-  "(\r\"U\n\020MsgChangeRequest\022\020\n\010username\030\001 \001(\014"
-  "\022\020\n\010password\030\002 \001(\014\022\020\n\010newspass\030\003 \001(\014\022\013\n\003"
-  "pin\030\004 \001(\r\"W\n\021MsgChangeResponse\022\'\n\003msg\030\001 "
-  "\001(\0162\032.Cry.Control.Define.Change\022\014\n\004text\030"
-  "\002 \001(\014\022\013\n\003uid\030\003 \001(\rb\006proto3"
+  "(\r\"Y\n\024MsgChangePassRequest\022\020\n\010username\030\001"
+  " \001(\014\022\020\n\010password\030\002 \001(\014\022\020\n\010newspass\030\003 \001(\014"
+  "\022\013\n\003pin\030\004 \001(\r\"_\n\025MsgChangePassResponse\022+"
+  "\n\003msg\030\001 \001(\0162\036.Cry.Control.Define.ChangeP"
+  "ass\022\014\n\004text\030\002 \001(\014\022\013\n\003uid\030\003 \001(\r\"J\n\024MsgCha"
+  "ngeBindRequest\022\020\n\010username\030\001 \001(\014\022\020\n\010pass"
+  "word\030\002 \001(\014\022\016\n\006secret\030\003 \001(\r\"_\n\025MsgChangeB"
+  "indResponse\022+\n\003msg\030\001 \001(\0162\036.Cry.Control.D"
+  "efine.ChangeBind\022\014\n\004text\030\002 \001(\014\022\013\n\003uid\030\003 "
+  "\001(\rb\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eMember_2eproto = {
   false, InitDefaults_Msg_2eControl_2eMember_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eMember_2eproto,
-  "Msg.Control.Member.proto", &assign_descriptors_table_Msg_2eControl_2eMember_2eproto, 626,
+  "Msg.Control.Member.proto", &assign_descriptors_table_Msg_2eControl_2eMember_2eproto, 811,
 };
 
 void AddDescriptors_Msg_2eControl_2eMember_2eproto() {
@@ -1961,25 +2024,25 @@ void MsgSignInResponse::InternalSwap(MsgSignInResponse* other) {
 
 // ===================================================================
 
-void MsgChangeRequest::InitAsDefaultInstance() {
+void MsgChangePassRequest::InitAsDefaultInstance() {
 }
-class MsgChangeRequest::HasBitSetters {
+class MsgChangePassRequest::HasBitSetters {
  public:
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgChangeRequest::kUsernameFieldNumber;
-const int MsgChangeRequest::kPasswordFieldNumber;
-const int MsgChangeRequest::kNewspassFieldNumber;
-const int MsgChangeRequest::kPinFieldNumber;
+const int MsgChangePassRequest::kUsernameFieldNumber;
+const int MsgChangePassRequest::kPasswordFieldNumber;
+const int MsgChangePassRequest::kNewspassFieldNumber;
+const int MsgChangePassRequest::kPinFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgChangeRequest::MsgChangeRequest()
+MsgChangePassRequest::MsgChangePassRequest()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(constructor:Cry.Control.Member.MsgChangePassRequest)
 }
-MsgChangeRequest::MsgChangeRequest(const MsgChangeRequest& from)
+MsgChangePassRequest::MsgChangePassRequest(const MsgChangePassRequest& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -1996,40 +2059,40 @@ MsgChangeRequest::MsgChangeRequest(const MsgChangeRequest& from)
     newspass_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.newspass_);
   }
   pin_ = from.pin_;
-  // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgChangePassRequest)
 }
 
-void MsgChangeRequest::SharedCtor() {
+void MsgChangePassRequest::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_MsgChangeRequest_Msg_2eControl_2eMember_2eproto.base);
+      &scc_info_MsgChangePassRequest_Msg_2eControl_2eMember_2eproto.base);
   username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   password_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   newspass_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   pin_ = 0u;
 }
 
-MsgChangeRequest::~MsgChangeRequest() {
-  // @@protoc_insertion_point(destructor:Cry.Control.Member.MsgChangeRequest)
+MsgChangePassRequest::~MsgChangePassRequest() {
+  // @@protoc_insertion_point(destructor:Cry.Control.Member.MsgChangePassRequest)
   SharedDtor();
 }
 
-void MsgChangeRequest::SharedDtor() {
+void MsgChangePassRequest::SharedDtor() {
   username_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   password_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   newspass_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void MsgChangeRequest::SetCachedSize(int size) const {
+void MsgChangePassRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const MsgChangeRequest& MsgChangeRequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_MsgChangeRequest_Msg_2eControl_2eMember_2eproto.base);
+const MsgChangePassRequest& MsgChangePassRequest::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_MsgChangePassRequest_Msg_2eControl_2eMember_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void MsgChangeRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:Cry.Control.Member.MsgChangeRequest)
+void MsgChangePassRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:Cry.Control.Member.MsgChangePassRequest)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2042,9 +2105,9 @@ void MsgChangeRequest::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* MsgChangeRequest::_InternalParse(const char* begin, const char* end, void* object,
+const char* MsgChangePassRequest::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<MsgChangeRequest*>(object);
+  auto msg = static_cast<MsgChangePassRequest*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -2130,11 +2193,11 @@ len_delim_till_end:
                                {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool MsgChangeRequest::MergePartialFromCodedStream(
+bool MsgChangePassRequest::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(parse_start:Cry.Control.Member.MsgChangePassRequest)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -2198,18 +2261,18 @@ bool MsgChangeRequest::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(parse_success:Cry.Control.Member.MsgChangePassRequest)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(parse_failure:Cry.Control.Member.MsgChangePassRequest)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void MsgChangeRequest::SerializeWithCachedSizes(
+void MsgChangePassRequest::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(serialize_start:Cry.Control.Member.MsgChangePassRequest)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2240,12 +2303,12 @@ void MsgChangeRequest::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(serialize_end:Cry.Control.Member.MsgChangePassRequest)
 }
 
-::google::protobuf::uint8* MsgChangeRequest::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* MsgChangePassRequest::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:Cry.Control.Member.MsgChangePassRequest)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2279,12 +2342,12 @@ void MsgChangeRequest::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:Cry.Control.Member.MsgChangePassRequest)
   return target;
 }
 
-size_t MsgChangeRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Cry.Control.Member.MsgChangeRequest)
+size_t MsgChangePassRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Cry.Control.Member.MsgChangePassRequest)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2329,23 +2392,23 @@ size_t MsgChangeRequest::ByteSizeLong() const {
   return total_size;
 }
 
-void MsgChangeRequest::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Cry.Control.Member.MsgChangeRequest)
+void MsgChangePassRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Cry.Control.Member.MsgChangePassRequest)
   GOOGLE_DCHECK_NE(&from, this);
-  const MsgChangeRequest* source =
-      ::google::protobuf::DynamicCastToGenerated<MsgChangeRequest>(
+  const MsgChangePassRequest* source =
+      ::google::protobuf::DynamicCastToGenerated<MsgChangePassRequest>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Cry.Control.Member.MsgChangePassRequest)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Cry.Control.Member.MsgChangeRequest)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Cry.Control.Member.MsgChangePassRequest)
     MergeFrom(*source);
   }
 }
 
-void MsgChangeRequest::MergeFrom(const MsgChangeRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Cry.Control.Member.MsgChangeRequest)
+void MsgChangePassRequest::MergeFrom(const MsgChangePassRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Cry.Control.Member.MsgChangePassRequest)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2368,29 +2431,29 @@ void MsgChangeRequest::MergeFrom(const MsgChangeRequest& from) {
   }
 }
 
-void MsgChangeRequest::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Cry.Control.Member.MsgChangeRequest)
+void MsgChangePassRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Cry.Control.Member.MsgChangePassRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void MsgChangeRequest::CopyFrom(const MsgChangeRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Cry.Control.Member.MsgChangeRequest)
+void MsgChangePassRequest::CopyFrom(const MsgChangePassRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Cry.Control.Member.MsgChangePassRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgChangeRequest::IsInitialized() const {
+bool MsgChangePassRequest::IsInitialized() const {
   return true;
 }
 
-void MsgChangeRequest::Swap(MsgChangeRequest* other) {
+void MsgChangePassRequest::Swap(MsgChangePassRequest* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgChangeRequest::InternalSwap(MsgChangeRequest* other) {
+void MsgChangePassRequest::InternalSwap(MsgChangePassRequest* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   username_.Swap(&other->username_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -2402,7 +2465,7 @@ void MsgChangeRequest::InternalSwap(MsgChangeRequest* other) {
   swap(pin_, other->pin_);
 }
 
-::google::protobuf::Metadata MsgChangeRequest::GetMetadata() const {
+::google::protobuf::Metadata MsgChangePassRequest::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Msg_2eControl_2eMember_2eproto);
   return ::file_level_metadata_Msg_2eControl_2eMember_2eproto[kIndexInFileMessages];
 }
@@ -2410,24 +2473,24 @@ void MsgChangeRequest::InternalSwap(MsgChangeRequest* other) {
 
 // ===================================================================
 
-void MsgChangeResponse::InitAsDefaultInstance() {
+void MsgChangePassResponse::InitAsDefaultInstance() {
 }
-class MsgChangeResponse::HasBitSetters {
+class MsgChangePassResponse::HasBitSetters {
  public:
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MsgChangeResponse::kMsgFieldNumber;
-const int MsgChangeResponse::kTextFieldNumber;
-const int MsgChangeResponse::kUidFieldNumber;
+const int MsgChangePassResponse::kMsgFieldNumber;
+const int MsgChangePassResponse::kTextFieldNumber;
+const int MsgChangePassResponse::kUidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-MsgChangeResponse::MsgChangeResponse()
+MsgChangePassResponse::MsgChangePassResponse()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(constructor:Cry.Control.Member.MsgChangePassResponse)
 }
-MsgChangeResponse::MsgChangeResponse(const MsgChangeResponse& from)
+MsgChangePassResponse::MsgChangePassResponse(const MsgChangePassResponse& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -2438,38 +2501,38 @@ MsgChangeResponse::MsgChangeResponse(const MsgChangeResponse& from)
   ::memcpy(&msg_, &from.msg_,
     static_cast<size_t>(reinterpret_cast<char*>(&uid_) -
     reinterpret_cast<char*>(&msg_)) + sizeof(uid_));
-  // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgChangePassResponse)
 }
 
-void MsgChangeResponse::SharedCtor() {
+void MsgChangePassResponse::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_MsgChangeResponse_Msg_2eControl_2eMember_2eproto.base);
+      &scc_info_MsgChangePassResponse_Msg_2eControl_2eMember_2eproto.base);
   text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&msg_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&uid_) -
       reinterpret_cast<char*>(&msg_)) + sizeof(uid_));
 }
 
-MsgChangeResponse::~MsgChangeResponse() {
-  // @@protoc_insertion_point(destructor:Cry.Control.Member.MsgChangeResponse)
+MsgChangePassResponse::~MsgChangePassResponse() {
+  // @@protoc_insertion_point(destructor:Cry.Control.Member.MsgChangePassResponse)
   SharedDtor();
 }
 
-void MsgChangeResponse::SharedDtor() {
+void MsgChangePassResponse::SharedDtor() {
   text_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void MsgChangeResponse::SetCachedSize(int size) const {
+void MsgChangePassResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const MsgChangeResponse& MsgChangeResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_MsgChangeResponse_Msg_2eControl_2eMember_2eproto.base);
+const MsgChangePassResponse& MsgChangePassResponse::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_MsgChangePassResponse_Msg_2eControl_2eMember_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void MsgChangeResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:Cry.Control.Member.MsgChangeResponse)
+void MsgChangePassResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:Cry.Control.Member.MsgChangePassResponse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2482,9 +2545,9 @@ void MsgChangeResponse::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* MsgChangeResponse::_InternalParse(const char* begin, const char* end, void* object,
+const char* MsgChangePassResponse::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<MsgChangeResponse*>(object);
+  auto msg = static_cast<MsgChangePassResponse*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -2494,11 +2557,11 @@ const char* MsgChangeResponse::_InternalParse(const char* begin, const char* end
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // .Cry.Control.Define.Change msg = 1;
+      // .Cry.Control.Define.ChangePass msg = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
         ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
-        msg->set_msg(static_cast<::Cry::Control::Define::Change>(val));
+        msg->set_msg(static_cast<::Cry::Control::Define::ChangePass>(val));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -2548,24 +2611,24 @@ len_delim_till_end:
                                {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool MsgChangeResponse::MergePartialFromCodedStream(
+bool MsgChangePassResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(parse_start:Cry.Control.Member.MsgChangePassResponse)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .Cry.Control.Define.Change msg = 1;
+      // .Cry.Control.Define.ChangePass msg = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
           int value = 0;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_msg(static_cast< ::Cry::Control::Define::Change >(value));
+          set_msg(static_cast< ::Cry::Control::Define::ChangePass >(value));
         } else {
           goto handle_unusual;
         }
@@ -2608,22 +2671,22 @@ bool MsgChangeResponse::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(parse_success:Cry.Control.Member.MsgChangePassResponse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(parse_failure:Cry.Control.Member.MsgChangePassResponse)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void MsgChangeResponse::SerializeWithCachedSizes(
+void MsgChangePassResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(serialize_start:Cry.Control.Member.MsgChangePassResponse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Cry.Control.Define.Change msg = 1;
+  // .Cry.Control.Define.ChangePass msg = 1;
   if (this->msg() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->msg(), output);
@@ -2644,16 +2707,16 @@ void MsgChangeResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(serialize_end:Cry.Control.Member.MsgChangePassResponse)
 }
 
-::google::protobuf::uint8* MsgChangeResponse::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* MsgChangePassResponse::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:Cry.Control.Member.MsgChangePassResponse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Cry.Control.Define.Change msg = 1;
+  // .Cry.Control.Define.ChangePass msg = 1;
   if (this->msg() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->msg(), target);
@@ -2675,12 +2738,12 @@ void MsgChangeResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:Cry.Control.Member.MsgChangePassResponse)
   return target;
 }
 
-size_t MsgChangeResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Cry.Control.Member.MsgChangeResponse)
+size_t MsgChangePassResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Cry.Control.Member.MsgChangePassResponse)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2699,7 +2762,7 @@ size_t MsgChangeResponse::ByteSizeLong() const {
         this->text());
   }
 
-  // .Cry.Control.Define.Change msg = 1;
+  // .Cry.Control.Define.ChangePass msg = 1;
   if (this->msg() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->msg());
@@ -2717,23 +2780,23 @@ size_t MsgChangeResponse::ByteSizeLong() const {
   return total_size;
 }
 
-void MsgChangeResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Cry.Control.Member.MsgChangeResponse)
+void MsgChangePassResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Cry.Control.Member.MsgChangePassResponse)
   GOOGLE_DCHECK_NE(&from, this);
-  const MsgChangeResponse* source =
-      ::google::protobuf::DynamicCastToGenerated<MsgChangeResponse>(
+  const MsgChangePassResponse* source =
+      ::google::protobuf::DynamicCastToGenerated<MsgChangePassResponse>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Cry.Control.Member.MsgChangePassResponse)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Cry.Control.Member.MsgChangeResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Cry.Control.Member.MsgChangePassResponse)
     MergeFrom(*source);
   }
 }
 
-void MsgChangeResponse::MergeFrom(const MsgChangeResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Cry.Control.Member.MsgChangeResponse)
+void MsgChangePassResponse::MergeFrom(const MsgChangePassResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Cry.Control.Member.MsgChangePassResponse)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2751,29 +2814,29 @@ void MsgChangeResponse::MergeFrom(const MsgChangeResponse& from) {
   }
 }
 
-void MsgChangeResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Cry.Control.Member.MsgChangeResponse)
+void MsgChangePassResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Cry.Control.Member.MsgChangePassResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void MsgChangeResponse::CopyFrom(const MsgChangeResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Cry.Control.Member.MsgChangeResponse)
+void MsgChangePassResponse::CopyFrom(const MsgChangePassResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Cry.Control.Member.MsgChangePassResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgChangeResponse::IsInitialized() const {
+bool MsgChangePassResponse::IsInitialized() const {
   return true;
 }
 
-void MsgChangeResponse::Swap(MsgChangeResponse* other) {
+void MsgChangePassResponse::Swap(MsgChangePassResponse* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void MsgChangeResponse::InternalSwap(MsgChangeResponse* other) {
+void MsgChangePassResponse::InternalSwap(MsgChangePassResponse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   text_.Swap(&other->text_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -2782,7 +2845,776 @@ void MsgChangeResponse::InternalSwap(MsgChangeResponse* other) {
   swap(uid_, other->uid_);
 }
 
-::google::protobuf::Metadata MsgChangeResponse::GetMetadata() const {
+::google::protobuf::Metadata MsgChangePassResponse::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Msg_2eControl_2eMember_2eproto);
+  return ::file_level_metadata_Msg_2eControl_2eMember_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void MsgChangeBindRequest::InitAsDefaultInstance() {
+}
+class MsgChangeBindRequest::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgChangeBindRequest::kUsernameFieldNumber;
+const int MsgChangeBindRequest::kPasswordFieldNumber;
+const int MsgChangeBindRequest::kSecretFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgChangeBindRequest::MsgChangeBindRequest()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Cry.Control.Member.MsgChangeBindRequest)
+}
+MsgChangeBindRequest::MsgChangeBindRequest(const MsgChangeBindRequest& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.username().size() > 0) {
+    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
+  }
+  password_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.password().size() > 0) {
+    password_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.password_);
+  }
+  secret_ = from.secret_;
+  // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgChangeBindRequest)
+}
+
+void MsgChangeBindRequest::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_MsgChangeBindRequest_Msg_2eControl_2eMember_2eproto.base);
+  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  password_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  secret_ = 0u;
+}
+
+MsgChangeBindRequest::~MsgChangeBindRequest() {
+  // @@protoc_insertion_point(destructor:Cry.Control.Member.MsgChangeBindRequest)
+  SharedDtor();
+}
+
+void MsgChangeBindRequest::SharedDtor() {
+  username_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  password_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void MsgChangeBindRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const MsgChangeBindRequest& MsgChangeBindRequest::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_MsgChangeBindRequest_Msg_2eControl_2eMember_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void MsgChangeBindRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:Cry.Control.Member.MsgChangeBindRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  password_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  secret_ = 0u;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* MsgChangeBindRequest::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<MsgChangeBindRequest*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // bytes username = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        object = msg->mutable_username();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParser;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheck(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
+        break;
+      }
+      // bytes password = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        object = msg->mutable_password();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParser;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheck(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
+        break;
+      }
+      // uint32 secret = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        msg->set_secret(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool MsgChangeBindRequest::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Cry.Control.Member.MsgChangeBindRequest)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // bytes username = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_username()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bytes password = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_password()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 secret = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &secret_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Cry.Control.Member.MsgChangeBindRequest)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Cry.Control.Member.MsgChangeBindRequest)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void MsgChangeBindRequest::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Cry.Control.Member.MsgChangeBindRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes username = 1;
+  if (this->username().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      1, this->username(), output);
+  }
+
+  // bytes password = 2;
+  if (this->password().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      2, this->password(), output);
+  }
+
+  // uint32 secret = 3;
+  if (this->secret() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->secret(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Cry.Control.Member.MsgChangeBindRequest)
+}
+
+::google::protobuf::uint8* MsgChangeBindRequest::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Cry.Control.Member.MsgChangeBindRequest)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes username = 1;
+  if (this->username().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        1, this->username(), target);
+  }
+
+  // bytes password = 2;
+  if (this->password().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->password(), target);
+  }
+
+  // uint32 secret = 3;
+  if (this->secret() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->secret(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Cry.Control.Member.MsgChangeBindRequest)
+  return target;
+}
+
+size_t MsgChangeBindRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Cry.Control.Member.MsgChangeBindRequest)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes username = 1;
+  if (this->username().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->username());
+  }
+
+  // bytes password = 2;
+  if (this->password().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->password());
+  }
+
+  // uint32 secret = 3;
+  if (this->secret() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->secret());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void MsgChangeBindRequest::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Cry.Control.Member.MsgChangeBindRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const MsgChangeBindRequest* source =
+      ::google::protobuf::DynamicCastToGenerated<MsgChangeBindRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Cry.Control.Member.MsgChangeBindRequest)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Cry.Control.Member.MsgChangeBindRequest)
+    MergeFrom(*source);
+  }
+}
+
+void MsgChangeBindRequest::MergeFrom(const MsgChangeBindRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Cry.Control.Member.MsgChangeBindRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.username().size() > 0) {
+
+    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
+  }
+  if (from.password().size() > 0) {
+
+    password_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.password_);
+  }
+  if (from.secret() != 0) {
+    set_secret(from.secret());
+  }
+}
+
+void MsgChangeBindRequest::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Cry.Control.Member.MsgChangeBindRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgChangeBindRequest::CopyFrom(const MsgChangeBindRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Cry.Control.Member.MsgChangeBindRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgChangeBindRequest::IsInitialized() const {
+  return true;
+}
+
+void MsgChangeBindRequest::Swap(MsgChangeBindRequest* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgChangeBindRequest::InternalSwap(MsgChangeBindRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  username_.Swap(&other->username_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  password_.Swap(&other->password_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(secret_, other->secret_);
+}
+
+::google::protobuf::Metadata MsgChangeBindRequest::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Msg_2eControl_2eMember_2eproto);
+  return ::file_level_metadata_Msg_2eControl_2eMember_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void MsgChangeBindResponse::InitAsDefaultInstance() {
+}
+class MsgChangeBindResponse::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MsgChangeBindResponse::kMsgFieldNumber;
+const int MsgChangeBindResponse::kTextFieldNumber;
+const int MsgChangeBindResponse::kUidFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MsgChangeBindResponse::MsgChangeBindResponse()
+  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Cry.Control.Member.MsgChangeBindResponse)
+}
+MsgChangeBindResponse::MsgChangeBindResponse(const MsgChangeBindResponse& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.text().size() > 0) {
+    text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.text_);
+  }
+  ::memcpy(&msg_, &from.msg_,
+    static_cast<size_t>(reinterpret_cast<char*>(&uid_) -
+    reinterpret_cast<char*>(&msg_)) + sizeof(uid_));
+  // @@protoc_insertion_point(copy_constructor:Cry.Control.Member.MsgChangeBindResponse)
+}
+
+void MsgChangeBindResponse::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_MsgChangeBindResponse_Msg_2eControl_2eMember_2eproto.base);
+  text_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&msg_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&uid_) -
+      reinterpret_cast<char*>(&msg_)) + sizeof(uid_));
+}
+
+MsgChangeBindResponse::~MsgChangeBindResponse() {
+  // @@protoc_insertion_point(destructor:Cry.Control.Member.MsgChangeBindResponse)
+  SharedDtor();
+}
+
+void MsgChangeBindResponse::SharedDtor() {
+  text_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void MsgChangeBindResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const MsgChangeBindResponse& MsgChangeBindResponse::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_MsgChangeBindResponse_Msg_2eControl_2eMember_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void MsgChangeBindResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:Cry.Control.Member.MsgChangeBindResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  text_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&msg_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&uid_) -
+      reinterpret_cast<char*>(&msg_)) + sizeof(uid_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* MsgChangeBindResponse::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<MsgChangeBindResponse*>(object);
+  ::google::protobuf::int32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // .Cry.Control.Define.ChangeBind msg = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val = ::google::protobuf::internal::ReadVarint(&ptr);
+        msg->set_msg(static_cast<::Cry::Control::Define::ChangeBind>(val));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // bytes text = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        object = msg->mutable_text();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParser;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheck(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
+        break;
+      }
+      // uint32 uid = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        msg->set_uid(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->EndGroup(tag);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool MsgChangeBindResponse::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Cry.Control.Member.MsgChangeBindResponse)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .Cry.Control.Define.ChangeBind msg = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+          int value = 0;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_msg(static_cast< ::Cry::Control::Define::ChangeBind >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bytes text = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_text()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 uid = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &uid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Cry.Control.Member.MsgChangeBindResponse)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Cry.Control.Member.MsgChangeBindResponse)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void MsgChangeBindResponse::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Cry.Control.Member.MsgChangeBindResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .Cry.Control.Define.ChangeBind msg = 1;
+  if (this->msg() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->msg(), output);
+  }
+
+  // bytes text = 2;
+  if (this->text().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      2, this->text(), output);
+  }
+
+  // uint32 uid = 3;
+  if (this->uid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->uid(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Cry.Control.Member.MsgChangeBindResponse)
+}
+
+::google::protobuf::uint8* MsgChangeBindResponse::InternalSerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:Cry.Control.Member.MsgChangeBindResponse)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .Cry.Control.Define.ChangeBind msg = 1;
+  if (this->msg() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->msg(), target);
+  }
+
+  // bytes text = 2;
+  if (this->text().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->text(), target);
+  }
+
+  // uint32 uid = 3;
+  if (this->uid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->uid(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Cry.Control.Member.MsgChangeBindResponse)
+  return target;
+}
+
+size_t MsgChangeBindResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Cry.Control.Member.MsgChangeBindResponse)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes text = 2;
+  if (this->text().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->text());
+  }
+
+  // .Cry.Control.Define.ChangeBind msg = 1;
+  if (this->msg() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->msg());
+  }
+
+  // uint32 uid = 3;
+  if (this->uid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->uid());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void MsgChangeBindResponse::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Cry.Control.Member.MsgChangeBindResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  const MsgChangeBindResponse* source =
+      ::google::protobuf::DynamicCastToGenerated<MsgChangeBindResponse>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Cry.Control.Member.MsgChangeBindResponse)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Cry.Control.Member.MsgChangeBindResponse)
+    MergeFrom(*source);
+  }
+}
+
+void MsgChangeBindResponse::MergeFrom(const MsgChangeBindResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Cry.Control.Member.MsgChangeBindResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.text().size() > 0) {
+
+    text_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.text_);
+  }
+  if (from.msg() != 0) {
+    set_msg(from.msg());
+  }
+  if (from.uid() != 0) {
+    set_uid(from.uid());
+  }
+}
+
+void MsgChangeBindResponse::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Cry.Control.Member.MsgChangeBindResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgChangeBindResponse::CopyFrom(const MsgChangeBindResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Cry.Control.Member.MsgChangeBindResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgChangeBindResponse::IsInitialized() const {
+  return true;
+}
+
+void MsgChangeBindResponse::Swap(MsgChangeBindResponse* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MsgChangeBindResponse::InternalSwap(MsgChangeBindResponse* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  text_.Swap(&other->text_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(msg_, other->msg_);
+  swap(uid_, other->uid_);
+}
+
+::google::protobuf::Metadata MsgChangeBindResponse::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_Msg_2eControl_2eMember_2eproto);
   return ::file_level_metadata_Msg_2eControl_2eMember_2eproto[kIndexInFileMessages];
 }
@@ -2806,11 +3638,17 @@ template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgSignInRequest* Arena::Cr
 template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgSignInResponse* Arena::CreateMaybeMessage< ::Cry::Control::Member::MsgSignInResponse >(Arena* arena) {
   return Arena::CreateInternal< ::Cry::Control::Member::MsgSignInResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgChangeRequest* Arena::CreateMaybeMessage< ::Cry::Control::Member::MsgChangeRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::Cry::Control::Member::MsgChangeRequest >(arena);
+template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgChangePassRequest* Arena::CreateMaybeMessage< ::Cry::Control::Member::MsgChangePassRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::Cry::Control::Member::MsgChangePassRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgChangeResponse* Arena::CreateMaybeMessage< ::Cry::Control::Member::MsgChangeResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::Cry::Control::Member::MsgChangeResponse >(arena);
+template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgChangePassResponse* Arena::CreateMaybeMessage< ::Cry::Control::Member::MsgChangePassResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::Cry::Control::Member::MsgChangePassResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgChangeBindRequest* Arena::CreateMaybeMessage< ::Cry::Control::Member::MsgChangeBindRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::Cry::Control::Member::MsgChangeBindRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::Cry::Control::Member::MsgChangeBindResponse* Arena::CreateMaybeMessage< ::Cry::Control::Member::MsgChangeBindResponse >(Arena* arena) {
+  return Arena::CreateInternal< ::Cry::Control::Member::MsgChangeBindResponse >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

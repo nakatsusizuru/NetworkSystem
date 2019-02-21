@@ -18,7 +18,7 @@ namespace Cry
 		explicit SocketDataInterface() = default;
 		virtual ~SocketDataInterface() = default;
 	public:
-		virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize) = 0;
+		virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * cbData, const u32 uSize) = 0;
 	protected:
 		SocketDataInterface(const SocketDataInterface &) = default;
 		SocketDataInterface &operator=(const SocketDataInterface &) = default;
@@ -30,7 +30,7 @@ namespace Cry
 		explicit SocketDataInterfaceEx() = default;
 		virtual ~SocketDataInterfaceEx() = default;
 	public:
-		virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::NetworkServiceEngine> & Service, const u32 uMsg, const void * Data, const u32 uSize) = 0;
+		virtual bool OnSocketData(const std::shared_ptr<Cry::Signal::NetworkServiceEngine> & Service, const u32 uMsg, const void * cbData, const u32 uSize) = 0;
 	protected:
 		SocketDataInterfaceEx(const SocketDataInterfaceEx &) = default;
 		SocketDataInterfaceEx &operator=(const SocketDataInterfaceEx &) = default;

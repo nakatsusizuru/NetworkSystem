@@ -142,7 +142,7 @@ namespace Cry
 	}
 	void ClientDialog::PushChange(bool Status)
 	{
-		Cry::Control::Member::MsgChangeRequest ProtoRequest;
+		Cry::Control::Member::MsgChangePassRequest ProtoRequest;
 		ProtoRequest.set_username(Interface->Change_User->text().toLocal8Bit());
 		ProtoRequest.set_password(Interface->Change_oPass->text().toLocal8Bit());
 		ProtoRequest.set_pin(Interface->Change_pPass->text().toUInt());

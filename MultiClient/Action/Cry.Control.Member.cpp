@@ -40,7 +40,7 @@ namespace Cry
 
 		bool Change::OnSocketData(const std::shared_ptr<Cry::Signal::NetworkServiceEngine> & Service, const u32 uMsg, const void * Data, const u32 uSize)
 		{
-			Cry::Control::Member::MsgChangeResponse ProtoResponse;
+			Cry::Control::Member::MsgChangePassResponse ProtoResponse;
 			{
 				if (false == ProtoResponse.ParsePartialFromArray(Data, uSize))
 				{

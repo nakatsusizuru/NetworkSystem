@@ -11,11 +11,11 @@ namespace Cry
 
 		Register::Register() {};
 
-		bool Register::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
+		bool Register::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * cbData, const u32 uSize)
 		{
 			Cry::Control::Member::MsgRegisterRequest ProtoRequest;
 			{
-				if (false == ProtoRequest.ParsePartialFromArray(Data, uSize))
+				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
 				{
 					Work->Close();
 				}
@@ -80,11 +80,11 @@ namespace Cry
 
 		SignIn::SignIn() {};
 
-		bool SignIn::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
+		bool SignIn::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * cbData, const u32 uSize)
 		{
 			Cry::Control::Member::MsgSignInRequest ProtoRequest;
 			{
-				if (false == ProtoRequest.ParsePartialFromArray(Data, uSize))
+				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
 				{
 					Work->Close();
 				}
@@ -204,13 +204,13 @@ namespace Cry
 			return 0;
 		}
 
-		Change::Change() {}
+		ChangePass::ChangePass() {}
 
-		bool Change::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * Data, const u32 uSize)
+		bool ChangePass::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * cbData, const u32 uSize)
 		{
-			Cry::Control::Member::MsgChangeRequest ProtoRequest;
+			Cry::Control::Member::MsgChangePassRequest ProtoRequest;
 			{
-				if (false == ProtoRequest.ParsePartialFromArray(Data, uSize))
+				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
 				{
 					Work->Close();
 				}
@@ -218,7 +218,7 @@ namespace Cry
 			}
 			return false;
 		}
-		bool Change::OnMessage(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & User, std::string & Pass, std::string & NewsPass, u32 Pin)
+		bool ChangePass::OnMessage(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & User, std::string & Pass, std::string & NewsPass, u32 Pin)
 		{
 			if (const std::shared_ptr<Poco::Data::Session> & Session = Work->GetDataBase()->GetSession(); Session != nullptr)
 			{
@@ -226,25 +226,87 @@ namespace Cry
 				{
 					if (w32 Result = Session->isConnected(); TRUE == Result)
 					{
-						if (Poco::Data::Statement Statement = (*Session << "Select Common_Change(?, ?, ?, ?) As Result", Poco::Data::Keywords::use(User), Poco::Data::Keywords::use(Pass), Poco::Data::Keywords::use(NewsPass), Poco::Data::Keywords::use(Pin), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+						if (Poco::Data::Statement Statement = (*Session << "Select Common_ChangePass(?, ?, ?, ?) As Result", Poco::Data::Keywords::use(User), Poco::Data::Keywords::use(Pass), Poco::Data::Keywords::use(NewsPass), Poco::Data::Keywords::use(Pin), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
 						{
-							Cry::Control::Member::MsgChangeResponse ProtoResponse;
+							Cry::Control::Member::MsgChangePassResponse ProtoResponse;
 							switch (Result)
 							{
-							case -0x00: ProtoResponse.set_msg(Define::CID_CHANGE_DEFAULT);				ProtoResponse.set_text("未知的错误"); break;
-							case -0x01: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_EMPTY);		ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
-							case -0x02: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_EMPTY);		ProtoResponse.set_text("请您输入密码"); break;
-							case -0x03: ProtoResponse.set_msg(Define::CID_CHANGE_NEWSPASS_EMPTY);		ProtoResponse.set_text("请您输入新的密码"); break;
-							case -0x04: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_EMPTY);			ProtoResponse.set_text("请您输入PIN密码"); break;
-							case -0x05: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_SIZE);		ProtoResponse.set_text("您输入的账号不符合要求"); break;
-							case -0x06: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_SIZE);		ProtoResponse.set_text("您输入的密码不符合要求"); break;
-							case -0x07: ProtoResponse.set_msg(Define::CID_CHANGE_NEWSPASS_SIZE);		ProtoResponse.set_text("您输入的新密码不符合要求"); break;
-							case -0x08: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_SIZE);				ProtoResponse.set_text("您输入的PIN密码不符合要求"); break;
-							case -0x09: ProtoResponse.set_msg(Define::CID_CHANGE_SAME_ERROR);			ProtoResponse.set_text("新密码与旧密码不能相同"); break;
-							case -0x0A: ProtoResponse.set_msg(Define::CID_CHANGE_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
-							case -0x0B: ProtoResponse.set_msg(Define::CID_CHANGE_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的原始密码有误"); break;
-							case -0x0C: ProtoResponse.set_msg(Define::CID_CHANGE_PIN_ERROR);			ProtoResponse.set_text("您输入的PIN密码有误"); break;
-							default:	ProtoResponse.set_msg(Define::CID_CHANGE_NOT_ERROR);			ProtoResponse.set_text("密码修改成功");		ProtoResponse.set_uid(Result); break;
+							case -0x00: ProtoResponse.set_msg(Define::CID_CHANGEPASS_DEFAULT);				ProtoResponse.set_text("未知的错误"); break;
+							case -0x01: ProtoResponse.set_msg(Define::CID_CHANGEPASS_USERNAME_EMPTY);		ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
+							case -0x02: ProtoResponse.set_msg(Define::CID_CHANGEPASS_PASSWORD_EMPTY);		ProtoResponse.set_text("请您输入密码"); break;
+							case -0x03: ProtoResponse.set_msg(Define::CID_CHANGEPASS_NEWSPASS_EMPTY);		ProtoResponse.set_text("请您输入新的密码"); break;
+							case -0x04: ProtoResponse.set_msg(Define::CID_CHANGEPASS_PIN_EMPTY);			ProtoResponse.set_text("请您输入PIN密码"); break;
+							case -0x05: ProtoResponse.set_msg(Define::CID_CHANGEPASS_USERNAME_SIZE);		ProtoResponse.set_text("您输入的账号不符合要求"); break;
+							case -0x06: ProtoResponse.set_msg(Define::CID_CHANGEPASS_PASSWORD_SIZE);		ProtoResponse.set_text("您输入的密码不符合要求"); break;
+							case -0x07: ProtoResponse.set_msg(Define::CID_CHANGEPASS_NEWSPASS_SIZE);		ProtoResponse.set_text("您输入的新密码不符合要求"); break;
+							case -0x08: ProtoResponse.set_msg(Define::CID_CHANGEPASS_PIN_SIZE);				ProtoResponse.set_text("您输入的PIN密码不符合要求"); break;
+							case -0x09: ProtoResponse.set_msg(Define::CID_CHANGEPASS_SAME_ERROR);			ProtoResponse.set_text("新密码与旧密码不能相同"); break;
+							case -0x0A: ProtoResponse.set_msg(Define::CID_CHANGEPASS_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
+							case -0x0B: ProtoResponse.set_msg(Define::CID_CHANGEPASS_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的原始密码有误"); break;
+							case -0x0C: ProtoResponse.set_msg(Define::CID_CHANGEPASS_PIN_ERROR);			ProtoResponse.set_text("您输入的PIN密码有误"); break;
+							default:	ProtoResponse.set_msg(Define::CID_CHANGEPASS_NOT_ERROR);			ProtoResponse.set_text("密码修改成功");		ProtoResponse.set_uid(Result); break;
+							}
+							return Work->Send(Define::CID_MESSAGE_CHANGE, ProtoResponse);
+						}
+					}
+				}
+				catch (const Poco::Data::MySQL::ConnectionException & ce)
+				{
+					LOG_ERROR << ce.displayText();
+				}
+				catch (const Poco::Data::MySQL::StatementException & se)
+				{
+					LOG_ERROR << se.displayText();
+				}
+				catch (const Poco::Exception & ex)
+				{
+					LOG_ERROR << ex.displayText();
+				}
+			}
+			return true;
+		}
+
+		ChangeBind::ChangeBind() {};
+
+		bool ChangeBind::OnSocketData(const std::shared_ptr<Cry::Signal::Work> & Work, const u32 uMsg, const void * cbData, const u32 uSize)
+		{
+			Cry::Control::Member::MsgChangeBindRequest ProtoRequest;
+			{
+				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
+				{
+					Work->Close();
+				}
+				return this->OnMessage(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()), ProtoRequest.secret(), 3600);
+			}
+			return false;
+		}
+
+		bool ChangeBind::OnMessage(const std::shared_ptr<Cry::Signal::Work> & Work, std::string & User, std::string & Pass, u32 Secret, u32 Expire)
+		{
+
+			if (const std::shared_ptr<Poco::Data::Session> & Session = Work->GetDataBase()->GetSession(); Session != nullptr)
+			{
+				try
+				{
+					if (w32 Result = Session->isConnected(); TRUE == Result)
+					{
+						if (Poco::Data::Statement Statement = (*Session << "Select Common_ChangeBind(?, ?, ?, ?) As Result", Poco::Data::Keywords::use(User), Poco::Data::Keywords::use(Pass), Poco::Data::Keywords::use(Secret), Poco::Data::Keywords::use(Expire), Poco::Data::Keywords::into(Result), Poco::Data::Keywords::now); Statement.done() == true)
+						{
+							Cry::Control::Member::MsgChangeBindResponse ProtoResponse;
+							switch (Result)
+							{
+							case -0x00: ProtoResponse.set_msg(Define::CID_CHANGEBIND_DEFAULT);				ProtoResponse.set_text("未知的错误"); break;
+							case -0x01: ProtoResponse.set_msg(Define::CID_CHANGEBIND_USERNAME_EMPTY);		ProtoResponse.set_text("请您输入手机/邮箱/账号"); break;
+							case -0x02: ProtoResponse.set_msg(Define::CID_CHANGEBIND_PASSWORD_EMPTY);		ProtoResponse.set_text("请您输入密码"); break;
+							case -0x03: ProtoResponse.set_msg(Define::CID_CHANGEBIND_SECRET_EMPTY);			ProtoResponse.set_text("请您输入解锁密码"); break;
+							case -0x04: ProtoResponse.set_msg(Define::CID_CHANGEBIND_USERNAME_SIZE);		ProtoResponse.set_text("您输入的账号不符合要求"); break;
+							case -0x05: ProtoResponse.set_msg(Define::CID_CHANGEBIND_PASSWORD_SIZE);		ProtoResponse.set_text("您输入的密码不符合要求"); break;
+							case -0x06: ProtoResponse.set_msg(Define::CID_CHANGEBIND_SECRET_SIZE);			ProtoResponse.set_text("您输入的解锁密码不符合要求"); break;
+							case -0x07: ProtoResponse.set_msg(Define::CID_CHANGEBIND_USERNAME_ERROR);		ProtoResponse.set_text("您输入的账号不存在"); break;
+							case -0x08: ProtoResponse.set_msg(Define::CID_CHANGEBIND_PASSWORD_ERROR);		ProtoResponse.set_text("您输入的密码有误，请重新输入或找回密码"); break;
+							case -0x09: ProtoResponse.set_msg(Define::CID_CHANGEBIND_SECRET_ERROR);			ProtoResponse.set_text("您输入的解锁密码有误"); break;
+							case -0x0A: ProtoResponse.set_msg(Define::CID_CHANGEBIND_SECRET_EXPIRE);		ProtoResponse.set_text("您输入的解锁密码已经过期"); break;
+							default:	ProtoResponse.set_msg(Define::CID_CHANGEBIND_NOT_ERROR);			ProtoResponse.set_text("解锁成功");		ProtoResponse.set_uid(Result); break;
 							}
 							return Work->Send(Define::CID_MESSAGE_CHANGE, ProtoResponse);
 						}

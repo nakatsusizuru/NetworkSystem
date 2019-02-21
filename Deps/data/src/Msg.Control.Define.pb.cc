@@ -26,7 +26,7 @@ void InitDefaults_Msg_2eControl_2eDefine_2eproto() {
 }
 
 constexpr ::google::protobuf::Metadata* file_level_metadata_Msg_2eControl_2eDefine_2eproto = nullptr;
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_Msg_2eControl_2eDefine_2eproto[4];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors_Msg_2eControl_2eDefine_2eproto[5];
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_Msg_2eControl_2eDefine_2eproto = nullptr;
 const ::google::protobuf::uint32 TableStruct_Msg_2eControl_2eDefine_2eproto::offsets[1] = {};
 static constexpr ::google::protobuf::internal::MigrationSchema* schemas = nullptr;
@@ -63,23 +63,34 @@ const char descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto[] =
   "_WRITE_PHONE_SIZE\020\t\022\026\n\022CID_WRITE_PIN_SIZ"
   "E\020\n\022\034\n\030CID_WRITE_USERNAME_ERROR\020\013\022\034\n\030CID"
   "_WRITE_PASSWORD_ERROR\020\014\022\023\n\017CID_WRITE_EXI"
-  "ST\020\r\022\027\n\023CID_WRITE_NOT_ERROR\020\016*\227\003\n\006Change"
-  "\022\026\n\022CID_CHANGE_DEFAULT\020\000\022\035\n\031CID_CHANGE_U"
-  "SERNAME_EMPTY\020\001\022\035\n\031CID_CHANGE_PASSWORD_E"
-  "MPTY\020\002\022\035\n\031CID_CHANGE_NEWSPASS_EMPTY\020\003\022\030\n"
-  "\024CID_CHANGE_PIN_EMPTY\020\004\022\034\n\030CID_CHANGE_US"
-  "ERNAME_SIZE\020\005\022\034\n\030CID_CHANGE_PASSWORD_SIZ"
-  "E\020\006\022\034\n\030CID_CHANGE_NEWSPASS_SIZE\020\007\022\027\n\023CID"
-  "_CHANGE_PIN_SIZE\020\010\022\031\n\025CID_CHANGE_SAME_ER"
-  "ROR\020\t\022\035\n\031CID_CHANGE_USERNAME_ERROR\020\n\022\035\n\031"
-  "CID_CHANGE_PASSWORD_ERROR\020\013\022\030\n\024CID_CHANG"
-  "E_PIN_ERROR\020\014\022\030\n\024CID_CHANGE_NOT_ERROR\020\rb"
-  "\006proto3"
+  "ST\020\r\022\027\n\023CID_WRITE_NOT_ERROR\020\016*\323\003\n\nChange"
+  "Pass\022\032\n\026CID_CHANGEPASS_DEFAULT\020\000\022!\n\035CID_"
+  "CHANGEPASS_USERNAME_EMPTY\020\001\022!\n\035CID_CHANG"
+  "EPASS_PASSWORD_EMPTY\020\002\022!\n\035CID_CHANGEPASS"
+  "_NEWSPASS_EMPTY\020\003\022\034\n\030CID_CHANGEPASS_PIN_"
+  "EMPTY\020\004\022 \n\034CID_CHANGEPASS_USERNAME_SIZE\020"
+  "\005\022 \n\034CID_CHANGEPASS_PASSWORD_SIZE\020\006\022 \n\034C"
+  "ID_CHANGEPASS_NEWSPASS_SIZE\020\007\022\033\n\027CID_CHA"
+  "NGEPASS_PIN_SIZE\020\010\022\035\n\031CID_CHANGEPASS_SAM"
+  "E_ERROR\020\t\022!\n\035CID_CHANGEPASS_USERNAME_ERR"
+  "OR\020\n\022!\n\035CID_CHANGEPASS_PASSWORD_ERROR\020\013\022"
+  "\034\n\030CID_CHANGEPASS_PIN_ERROR\020\014\022\034\n\030CID_CHA"
+  "NGEPASS_NOT_ERROR\020\r*\232\003\n\nChangeBind\022\032\n\026CI"
+  "D_CHANGEBIND_DEFAULT\020\000\022!\n\035CID_CHANGEBIND"
+  "_USERNAME_EMPTY\020\001\022!\n\035CID_CHANGEBIND_PASS"
+  "WORD_EMPTY\020\002\022\037\n\033CID_CHANGEBIND_SECRET_EM"
+  "PTY\020\003\022 \n\034CID_CHANGEBIND_USERNAME_SIZE\020\004\022"
+  " \n\034CID_CHANGEBIND_PASSWORD_SIZE\020\005\022\036\n\032CID"
+  "_CHANGEBIND_SECRET_SIZE\020\006\022!\n\035CID_CHANGEB"
+  "IND_USERNAME_ERROR\020\007\022!\n\035CID_CHANGEBIND_P"
+  "ASSWORD_ERROR\020\010\022\037\n\033CID_CHANGEBIND_SECRET"
+  "_ERROR\020\t\022 \n\034CID_CHANGEBIND_SECRET_EXPIRE"
+  "\020\n\022\034\n\030CID_CHANGEBIND_NOT_ERROR\020\013b\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_Msg_2eControl_2eDefine_2eproto = {
   false, InitDefaults_Msg_2eControl_2eDefine_2eproto, 
   descriptor_table_protodef_Msg_2eControl_2eDefine_2eproto,
-  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 1407,
+  "Msg.Control.Define.proto", &assign_descriptors_table_Msg_2eControl_2eDefine_2eproto, 1880,
 };
 
 void AddDescriptors_Msg_2eControl_2eDefine_2eproto() {
@@ -164,11 +175,11 @@ bool Write_IsValid(int value) {
   }
 }
 
-const ::google::protobuf::EnumDescriptor* Change_descriptor() {
+const ::google::protobuf::EnumDescriptor* ChangePass_descriptor() {
   ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_Msg_2eControl_2eDefine_2eproto);
   return file_level_enum_descriptors_Msg_2eControl_2eDefine_2eproto[3];
 }
-bool Change_IsValid(int value) {
+bool ChangePass_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
@@ -184,6 +195,30 @@ bool Change_IsValid(int value) {
     case 11:
     case 12:
     case 13:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* ChangeBind_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&assign_descriptors_table_Msg_2eControl_2eDefine_2eproto);
+  return file_level_enum_descriptors_Msg_2eControl_2eDefine_2eproto[4];
+}
+bool ChangeBind_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
       return true;
     default:
       return false;
