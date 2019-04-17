@@ -67,7 +67,7 @@ namespace Cry
 			void Close();
 			bool CheckOnline(w32 wIndex, const std::string & User, const std::string & Pass);
 			bool CheckOnline(const CustomerData & Other) const;
-			void MakeOnline(w32 wIndex, const std::string & User, const std::string & Pass);
+			bool MakeOnline(w32 wIndex, const std::string & User, const std::string & Pass);
 		public:
 			const std::shared_ptr<CustomerData> & GetCustomerData() const { return m_Customer; }
 			const std::shared_ptr<DataBase> & GetDataBase() const { return m_DataBase; }

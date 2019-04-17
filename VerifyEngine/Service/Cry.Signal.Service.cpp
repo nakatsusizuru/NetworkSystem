@@ -115,9 +115,15 @@ namespace Cry
 			return true;
 		}
 
-		void Work::MakeOnline(w32 wIndex, const std::string & Name, const std::string & Pass)
+		bool Work::MakeOnline(w32 wIndex, const std::string & Name, const std::string & Pass)
 		{
-			m_Customer = std::make_shared<Cry::Signal::CustomerData>(wIndex, Name, Pass);
+			if (m_Customer == nullptr)
+			{
+				m_Customer.reset(new Cry::Signal::CustomerData(wIndex, Name, Pass));
+				//m_Customer = std::make_shared<Cry::Signal::CustomerData>(wIndex, Name, Pass);
+				return true;
+			}
+			return false;
 		}
 
 		Work::~Work()

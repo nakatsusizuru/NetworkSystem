@@ -136,11 +136,13 @@ namespace Cry
 									}
 									else
 									{
-										Work->MakeOnline(Result, User, Pass);
-										ProtoResponse.set_msg(Define::CID_SIGNIN_NOT_ERROR);
-										ProtoResponse.set_text("登录成功");
-										ProtoResponse.set_uid(Result);
-										ProtoResponse.set_expires(Expires);
+										if (Work->MakeOnline(Result, User, Pass))
+										{
+											ProtoResponse.set_msg(Define::CID_SIGNIN_NOT_ERROR);
+											ProtoResponse.set_text("登录成功");
+											ProtoResponse.set_uid(Result);
+											ProtoResponse.set_expires(Expires);
+										}
 									}
 								}
 								break;

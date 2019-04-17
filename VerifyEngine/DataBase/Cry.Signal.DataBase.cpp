@@ -6,8 +6,12 @@ namespace Cry
 	{
 		try
 		{
-			std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + DB + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : "false") + ";compress=true;secure-auth=true;protocol=tcp;character-set=gbk;";
-			m_Session = std::make_shared<Session>(Poco::Data::MySQL::Connector::KEY, lpszParameter, 3U);
+			if (m_Session == nullptr)
+			{
+				std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + DB + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : "false") + ";compress=true;secure-auth=true;protocol=tcp;character-set=gbk;";
+				m_Session.reset(new Session(Poco::Data::MySQL::Connector::KEY, lpszParameter));
+			}
+			
 			//if (w32 Result = m_Session->isConnected(); TRUE == Result)
 			//{
 			//	std::string name = "123111";
