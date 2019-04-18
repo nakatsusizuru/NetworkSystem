@@ -4,6 +4,7 @@
 #include <DataBase/Cry.Signal.DataBasePool.h>
 #include <Action/Cry.Action.DataBase.h>
 #include <evpp/tcp_conn.h>
+#include <Log/Logging.h>
 namespace Cry
 {
 	namespace Signal
@@ -130,7 +131,7 @@ namespace Cry
 		{
 			this->Close();
 		}
-		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 uSize) : m_Loop(std::make_unique<evpp::EventLoopThread>()), m_Services(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
+		NetworkServiceEngine::NetworkServiceEngine(const std::string & lpszAddress, const std::string & lpszFlags, const u64 uSize) : m_Loop(std::make_shared<evpp::EventLoopThread>()), m_Services(std::make_unique<evpp::TCPServer>(m_Loop->loop(), lpszAddress, lpszFlags, uSize)), m_MySQL(std::make_shared<Import::MySQL>())
 		{
 			m_Services->SetConnectionCallback(std::bind(&NetworkServiceEngine::OnConnection, this, std::placeholders::_1));
 			m_Services->SetMessageCallback(std::bind(&NetworkServiceEngine::OnMessage, this, std::placeholders::_1, std::placeholders::_2));
@@ -142,13 +143,20 @@ namespace Cry
 			{
 				if (!m_Services->Init())
 				{
+					CryMessage("服务器初始失败");
 					return false;
 				}
 				if (!m_Services->Start())
 				{
+					CryMessage("服务器启动失败");
 					return false;
 				}
-				return m_Loop->Start();
+				if (!m_Loop->Start())
+				{
+					CryMessage("服务器监听失败");
+					return false;
+				}
+				return true;
 			}
 			return false;
 		}

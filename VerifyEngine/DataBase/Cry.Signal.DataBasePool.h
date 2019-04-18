@@ -17,6 +17,8 @@ namespace Cry
 		std::shared_ptr<DataBase> GetNextMySQL();
 		std::shared_ptr<DataBase> GetNextMySQL(u64 Index);
 	private:
+		void CheckSession();
+	private:
 		std::shared_ptr<DataBase>											m_DataBase;	/// 默认连接
 		std::unordered_map<u64, std::shared_ptr<DataBase>>					m_DataPool; /// 共享连接
 		std::atomic<u64>													uNext;		/// 引用次数

@@ -3,6 +3,7 @@
 #include <Service/Cry.Signal.Service.h>
 #include <DataBase/Cry.Signal.DataBase.h>
 #include <Poco/Data/MySQL/MySQLException.h>
+#include <Log/Logging.h>
 #include <Msg.Control.Member.pb.h>
 namespace Cry
 {
@@ -18,6 +19,7 @@ namespace Cry
 				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
 				{
 					Work->Close();
+					return false;
 				}
 				return this->OnMessage(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()), const_cast<std::string &>(ProtoRequest.email()), const_cast<std::string &>(ProtoRequest.phone()), ProtoRequest.pin());
 			}
@@ -87,6 +89,7 @@ namespace Cry
 				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
 				{
 					Work->Close();
+					return false;
 				}
 				return this->OnMessage(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()), 123, ProtoRequest.version());
 			}
@@ -215,6 +218,7 @@ namespace Cry
 				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
 				{
 					Work->Close();
+					return false;
 				}
 				return this->OnMessage(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()), const_cast<std::string &>(ProtoRequest.newspass()), ProtoRequest.pin());
 			}
@@ -277,6 +281,7 @@ namespace Cry
 				if (false == ProtoRequest.ParsePartialFromArray(cbData, uSize))
 				{
 					Work->Close();
+					return false;
 				}
 				return this->OnMessage(Work, const_cast<std::string &>(ProtoRequest.username()), const_cast<std::string &>(ProtoRequest.password()), ProtoRequest.secret(), 3600);
 			}

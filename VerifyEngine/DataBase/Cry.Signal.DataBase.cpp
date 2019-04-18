@@ -1,5 +1,6 @@
 #include <Global>
 #include <DataBase/Cry.Signal.DataBase.h>
+#include <Log/Logging.h>
 namespace Cry
 {
 	DataBase::DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u32 uPort, bool ReConnect)
@@ -9,7 +10,7 @@ namespace Cry
 			if (m_Session == nullptr)
 			{
 				std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + DB + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : "false") + ";compress=true;secure-auth=true;protocol=tcp;character-set=gbk;";
-				m_Session.reset(new Session(Poco::Data::MySQL::Connector::KEY, lpszParameter));
+				m_Session.reset(new Session(Poco::Data::MySQL::Connector::KEY, lpszParameter, 1));
 			}
 			
 			//if (w32 Result = m_Session->isConnected(); TRUE == Result)
@@ -25,6 +26,7 @@ namespace Cry
 		catch (const Poco::Exception & ex)
 		{
 			LOG_ERROR << ex.displayText();
+			CryMessage("与数据库链接失败，请仔细检查数据库设置");
 		}
 	}
 	DataBase::~DataBase()

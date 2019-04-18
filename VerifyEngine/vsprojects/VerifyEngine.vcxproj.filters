@@ -52,6 +52,12 @@
     <Filter Include="Public\Encrypt">
       <UniqueIdentifier>{7d4454d6-a0d8-4e0b-9968-dfbff43761dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{7a9c1445-8d16-41e6-b428-45b630d88423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log\GeneratedFiles">
+      <UniqueIdentifier>{3937868c-768f-47de-867d-46aa8986d26d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Deps\Public\Cry.Global.h">
@@ -102,6 +108,9 @@
     <ClInclude Include="..\..\Deps\Public\Import\Cry.Proto.hpp">
       <Filter>Public\Import</Filter>
     </ClInclude>
+    <ClInclude Include="..\Log\Logging.h">
+      <Filter>Log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Gui\ControlDialog.cpp">
@@ -127,6 +136,12 @@
     </ClCompile>
     <ClCompile Include="..\Action\Cry.Control.Member.cpp">
       <Filter>Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Log\Logging.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Gui\GeneratedFiles\LoggingEx.cpp">
+      <Filter>Log\GeneratedFiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

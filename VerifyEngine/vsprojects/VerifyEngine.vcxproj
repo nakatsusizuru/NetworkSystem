@@ -26,6 +26,8 @@
     <ClCompile Include="..\Entrance.cpp" />
     <ClCompile Include="..\Gui\ControlDialog.cpp" />
     <ClCompile Include="..\Gui\GeneratedFiles\ControlDialogEx.cpp" />
+    <ClCompile Include="..\Gui\GeneratedFiles\LoggingEx.cpp" />
+    <ClCompile Include="..\Log\Logging.cpp" />
     <ClCompile Include="..\Service\Cry.Signal.Service.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +45,7 @@
     <ClInclude Include="..\DataBase\Cry.Signal.DataBasePool.h" />
     <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp" />
     <ClInclude Include="..\Entrance.h" />
+    <ClInclude Include="..\Log\Logging.h" />
     <ClInclude Include="..\Service\Cry.Signal.Service.h" />
     <CustomBuild Include="..\Gui\ControlDialog.h" />
     <ClInclude Include="..\Gui\ControlDialog.hpp" />

@@ -3,6 +3,9 @@
 #include <google/protobuf/message.h>
 #include <string>
 #include <memory>
+#include <atomic>
+#include <condition_variable>
+#include <chrono>
 namespace Cry
 {
 	class DataBase;
@@ -83,6 +86,30 @@ namespace Cry
 			std::shared_ptr<CustomerData>										m_Customer;
 		};
 
+		class InterruptSleeper
+		{
+		public:
+			InterruptSleeper() : m_Status(false) { }
+			~InterruptSleeper() = default;
+		public:
+			template<typename R, typename P>
+			bool wait_for(std::chrono::duration<R, P> const & Timeout)
+			{
+				std::unique_lock<std::mutex> Guard(m_Mutex);
+				return m_Asyn.wait_for(Guard, Timeout, [&] { return m_Status.load(); });
+			}
+			void signal()
+			{
+				std::unique_lock<std::mutex> Guard(m_Mutex);
+				m_Status.store(true);
+				m_Asyn.notify_one();
+			}
+		private:
+			std::condition_variable												m_Asyn;
+			std::mutex															m_Mutex;
+			std::atomic<bool>													m_Status;
+		};
+
 		class NetworkServiceEngine
 		{
 		public:
@@ -91,6 +118,7 @@ namespace Cry
 		public:
 			bool CreateService();
 			bool CancelService();
+			//void StopService() { m_Notify.signal(); };
 		private:
 			void OnMessage(const evpp::TCPConnPtr & Conn, evpp::Buffer * Buffer);
 			void OnConnection(const evpp::TCPConnPtr & Conn);
@@ -102,7 +130,7 @@ namespace Cry
 			bool CheckOnline(const std::shared_ptr<CustomerData> & Other);
 			bool CheckOnline(const CustomerData & Other);
 		private:
-			std::unique_ptr<evpp::EventLoopThread>								m_Loop;
+			std::shared_ptr<evpp::EventLoopThread>								m_Loop;
 			std::unique_ptr<evpp::TCPServer>									m_Services;
 			std::shared_ptr<Import::MySQL>										m_MySQL;
 			std::shared_ptr<DataPool>											m_DataPool;
@@ -110,6 +138,7 @@ namespace Cry
 			std::unordered_map<u64, std::shared_ptr<Work>>						m_WorkData;
 		private:
 			std::mutex															m_WorkLock;
+			//InterruptSleeper													m_Notify;
 		};
 	}
 }
