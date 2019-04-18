@@ -55,7 +55,7 @@ namespace Cry
 					{
 						if (!Listener->OnSocketData(shared_from_this(), uMsg, Data->data(), uSize))
 						{
-							DebugMsg("Listener\n");
+							CryMessage("Listener:%p", Listener);
 							this->Close();
 						}
 					}

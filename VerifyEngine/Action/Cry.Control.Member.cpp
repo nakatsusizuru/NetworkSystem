@@ -57,6 +57,7 @@ namespace Cry
 								ProtoResponse.set_msg(Define::CID_WRITE_NOT_ERROR);
 								ProtoResponse.set_text("注册成功");
 								ProtoResponse.set_uid(Result);
+								CryMessage("账号[%s]注册成功 UID[%d]", User.c_str(), Result);
 								break;
 							}
 							}

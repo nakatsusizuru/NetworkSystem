@@ -45,7 +45,7 @@
     <ClInclude Include="..\DataBase\Cry.Signal.DataBasePool.h" />
     <ClInclude Include="..\DataBase\Cry.Signal.MySQL.hpp" />
     <ClInclude Include="..\Entrance.h" />
-    <ClInclude Include="..\Log\Logging.h" />
+    <CustomBuild Include="..\Log\Logging.h" />
     <ClInclude Include="..\Service\Cry.Signal.Service.h" />
     <CustomBuild Include="..\Gui\ControlDialog.h" />
     <ClInclude Include="..\Gui\ControlDialog.hpp" />

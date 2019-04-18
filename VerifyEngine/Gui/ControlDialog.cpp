@@ -9,16 +9,15 @@ namespace Cry
 	ControlDialog::ControlDialog(QWidget* Widget) : QMainWindow(Widget), m_Interface(new Ui::ControlDialog)
 	{
 		m_Interface->setupUi(this);
-		connect(m_Interface->action_star, &QAction::triggered, this, &ControlDialog::star);
-		connect(m_Interface->action_stop, &QAction::triggered, this, &ControlDialog::stop);
 		g_Log = new GuiLog(m_Interface->LogExport);
-		
+		QObject::connect(m_Interface->action_star, &QAction::triggered, this, &ControlDialog::star);
+		QObject::connect(m_Interface->action_stop, &QAction::triggered, this, &ControlDialog::stop);
 	}
 	ControlDialog::~ControlDialog()
 	{
 		this->CancelService();
-		delete g_Log;
 		delete m_Interface;
+		delete g_Log;
 	}
 	void ControlDialog::star()
 	{

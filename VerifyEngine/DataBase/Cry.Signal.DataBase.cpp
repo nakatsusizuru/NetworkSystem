@@ -3,13 +3,13 @@
 #include <Log/Logging.h>
 namespace Cry
 {
-	DataBase::DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & DB, u32 uPort, bool ReConnect)
+	DataBase::DataBase(const std::string & Host, const std::string & User, const std::string & PassWord, const std::string & Db, u32 uPort, bool ReConnect)
 	{
 		try
 		{
 			if (m_Session == nullptr)
 			{
-				std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + DB + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : "false") + ";compress=true;secure-auth=true;protocol=tcp;character-set=gbk;";
+				std::string lpszParameter = "host=" + Host + ";user=" + User + ";password=" + PassWord + ";db=" + Db + ";port=" + std::to_string(uPort) + ";auto-reconnect=" + (ReConnect == true ? "true" : "false") + ";compress=true;secure-auth=true;protocol=tcp;character-set=gbk;";
 				m_Session.reset(new Session(Poco::Data::MySQL::Connector::KEY, lpszParameter, 1));
 			}
 			
@@ -23,10 +23,9 @@ namespace Cry
 			//	}
 			//}
 		}
-		catch (const Poco::Exception & ex)
+		catch (const Poco::Exception &)
 		{
-			LOG_ERROR << ex.displayText();
-			CryMessage("与数据库链接失败，请仔细检查数据库设置");
+			CryMessage("无法连接到[%s:%d]上的MySQL服务器", Host.c_str(), uPort);
 		}
 	}
 	DataBase::~DataBase()
@@ -37,7 +36,7 @@ namespace Cry
 	{
 		try
 		{
-			if (m_Session != nullptr)
+			if (m_Session)
 			{
 				m_Session->close();
 			}
